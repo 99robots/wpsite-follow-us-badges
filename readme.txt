@@ -1,4 +1,4 @@
-=== WP Dev Follow Us ===
+=== WPsite Follow Us Badges ===
 Contributors: kjbenk, wpsite
 Donate link: 
 Tags:
