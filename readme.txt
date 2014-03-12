@@ -35,6 +35,13 @@ Sharing content on Google+ is important. Increase your domain authority by allow
 * Bullet
 * Bullet
 
+= LinkedIn =
+Showcase your website to LinkedIn - the the world's largest professional network. 
+
+* Bullet
+* Bullet
+* Bullet
+
 = Templates =
 We'll be adding the ability to customize the look of your Follow Us Badges so stay tuned for such enhancements.
 
