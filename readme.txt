@@ -12,7 +12,7 @@ Social Media Follow Box showcases your Facebook, Twitter, and Google Plus badges
 
 == Description ==
 
-The WPsite Follow Us Badges is a fully customizable plugin that can be configured to display each of the following social media networks:
+The Social Media Follow Box by WPsite.net is a fully customizable plugin that can be configured to display each of the following social media networks:
 
 = Facebook =
 Allow visitors to Like your site. Increase your Facebook presence and reach the world.
@@ -40,7 +40,7 @@ We'll be adding the ability to customize the look of your Follow Us Badges so st
 
 = Support =
 Have a question or comment about this plugin. Visit the plugin's page at: 
-http://www.wpsite.net/follow-us-badges
+http://www.wpsite.net/social-media-follow-box
 
 
 == Installation ==
@@ -50,16 +50,16 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 = From WordPress Dashboard =
 
 # Navigate to 'Plugins -> Add New' from your WordPress dashboard. 
-# Search for `Follow Us Badges` and install it. 
+# Search for `Social Media Follow Box` and install it. 
 # Activate the plugin from Plugins menu.
 # Configure the plugin's settings  (see instructions for shortcode and php template tags)
 # Add any widget to your widget zone from Appearance -> Widgets and configure the widget options.
 
 = Manual Installation =
 
-# Download the plugin file: `follow-us-badges.zip`
-# Unzip
-# Upload the`follow-us-badges` folder to your `/wp-content/plugins` directory (do not rename the folder)
+# Download the plugin file: `social-media-follow-box.zip`
+# Unzip the file
+# Upload the`social-media-follow-box` folder to your `/wp-content/plugins` directory (do not rename the folder)
 # Activate the plugin from Plugins menu.
 # Configure the plugin's settings  (see instructions for shortcode and php template tags)
 # Add any widget to your widget zone from 'Appearance -> Widgets' and configure the widget options.
