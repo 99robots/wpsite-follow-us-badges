@@ -3,7 +3,7 @@
 Plugin Name: WPsite Follow Us Badges
 plugin URI: wpsite-follow-us-badges
 Description:
-version: 1.0
+version: 0.9
 Author: Kyle Benk
 Author URI: http://kylebenkapps.com
 License: GPL2
@@ -31,12 +31,14 @@ if (!defined('WPSITE_FOLLOW_US_PLUGIN_URL'))
 /* Plugin verison */
 
 if (!defined('WPSITE_FOLLOW_US_VERSION_NUM'))
-    define('WPSITE_FOLLOW_US_VERSION_NUM', '1.0.0');
+    define('WPSITE_FOLLOW_US_VERSION_NUM', '0.9.0');
  
  
 /** 
  * Activatation / Deactivation 
- */ 
+ */  
+
+register_activation_hook( __FILE__, array('WPsiteFollowUs', 'register_activation'));
 add_action('widgets_init', array('WPsiteFollowUs', 'wpsite_register_widget'));
 
 /** 
@@ -44,6 +46,7 @@ add_action('widgets_init', array('WPsiteFollowUs', 'wpsite_register_widget'));
  */
  
 add_action('init', array('WPsiteFollowUs', 'load_textdoamin'));
+add_action('admin_menu', array('WPsiteFollowUs', 'add_menu_page'));
 add_action('wp_enqueue_scripts', array('WPsiteFollowUs', 'include_styles_scripts'));
 
 /** 
@@ -57,11 +60,48 @@ class WPsiteFollowUs extends WP_Widget {
 
 	/* Properties */
 	
-	private static $jquery_latest = 'http://code.jquery.com/jquery-latest.min.js';
-	
 	private static $text_domain = 'wpsite-follow-us';
 	
 	private static $prefix = 'wpsite_follow_us_';
+	
+	private static $settings_page = 'wpsite-follow-us-badges-settings';
+	
+	private static $jquery_ui_css = '//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css';
+	
+	private static $default = array(
+		'twitter'	=> array(
+			'active'	=> false,
+			'user'		=> 'WPsite'
+		),
+		'facebook'	=> array(
+			'active'	=> false,
+			'user'		=> 'WPsite'
+		),
+		'google'	=> array(
+			'active'	=> false,
+			'user'		=> '106771475441130344412'
+		),
+		'linkedin'	=> array(
+			'active'	=> false,
+			'user'		=> '2839460'
+		)
+	);
+	
+	/**
+	 * Hooks to 'register_activation_hook' 
+	 * 
+	 * @since 1.0.0
+	 */
+	static function register_activation() {
+	
+		/* Check if multisite, if so then save as site option */
+		
+		if (is_multisite()) {
+			add_site_option('wpsite_follow_us_badges_version', WPSITE_FOLLOW_US_VERSION_NUM);
+		} else {
+			add_option('wpsite_follow_us_badges_version', WPSITE_FOLLOW_US_VERSION_NUM);
+		}
+	}
 	
 	/**
 	 * Register the Widget 
@@ -82,12 +122,279 @@ class WPsiteFollowUs extends WP_Widget {
 	}
 	
 	/**
-	 * Hooks to 'wp_enqueue_scripts' 
+	 * Hooks to 'admin_menu' 
 	 * 
 	 * @since 1.0.0
 	 */
-	static function include_styles_scripts() {
-		wp_enqueue_style('wpsite_follow_us_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/include/css/wpsite_follow_us.css');
+	static function add_menu_page() {
+		
+		/* Cast the first sub menu to the top menu */
+	    
+	    $settings_page_load = add_submenu_page(
+	    	'tools.php', 										// parent slug
+	    	__('WPsite Follow Us', self::$text_domain), 				// Page title
+	    	__('WPsite Follow Us', self::$text_domain), 				// Menu name
+	    	'manage_options', 											// Capabilities
+	    	self::$settings_page, 										// slug
+	    	array('WPsiteFollowUs', 'wpsite_follow_us_admin_settings')	// Callback function
+	    );
+	    add_action("admin_print_scripts-$settings_page_load", array('WPsiteFollowUs', 'wpsite_follow_us_include_admin_scripts'));
+	}
+	
+	/**
+	 * Hooks to 'admin_print_scripts-$page' 
+	 * 
+	 * @since 1.0.0
+	 */
+	static function wpsite_follow_us_include_admin_scripts() {
+		
+		/* CSS */
+		
+		wp_register_style('wpsite_follow_us_admin_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/include/css/wpsite_follow_us_admin.css');
+		wp_enqueue_style('wpsite_follow_us_admin_css');
+	
+		/* Javascript */
+		
+		/*
+wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/include/js/wpsite_follow_us_admin.js');
+		wp_enqueue_script('wpsite_follow_us_admin_js');
+*/	
+	}
+	
+	/**
+	 * Displays the HTML for the 'general-admin-menu-settings' admin page
+	 * 
+	 * @since 1.0.0
+	 */
+	static function wpsite_follow_us_admin_settings() {
+		
+		$settings = get_option('wpsite_follow_us_settings');
+			
+		/* Default values */
+		
+		if ($settings === false) {
+			$settings = self::$default;
+		}
+		
+		/* Save data nd check nonce */
+		
+		if (isset($_POST['submit']) && check_admin_referer('wpsite_follow_us_admin_settings')) {
+			
+			$settings = get_option('wpsite_follow_us_settings');
+			
+			/* Default values */
+			
+			if ($settings === false) {
+				$settings = self::$default;
+			}
+				
+			$settings = array(
+				'twitter'	=> array(
+					'active'	=> isset($_POST['wpsite_follow_us_settings_twitter_active']) && $_POST['wpsite_follow_us_settings_twitter_active'] ? true : false,
+					'user'		=> isset($_POST['wpsite_follow_us_settings_twitter_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_twitter_user'])) : ''
+				),
+				'facebook'	=> array(
+					'active'	=> isset($_POST['wpsite_follow_us_settings_facebook_active']) && $_POST['wpsite_follow_us_settings_facebook_active'] ? true : false,
+					'user'		=> isset($_POST['wpsite_follow_us_settings_facebook_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_facebook_user'])) : ''
+				),
+				'google'	=> array(
+					'active'	=> isset($_POST['wpsite_follow_us_settings_google_active']) && $_POST['wpsite_follow_us_settings_google_active'] ? true : false,
+					'user'		=> isset($_POST['wpsite_follow_us_settings_google_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_google_user'])) : ''
+				),
+				'linkedin'	=> array(
+					'active'	=> isset($_POST['wpsite_follow_us_settings_linkedin_active']) && $_POST['wpsite_follow_us_settings_linkedin_active'] ? true : false,
+					'user'		=> isset($_POST['wpsite_follow_us_settings_linkedin_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_linkedin_user'])) : ''
+				)
+			);
+			
+			update_option('wpsite_follow_us_settings', $settings);
+		}
+		
+		wp_enqueue_script('jquery');
+		wp_enqueue_script('jquery-ui-tabs');
+		wp_enqueue_style('wpsite-jquery-ui', self::$jquery_ui_css);
+		?>
+		
+		<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$( "#tabs" ).tabs();
+		});
+		</script>
+		
+		<div class="wrap wpsite_admin_panel">
+			<div class="wpsite_admin_panel_banner">
+				<h1><?php _e('WPsite Follow Us Badges Settings Page', self::$text_domain); ?></h1>
+			</div>
+			
+			<div id="wpsite_admin_panel_settings" class="wpsite_admin_panel_content">
+			
+				<form method="post">
+				
+					<div id="tabs">
+						<ul>
+							<li><a href="#wpsite_div_twitter"><?php _e('Twitter',self::$text_domain); ?></a></li>
+							<li><a href="#wpsite_div_facebook"><?php _e('Facebook',self::$text_domain); ?></a></li>
+							<li><a href="#wpsite_div_google"><?php _e('Google+',self::$text_domain); ?></a></li>
+							<li><a href="#wpsite_div_linkedin"><?php _e('LinkedIn',self::$text_domain); ?></a></li>
+							<li><a href="#wpsite_div_order"><?php _e('Order',self::$text_domain); ?></a></li>
+						</ul>
+						
+						<div id="wpsite_div_twitter">
+							<table>
+								<tbody>
+								
+									<!-- Active -->
+								
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<a href="https://dev.twitter.com/docs/follow-button" target="_blank"><label><?php _e('Twitter', self::$text_domain); ?></label></a>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input id="wpsite_follow_us_settings_twitter_active" name="wpsite_follow_us_settings_twitter_active" type="checkbox" <?php echo isset($settings['twitter']['active']) && $settings['twitter']['active'] ? 'checked="checked"' : ''; ?> placeholder="your_username">
+											</td>
+										</th>
+									</tr>
+									
+									<!-- User -->
+									
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<td class="wpsite_follow_us_admin_table_td">
+												<input size="30" id="wpsite_follow_us_settings_twitter_user" name="wpsite_follow_us_settings_twitter_user" type="text" value="<?php echo esc_attr($settings['twitter']['user']); ?>"><br/>
+												<em><label><?php _e('https://twitter.com/', self::$text_domain); ?></label><strong><label><?php _e('"example"', self::$text_domain); ?></label></strong></em>
+											</td>
+										</th>
+									</tr>
+								
+								</tbody>
+							</table>
+						</div>
+						
+						<div id="wpsite_div_facebook">
+							<table>
+								<tbody>
+								
+									<!-- Active -->	
+									
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<a href="https://developers.facebook.com/docs/plugins/like-button/" target="_blank"><label><?php _e('Facebook', self::$text_domain); ?></label></a>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input id="wpsite_follow_us_settings_facebook_active" name="wpsite_follow_us_settings_facebook_active" type="checkbox" <?php echo isset($settings['facebook']['active']) && $settings['facebook']['active'] ? 'checked="checked"' : ''; ?> placeholder="pages/your_page_name/your_pageid">
+											</td>
+										</th>
+									</tr>
+									
+									<!-- User -->
+									
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<td class="wpsite_follow_us_admin_table_td">
+												<input size="30" id="wpsite_follow_us_settings_facebook_user" name="wpsite_follow_us_settings_facebook_user" type="text" value="<?php echo esc_attr($settings['facebook']['user']); ?>"><br/>
+												<em><label><?php _e('https://www.facebook.com/', self::$text_domain); ?></label><strong><label><?php _e('"example"', self::$text_domain); ?></label></strong></em><br/>
+												<em><label><?php _e('https://www.facebook.com/', self::$text_domain); ?></label><strong><label><?php _e('"pages/example/112233"', self::$text_domain); ?></label></strong></em>
+											</td>
+										</th>
+									</tr>
+								
+								</tbody>
+							</table>
+						</div>
+						
+						<div id="wpsite_div_google">
+							<table>
+								<tbody>
+								
+									<!-- Active -->	
+									
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<a href="https://developers.google.com/+/web/follow/" target="_blank"><label><?php _e('Google+', self::$text_domain); ?></label></a>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input id="wpsite_follow_us_settings_google_active" name="wpsite_follow_us_settings_google_active" type="checkbox" <?php echo isset($settings['google']['active']) && $settings['google']['active'] ? 'checked="checked"' : ''; ?> placeholder="Your ID">
+											</td>
+										</th>
+									</tr>
+									
+									<!-- User -->
+									
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<td class="wpsite_follow_us_admin_table_td">
+												<input size="30" id="wpsite_follow_us_settings_google_user" name="wpsite_follow_us_settings_google_user" type="text" value="<?php echo esc_attr($settings['google']['user']); ?>"><br/>
+												<em><label><?php _e('https://plus.google.com/u/0/', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong><label><?php _e('/posts', self::$text_domain); ?></label></em>
+											</td>
+										</th>
+									</tr>
+								
+								</tbody>
+							</table>
+						</div>
+						
+						<div id="wpsite_div_linkedin">
+							<table>
+								<tbody>
+								
+									<!-- Active -->	
+									
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<a href="https://developer.linkedin.com/plugins/follow-company" target="_blank"><label><?php _e('LinkedIn', self::$text_domain); ?></label></a>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input id="wpsite_follow_us_settings_linkedin_active" name="wpsite_follow_us_settings_linkedin_active" type="checkbox" <?php echo isset($settings['linkedin']['active']) && $settings['linkedin']['active'] ? 'checked="checked"' : ''; ?> placeholder="Your ID">
+											</td>
+										</th>
+									</tr>
+									
+									<!-- User -->
+									
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<td class="wpsite_follow_us_admin_table_td">
+												<input size="30" id="wpsite_follow_us_settings_linkedin_user" name="wpsite_follow_us_settings_linkedin_user" type="text" value="<?php echo esc_attr($settings['linkedin']['user']); ?>"><br/>
+												<em><label><?php _e('http://www.linkedin.com/profile/view?id=', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em><br/>
+												<em><label><?php _e('http://www.linkedin.com/company/', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em>
+											</td>
+										</th>
+									</tr>
+								
+								</tbody>
+							</table>
+						</div>
+						
+						<div id="wpsite_div_order">
+							<table>
+								<tbody>
+								
+									<!-- Order -->
+								
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<label><?php _e('Size', self::$text_domain); ?></label>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input id="wpsite_follow_us_settings_size" name="wpsite_follow_us_settings_size" type="text" size="60" value="<?php echo esc_attr($settings['size']); ?>">
+											</td>
+										</th>
+									</tr>
+								
+								</tbody>
+							</table>
+						</div>
+						
+					</div>
+					
+					<?php wp_nonce_field('wpsite_follow_us_admin_settings'); ?>
+				
+					<?php submit_button(); ?>
+					
+				</form>
+			
+			</div>
+			
+			<div id="wpsite_admin_panel_sidebar" class="wpsite_admin_panel_content">
+				<img src="http://www.wpsite.net/wp-content/uploads/2011/10/logo-only-100h.png">
+			</div>
+		</div>
+		<?php
 	}
 	
 	/**
@@ -100,6 +407,19 @@ class WPsiteFollowUs extends WP_Widget {
 			array( 'description' => __( 'Add follow buttons to your sidebar', self::$text_domain), ) // Args
 		);
 	}
+	
+	/**
+	 * Hooks to 'wp_enqueue_scripts' 
+	 * 
+	 * @since 1.0.0
+	 */
+	static function include_styles_scripts() {
+	
+		/* CSS */
+		
+		wp_register_style('wpsite_follow_us_admin_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/include/css/wpsite_follow_us_admin.css');
+		wp_enqueue_style('wpsite_follow_us_admin_css');
+	}
 
 	/**
 	 * Front-end display of widget.
@@ -111,14 +431,14 @@ class WPsiteFollowUs extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		$title = apply_filters( 'widget_title', $instance['title'] );
-		$twitter_user = $instance['twitter_user'];
-		$twitter = $instance['twitter'];
-		$facebook_user = $instance['facebook_user'];
-		$facebook = $instance['facebook'];
-		$google_user = $instance['google_user'];
-		$google = $instance['google'];
-		$linkedin_user = $instance['linkedin_user'];
-		$linkedin = $instance['linkedin'];
+		
+		$settings = get_option('wpsite_follow_us_settings');
+			
+		/* Default values */
+		
+		if ($settings === false) {
+			$settings = self::$default;
+		}
 
 		echo $args['before_widget'];
 		
@@ -127,17 +447,17 @@ class WPsiteFollowUs extends WP_Widget {
 			
 		$content = '';
 		
-		if ($twitter) {
+		if (isset($settings['twitter']['active']) && $settings['twitter']['active']) {
 			$content .= '
-			<div class="wpsite_follow_us_div"><a href="https://twitter.com/' . $twitter_user . '" class="twitter-follow-button" data-show-count="true" data-size="small" data-show-screen-name="false" data-lang="en">Follow</a>
+			<div class="wpsite_follow_us_div"><a href="https://twitter.com/' . $settings['twitter']['user'] . '" class="twitter-follow-button" data-show-count="true" data-size="small" data-show-screen-name="false" data-lang="en">Follow</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
 			';
 		}
 		
-		if ($facebook) {
+		if (isset($settings['facebook']['active']) && $settings['facebook']['active']) {
 			$content .= '
 				<div class="wpsite_follow_us_div">
-				<div class="fb-like" data-href="https://facebook.com/' . $facebook_user . '" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+				<div class="fb-like" data-href="https://facebook.com/' . $settings['facebook']['user'] . '" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
 				
 				<div id="fb-root"></div>
 				<script>(function(d, s, id) {
@@ -150,9 +470,9 @@ class WPsiteFollowUs extends WP_Widget {
 			';
 		}
 		
-		if ($google) {
+		if (isset($settings['google']['active']) && $settings['google']['active']) {
 			$content .= '
-				<div class="wpsite_follow_us_div"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/' . $google_user . '" data-rel="publisher"></div>
+				<div class="wpsite_follow_us_div"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/' . $settings['google']['user'] . '" data-rel="publisher"></div>
 				
 				<!-- Place this tag after the last widget tag. -->
 				<script type="text/javascript">
@@ -164,11 +484,11 @@ class WPsiteFollowUs extends WP_Widget {
 				</script></div>';
 		}
 		
-		if ($linkedin) {
+		if (isset($settings['linkedin']['active']) && $settings['linkedin']['active']) {
 			$content .= '<div class="wpsite_follow_us_div"><script src="//platform.linkedin.com/in.js" type="text/javascript">
 					lang: en_US
 					</script>
-					<script type="IN/FollowCompany" data-id="' . $linkedin_user . '" data-counter="right"></script><div>';
+					<script type="IN/FollowCompany" data-id="' . $settings['linkedin']['user'] . '" data-counter="right"></script><div>';
 		}
 		
 		echo $content;
@@ -184,105 +504,19 @@ class WPsiteFollowUs extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
+	
+		// Title
+		
 		if (isset( $instance[ 'title' ]))
 			$title = $instance[ 'title' ];
 		else
-			$title = __('title', self::$text_domain);
-			
-		/* Twitter */
-			
-		if (isset( $instance[ 'twitter_user' ]))
-			$twitter_user = $instance[ 'twitter_user' ];
-		else
-			$twitter_user = __('', self::$text_domain);
-			
-		if (isset( $instance[ 'twitter' ]))
-			$twitter = $instance[ 'twitter' ];
-		else
-			$twitter = false;
-			
-		/* Facebook */
-			
-		if (isset( $instance[ 'facebook_user' ]))
-			$facebook_user = $instance[ 'facebook_user' ];
-		else
-			$facebook_user = __('', self::$text_domain);
-			
-		if (isset( $instance[ 'facebook' ]))
-			$facebook = $instance[ 'facebook' ];
-		else
-			$facebook = false;
-			
-		/* Google+ */
-			
-		if (isset( $instance[ 'google_user' ]))
-			$google_user = $instance[ 'google_user' ];
-		else
-			$google_user = __('', self::$text_domain);
-			
-		if (isset( $instance[ 'google' ]))
-			$google = $instance[ 'google' ];
-		else
-			$google = false;
-			
-		/* Linkedin */
-			
-		if (isset( $instance[ 'linkedin_user' ]))
-			$linkedin_user = $instance[ 'linkedin_user' ];
-		else
-			$linkedin_user = __('', self::$text_domain);
-			
-		if (isset( $instance[ 'linkedin' ]))
-			$linkedin = $instance[ 'linkedin' ];
-		else
-			$linkedin = false;
+			$title = __('Follow Us', self::$text_domain);
 		
 		?>
-		
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
-		
-		
-		<!-- Twitter -->
-		
-		<p>
-			<a href="https://dev.twitter.com/docs/follow-button" target="_blank"><label><?php _e( 'Twitter' ); ?></label></a><br/>
-			<input id="<?php echo $this->get_field_id( 'twitter' ); ?>" name="<?php echo $this->get_field_name( 'twitter' ); ?>" type="checkbox" <?php echo isset($twitter) && $twitter ? 'checked="checked"' : ''; ?> placeholder="your_username">
-			<input size="30" id="<?php echo $this->get_field_id('twitter_user'); ?>" name="<?php echo $this->get_field_name('twitter_user'); ?>" type="text" value="<?php echo esc_attr( $twitter_user ); ?>"><br/>
-			<em><label><?php _e( 'https://twitter.com/' ); ?></label><strong><label><?php _e( '"example"' ); ?></label></strong></em>
-		</p>
-		
-		<!-- Facebook -->
-		
-		<p>
-			<a href="https://developers.facebook.com/docs/plugins/like-button/" target="_blank"><label><?php _e( 'Facebook' ); ?></label></a><br/>
-			<input id="<?php echo $this->get_field_id( 'facebook' ); ?>" name="<?php echo $this->get_field_name( 'facebook' ); ?>" type="checkbox" <?php echo isset($facebook) && $facebook ? 'checked="checked"' : ''; ?> placeholder="pages/your_page_name/your_pageid">
-			<input size="30" id="<?php echo $this->get_field_id( 'facebook_user' ); ?>" name="<?php echo $this->get_field_name( 'facebook_user' ); ?>" type="text" value="<?php echo esc_attr( $facebook_user ); ?>"><br/>
-			<em><label><?php _e( 'https://www.facebook.com/' ); ?></label><strong><label><?php _e( '"example"' ); ?></label></strong></em><br/>
-			<em><label><?php _e( 'https://www.facebook.com/' ); ?></label><strong><label><?php _e( '"pages/example/112233"' ); ?></label></strong></em><br/>
-		</p>
-		
-		<!-- Google+ -->
-		
-		<p>
-			<a href="https://developers.google.com/+/web/follow/" target="_blank"><label><?php _e( 'Google' ); ?></label></a><br/>
-			<input id="<?php echo $this->get_field_id( 'google' ); ?>" name="<?php echo $this->get_field_name( 'google' ); ?>" type="checkbox" <?php echo isset($google) && $google ? 'checked="checked"' : ''; ?> placeholder="Your ID">
-			<input size="30" id="<?php echo $this->get_field_id( 'google_user' ); ?>" name="<?php echo $this->get_field_name( 'google_user' ); ?>" type="text" value="<?php echo esc_attr( $google_user ); ?>"><br/>
-			<em><label><?php _e( 'https://plus.google.com/u/0/'); ?></label><strong><label><?php _e('"112233"' ); ?></label></strong><label><?php _e('/posts' ); ?></label></em>
-		</p>
-		
-		<!-- Linkedin -->
-		
-		<p>
-			<a href="https://developer.linkedin.com/plugins/follow-company" target="_blank"><label><?php _e( 'LinkedIn' ); ?></label></a><br/>
-			<input id="<?php echo $this->get_field_id( 'linkedin' ); ?>" name="<?php echo $this->get_field_name( 'linkedin' ); ?>" type="checkbox" <?php echo isset($linkedin) && $linkedin ? 'checked="checked"' : ''; ?> placeholder="Your ID">
-			<input size="30" id="<?php echo $this->get_field_id( 'linkedin_user' ); ?>" name="<?php echo $this->get_field_name( 'linkedin_user' ); ?>" type="text" value="<?php echo esc_attr( $linkedin_user ); ?>"><br/>
-			<em><label><?php _e( 'http://www.linkedin.com/profile/view?id=' ); ?></label><strong><label><?php _e( '"112233"' ); ?></label></strong></em><br/>
-			<em><label><?php _e( 'http://www.linkedin.com/company/' ); ?></label><strong><label><?php _e( '"112233"' ); ?></label></strong></em>
-		</p>
-		
 		<?php 
 	}
 
@@ -299,14 +533,6 @@ class WPsiteFollowUs extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-		$instance['twitter_user'] = ( ! empty( $new_instance['twitter_user'] ) ) ? strip_tags( $new_instance['twitter_user'] ) : '';
-		$instance['twitter'] = ( ! empty( $new_instance['twitter'] ) ) ? strip_tags( $new_instance['twitter'] ) : '';
-		$instance['facebook_user'] = ( ! empty( $new_instance['facebook_user'] ) ) ? strip_tags( $new_instance['facebook_user'] ) : '';
-		$instance['facebook'] = ( ! empty( $new_instance['facebook'] ) ) ? strip_tags( $new_instance['facebook'] ) : '';
-		$instance['google_user'] = ( ! empty( $new_instance['google_user'] ) ) ? strip_tags( $new_instance['google_user'] ) : '';
-		$instance['google'] = ( ! empty( $new_instance['google'] ) ) ? strip_tags( $new_instance['google'] ) : '';
-		$instance['linkedin_user'] = ( ! empty( $new_instance['linkedin_user'] ) ) ? strip_tags( $new_instance['linkedin_user'] ) : '';
-		$instance['linkedin'] = ( ! empty( $new_instance['linkedin'] ) ) ? strip_tags( $new_instance['linkedin'] ) : '';
 
 		return $instance;
 	}
