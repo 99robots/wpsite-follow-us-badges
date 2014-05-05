@@ -55,6 +55,9 @@ add_action('wp_enqueue_scripts', array('WPsiteFollowUs', 'include_styles_scripts
 
 add_action('wp_ajax_wpsite_save_order', array('WPsiteFollowUs', 'save_order'));
 
+$plugin = plugin_basename(__FILE__); 
+add_filter("plugin_action_links_$plugin", array('WPsiteFollowUs', 'wpsite_follow_us_badges_settings_link'));
+
 /** 
  *  WPsiteFollowUs main class
  *
@@ -354,6 +357,17 @@ class WPsiteFollowUs extends WP_Widget {
 	    	array('WPsiteFollowUs', 'wpsite_follow_us_admin_settings')	// Callback function
 	    );
 	    add_action("admin_print_scripts-$settings_page_load", array('WPsiteFollowUs', 'wpsite_follow_us_include_admin_scripts'));
+	}
+	
+	/**
+	 * Hooks to 'plugin_action_links_' filter 
+	 * 
+	 * @since 1.0.0
+	 */
+	static function wpsite_follow_us_badges_settings_link($links) { 
+		$settings_link = '<a href="tools.php?page=' . self::$settings_page . '">Settings</a>'; 
+		array_unshift($links, $settings_link); 
+		return $links; 
 	}
 	
 	/**
