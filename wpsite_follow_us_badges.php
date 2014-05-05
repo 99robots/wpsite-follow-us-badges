@@ -50,6 +50,12 @@ add_action('admin_menu', array('WPsiteFollowUs', 'add_menu_page'));
 add_action('wp_enqueue_scripts', array('WPsiteFollowUs', 'include_styles_scripts'));
 
 /** 
+ * AJAX 
+ */
+
+add_action('wp_ajax_wpsite_save_order', array('WPsiteFollowUs', 'save_order'));
+
+/** 
  *  WPsiteFollowUs main class
  *
  * @since 1.0.0
@@ -69,6 +75,7 @@ class WPsiteFollowUs extends WP_Widget {
 	private static $jquery_ui_css = '//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css';
 	
 	private static $default = array(
+		'order'		=> array('twitter', 'facebook', 'google', 'linkedin'),
 		'twitter'	=> array(
 			'active'	=> false,
 			'user'		=> 'WPsite',
@@ -397,6 +404,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 			}
 				
 			$settings = array(
+				'order'		=> $settings['order'],
 				'twitter'	=> array(
 					'active'	=> isset($_POST['wpsite_follow_us_settings_twitter_active']) && $_POST['wpsite_follow_us_settings_twitter_active'] ? true : false,
 					'user'		=> isset($_POST['wpsite_follow_us_settings_twitter_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_twitter_user'])) : '',
@@ -449,12 +457,28 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 		
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-ui-tabs');
+		wp_enqueue_script('jquery-ui-sortable');
 		wp_enqueue_style('wpsite-jquery-ui', self::$jquery_ui_css);
 		?>
 		
 		<script type="text/javascript">
 		jQuery(document).ready(function($) {
 			$( "#tabs" ).tabs();
+			
+			
+			$("#sortable").sortable({
+				revert: true,
+				update: function (event, ui) {
+			        
+			        var data = {
+						action: 'wpsite_save_order',
+						order: $(this).sortable('toArray')
+					};
+			
+			        // POST to server using $.post or $.ajax
+			        $.post(ajaxurl, data, function(response) {});
+			    }
+			});
 		});
 		</script>
 		
@@ -477,6 +501,9 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 						</ul>
 						
 						<div id="wpsite_div_twitter">
+						
+							<h3><?php _e('General', self::$text_domain); ?></h3>
+							
 							<table>
 								<tbody>
 								
@@ -503,6 +530,14 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 										</th>
 									</tr>
 									
+								</tbody>
+							</table>
+							
+							<h3><?php _e('Display', self::$text_domain); ?></h3>
+							
+							<table>
+								<tbody>
+								
 									<!-- Followers Count Display -->
 								
 									<tr>
@@ -513,7 +548,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 											</td>
 										</th>
 									</tr>
-									
+								
 									<!-- Show Screen Name -->
 								
 									<tr>
@@ -524,22 +559,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 											</td>
 										</th>
 									</tr>
-									
-									<!-- Language -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Language', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<select id="wpsite_follow_us_settings_twitter_args_language" name="wpsite_follow_us_settings_twitter_args_language">
-													<?php foreach (self::$twitter_supported_languages as $lang) { ?>
-													<option value="<?php echo $lang; ?>" <?php echo isset($settings['twitter']['args']['language']) && $settings['twitter']['args']['language'] == $lang ? 'selected' : '' ;?>><?php _e($lang, self::$text_domain); ?></option>
-													<?php } ?>
-												</select>
-											</td>
-										</th>
-									</tr>
-									
+								
 									<!-- Alignment -->
 									
 									<tr>
@@ -553,7 +573,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 											</td>
 										</th>
 									</tr>
-									
+								
 									<!-- Width -->
 									
 									<tr>
@@ -579,6 +599,29 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 											</td>
 										</th>
 									</tr>
+								
+								</tbody>
+							</table>
+							
+							<h3><?php _e('Advanced', self::$text_domain); ?></h3>
+							
+							<table>
+								<tbody>
+								
+									<!-- Language -->
+									
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<label><?php _e('Language', self::$text_domain); ?></label>
+											<td class="wpsite_follow_us_admin_table_td">
+												<select id="wpsite_follow_us_settings_twitter_args_language" name="wpsite_follow_us_settings_twitter_args_language">
+													<?php foreach (self::$twitter_supported_languages as $lang) { ?>
+													<option value="<?php echo $lang; ?>" <?php echo isset($settings['twitter']['args']['language']) && $settings['twitter']['args']['language'] == $lang ? 'selected' : '' ;?>><?php _e($lang, self::$text_domain); ?></option>
+													<?php } ?>
+												</select>
+											</td>
+										</th>
+									</tr>
 									
 									<!-- Opt Out -->
 								
@@ -598,6 +641,9 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 						</div>
 						
 						<div id="wpsite_div_facebook">
+						
+							<h3><?php _e('General', self::$text_domain); ?></h3>
+							
 							<table>
 								<tbody>
 								
@@ -625,32 +671,13 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 										</th>
 									</tr>
 									
-									<!-- Width -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Width', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input size="30" id="wpsite_follow_us_settings_facebook_args_width" name="wpsite_follow_us_settings_facebook_args_width" type="text" value="<?php echo esc_attr($settings['facebook']['args']['width']); ?>"><br/>
-												<em><label><?php _e('Accepts px only', self::$text_domain); ?></label></em>
-											</td>
-										</th>
-									</tr>
-									
-									<!-- Language -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Language', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<select id="wpsite_follow_us_settings_facebook_args_language" name="wpsite_follow_us_settings_facebook_args_language">
-													<?php foreach (self::$facebook_supported_languages as $lang) { ?>
-													<option value="<?php echo $lang; ?>" <?php echo isset($settings['facebook']['args']['language']) && $settings['facebook']['args']['language'] == $lang ? 'selected' : '' ;?>><?php _e($lang, self::$text_domain); ?></option>
-													<?php } ?>
-												</select>
-											</td>
-										</th>
-									</tr>
+								</tbody>
+							</table>
+							
+							<h3><?php _e('Display', self::$text_domain); ?></h3>
+							
+							<table>
+								<tbody>
 									
 									<!-- Layout -->
 									
@@ -664,28 +691,6 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 													<option value="button_count" <?php echo isset($settings['facebook']['args']['layout']) && $settings['facebook']['args']['layout'] == 'button_count' ? 'selected' : '' ;?>><?php _e('button_count', self::$text_domain); ?></option>
 													<option value="button" <?php echo isset($settings['facebook']['args']['layout']) && $settings['facebook']['args']['layout'] == 'button' ? 'selected' : '' ;?>><?php _e('button', self::$text_domain); ?></option>
 												</select>
-											</td>
-										</th>
-									</tr>
-									
-									<!-- Show Friends Faces -->	
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Show Friends Faces', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input id="wpsite_follow_us_settings_facebook_args_show_friends_faces" name="wpsite_follow_us_settings_facebook_args_show_friends_faces" type="checkbox" <?php echo isset($settings['facebook']['args']['show_friends_faces']) && $settings['facebook']['args']['show_friends_faces'] ? 'checked="checked"' : ''; ?>>
-											</td>
-										</th>
-									</tr>
-									
-									<!-- Include Share Button -->	
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Include Share Button', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input id="wpsite_follow_us_settings_facebook_args_include_share_button" name="wpsite_follow_us_settings_facebook_args_include_share_button" type="checkbox" <?php echo isset($settings['facebook']['args']['include_share_button']) && $settings['facebook']['args']['include_share_button'] ? 'checked="checked"' : ''; ?>>
 											</td>
 										</th>
 									</tr>
@@ -717,7 +722,64 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 											</td>
 										</th>
 									</tr>
+									
+									<!-- Show Friends Faces -->	
+									
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<label><?php _e('Show Friends Faces', self::$text_domain); ?></label>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input id="wpsite_follow_us_settings_facebook_args_show_friends_faces" name="wpsite_follow_us_settings_facebook_args_show_friends_faces" type="checkbox" <?php echo isset($settings['facebook']['args']['show_friends_faces']) && $settings['facebook']['args']['show_friends_faces'] ? 'checked="checked"' : ''; ?>>
+											</td>
+										</th>
+									</tr>
+									
+									<!-- Include Share Button -->	
+									
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<label><?php _e('Include Share Button', self::$text_domain); ?></label>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input id="wpsite_follow_us_settings_facebook_args_include_share_button" name="wpsite_follow_us_settings_facebook_args_include_share_button" type="checkbox" <?php echo isset($settings['facebook']['args']['include_share_button']) && $settings['facebook']['args']['include_share_button'] ? 'checked="checked"' : ''; ?>>
+											</td>
+										</th>
+									</tr>
+									
+									<!-- Width -->
+									
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<label><?php _e('Width', self::$text_domain); ?></label>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input size="30" id="wpsite_follow_us_settings_facebook_args_width" name="wpsite_follow_us_settings_facebook_args_width" type="text" value="<?php echo esc_attr($settings['facebook']['args']['width']); ?>"><br/>
+												<em><label><?php _e('Accepts px only', self::$text_domain); ?></label></em>
+											</td>
+										</th>
+									</tr>
 								
+								</tbody>
+							</table>
+							
+							<h3><?php _e('Advanced', self::$text_domain); ?></h3>
+							
+							<table>
+								<tbody>	
+									
+									<!-- Language -->
+									
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<label><?php _e('Language', self::$text_domain); ?></label>
+											<td class="wpsite_follow_us_admin_table_td">
+												<select id="wpsite_follow_us_settings_facebook_args_language" name="wpsite_follow_us_settings_facebook_args_language">
+													<?php foreach (self::$facebook_supported_languages as $lang) { ?>
+													<option value="<?php echo $lang; ?>" <?php echo isset($settings['facebook']['args']['language']) && $settings['facebook']['args']['language'] == $lang ? 'selected' : '' ;?>><?php _e($lang, self::$text_domain); ?></option>
+													<?php } ?>
+												</select>
+											</td>
+										</th>
+									</tr>
+									
 								</tbody>
 							</table>
 							
@@ -725,6 +787,9 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 						</div>
 						
 						<div id="wpsite_div_google">
+						
+							<h3><?php _e('General', self::$text_domain); ?></h3>
+							
 							<table>
 								<tbody>
 								
@@ -750,6 +815,14 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 											</td>
 										</th>
 									</tr>
+									
+								</tbody>
+							</table>
+							
+							<h3><?php _e('Display', self::$text_domain); ?></h3>
+							
+							<table>
+								<tbody>
 									
 									<!-- Size -->
 									
@@ -780,6 +853,14 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 											</td>
 										</th>
 									</tr>
+									
+								</tbody>
+							</table>
+							
+							<h3><?php _e('Advanced', self::$text_domain); ?></h3>
+							
+							<table>
+								<tbody>
 									
 									<!-- Language -->
 									
@@ -832,6 +913,9 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 						</div>
 						
 						<div id="wpsite_div_linkedin">
+						
+							<h3><?php _e('General', self::$text_domain); ?></h3>
+							
 							<table>
 								<tbody>
 								
@@ -859,6 +943,14 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 										</th>
 									</tr>
 									
+								</tbody>
+							</table>
+							
+							<h3><?php _e('Display', self::$text_domain); ?></h3>
+							
+							<table>
+								<tbody>
+									
 									<!-- Count Mode -->
 									
 									<tr>
@@ -873,6 +965,14 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 											</td>
 										</th>
 									</tr>
+									
+								</tbody>
+							</table>
+							
+							<h3><?php _e('Advanced', self::$text_domain); ?></h3>
+							
+							<table>
+								<tbody>
 									
 									<!-- Language -->
 									
@@ -899,7 +999,21 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 							<table>
 								<tbody>
 								
+									<!-- Sortables -->
 									
+									<ul id="sortable">
+									
+										<?php 
+										
+										if (!isset($settings['order'])) {
+											$settings['order'] = self::$default['order'];
+										}
+										
+										foreach ($settings['order'] as $order) { ?>
+											<li id="<?php echo $order; ?>" name="<?php echo $order; ?>" class="ui-state-default"><?php _e($order, self::$text_domain); ?></li>
+										<?php } ?>
+										
+									</ul>
 								
 								</tbody>
 							</table>
@@ -920,6 +1034,28 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 			</div>
 		</div>
 		<?php
+	}
+	
+	/**
+	 * AJAX with action 'wpsite_save_order' 
+	 * 
+	 * @since 1.0.0
+	 */
+	static function save_order() {
+	
+		$settings = get_option('wpsite_follow_us_settings');
+			
+		/* Default values */
+		
+		if ($settings === false) {
+			$settings = self::$default;
+		}
+		
+		$settings['order'] = $_POST['order'];
+		
+		update_option('wpsite_follow_us_settings', $settings);
+		
+		die(); // this is required to return a proper result
 	}
 	
 	/**
@@ -972,140 +1108,144 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 			
 		$content = '';
 		
-		if (isset($settings['twitter']['active']) && $settings['twitter']['active']) {
-			$content .= '<div class="wpsite_follow_us_div"><a href="https://twitter.com/' . $settings['twitter']['user'] . '" class="twitter-follow-button"';
-			
-			if (isset($settings['twitter']['args']['followers_count_display']) && $settings['twitter']['args']['followers_count_display']) {
-				$content .=  ' data-show-count="true"';
-			} else {
-				$content .=  ' data-show-count="false"';
-			}
-			
-			if (isset($settings['twitter']['args']['opt_out']) && $settings['twitter']['args']['opt_out']) {
-				$content .= ' data-dnt="true"';
-			} else {
-				$content .= ' data-dnt="false"';
-			}
-			
-			if (isset($settings['twitter']['args']['show_screen_name']) && $settings['twitter']['args']['show_screen_name']) {
-				$content .= ' data-show-screen-name="true"';
-			} else {
-				$content .= ' data-show-screen-name="false"';
-			}
-			
-			if (isset($settings['twitter']['args']['size'])) {
-				$content .= ' data-size="' . $settings['twitter']['args']['size'] .'"';
-			}
-			
-			if (isset($settings['twitter']['args']['language'])) {
-				$content .= ' data-lang="' . $settings['twitter']['args']['language'] .'"';
-			}
-			
-			if (isset($settings['twitter']['args']['alignment'])) {
-				$content .= ' data-align="' . $settings['twitter']['args']['alignment'] .'"';
-			}
-			
-			if (isset($settings['twitter']['args']['width']) && $settings['twitter']['args']['width'] != '') {
-				$content .= ' data-width="' . $settings['twitter']['args']['width'] .'"';
-			}
-			
-			$content .= '></a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
-			';
-		}
-		
-		if (isset($settings['facebook']['active']) && $settings['facebook']['active']) {
-			$content .= '<div class="wpsite_follow_us_div"><div class="fb-like" data-href="https://facebook.com/' . $settings['facebook']['user'] . '"';
-			
-			if (isset($settings['facebook']['args']['include_share_button']) && $settings['facebook']['args']['include_share_button']) {
-				$content .= ' data-share="true"';
-			} else {
-				$content .= ' data-share="false"';
-			}
-			
-			if (isset($settings['facebook']['args']['show_friends_faces']) && $settings['facebook']['args']['show_friends_faces']) {
-				$content .= ' data-show-faces="true"';
-			} else {
-				$content .= ' data-show-faces="false"';
-			}
-			
-			if (isset($settings['facebook']['args']['layout'])) {
-				$content .= ' data-layout="' . $settings['facebook']['args']['layout'] .'"';
-			}
-			
-			if (isset($settings['facebook']['args']['action_type'])) {
-				$content .= ' data-action="' . $settings['facebook']['args']['action_type'] .'"';
-			}
-			
-			if (isset($settings['facebook']['args']['colorscheme'])) {
-				$content .= ' data-colorscheme="' . $settings['facebook']['args']['colorscheme'] .'"';
-			}
-			
-			if (isset($settings['facebook']['args']['width']) && $settings['facebook']['args']['width'] != '') {
-				$content .= ' data-width="' . $settings['facebook']['args']['width'] .'"';
-			}
-			 
-			$content .= '></div>
-				<div id="fb-root"></div>
-				<script>(function(d, s, id) {
-				  var js, fjs = d.getElementsByTagName(s)[0];
-				  if (d.getElementById(id)) return;
-				  js = d.createElement(s); js.id = id;
-				  js.src = "//connect.facebook.net/';
-				  
-			if (isset($settings['facebook']['args']['language'])) {
-				$content .= $settings['facebook']['args']['language'];
-			}
-			
-			$content .= '/all.js#xfbml=1";
-				  fjs.parentNode.insertBefore(js, fjs);
-				}(document, "script", "facebook-jssdk"));</script></div>
-			';
-		}
-		
-		if (isset($settings['google']['active']) && $settings['google']['active']) {
-			
-			$content .= '<div class="wpsite_follow_us_div"><div class="g-follow" data-href="//plus.google.com/' . $settings['google']['user'] . '" data-rel="publisher"';
-			
-			if (isset($settings['google']['args']['annotation'])) {
-				$content .= ' data-annotation="' . $settings['google']['args']['annotation'] .'"';
-			}
-			
-			if (isset($settings['google']['args']['size'])) {
-				$content .= ' data-height="' . $settings['google']['args']['size'] .'"';
-			} 
-			
-			$content .= '></div><!-- Place this tag after the last widget tag. -->
-				<script type="text/javascript">';
-			
-			if (isset($settings['google']['args']['language'])) {
-				$content .= 'window.___gcfg = {lang: "' . $settings['google']['args']['language'] . '"};';
-			}
+		foreach ($settings['order'] as $order) {
+			if ($order == 'twitter') {
+				if (isset($settings['twitter']['active']) && $settings['twitter']['active']) {
+					$content .= '<div class="wpsite_follow_us_div"><a href="https://twitter.com/' . $settings['twitter']['user'] . '" class="twitter-follow-button"';
 					
-			$content .= '(function() {
-				    var po = document.createElement("script"); po.type = "text/javascript"; po.async = true;
-				    po.src = "https://apis.google.com/js/platform.js";
-				    var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(po, s);
-				  })();
-				</script></div>';
-			
-		}
-		
-		if (isset($settings['linkedin']['active']) && $settings['linkedin']['active']) {
-			$content .= '<div class="wpsite_follow_us_div"><script src="//platform.linkedin.com/in.js" type="text/javascript">';
-			
-			if (isset($settings['linkedin']['args']['language'])) {
-				$content .= 'lang: ' . $settings['linkedin']['args']['language'];
-			} 
+					if (isset($settings['twitter']['args']['followers_count_display']) && $settings['twitter']['args']['followers_count_display']) {
+						$content .=  ' data-show-count="true"';
+					} else {
+						$content .=  ' data-show-count="false"';
+					}
 					
-			$content .= '</script>
-					<script type="IN/FollowCompany" data-id="' . $settings['linkedin']['user'] . '"';
+					if (isset($settings['twitter']['args']['opt_out']) && $settings['twitter']['args']['opt_out']) {
+						$content .= ' data-dnt="true"';
+					} else {
+						$content .= ' data-dnt="false"';
+					}
 					
-			if (isset($settings['linkedin']['args']['count_mode'])) {
-				$content .= ' data-counter="' . $settings['linkedin']['args']['count_mode'] .'"';
-			} 
+					if (isset($settings['twitter']['args']['show_screen_name']) && $settings['twitter']['args']['show_screen_name']) {
+						$content .= ' data-show-screen-name="true"';
+					} else {
+						$content .= ' data-show-screen-name="false"';
+					}
+					
+					if (isset($settings['twitter']['args']['size'])) {
+						$content .= ' data-size="' . $settings['twitter']['args']['size'] .'"';
+					}
+					
+					if (isset($settings['twitter']['args']['language'])) {
+						$content .= ' data-lang="' . $settings['twitter']['args']['language'] .'"';
+					}
+					
+					if (isset($settings['twitter']['args']['alignment'])) {
+						$content .= ' data-align="' . $settings['twitter']['args']['alignment'] .'"';
+					}
+					
+					if (isset($settings['twitter']['args']['width']) && $settings['twitter']['args']['width'] != '') {
+						$content .= ' data-width="' . $settings['twitter']['args']['width'] .'"';
+					}
+					
+					$content .= '></a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+					';
+				}
+			} else if ($order == 'facebook') {
+				if (isset($settings['facebook']['active']) && $settings['facebook']['active']) {
+					$content .= '<div class="wpsite_follow_us_div"><div class="fb-like" data-href="https://facebook.com/' . $settings['facebook']['user'] . '"';
+					
+					if (isset($settings['facebook']['args']['include_share_button']) && $settings['facebook']['args']['include_share_button']) {
+						$content .= ' data-share="true"';
+					} else {
+						$content .= ' data-share="false"';
+					}
+					
+					if (isset($settings['facebook']['args']['show_friends_faces']) && $settings['facebook']['args']['show_friends_faces']) {
+						$content .= ' data-show-faces="true"';
+					} else {
+						$content .= ' data-show-faces="false"';
+					}
+					
+					if (isset($settings['facebook']['args']['layout'])) {
+						$content .= ' data-layout="' . $settings['facebook']['args']['layout'] .'"';
+					}
+					
+					if (isset($settings['facebook']['args']['action_type'])) {
+						$content .= ' data-action="' . $settings['facebook']['args']['action_type'] .'"';
+					}
+					
+					if (isset($settings['facebook']['args']['colorscheme'])) {
+						$content .= ' data-colorscheme="' . $settings['facebook']['args']['colorscheme'] .'"';
+					}
+					
+					if (isset($settings['facebook']['args']['width']) && $settings['facebook']['args']['width'] != '') {
+						$content .= ' data-width="' . $settings['facebook']['args']['width'] .'"';
+					}
+					 
+					$content .= '></div>
+						<div id="fb-root"></div>
+						<script>(function(d, s, id) {
+						  var js, fjs = d.getElementsByTagName(s)[0];
+						  if (d.getElementById(id)) return;
+						  js = d.createElement(s); js.id = id;
+						  js.src = "//connect.facebook.net/';
+						  
+					if (isset($settings['facebook']['args']['language'])) {
+						$content .= $settings['facebook']['args']['language'];
+					}
+					
+					$content .= '/all.js#xfbml=1";
+						  fjs.parentNode.insertBefore(js, fjs);
+						}(document, "script", "facebook-jssdk"));</script></div>
+					';
+				}
+			} else if ($order == 'google') {
+					if (isset($settings['google']['active']) && $settings['google']['active']) {
 			
-			$content .= '></script><div>';
+					$content .= '<div class="wpsite_follow_us_div"><div class="g-follow" data-href="//plus.google.com/' . $settings['google']['user'] . '" data-rel="publisher"';
+					
+					if (isset($settings['google']['args']['annotation'])) {
+						$content .= ' data-annotation="' . $settings['google']['args']['annotation'] .'"';
+					}
+					
+					if (isset($settings['google']['args']['size'])) {
+						$content .= ' data-height="' . $settings['google']['args']['size'] .'"';
+					} 
+					
+					$content .= '></div><!-- Place this tag after the last widget tag. -->
+						<script type="text/javascript">';
+					
+					if (isset($settings['google']['args']['language'])) {
+						$content .= 'window.___gcfg = {lang: "' . $settings['google']['args']['language'] . '"};';
+					}
+							
+					$content .= '(function() {
+						    var po = document.createElement("script"); po.type = "text/javascript"; po.async = true;
+						    po.src = "https://apis.google.com/js/platform.js";
+						    var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(po, s);
+						  })();
+						</script></div>';
+					
+				}
+			} else if ($order == 'linkedin') {
+				if (isset($settings['linkedin']['active']) && $settings['linkedin']['active']) {
+					$content .= '<div class="wpsite_follow_us_div"><script src="//platform.linkedin.com/in.js" type="text/javascript">';
+					
+					if (isset($settings['linkedin']['args']['language'])) {
+						$content .= 'lang: ' . $settings['linkedin']['args']['language'];
+					} 
+							
+					$content .= '</script>
+							<script type="IN/FollowCompany" data-id="' . $settings['linkedin']['user'] . '"';
+							
+					if (isset($settings['linkedin']['args']['count_mode'])) {
+						$content .= ' data-counter="' . $settings['linkedin']['args']['count_mode'] .'"';
+					} 
+					
+					$content .= '></script></div>';
+				}
+			}
 		}
 		
 		echo $content;
