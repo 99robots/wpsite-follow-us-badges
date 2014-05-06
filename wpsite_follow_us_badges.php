@@ -472,7 +472,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-ui-tabs');
 		wp_enqueue_script('jquery-ui-sortable');
-		wp_enqueue_style('wpsite-jquery-ui', self::$jquery_ui_css);
+		//wp_enqueue_style('wpsite-jquery-ui', self::$jquery_ui_css);
 		?>
 		
 		<script type="text/javascript">
@@ -507,11 +507,11 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 				
 					<div id="tabs">
 						<ul>
-							<li><a href="#wpsite_div_twitter"><?php _e('Twitter', self::$text_domain); ?></a></li>
-							<li><a href="#wpsite_div_facebook"><?php _e('Facebook',self::$text_domain); ?></a></li>
-							<li><a href="#wpsite_div_google"><?php _e('Google+',self::$text_domain); ?></a></li>
-							<li><a href="#wpsite_div_linkedin"><?php _e('LinkedIn',self::$text_domain); ?></a></li>
-							<li><a href="#wpsite_div_order"><?php _e('Order',self::$text_domain); ?></a></li>
+							<li><a href="#wpsite_div_twitter"><span class="wpsite_admin_panel_content_tabs"><?php _e('Twitter', self::$text_domain); ?></span></a></li>
+							<li><a href="#wpsite_div_facebook"><span class="wpsite_admin_panel_content_tabs"><?php _e('Facebook',self::$text_domain); ?></span></a></li>
+							<li><a href="#wpsite_div_google"><span class="wpsite_admin_panel_content_tabs"><?php _e('Google+',self::$text_domain); ?></span></a></li>
+							<li><a href="#wpsite_div_linkedin"><span class="wpsite_admin_panel_content_tabs"><?php _e('LinkedIn',self::$text_domain); ?></span></a></li>
+							<li><a href="#wpsite_div_order"><span class="wpsite_admin_panel_content_tabs"><?php _e('Order',self::$text_domain); ?></span></a></li>
 						</ul>
 						
 						<div id="wpsite_div_twitter">
@@ -1044,7 +1044,9 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 			</div>
 			
 			<div id="wpsite_admin_panel_sidebar" class="wpsite_admin_panel_content">
-				<img src="http://www.wpsite.net/wp-content/uploads/2011/10/logo-only-100h.png">
+				<div class="wpsite_admin_panel_sidebar_img">
+					<img src="http://www.wpsite.net/wp-content/uploads/2011/10/logo-only-100h.png">
+				</div>
 			</div>
 		</div>
 		<?php
