@@ -503,6 +503,8 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 			
 			<div id="wpsite_admin_panel_settings" class="wpsite_admin_panel_content">
 			
+				<span><?php _e('These are the settings for the ', self::$text_domain); ?><a href="widgets.php"><?php _e('widget', self::$text_domain); ?></a><?php _e('.', self::$text_domain); ?></span>
+			
 				<form method="post">
 				
 					<div id="tabs">
