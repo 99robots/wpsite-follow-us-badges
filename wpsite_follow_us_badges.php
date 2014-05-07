@@ -1024,7 +1024,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 										}
 										
 										foreach ($settings['order'] as $order) { ?>
-											<li id="<?php echo $order; ?>" name="<?php echo $order; ?>" class="ui-state-default"><?php _e($order, self::$text_domain); ?></li>
+											<li id="<?php echo $order; ?>" name="<?php echo $order; ?>" class="wpsite_follow_us_sort_item"><?php _e($order, self::$text_domain); ?></li>
 										<?php } ?>
 										
 									</ul>

@@ -63,12 +63,19 @@
 	font-size: medium;
 }
 
-/* Draggables */
+/* Sortables */
 
 .wpsite_follow_us_badges_order_draggables {
 	padding: 10px 5px 10px 5px;
 	margin: 0px 10px 0px 10px;
 	border: 1px solid black;
+}
+
+.wpsite_follow_us_sort_item {
+	padding: 5px;
+	border: 1px solid #ccc;
+	background-color: #e4e4e4;
+	width: intrinsic;
 }
 
 /* Tabs */
