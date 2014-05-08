@@ -349,7 +349,7 @@ class WPsiteFollowUs extends WP_Widget {
 		/* Cast the first sub menu to the top menu */
 	    
 	    $settings_page_load = add_submenu_page(
-	    	'tools.php', 										// parent slug
+	    	'options-general.php', 										// parent slug
 	    	__('WPsite Follow Us', self::$text_domain), 				// Page title
 	    	__('WPsite Follow Us', self::$text_domain), 				// Menu name
 	    	'manage_options', 											// Capabilities
