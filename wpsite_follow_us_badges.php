@@ -78,7 +78,7 @@ class WPsiteFollowUs extends WP_Widget {
 	private static $jquery_ui_css = '//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css';
 	
 	private static $default = array(
-		'order'		=> array('twitter', 'facebook', 'google', 'linkedin'),
+		'order'		=> array('twitter', 'facebook', 'google', 'linkedin', 'pinterest'),
 		'twitter'	=> array(
 			'active'	=> false,
 			'user'		=> 'WPsite',
@@ -88,8 +88,8 @@ class WPsiteFollowUs extends WP_Widget {
 				'width'						=> '100%',
 				'alignment'					=> 'left',
 				'show_screen_name'			=> false,
-				'size'						=> 'medium',
-				'opt_out'					=> false
+				'size'						=> 'medium'
+				//'opt_out'					=> false
 			)
 		),
 		'facebook'	=> array(
@@ -122,6 +122,13 @@ class WPsiteFollowUs extends WP_Widget {
 			'args'		=> array(
 				'count_mode'	=> 'right',
 				'language'		=> 'en_US'
+			)
+		),
+		'pinterest'	=> array(
+			'active'	=> false,
+			'user'		=> 'http://www.pinterest.com/pinterest/',
+			'args'		=> array(
+				'name'	=> 'Pinterest'
 			)
 		)
 	);
@@ -428,8 +435,8 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 						'width'						=> isset($_POST['wpsite_follow_us_settings_twitter_args_width']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_twitter_args_width'])) : '',
 						'alignment'					=> $_POST['wpsite_follow_us_settings_twitter_args_alignment'],
 						'show_screen_name'			=> isset($_POST['wpsite_follow_us_settings_twitter_args_show_screen_name']) && $_POST['wpsite_follow_us_settings_twitter_args_show_screen_name'] ? true : false,
-						'size'						=> $_POST['wpsite_follow_us_settings_twitter_args_size'],
-						'opt_out'					=> isset($_POST['wpsite_follow_us_settings_twitter_args_opt_out']) && $_POST['wpsite_follow_us_settings_twitter_args_opt_out'] ? true : false
+						'size'						=> $_POST['wpsite_follow_us_settings_twitter_args_size']
+						//'opt_out'					=> isset($_POST['wpsite_follow_us_settings_twitter_args_opt_out']) && $_POST['wpsite_follow_us_settings_twitter_args_opt_out'] ? true : false
 					)
 				),
 				'facebook'	=> array(
@@ -463,6 +470,13 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 						'count_mode'	=> $_POST['wpsite_follow_us_settings_linkedin_args_count_mode'],
 						'language'		=> $_POST['wpsite_follow_us_settings_linkedin_args_language'],
 					)
+				),
+				'pinterest'	=> array(
+					'active'	=> isset($_POST['wpsite_follow_us_settings_pinterest_active']) && $_POST['wpsite_follow_us_settings_pinterest_active'] ? true : false,
+					'user'		=> isset($_POST['wpsite_follow_us_settings_pinterest_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_pinterest_user'])) : '',
+					'args'		=> array(
+						'name'	=> isset($_POST['wpsite_follow_us_settings_pinterest_args_name']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_pinterest_args_name'])) : '',
+					)
 				)
 			);
 			
@@ -472,7 +486,6 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-ui-tabs');
 		wp_enqueue_script('jquery-ui-sortable');
-		//wp_enqueue_style('wpsite-jquery-ui', self::$jquery_ui_css);
 		?>
 		
 		<script type="text/javascript">
@@ -513,6 +526,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 							<li><a href="#wpsite_div_facebook"><span class="wpsite_admin_panel_content_tabs"><?php _e('Facebook',self::$text_domain); ?></span></a></li>
 							<li><a href="#wpsite_div_google"><span class="wpsite_admin_panel_content_tabs"><?php _e('Google+',self::$text_domain); ?></span></a></li>
 							<li><a href="#wpsite_div_linkedin"><span class="wpsite_admin_panel_content_tabs"><?php _e('LinkedIn',self::$text_domain); ?></span></a></li>
+							<li><a href="#wpsite_div_pinterest"><span class="wpsite_admin_panel_content_tabs"><?php _e('Pinterest',self::$text_domain); ?></span></a></li>
 							<li><a href="#wpsite_div_order"><span class="wpsite_admin_panel_content_tabs"><?php _e('Order',self::$text_domain); ?></span></a></li>
 						</ul>
 						
@@ -641,7 +655,8 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 									
 									<!-- Opt Out -->
 								
-									<tr>
+									<!--
+<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Opt Out', self::$text_domain); ?></label>
 											<td class="wpsite_follow_us_admin_table_td">
@@ -649,6 +664,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 											</td>
 										</th>
 									</tr>
+-->
 								
 								</tbody>
 							</table>
@@ -827,7 +843,8 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 											<label><?php _e('User ID', self::$text_domain); ?></label>
 											<td class="wpsite_follow_us_admin_table_td">
 												<input size="30" id="wpsite_follow_us_settings_google_user" name="wpsite_follow_us_settings_google_user" type="text" value="<?php echo esc_attr($settings['google']['user']); ?>"><br/>
-												<em><label><?php _e('https://plus.google.com/u/0/', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong><label><?php _e('/posts', self::$text_domain); ?></label></em>
+												<em><label><?php _e('https://plus.google.com/u/0/', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong><label><?php _e('/posts', self::$text_domain); ?></label></em><br/>
+												<em><label><?php _e('https://plus.google.com/', self::$text_domain); ?></label><strong><label><?php _e('"+112233"', self::$text_domain); ?></label></strong></em>
 											</td>
 										</th>
 									</tr>
@@ -950,7 +967,8 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 									
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('User ID', self::$text_domain); ?></label>
+											<label><?php _e('User ID', self::$text_domain); ?></label><br/>
+											<a href="https://developer.linkedin.com/plugins/follow-company" target="_blank"><label><?php _e('Get your ID', self::$text_domain); ?></label></a>
 											<td class="wpsite_follow_us_admin_table_td">
 												<input size="30" id="wpsite_follow_us_settings_linkedin_user" name="wpsite_follow_us_settings_linkedin_user" type="text" value="<?php echo esc_attr($settings['linkedin']['user']); ?>"><br/>
 												<em><label><?php _e('http://www.linkedin.com/profile/view?id=', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em><br/>
@@ -1008,7 +1026,53 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 								</tbody>
 							</table>
 							
-							<a href="https://developer.linkedin.com/plugins/follow-company" target="_blank"><label><?php _e('LinkedIn', self::$text_domain); ?></label></a>
+							<a href="https://developer.linkedin.com/plugins/follow-company" target="_blank"><label><?php _e('LinkedIn Button Details', self::$text_domain); ?></label></a>
+						</div>
+						
+						<div id="wpsite_div_pinterest">
+						
+							<h3><?php _e('General', self::$text_domain); ?></h3>
+							
+							<table>
+								<tbody>
+								
+									<!-- Active -->	
+									
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<label><?php _e('Active', self::$text_domain); ?></label>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input id="wpsite_follow_us_settings_pinterest_active" name="wpsite_follow_us_settings_pinterest_active" type="checkbox" <?php echo isset($settings['pinterest']['active']) && $settings['pinterest']['active'] ? 'checked="checked"' : ''; ?> placeholder="Your ID">
+											</td>
+										</th>
+									</tr>
+									
+									<!-- User URL -->
+									
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<label><?php _e('User URL', self::$text_domain); ?></label><br/>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input size="30" id="wpsite_follow_us_settings_pinterest_user" name="wpsite_follow_us_settings_pinterest_user" type="url" value="<?php echo esc_url($settings['pinterest']['user']); ?>">
+											</td>
+										</th>
+									</tr>
+									
+									<!-- Name -->
+									
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<label><?php _e('Name', self::$text_domain); ?></label><br/>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input size="30" id="wpsite_follow_us_settings_pinterest_args_name" name="wpsite_follow_us_settings_pinterest_args_name" type="text" value="<?php echo esc_attr($settings['pinterest']['args']['name']); ?>">
+											</td>
+										</th>
+									</tr>
+									
+								</tbody>
+							</table>
+							
+							<a href="http://business.pinterest.com/en/widget-builder#do_follow_me_button" target="_blank"><label><?php _e('Pinterest Button Details', self::$text_domain); ?></label></a>
 						</div>
 						
 						<div id="wpsite_div_order">
@@ -1024,6 +1088,8 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 										if (!isset($settings['order'])) {
 											$settings['order'] = self::$default['order'];
 										}
+										
+										//$settings['order'][] = 'pinterest';
 										
 										foreach ($settings['order'] as $order) { ?>
 											<li id="<?php echo $order; ?>" name="<?php echo $order; ?>" class="wpsite_follow_us_sort_item"><?php _e($order, self::$text_domain); ?></li>
@@ -1127,6 +1193,9 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 		$content = '';
 		
 		foreach ($settings['order'] as $order) {
+			
+			// Twitter
+			
 			if ($order == 'twitter') {
 				if (isset($settings['twitter']['active']) && $settings['twitter']['active']) {
 					$content .= '<div class="wpsite_follow_us_div"><a href="https://twitter.com/' . $settings['twitter']['user'] . '" class="twitter-follow-button"';
@@ -1169,7 +1238,11 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
 					';
 				}
-			} else if ($order == 'facebook') {
+			} 
+			
+			// Facebook
+			
+			else if ($order == 'facebook') {
 				if (isset($settings['facebook']['active']) && $settings['facebook']['active']) {
 					$content .= '<div class="wpsite_follow_us_div"><div class="fb-like" data-href="https://facebook.com/' . $settings['facebook']['user'] . '"';
 					
@@ -1218,7 +1291,11 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 						}(document, "script", "facebook-jssdk"));</script></div>
 					';
 				}
-			} else if ($order == 'google') {
+			} 
+			
+			// Google+
+			
+			else if ($order == 'google') {
 					if (isset($settings['google']['active']) && $settings['google']['active']) {
 			
 					$content .= '<div class="wpsite_follow_us_div"><div class="g-follow" data-href="//plus.google.com/' . $settings['google']['user'] . '" data-rel="publisher"';
@@ -1246,7 +1323,11 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 						</script></div>';
 					
 				}
-			} else if ($order == 'linkedin') {
+			} 
+			
+			// LinkedIn
+			
+			else if ($order == 'linkedin') {
 				if (isset($settings['linkedin']['active']) && $settings['linkedin']['active']) {
 					$content .= '<div class="wpsite_follow_us_div"><script src="//platform.linkedin.com/in.js" type="text/javascript">';
 					
@@ -1262,6 +1343,20 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 					} 
 					
 					$content .= '></script></div>';
+				}
+			} 
+			
+			// Pinterest
+			
+			else if ($order == 'pinterest') {
+				if (isset($settings['pinterest']['active']) && $settings['pinterest']['active']) {
+					$content .= '<div class="wpsite_follow_us_div"><a data-pin-do="buttonFollow" href="' . $settings['pinterest']['user'] . '" >';
+					
+					if (isset($settings['pinterest']['args']['name'])) {
+						$content .= $settings['pinterest']['args']['name'];
+					} 
+					
+					$content .= '</a><!-- Please call pinit.js only once per page --><script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script></div>';
 				}
 			}
 		}
