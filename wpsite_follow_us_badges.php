@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: WPsite Follow Us Badges
-plugin URI: wpsite-follow-us-badges
-Description:
-version: 0.9
-Author: Kyle Benk
-Author URI: http://kylebenkapps.com
+plugin URI:	http://www.wpsite.net/plugin/follow-us-badges
+Description: The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn, & Pinterest badges for instant likes, follows, and sharing of your website.
+version: 1.0
+Author: WPSITE.net
+Author URI: http://wpsite.net
 License: GPL2
 */
 
@@ -31,7 +31,7 @@ if (!defined('WPSITE_FOLLOW_US_PLUGIN_URL'))
 /* Plugin verison */
 
 if (!defined('WPSITE_FOLLOW_US_VERSION_NUM'))
-    define('WPSITE_FOLLOW_US_VERSION_NUM', '0.9.0');
+    define('WPSITE_FOLLOW_US_VERSION_NUM', '1.0.0');
  
  
 /** 
@@ -372,7 +372,7 @@ class WPsiteFollowUs extends WP_Widget {
 	 * @since 1.0.0
 	 */
 	static function wpsite_follow_us_badges_settings_link($links) { 
-		$settings_link = '<a href="tools.php?page=' . self::$settings_page . '">Settings</a>'; 
+		$settings_link = '<a href="options-general.php?page=' . self::$settings_page . '">Settings</a>'; 
 		array_unshift($links, $settings_link); 
 		return $links; 
 	}
@@ -386,7 +386,7 @@ class WPsiteFollowUs extends WP_Widget {
 		
 		/* CSS */
 		
-		wp_register_style('wpsite_follow_us_admin_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/include/css/wpsite_follow_us_admin.css');
+		wp_register_style('wpsite_follow_us_admin_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/css/wpsite_follow_us_admin.css');
 		wp_enqueue_style('wpsite_follow_us_admin_css');
 	
 		/* Javascript */
@@ -508,616 +508,13 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 			});
 		});
 		</script>
-		
-		<div class="wrap wpsite_admin_panel">
-			<div class="wpsite_admin_panel_banner">
-				<h1><?php _e('WPsite Follow Us Badges Settings Page', self::$text_domain); ?></h1>
-			</div>
-			
-			<div id="wpsite_admin_panel_settings" class="wpsite_admin_panel_content">
-			
-				<span><?php _e('These are the settings for the ', self::$text_domain); ?><a href="widgets.php"><?php _e('widget', self::$text_domain); ?></a><?php _e('.', self::$text_domain); ?></span>
-			
-				<form method="post">
-				
-					<div id="tabs">
-						<ul>
-							<li><a href="#wpsite_div_twitter"><span class="wpsite_admin_panel_content_tabs"><?php _e('Twitter', self::$text_domain); ?></span></a></li>
-							<li><a href="#wpsite_div_facebook"><span class="wpsite_admin_panel_content_tabs"><?php _e('Facebook',self::$text_domain); ?></span></a></li>
-							<li><a href="#wpsite_div_google"><span class="wpsite_admin_panel_content_tabs"><?php _e('Google+',self::$text_domain); ?></span></a></li>
-							<li><a href="#wpsite_div_linkedin"><span class="wpsite_admin_panel_content_tabs"><?php _e('LinkedIn',self::$text_domain); ?></span></a></li>
-							<li><a href="#wpsite_div_pinterest"><span class="wpsite_admin_panel_content_tabs"><?php _e('Pinterest',self::$text_domain); ?></span></a></li>
-							<li><a href="#wpsite_div_order"><span class="wpsite_admin_panel_content_tabs"><?php _e('Order',self::$text_domain); ?></span></a></li>
-						</ul>
-						
-						<div id="wpsite_div_twitter">
-						
-							<h3><?php _e('General', self::$text_domain); ?></h3>
-							
-							<table>
-								<tbody>
-								
-									<!-- Active -->
-								
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Active', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input id="wpsite_follow_us_settings_twitter_active" name="wpsite_follow_us_settings_twitter_active" type="checkbox" <?php echo isset($settings['twitter']['active']) && $settings['twitter']['active'] ? 'checked="checked"' : ''; ?> placeholder="your_username">
-											</td>
-										</th>
-									</tr>
-									
-									<!-- User -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Username', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input size="30" id="wpsite_follow_us_settings_twitter_user" name="wpsite_follow_us_settings_twitter_user" type="text" value="<?php echo esc_attr($settings['twitter']['user']); ?>"><br/>
-												<em><label><?php _e('https://twitter.com/', self::$text_domain); ?></label><strong><label><?php _e('"example"', self::$text_domain); ?></label></strong></em>
-											</td>
-										</th>
-									</tr>
-									
-								</tbody>
-							</table>
-							
-							<h3><?php _e('Display', self::$text_domain); ?></h3>
-							
-							<table>
-								<tbody>
-								
-									<!-- Followers Count Display -->
-								
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Followers Count Display', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input id="wpsite_follow_us_settings_twitter_args_followers_count_display" name="wpsite_follow_us_settings_twitter_args_followers_count_display" type="checkbox" <?php echo isset($settings['twitter']['args']['followers_count_display']) && $settings['twitter']['args']['followers_count_display'] ? 'checked="checked"' : ''; ?>>
-											</td>
-										</th>
-									</tr>
-								
-									<!-- Show Screen Name -->
-								
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Show Screen Name', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input id="wpsite_follow_us_settings_twitter_args_show_screen_name" name="wpsite_follow_us_settings_twitter_args_show_screen_name" type="checkbox" <?php echo isset($settings['twitter']['args']['show_screen_name']) && $settings['twitter']['args']['show_screen_name'] ? 'checked="checked"' : ''; ?>>
-											</td>
-										</th>
-									</tr>
-								
-									<!-- Alignment -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Alignment', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<select id="wpsite_follow_us_settings_twitter_args_alignment" name="wpsite_follow_us_settings_twitter_args_alignment">
-													<option value="left" <?php echo isset($settings['twitter']['args']['alignment']) && $settings['twitter']['args']['alignment'] == 'left' ? 'selected' : '' ;?>><?php _e('left', self::$text_domain); ?></option>
-													<option value="right" <?php echo isset($settings['twitter']['args']['alignment']) && $settings['twitter']['args']['alignment'] == 'right' ? 'selected' : '' ;?>><?php _e('right', self::$text_domain); ?></option>
-												</select>
-											</td>
-										</th>
-									</tr>
-								
-									<!-- Width -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Width', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input size="30" id="wpsite_follow_us_settings_twitter_args_width" name="wpsite_follow_us_settings_twitter_args_width" type="text" value="<?php echo esc_attr($settings['twitter']['args']['width']); ?>"><br/>
-												<em><label><?php _e('Accepts px and % (e.g 100px or 100%)', self::$text_domain); ?></label></em>
-											</td>
-										</th>
-									</tr>
-									
-									<!-- Size -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Size', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<select id="wpsite_follow_us_settings_twitter_args_size" name="wpsite_follow_us_settings_twitter_args_size">
-													<option value="medium" <?php echo isset($settings['twitter']['args']['size']) && $settings['twitter']['args']['size'] == 'medium' ? 'selected' : '' ;?>><?php _e('medium', self::$text_domain); ?></option>
-													<option value="large" <?php echo isset($settings['twitter']['args']['size']) && $settings['twitter']['args']['size'] == 'large' ? 'selected' : '' ;?>><?php _e('large', self::$text_domain); ?></option>
-												</select>
-											</td>
-										</th>
-									</tr>
-								
-								</tbody>
-							</table>
-							
-							<h3><?php _e('Advanced', self::$text_domain); ?></h3>
-							
-							<table>
-								<tbody>
-								
-									<!-- Language -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Language', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<select id="wpsite_follow_us_settings_twitter_args_language" name="wpsite_follow_us_settings_twitter_args_language">
-													<?php foreach (self::$twitter_supported_languages as $lang) { ?>
-													<option value="<?php echo $lang; ?>" <?php echo isset($settings['twitter']['args']['language']) && $settings['twitter']['args']['language'] == $lang ? 'selected' : '' ;?>><?php _e($lang, self::$text_domain); ?></option>
-													<?php } ?>
-												</select>
-											</td>
-										</th>
-									</tr>
-									
-									<!-- Opt Out -->
-								
-									<!--
-<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Opt Out', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input id="wpsite_follow_us_settings_twitter_args_opt_out" name="wpsite_follow_us_settings_twitter_args_opt_out" type="checkbox" <?php echo isset($settings['twitter']['args']['opt_out']) && $settings['twitter']['args']['opt_out'] ? 'checked="checked"' : ''; ?>>
-											</td>
-										</th>
-									</tr>
--->
-								
-								</tbody>
-							</table>
-							
-							<a href="https://dev.twitter.com/docs/follow-button" target="_blank"><label><?php _e('Twitter Follow Button Details', self::$text_domain); ?></label></a>
-						</div>
-						
-						<div id="wpsite_div_facebook">
-						
-							<h3><?php _e('General', self::$text_domain); ?></h3>
-							
-							<table>
-								<tbody>
-								
-									<!-- Active -->	
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Active', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input id="wpsite_follow_us_settings_facebook_active" name="wpsite_follow_us_settings_facebook_active" type="checkbox" <?php echo isset($settings['facebook']['active']) && $settings['facebook']['active'] ? 'checked="checked"' : ''; ?>>
-											</td>
-										</th>
-									</tr>
-									
-									<!-- User -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<?php _e('User ID', self::$text_domain); ?>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input size="30" id="wpsite_follow_us_settings_facebook_user" name="wpsite_follow_us_settings_facebook_user" type="text" value="<?php echo esc_attr($settings['facebook']['user']); ?>" ><br/>
-												<em><label><?php _e('https://www.facebook.com/', self::$text_domain); ?></label><strong><label><?php _e('"example"', self::$text_domain); ?></label></strong></em><br/>
-												<em><label><?php _e('https://www.facebook.com/', self::$text_domain); ?></label><strong><label><?php _e('"pages/example/112233"', self::$text_domain); ?></label></strong></em>
-											</td>
-										</th>
-									</tr>
-									
-								</tbody>
-							</table>
-							
-							<h3><?php _e('Display', self::$text_domain); ?></h3>
-							
-							<table>
-								<tbody>
-									
-									<!-- Layout -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Layout', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<select id="wpsite_follow_us_settings_facebook_args_layout" name="wpsite_follow_us_settings_facebook_args_layout">
-													<option value="standard" <?php echo isset($settings['facebook']['args']['layout']) && $settings['facebook']['args']['layout'] == 'standard' ? 'selected' : '' ;?>><?php _e('standard', self::$text_domain); ?></option>
-													<option value="box_count" <?php echo isset($settings['facebook']['args']['layout']) && $settings['facebook']['args']['layout'] == 'box_count' ? 'selected' : '' ;?>><?php _e('box_count', self::$text_domain); ?></option>
-													<option value="button_count" <?php echo isset($settings['facebook']['args']['layout']) && $settings['facebook']['args']['layout'] == 'button_count' ? 'selected' : '' ;?>><?php _e('button_count', self::$text_domain); ?></option>
-													<option value="button" <?php echo isset($settings['facebook']['args']['layout']) && $settings['facebook']['args']['layout'] == 'button' ? 'selected' : '' ;?>><?php _e('button', self::$text_domain); ?></option>
-												</select>
-											</td>
-										</th>
-									</tr>
-									
-									<!-- Action Type -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Action Type', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<select id="wpsite_follow_us_settings_facebook_args_action_type" name="wpsite_follow_us_settings_facebook_args_action_type">
-													<option value="like" <?php echo isset($settings['facebook']['args']['action_type']) && $settings['facebook']['args']['action_type'] == 'like' ? 'selected' : '' ;?>><?php _e('like', self::$text_domain); ?></option>
-													<option value="recommend" <?php echo isset($settings['facebook']['args']['action_type']) && $settings['facebook']['args']['action_type'] == 'recommend' ? 'selected' : '' ;?>><?php _e('recommend', self::$text_domain); ?></option>
-												</select>
-											</td>
-										</th>
-									</tr>
-									
-									<!-- Color Scheme -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Color Scheme', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<select id="wpsite_follow_us_settings_facebook_args_colorscheme" name="wpsite_follow_us_settings_facebook_args_colorscheme">
-													<option value="light" <?php echo isset($settings['facebook']['args']['colorscheme']) && $settings['facebook']['args']['colorscheme'] == 'light' ? 'selected' : '' ;?>><?php _e('light', self::$text_domain); ?></option>
-													<option value="dark" <?php echo isset($settings['facebook']['args']['colorscheme']) && $settings['facebook']['args']['colorscheme'] == 'dark' ? 'selected' : '' ;?>><?php _e('dark', self::$text_domain); ?></option>
-												</select>
-											</td>
-										</th>
-									</tr>
-									
-									<!-- Show Friends Faces -->	
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Show Friends Faces', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input id="wpsite_follow_us_settings_facebook_args_show_friends_faces" name="wpsite_follow_us_settings_facebook_args_show_friends_faces" type="checkbox" <?php echo isset($settings['facebook']['args']['show_friends_faces']) && $settings['facebook']['args']['show_friends_faces'] ? 'checked="checked"' : ''; ?>>
-											</td>
-										</th>
-									</tr>
-									
-									<!-- Include Share Button -->	
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Include Share Button', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input id="wpsite_follow_us_settings_facebook_args_include_share_button" name="wpsite_follow_us_settings_facebook_args_include_share_button" type="checkbox" <?php echo isset($settings['facebook']['args']['include_share_button']) && $settings['facebook']['args']['include_share_button'] ? 'checked="checked"' : ''; ?>>
-											</td>
-										</th>
-									</tr>
-									
-									<!-- Width -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Width', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input size="30" id="wpsite_follow_us_settings_facebook_args_width" name="wpsite_follow_us_settings_facebook_args_width" type="text" value="<?php echo esc_attr($settings['facebook']['args']['width']); ?>"><br/>
-												<em><label><?php _e('Accepts px only', self::$text_domain); ?></label></em>
-											</td>
-										</th>
-									</tr>
-								
-								</tbody>
-							</table>
-							
-							<h3><?php _e('Advanced', self::$text_domain); ?></h3>
-							
-							<table>
-								<tbody>	
-									
-									<!-- Language -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Language', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<select id="wpsite_follow_us_settings_facebook_args_language" name="wpsite_follow_us_settings_facebook_args_language">
-													<?php foreach (self::$facebook_supported_languages as $lang) { ?>
-													<option value="<?php echo $lang; ?>" <?php echo isset($settings['facebook']['args']['language']) && $settings['facebook']['args']['language'] == $lang ? 'selected' : '' ;?>><?php _e($lang, self::$text_domain); ?></option>
-													<?php } ?>
-												</select>
-											</td>
-										</th>
-									</tr>
-									
-								</tbody>
-							</table>
-							
-							<a href="https://developers.facebook.com/docs/plugins/like-button/" target="_blank"><label><?php _e('Facebook Like Button Details', self::$text_domain); ?></label></a>
-						</div>
-						
-						<div id="wpsite_div_google">
-						
-							<h3><?php _e('General', self::$text_domain); ?></h3>
-							
-							<table>
-								<tbody>
-								
-									<!-- Active -->	
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Active', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input id="wpsite_follow_us_settings_google_active" name="wpsite_follow_us_settings_google_active" type="checkbox" <?php echo isset($settings['google']['active']) && $settings['google']['active'] ? 'checked="checked"' : ''; ?>>
-											</td>
-										</th>
-									</tr>
-									
-									<!-- User -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('User ID', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input size="30" id="wpsite_follow_us_settings_google_user" name="wpsite_follow_us_settings_google_user" type="text" value="<?php echo esc_attr($settings['google']['user']); ?>"><br/>
-												<em><label><?php _e('https://plus.google.com/u/0/', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong><label><?php _e('/posts', self::$text_domain); ?></label></em><br/>
-												<em><label><?php _e('https://plus.google.com/', self::$text_domain); ?></label><strong><label><?php _e('"+112233"', self::$text_domain); ?></label></strong></em>
-											</td>
-										</th>
-									</tr>
-									
-								</tbody>
-							</table>
-							
-							<h3><?php _e('Display', self::$text_domain); ?></h3>
-							
-							<table>
-								<tbody>
-									
-									<!-- Size -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Size', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<select id="wpsite_follow_us_settings_google_args_size" name="wpsite_follow_us_settings_google_args_size">
-													<option value="15" <?php echo isset($settings['google']['args']['size']) && $settings['google']['args']['size'] == '15' ? 'selected' : '' ;?>><?php _e('small', self::$text_domain); ?></option>
-													<option value="20" <?php echo isset($settings['google']['args']['size']) && $settings['google']['args']['size'] == '20' ? 'selected' : '' ;?>><?php _e('medium', self::$text_domain); ?></option>
-													<option value="24" <?php echo isset($settings['google']['args']['size']) && $settings['google']['args']['size'] == '24' ? 'selected' : '' ;?>><?php _e('large', self::$text_domain); ?></option>
-												</select>
-											</td>
-										</th>
-									</tr>
-									
-									<!-- Annotation -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Annotation', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<select id="wpsite_follow_us_settings_google_args_annotation" name="wpsite_follow_us_settings_google_args_annotation">
-													<option value="bubble" <?php echo isset($settings['google']['args']['annotation']) && $settings['google']['args']['annotation'] == 'bubble' ? 'selected' : '' ;?>><?php _e('Bubble Horizontal', self::$text_domain); ?></option>
-													<option value="vertical-bubble" <?php echo isset($settings['google']['args']['annotation']) && $settings['google']['args']['annotation'] == 'vertical-bubble' ? 'selected' : '' ;?>><?php _e('Bubble Vertical', self::$text_domain); ?></option>
-													<option value="none" <?php echo isset($settings['google']['args']['annotation']) && $settings['google']['args']['annotation'] == 'none' ? 'selected' : '' ;?>><?php _e('none', self::$text_domain); ?></option>
-												</select>
-											</td>
-										</th>
-									</tr>
-									
-								</tbody>
-							</table>
-							
-							<h3><?php _e('Advanced', self::$text_domain); ?></h3>
-							
-							<table>
-								<tbody>
-									
-									<!-- Language -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Language', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<select id="wpsite_follow_us_settings_google_args_language" name="wpsite_follow_us_settings_google_args_language">
-													<?php foreach (self::$google_supported_languages as $lang) { ?>
-													<option value="<?php echo $lang; ?>" <?php echo isset($settings['google']['args']['language']) && $settings['google']['args']['language'] == $lang ? 'selected' : '' ;?>><?php _e($lang, self::$text_domain); ?></option>
-													<?php } ?>
-												</select><br/>
-												<a href="https://developers.google.com/+/web/api/supported-languages" target="_blank"><label><?php _e('Supported Languages', self::$text_domain); ?></label></a>
-											</td>
-										</th>
-									</tr>
-									
-									<!-- Asynchronous -->	
-									
-									<!--
-<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Asynchronous', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input id="wpsite_follow_us_settings_google_asynchronous" name="wpsite_follow_us_settings_google_asynchronous" type="checkbox" <?php echo isset($settings['google']['args']['asynchronous']) && $settings['google']['args']['asynchronous'] ? 'checked="checked"' : ''; ?>>
-											</td>
-										</th>
-									</tr>
--->
-									
-									<!-- Paresd Tags -->
-									
-									<!--
-<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Paresd Tags', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<select id="wpsite_follow_us_settings_google_args_parse_tags" name="wpsite_follow_us_settings_google_args_parse_tags">
-													<option value="default" <?php echo isset($settings['google']['args']['parse_tags']) && $settings['google']['args']['parse_tags'] == 'default' ? 'selected' : '' ;?>><?php _e('Default (on load)', self::$text_domain); ?></option>
-													<option value="explicit" <?php echo isset($settings['google']['args']['parse_tags']) && $settings['google']['args']['parse_tags'] == 'explicit' ? 'selected' : '' ;?>><?php _e('Explicit', self::$text_domain); ?></option>
-												</select>
-											</td>
-										</th>
-									</tr>
--->
-								</tbody>
-							</table>
-							
-							<a href="https://developers.google.com/+/web/follow/" target="_blank"><label><?php _e('Google+ Button Details', self::$text_domain); ?></label></a>
-						</div>
-						
-						<div id="wpsite_div_linkedin">
-						
-							<h3><?php _e('General', self::$text_domain); ?></h3>
-							
-							<table>
-								<tbody>
-								
-									<!-- Active -->	
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Active', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input id="wpsite_follow_us_settings_linkedin_active" name="wpsite_follow_us_settings_linkedin_active" type="checkbox" <?php echo isset($settings['linkedin']['active']) && $settings['linkedin']['active'] ? 'checked="checked"' : ''; ?> placeholder="Your ID">
-											</td>
-										</th>
-									</tr>
-									
-									<!-- User -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('User ID', self::$text_domain); ?></label><br/>
-											<a href="https://developer.linkedin.com/plugins/follow-company" target="_blank"><label><?php _e('Get your ID', self::$text_domain); ?></label></a>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input size="30" id="wpsite_follow_us_settings_linkedin_user" name="wpsite_follow_us_settings_linkedin_user" type="text" value="<?php echo esc_attr($settings['linkedin']['user']); ?>"><br/>
-												<em><label><?php _e('http://www.linkedin.com/profile/view?id=', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em><br/>
-												<em><label><?php _e('http://www.linkedin.com/company/', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em>
-											</td>
-										</th>
-									</tr>
-									
-								</tbody>
-							</table>
-							
-							<h3><?php _e('Display', self::$text_domain); ?></h3>
-							
-							<table>
-								<tbody>
-									
-									<!-- Count Mode -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Count Mode', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<select id="wpsite_follow_us_settings_linkedin_args_count_mode" name="wpsite_follow_us_settings_linkedin_args_count_mode">
-													<option value="right" <?php echo isset($settings['linkedin']['args']['count_mode']) && $settings['linkedin']['args']['count_mode'] == 'right' ? 'selected' : '' ;?>><?php _e('right', self::$text_domain); ?></option>
-													<option value="top" <?php echo isset($settings['linkedin']['args']['count_mode']) && $settings['linkedin']['args']['count_mode'] == 'top' ? 'selected' : '' ;?>><?php _e('top', self::$text_domain); ?></option>
-													<option value="none" <?php echo isset($settings['linkedin']['args']['count_mode']) && $settings['linkedin']['args']['count_mode'] == 'none' ? 'selected' : '' ;?>><?php _e('none', self::$text_domain); ?></option>
-												</select>
-											</td>
-										</th>
-									</tr>
-									
-								</tbody>
-							</table>
-							
-							<h3><?php _e('Advanced', self::$text_domain); ?></h3>
-							
-							<table>
-								<tbody>
-									
-									<!-- Language -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Language', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<select id="wpsite_follow_us_settings_linkedin_args_language" name="wpsite_follow_us_settings_linkedin_args_language">
-													<?php foreach (self::$linkedin_supported_languages as $lang) { ?>
-													<option value="<?php echo $lang; ?>" <?php echo isset($settings['linkedin']['args']['language']) && $settings['linkedin']['args']['language'] == $lang ? 'selected' : '' ;?>><?php _e($lang, self::$text_domain); ?></option>
-													<?php } ?>
-												</select>
-											</td>
-										</th>
-									</tr>
-								
-								</tbody>
-							</table>
-							
-							<a href="https://developer.linkedin.com/plugins/follow-company" target="_blank"><label><?php _e('LinkedIn Button Details', self::$text_domain); ?></label></a>
-						</div>
-						
-						<div id="wpsite_div_pinterest">
-						
-							<h3><?php _e('General', self::$text_domain); ?></h3>
-							
-							<table>
-								<tbody>
-								
-									<!-- Active -->	
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Active', self::$text_domain); ?></label>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input id="wpsite_follow_us_settings_pinterest_active" name="wpsite_follow_us_settings_pinterest_active" type="checkbox" <?php echo isset($settings['pinterest']['active']) && $settings['pinterest']['active'] ? 'checked="checked"' : ''; ?> placeholder="Your ID">
-											</td>
-										</th>
-									</tr>
-									
-									<!-- User URL -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('User URL', self::$text_domain); ?></label><br/>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input size="30" id="wpsite_follow_us_settings_pinterest_user" name="wpsite_follow_us_settings_pinterest_user" type="url" value="<?php echo esc_url($settings['pinterest']['user']); ?>">
-											</td>
-										</th>
-									</tr>
-									
-									<!-- Name -->
-									
-									<tr>
-										<th class="wpsite_follow_us_admin_table_th">
-											<label><?php _e('Name', self::$text_domain); ?></label><br/>
-											<td class="wpsite_follow_us_admin_table_td">
-												<input size="30" id="wpsite_follow_us_settings_pinterest_args_name" name="wpsite_follow_us_settings_pinterest_args_name" type="text" value="<?php echo esc_attr($settings['pinterest']['args']['name']); ?>">
-											</td>
-										</th>
-									</tr>
-									
-								</tbody>
-							</table>
-							
-							<a href="http://business.pinterest.com/en/widget-builder#do_follow_me_button" target="_blank"><label><?php _e('Pinterest Button Details', self::$text_domain); ?></label></a>
-						</div>
-						
-						<div id="wpsite_div_order">
-							<table>
-								<tbody>
-								
-									<!-- Sortables -->
-									
-									<ul id="sortable">
-									
-										<?php 
-										
-										if (!isset($settings['order'])) {
-											$settings['order'] = self::$default['order'];
-										}
-										
-										//$settings['order'][] = 'pinterest';
-										
-										foreach ($settings['order'] as $order) { ?>
-											<li id="<?php echo $order; ?>" name="<?php echo $order; ?>" class="wpsite_follow_us_sort_item"><?php _e($order, self::$text_domain); ?></li>
-										<?php } ?>
-										
-									</ul>
-								
-								</tbody>
-							</table>
-						</div>
-						
-					</div>
-					
-					<?php wp_nonce_field('wpsite_follow_us_admin_settings'); ?>
-				
-					<?php submit_button(); ?>
-					
-				</form>
-			
-			</div>
-			
-			<div id="wpsite_admin_panel_sidebar" class="wpsite_admin_panel_content">
-				<div class="wpsite_admin_panel_sidebar_img">
-					<a target="_blank" href="http://wpsite.net"><img src="http://www.wpsite.net/wp-content/uploads/2011/10/logo-only-100h.png"></a>
-				</div>
-			</div>
-		</div>
-		<?php
+
+<?php
+// Load the WPsite Follow Us plugin
+ 	require_once( 'admin/wpsite-follow-us-admin.php' ); 
+ ?>
+
+<?php
 	}
 	
 	/**
@@ -1162,7 +559,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 	
 		/* CSS */
 		
-		wp_register_style('wpsite_follow_us_admin_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/include/css/wpsite_follow_us_admin.css');
+		wp_register_style('wpsite_follow_us_admin_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/css/wpsite_follow_us_admin.css');
 		wp_enqueue_style('wpsite_follow_us_admin_css');
 	}
 
@@ -1198,7 +595,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 			
 			if ($order == 'twitter') {
 				if (isset($settings['twitter']['active']) && $settings['twitter']['active']) {
-					$content .= '<div class="wpsite_follow_us_div"><a href="https://twitter.com/' . $settings['twitter']['user'] . '" class="twitter-follow-button"';
+					$content .= '<div class="wpsite_follow_us_div twitterbox"><a href="https://twitter.com/' . $settings['twitter']['user'] . '" class="twitter-follow-button"';
 					
 					if (isset($settings['twitter']['args']['followers_count_display']) && $settings['twitter']['args']['followers_count_display']) {
 						$content .=  ' data-show-count="true"';
@@ -1244,7 +641,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 			
 			else if ($order == 'facebook') {
 				if (isset($settings['facebook']['active']) && $settings['facebook']['active']) {
-					$content .= '<div class="wpsite_follow_us_div"><div class="fb-like" data-href="https://facebook.com/' . $settings['facebook']['user'] . '"';
+					$content .= '<div class="wpsite_follow_us_div facebookbox"><div class="fb-like" data-href="https://facebook.com/' . $settings['facebook']['user'] . '"';
 					
 					if (isset($settings['facebook']['args']['include_share_button']) && $settings['facebook']['args']['include_share_button']) {
 						$content .= ' data-share="true"';
@@ -1298,7 +695,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 			else if ($order == 'google') {
 					if (isset($settings['google']['active']) && $settings['google']['active']) {
 			
-					$content .= '<div class="wpsite_follow_us_div"><div class="g-follow" data-href="//plus.google.com/' . $settings['google']['user'] . '" data-rel="publisher"';
+					$content .= '<div class="wpsite_follow_us_div googlebox"><div class="g-follow" data-href="//plus.google.com/' . $settings['google']['user'] . '" data-rel="publisher"';
 					
 					if (isset($settings['google']['args']['annotation'])) {
 						$content .= ' data-annotation="' . $settings['google']['args']['annotation'] .'"';
@@ -1329,7 +726,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 			
 			else if ($order == 'linkedin') {
 				if (isset($settings['linkedin']['active']) && $settings['linkedin']['active']) {
-					$content .= '<div class="wpsite_follow_us_div"><script src="//platform.linkedin.com/in.js" type="text/javascript">';
+					$content .= '<div class="wpsite_follow_us_div linkedinbox"><script src="//platform.linkedin.com/in.js" type="text/javascript">';
 					
 					if (isset($settings['linkedin']['args']['language'])) {
 						$content .= 'lang: ' . $settings['linkedin']['args']['language'];
@@ -1350,7 +747,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 			
 			else if ($order == 'pinterest') {
 				if (isset($settings['pinterest']['active']) && $settings['pinterest']['active']) {
-					$content .= '<div class="wpsite_follow_us_div"><a data-pin-do="buttonFollow" href="' . $settings['pinterest']['user'] . '" >';
+					$content .= '<div class="wpsite_follow_us_div pinterestbox"><a data-pin-do="buttonFollow" href="' . $settings['pinterest']['user'] . '" >';
 					
 					if (isset($settings['pinterest']['args']['name'])) {
 						$content .= $settings['pinterest']['args']['name'];
