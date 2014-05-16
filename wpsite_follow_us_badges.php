@@ -75,8 +75,6 @@ class WPsiteFollowUs extends WP_Widget {
 	
 	private static $settings_page = 'wpsite-follow-us-badges-settings';
 	
-	private static $jquery_ui_css = '//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css';
-	
 	private static $default = array(
 		'order'		=> array('twitter', 'facebook', 'google', 'linkedin', 'pinterest'),
 		'twitter'	=> array(
