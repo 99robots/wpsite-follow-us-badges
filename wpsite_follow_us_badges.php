@@ -124,9 +124,9 @@ class WPsiteFollowUs extends WP_Widget {
 		),
 		'pinterest'	=> array(
 			'active'	=> false,
-			'user'		=> 'http://www.pinterest.com/pinterest/',
+			'user'		=> 'http://www.pinterest.com/wpsite/',
 			'args'		=> array(
-				'name'	=> 'Pinterest'
+				'name'	=> 'WPsite'
 			)
 		)
 	);
