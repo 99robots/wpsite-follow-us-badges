@@ -17,7 +17,7 @@
 					<!-- ** UPDATE THE 2 LINKS ** -->
 					<div class="top-call-to-actions">
 						<a class="tweet-about-plugin" href="https://twitter.com/intent/tweet?text=Neat%20and%20simple%20plugin%20for%20WordPress%20users.%20Check%20out%20the%20Follow%20Us%20plugin%20by%20@WPsite%20-%20&amp;url=http%3A%2F%2Fwpsite.net%2Fplugins%2F&amp;via=wpsite"><span></span><?php _e('Tweet About WPsite', self::$text_domain); ?></a>
-						<a class="leave-a-review" href="http://wordpress.org/support/view/plugin-reviews/follow-us-badges#postform" target="_blank"><span></span> <?php _e('Leave A Review', self::$text_domain); ?></a>
+						<a class="leave-a-review" href="http://wordpress.org/support/view/plugin-reviews/wpsite-follow-us-badges" target="_blank"><span></span> <?php _e('Leave A Review', self::$text_domain); ?></a>
 					</div><!-- end .top-call-to-actions -->
 				</header>
 		</div> <!-- /wpsite_plugin_header -->
