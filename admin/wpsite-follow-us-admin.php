@@ -21,11 +21,10 @@
 					</div><!-- end .top-call-to-actions -->
 				</header>
 		</div> <!-- /wpsite_plugin_header -->
-
 		
 		<div id="wpsite_plugin_content">
 		
-					<span class="pluginmessage"><?php _e('The settings below will apply to the ', self::$text_domain); ?><a href="widgets.php"><?php _e('widget', self::$text_domain); ?></a><?php _e('.', self::$text_domain); ?></span>
+			<span class="pluginmessage"><?php _e('The settings below will apply to the ', self::$text_domain); ?><a href="widgets.php"><?php _e('widget', self::$text_domain); ?></a><?php _e('.', self::$text_domain); ?></span>
 
 			<div id="wpsite_plugin_settings">
 						
@@ -180,8 +179,8 @@
 								</tbody>
 							</table>
 							
-							<p><?php _e('Reference:', self::$text_domain); ?> <a href="https://dev.twitter.com/docs/follow-button" target="_blank"><?php _e('Twitter Follow Button API Details', self::$text_domain); ?></a>
-						</div></p>
+							<p><?php _e('Reference:', self::$text_domain); ?> <a href="https://dev.twitter.com/docs/follow-button" target="_blank"><?php _e('Twitter Follow Button API Details', self::$text_domain); ?></a></p>
+						</div>
 						
 						<div id="wpsite_div_facebook">
 						
@@ -647,7 +646,7 @@
 				</div>
 -->
 
-			</div>
+			</div> <!-- wpsite_plugin_sidebar -->
 
 		</div> <!-- /wpsite_plugin_content -->
 		
