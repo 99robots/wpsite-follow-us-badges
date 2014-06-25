@@ -75,6 +75,9 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 
 == Changelog ==
 
+= 1.0.2 =
+* Updated text domain to wpsite-follow-us-badges
+
 = 1.0.1 =
 * Minor Bug fix with link to WordPress plugin review page
 * Minor Bug fix with tag mismatch on settings page
