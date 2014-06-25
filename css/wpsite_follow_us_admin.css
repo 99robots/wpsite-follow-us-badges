@@ -1,7 +1,7 @@
 /**
  * Created by Kyle Benk
- *	
- * @author Kyle Benk <kjbenk@gmail.com> 
+ *
+ * @author Kyle Benk <kjbenk@gmail.com>
  */
 
 /* PLUGIN ADMIN PANEL - BACK-END */
@@ -26,10 +26,10 @@
 
 		/* Header Actions */
 		.wpsite_plugin_wrapper .headercontent .top-call-to-actions { float: right; margin-right: 10px; }
-			.wpsite_plugin_wrapper .headercontent .tweet-about-plugin { background:#2EA2CC; text-decoration: none; border-radius: 3px; display: block; height: 30px; border-radius: 3px; font-family: "Open Sans", sans-serif; color:#fff; text-transform: uppercase; font-weight: bold; text-shadow: 0px 1px 0px #33a4ce; line-height: 2.3; padding-right: 10px; display:inline-block; margin-top: 14px; margin-right: 5px; } 
+			.wpsite_plugin_wrapper .headercontent .tweet-about-plugin { background:#2EA2CC; text-decoration: none; border-radius: 3px; display: block; height: 30px; border-radius: 3px; font-family: "Open Sans", sans-serif; color:#fff; text-transform: uppercase; font-weight: bold; text-shadow: 0px 1px 0px #33a4ce; line-height: 2.3; padding-right: 10px; display:inline-block; margin-top: 14px; margin-right: 5px; }
 			.wpsite_plugin_wrapper .headercontent .tweet-about-plugin:hover { background:#0074A2;}
 			.wpsite_plugin_wrapper .headercontent .tweet-about-plugin span { background:url("../img/icon-twitter.png") no-repeat center center, #3eaed8; width: 30px; height: 30px; display: block; float: left; border-radius: 3px 0px 0px 3px; margin-right: 10px; }
-			.wpsite_plugin_wrapper .headercontent .leave-a-review { background:#E64B27; text-decoration: none; border-radius: 3px; display: block; height: 30px; border-radius: 3px; font-family: "Open Sans", sans-serif; color:#fff; text-transform: uppercase; font-weight: bold; text-shadow: 0px 1px 0px #e46b3d; line-height: 2.3; padding-right: 10px; display:inline-block; margin-top: 14px; margin-right: 5px; } 
+			.wpsite_plugin_wrapper .headercontent .leave-a-review { background:#E64B27; text-decoration: none; border-radius: 3px; display: block; height: 30px; border-radius: 3px; font-family: "Open Sans", sans-serif; color:#fff; text-transform: uppercase; font-weight: bold; text-shadow: 0px 1px 0px #e46b3d; line-height: 2.3; padding-right: 10px; display:inline-block; margin-top: 14px; margin-right: 5px; }
 			.wpsite_plugin_wrapper .headercontent .leave-a-review:hover { background: 	#B22222; }
 			.wpsite_plugin_wrapper .headercontent .leave-a-review span { background:url("../img/icon-review.png") no-repeat center center, #f16848; width: 30px; height: 30px; display: block; float: left; border-radius: 3px 0px 0px 3px; margin-right: 10px; }
 
@@ -47,7 +47,7 @@
 .wpsite_plugin_footer {}
 
 /* increase size of Save button */
-.wpsite_plugin_wrapper .button-primary, 
+.wpsite_plugin_wrapper .button-primary,
 .wpsite_plugin_wrapper .button-secondary{
     font-size: 16px;
     height: 36px;
@@ -75,7 +75,7 @@
 	display: block;
 	overflow: hidden;
 }
- 
+
 .wpsite_admin_panel_banner {
 	width: 100%;
 	display: block;
@@ -215,44 +215,44 @@
     background: none;
 }
 
-#tabs { 
-    background: transparent; 
-    border: none; 
-} 
+#tabs {
+    background: transparent;
+    border: none;
+}
 
-.ui-tabs-anchor:hover { 
+.ui-tabs-anchor:hover {
     background-color: white;
 	color: #464646;
-} 
+}
 
 .ui-tabs-anchor:focus {
 	outline-color: transparent;
 }
 
-#tabs .ui-widget-header { 
-    background: transparent; 
-    border: none; 
+#tabs .ui-widget-header {
+    background: transparent;
+    border: none;
     border-bottom: 1px solid #ccc;
-    padding-bottom: 0; 
-    -moz-border-radius: 0px; 
-    -webkit-border-radius: 0px; 
-    border-radius: 0px; 
-} 
-#tabs .ui-tabs-nav .ui-state-default { 
+    padding-bottom: 0;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+#tabs .ui-tabs-nav .ui-state-default {
     background: #e4e4e4;
-    border: none; 
-} 
-#tabs .ui-tabs-nav .ui-state-active { 
-    background: transparent no-repeat bottom center; 
-    border: none; 
-} 
-#tabs .ui-tabs-nav .ui-state-default a { 
+    border: none;
+}
+#tabs .ui-tabs-nav .ui-state-active {
+    background: transparent no-repeat bottom center;
+    border: none;
+}
+#tabs .ui-tabs-nav .ui-state-default a {
     color: gray;
     border-top: 1px solid #ccc;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
-} 
-#tabs .ui-tabs-nav .ui-state-active a { 
+}
+#tabs .ui-tabs-nav .ui-state-active a {
 	margin: 0px 0px -1px 0px;
 	border-bottom: 1px solid white !important;
 	background: transparent;

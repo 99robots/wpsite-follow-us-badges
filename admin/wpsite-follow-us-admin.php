@@ -13,7 +13,7 @@
 					<!-- ** UPDATE THE NAME ** -->
 					<h1 class="logo"><?php _e('Follow Us Badges', self::$text_domain); ?></h1>
 					<span class="slogan"><?php _e('by', self::$text_domain); ?> <a href="http://www.wpsite.com/?utm_source=topadmin&amp;utm_medium=announce&amp;utm_campaign=top"><?php _e('WPsite.net', self::$text_domain); ?></a></span>
-					
+
 					<!-- ** UPDATE THE 2 LINKS ** -->
 					<div class="top-call-to-actions">
 						<a class="tweet-about-plugin" href="https://twitter.com/intent/tweet?text=Neat%20and%20simple%20plugin%20for%20WordPress%20users.%20Check%20out%20the%20Follow%20Us%20plugin%20by%20@WPsite%20-%20&amp;url=http%3A%2F%2Fwpsite.net%2Fplugins%2F&amp;via=wpsite"><span></span><?php _e('Tweet About WPsite', self::$text_domain); ?></a>
@@ -21,15 +21,15 @@
 					</div><!-- end .top-call-to-actions -->
 				</header>
 		</div> <!-- /wpsite_plugin_header -->
-		
+
 		<div id="wpsite_plugin_content">
-		
+
 			<span class="pluginmessage"><?php _e('The settings below will apply to the ', self::$text_domain); ?><a href="widgets.php"><?php _e('widget', self::$text_domain); ?></a><?php _e('.', self::$text_domain); ?></span>
 
 			<div id="wpsite_plugin_settings">
-						
+
 				<form method="post">
-				
+
 					<div id="tabs">
 						<ul>
 							<li><a href="#wpsite_div_twitter"><span class="wpsite_admin_panel_content_tabs"><?php _e('Twitter', self::$text_domain); ?></span></a></li>
@@ -39,16 +39,16 @@
 							<li><a href="#wpsite_div_pinterest"><span class="wpsite_admin_panel_content_tabs"><?php _e('Pinterest',self::$text_domain); ?></span></a></li>
 							<li><a href="#wpsite_div_order"><span class="wpsite_admin_panel_content_tabs"><?php _e('Order',self::$text_domain); ?></span></a></li>
 						</ul>
-						
+
 						<div id="wpsite_div_twitter">
-						
+
 							<h3><?php _e('General', self::$text_domain); ?></h3>
-							
+
 							<table>
 								<tbody>
-								
+
 									<!-- Active -->
-								
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Active', self::$text_domain); ?></label>
@@ -57,9 +57,9 @@
 											</td>
 										</th>
 									</tr>
-									
+
 									<!-- User -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Username', self::$text_domain); ?></label>
@@ -69,17 +69,17 @@
 											</td>
 										</th>
 									</tr>
-									
+
 								</tbody>
 							</table>
-							
+
 							<h3><?php _e('Display', self::$text_domain); ?></h3>
-							
+
 							<table>
 								<tbody>
-								
+
 									<!-- Followers Count Display -->
-								
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Followers Count Display', self::$text_domain); ?></label>
@@ -88,9 +88,9 @@
 											</td>
 										</th>
 									</tr>
-								
+
 									<!-- Show Screen Name -->
-								
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Show Screen Name', self::$text_domain); ?></label>
@@ -99,9 +99,9 @@
 											</td>
 										</th>
 									</tr>
-								
+
 									<!-- Alignment -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Alignment', self::$text_domain); ?></label>
@@ -113,9 +113,9 @@
 											</td>
 										</th>
 									</tr>
-								
+
 									<!-- Width -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Width', self::$text_domain); ?></label>
@@ -125,9 +125,9 @@
 											</td>
 										</th>
 									</tr>
-									
+
 									<!-- Size -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Size', self::$text_domain); ?></label>
@@ -139,17 +139,17 @@
 											</td>
 										</th>
 									</tr>
-								
+
 								</tbody>
 							</table>
-							
+
 							<h3><?php _e('Advanced', self::$text_domain); ?></h3>
-							
+
 							<table>
 								<tbody>
-								
+
 									<!-- Language -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Language', self::$text_domain); ?></label>
@@ -162,9 +162,9 @@
 											</td>
 										</th>
 									</tr>
-									
+
 									<!-- Opt Out -->
-								
+
 									<!--
 <tr>
 										<th class="wpsite_follow_us_admin_table_th">
@@ -175,22 +175,22 @@
 										</th>
 									</tr>
 -->
-								
+
 								</tbody>
 							</table>
-							
+
 							<p><?php _e('Reference:', self::$text_domain); ?> <a href="https://dev.twitter.com/docs/follow-button" target="_blank"><?php _e('Twitter Follow Button API Details', self::$text_domain); ?></a></p>
 						</div>
-						
+
 						<div id="wpsite_div_facebook">
-						
+
 							<h3><?php _e('General', self::$text_domain); ?></h3>
-							
+
 							<table>
 								<tbody>
-								
-									<!-- Active -->	
-									
+
+									<!-- Active -->
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Active', self::$text_domain); ?></label>
@@ -199,9 +199,9 @@
 											</td>
 										</th>
 									</tr>
-									
+
 									<!-- User -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<?php _e('User ID', self::$text_domain); ?>
@@ -212,17 +212,17 @@
 											</td>
 										</th>
 									</tr>
-									
+
 								</tbody>
 							</table>
-							
+
 							<h3><?php _e('Display', self::$text_domain); ?></h3>
-							
+
 							<table>
 								<tbody>
-									
+
 									<!-- Layout -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Layout', self::$text_domain); ?></label>
@@ -236,9 +236,9 @@
 											</td>
 										</th>
 									</tr>
-									
+
 									<!-- Action Type -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Action Type', self::$text_domain); ?></label>
@@ -250,9 +250,9 @@
 											</td>
 										</th>
 									</tr>
-									
+
 									<!-- Color Scheme -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Color Scheme', self::$text_domain); ?></label>
@@ -264,9 +264,9 @@
 											</td>
 										</th>
 									</tr>
-									
-									<!-- Show Friends Faces -->	
-									
+
+									<!-- Show Friends Faces -->
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Show Friends Faces', self::$text_domain); ?></label>
@@ -275,9 +275,9 @@
 											</td>
 										</th>
 									</tr>
-									
-									<!-- Include Share Button -->	
-									
+
+									<!-- Include Share Button -->
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Include Share Button', self::$text_domain); ?></label>
@@ -286,9 +286,9 @@
 											</td>
 										</th>
 									</tr>
-									
+
 									<!-- Width -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Width', self::$text_domain); ?></label>
@@ -298,17 +298,17 @@
 											</td>
 										</th>
 									</tr>
-								
+
 								</tbody>
 							</table>
-							
+
 							<h3><?php _e('Advanced', self::$text_domain); ?></h3>
-							
+
 							<table>
-								<tbody>	
-									
+								<tbody>
+
 									<!-- Language -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Language', self::$text_domain); ?></label>
@@ -321,22 +321,22 @@
 											</td>
 										</th>
 									</tr>
-									
+
 								</tbody>
 							</table>
-							
+
 							<p><?php _e('Reference:', self::$text_domain); ?> <a href="https://developers.facebook.com/docs/plugins/like-button/" target="_blank"><?php _e('Facebook Like Button API Details', self::$text_domain); ?></a></p>
 						</div>
-						
+
 						<div id="wpsite_div_google">
-						
+
 							<h3><?php _e('General', self::$text_domain); ?></h3>
-							
+
 							<table>
 								<tbody>
-								
-									<!-- Active -->	
-									
+
+									<!-- Active -->
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Active', self::$text_domain); ?></label>
@@ -345,9 +345,9 @@
 											</td>
 										</th>
 									</tr>
-									
+
 									<!-- User -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('User ID', self::$text_domain); ?></label>
@@ -358,17 +358,17 @@
 											</td>
 										</th>
 									</tr>
-									
+
 								</tbody>
 							</table>
-							
+
 							<h3><?php _e('Display', self::$text_domain); ?></h3>
-							
+
 							<table>
 								<tbody>
-									
+
 									<!-- Size -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Size', self::$text_domain); ?></label>
@@ -381,9 +381,9 @@
 											</td>
 										</th>
 									</tr>
-									
+
 									<!-- Annotation -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Annotation', self::$text_domain); ?></label>
@@ -396,17 +396,17 @@
 											</td>
 										</th>
 									</tr>
-									
+
 								</tbody>
 							</table>
-							
+
 							<h3><?php _e('Advanced', self::$text_domain); ?></h3>
-							
+
 							<table>
 								<tbody>
-									
+
 									<!-- Language -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Language', self::$text_domain); ?></label>
@@ -420,9 +420,9 @@
 											</td>
 										</th>
 									</tr>
-									
-									<!-- Asynchronous -->	
-									
+
+									<!-- Asynchronous -->
+
 									<!--
 <tr>
 										<th class="wpsite_follow_us_admin_table_th">
@@ -433,9 +433,9 @@
 										</th>
 									</tr>
 -->
-									
+
 									<!-- Paresd Tags -->
-									
+
 									<!--
 <tr>
 										<th class="wpsite_follow_us_admin_table_th">
@@ -451,19 +451,19 @@
 -->
 								</tbody>
 							</table>
-							
+
 							<p><?php _e('Reference:', self::$text_domain); ?> <a href="https://developers.google.com/+/web/follow/" target="_blank"><?php _e('Google+ Button API Details', self::$text_domain); ?></a></p>
 						</div>
-						
+
 						<div id="wpsite_div_linkedin">
-						
+
 							<h3><?php _e('General', self::$text_domain); ?></h3>
-							
+
 							<table>
 								<tbody>
-								
-									<!-- Active -->	
-									
+
+									<!-- Active -->
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Active', self::$text_domain); ?></label>
@@ -472,9 +472,9 @@
 											</td>
 										</th>
 									</tr>
-									
+
 									<!-- User -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('User ID', self::$text_domain); ?></label><br/>
@@ -486,17 +486,17 @@
 											</td>
 										</th>
 									</tr>
-									
+
 								</tbody>
 							</table>
-							
+
 							<h3><?php _e('Display', self::$text_domain); ?></h3>
-							
+
 							<table>
 								<tbody>
-									
+
 									<!-- Count Mode -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Count Mode', self::$text_domain); ?></label>
@@ -509,17 +509,17 @@
 											</td>
 										</th>
 									</tr>
-									
+
 								</tbody>
 							</table>
-							
+
 							<h3><?php _e('Advanced', self::$text_domain); ?></h3>
-							
+
 							<table>
 								<tbody>
-									
+
 									<!-- Language -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Language', self::$text_domain); ?></label>
@@ -532,22 +532,22 @@
 											</td>
 										</th>
 									</tr>
-								
+
 								</tbody>
 							</table>
-							
+
 							<p><?php _e('Reference:', self::$text_domain); ?> <a href="https://developer.linkedin.com/plugins/follow-company" target="_blank"><?php _e('LinkedIn Button API Details', self::$text_domain); ?></a></p>
 						</div>
-						
+
 						<div id="wpsite_div_pinterest">
-						
+
 							<h3><?php _e('General', self::$text_domain); ?></h3>
-							
+
 							<table>
 								<tbody>
-								
-									<!-- Active -->	
-									
+
+									<!-- Active -->
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Active', self::$text_domain); ?></label>
@@ -556,9 +556,9 @@
 											</td>
 										</th>
 									</tr>
-									
+
 									<!-- User URL -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('User URL', self::$text_domain); ?></label><br/>
@@ -567,9 +567,9 @@
 											</td>
 										</th>
 									</tr>
-									
+
 									<!-- Name -->
-									
+
 									<tr>
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Name', self::$text_domain); ?></label><br/>
@@ -578,78 +578,78 @@
 											</td>
 										</th>
 									</tr>
-									
+
 								</tbody>
 							</table>
-							
+
 							<p><?php _e('Reference:', self::$text_domain); ?> <a href="http://business.pinterest.com/en/widget-builder#do_follow_me_button" target="_blank"><?php _e('Pinterest Button API Details', self::$text_domain); ?></a></p>
 						</div>
-						
+
 						<div id="wpsite_div_order">
 							<h3><?php _e('Drag & Drop to Order', self::$text_domain); ?></h3>
 							<table>
 								<tbody>
-								
+
 									<!-- Sortables -->
-									
+
 									<ul id="sortable">
-									
-										<?php 
-										
+
+										<?php
+
 										if (!isset($settings['order'])) {
 											$settings['order'] = self::$default['order'];
 										}
-										
+
 										//$settings['order'][] = 'pinterest';
-										
+
 										foreach ($settings['order'] as $order) { ?>
 											<li id="<?php echo $order; ?>" name="<?php echo $order; ?>" class="wpsite_follow_us_sort_item dragable"><?php _e($order, self::$text_domain); ?></li>
 										<?php } ?>
-										
+
 									</ul>
-								
+
 								</tbody>
 							</table>
 						</div>
-						
+
 					</div>
-					
+
 					<?php wp_nonce_field('wpsite_follow_us_admin_settings'); ?>
-				
+
 					<?php submit_button(); ?>
-					
+
 				</form>
-			
+
 			</div>  <!-- /wpsite_plugin_settings -->
-			
+
 			<div id="wpsite_plugin_sidebar">
-				<div class="wpsite_feed">				
+				<div class="wpsite_feed">
 					<h3><?php _e('Must-Read Articles', self::$text_domain); ?></h3>
 					<script src="http://feeds.feedburner.com/wpsite?format=sigpro" type="text/javascript" ></script><noscript><p><?php _e('Subscribe to WPsite Feed:', self::$text_domain); ?> <a href="http://feeds.feedburner.com/wpsite"></a><br/><?php _e('Powered by FeedBurner', self::$text_domain); ?></p> </noscript>
 				</div>
 
 				<div class="mktg-banner">
-					<a target="_blank" href="http://www.wpsite.net/custom-wordpress-development/#utm_source=plugin-config&utm_medium=banner&utm_campaign=custom-development-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/img/ad-custom-development.png' ?>"></a>					
-				</div>
-			
-				<div class="mktg-banner">
-					<a target="_blank" href="http://www.wpsite.net/services/#utm_source=plugin-config&utm_medium=banner&utm_campaign=plugin-request-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/img/ad-plugin-request.png' ?>"></a>					
+					<a target="_blank" href="http://www.wpsite.net/custom-wordpress-development/#utm_source=plugin-config&utm_medium=banner&utm_campaign=custom-development-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/img/ad-custom-development.png' ?>"></a>
 				</div>
 
 				<div class="mktg-banner">
-					<a target="_blank" href="http://www.wpsite.net/themes/#utm_source=plugin-config&utm_medium=banner&utm_campaign=themes-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/img/ad-themes.png' ?>"></a>					
+					<a target="_blank" href="http://www.wpsite.net/services/#utm_source=plugin-config&utm_medium=banner&utm_campaign=plugin-request-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/img/ad-plugin-request.png' ?>"></a>
 				</div>
-				
+
+				<div class="mktg-banner">
+					<a target="_blank" href="http://www.wpsite.net/themes/#utm_source=plugin-config&utm_medium=banner&utm_campaign=themes-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/img/ad-themes.png' ?>"></a>
+				</div>
+
 <!--
 				<div class="mktg-banner">
-					<a target="_blank" href="http://www.wpsite.net/services/#utm_source=plugin-config&utm_medium=banner&utm_campaign=need-support-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/img/ad-need-support.png' ?>"></a>					
+					<a target="_blank" href="http://www.wpsite.net/services/#utm_source=plugin-config&utm_medium=banner&utm_campaign=need-support-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/img/ad-need-support.png' ?>"></a>
 				</div>
 -->
 
 			</div> <!-- wpsite_plugin_sidebar -->
 
 		</div> <!-- /wpsite_plugin_content -->
-		
+
 	</div> 	<!-- /wpsite_plugin_wrapper -->
-		
+
 </div> 	<!-- /wrap -->
