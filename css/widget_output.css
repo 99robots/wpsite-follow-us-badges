@@ -1,0 +1,170 @@
+/* FRONT-END CSS (Widget Output) */
+
+.widget_wpsite_follow_us_badges {}
+
+.wpsite_follow_us_div {display: block;padding: 10px 0;clear: both;}
+	.widget .twitterbox {display:block;padding:5px;}
+	.widget .facebookbox {display:block;padding:5px;}
+	.widget .linkedinbox {display:block;padding:5px;}
+	.widget .googlebox {display:block;padding:5px;}
+	.widget .pinterestbox {display:block;padding:5px;}
+
+.wpsite_follow_us_div .fb-like { overflow: hidden; } /* prevent text from going off page */
+.wpsite_follow_us_div iframe {margin-bottom: 0;}  /* prevent Twitter row from inconsistent spacing */
+
+.wpsite_follow_us_div_link {
+	margin: 10px 0px 10px 0px;
+	width: 150px;
+}
+
+.wpsite_follow_us_div_link a {
+	position: relative;
+	color: white !important;
+	text-decoration: none;
+	font-family: 'Oswald';
+	display: block;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	font-size: 16px;
+	padding: 10px 15px 10px 60px;
+	-webkit-transform: translate(0,0);
+	-moz-transform: translate(0,0);
+	transform: translate(0,0);
+	-webkit-transition: all .2s ease;
+	-moz-transition: all .2s ease;
+	-ms-transition: all .2s ease;
+	-o-transition: all .2s ease;
+	transition: all .2s ease;
+}
+
+.wpsite_follow_us_div_link  a:active {
+   	-webkit-transform: translate(0, 3px);
+	-moz-transform: translate(0, 3px);
+	transform: translate(0, 3px);
+}
+
+/* Twitter */
+
+.wpsite_follow_us_div_link a.twitter::before{
+	background: url("../img/twitter.png") no-repeat center center;
+	content: "";
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 10px;
+	top: 18%;
+}
+
+.wpsite_follow_us_div_link a.twitter {
+	background:#2CA9E1;
+	-webkit-box-shadow: 0px 6px 0px #2695BC;
+	-moz-box-shadow: 0px 6px 0px #2695BC;
+	box-shadow: 0px 6px 0px #2695BC;
+}
+
+.wpsite_follow_us_div_link a.twitter:active{
+	-webkit-box-shadow: 0px 2px 0px #2695BC;
+    -moz-box-shadow: 0px 2px 0px #2695BC;
+    box-shadow: 0px 2px 0px #2695BC;
+}
+
+/* Facebook */
+
+.wpsite_follow_us_div_link a.facebook::before{
+	background: url("../img/facebook.png") no-repeat center center;
+	content: "";
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 10px;
+	top: 18%;
+}
+
+.wpsite_follow_us_div_link a.facebook {
+	background:#3B5997;
+	-webkit-box-shadow: 0px 6px 0px #293F63;
+	-moz-box-shadow: 0px 6px 0px #293F63;
+	box-shadow: 0px 6px 0px #293F63;
+}
+
+.wpsite_follow_us_div_link a.facebook:active{
+	-webkit-box-shadow: 0px 2px 0px #293F63;
+	-moz-box-shadow: 0px 2px 0px #293F63;
+	box-shadow: 0px 2px 0px #293F63;
+}
+
+/* Google */
+
+.wpsite_follow_us_div_link a.google::before{
+	background: url("../img/gplus.png") no-repeat center center;
+	content: "";
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 10px;
+	top: 18%;
+}
+
+.wpsite_follow_us_div_link a.google {
+	background:#353631;
+	-webkit-box-shadow: 0px 6px 0px #141412;
+	-moz-box-shadow: 0px 6px 0px #141412;
+	box-shadow: 0px 6px 0px #141412;
+}
+
+.wpsite_follow_us_div_link a.google:active{
+	-webkit-box-shadow: 0px 2px 0px #141412;
+	-moz-box-shadow: 0px 2px 0px #141412;
+	box-shadow: 0px 2px 0px #141412;
+}
+
+/* LinkedIn */
+
+.wpsite_follow_us_div_link a.linkedin::before{
+	background: url("../img/linkedin.png") no-repeat center center;
+	content: "";
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 10px;
+	top: 18%;
+}
+
+.wpsite_follow_us_div_link a.linkedin {
+	background:#0073B2;
+	-webkit-box-shadow: 0px 6px 0px #005377;
+	-moz-box-shadow: 0px 6px 0px #005377;
+	box-shadow: 0px 6px 0px #005377;
+}
+
+.wpsite_follow_us_div_link a.linkedin:active{
+	-webkit-box-shadow: 0px 2px 0px #005377;
+	-moz-box-shadow: 0px 2px 0px #005377;
+	box-shadow: 0px 2px 0px #005377;
+}
+
+/* Pinterest */
+
+.wpsite_follow_us_div_link a.pinterest::before{
+	background: url("../img/pinterest.png") no-repeat center center;
+	content: "";
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 10px;
+	top: 18%;
+}
+
+.wpsite_follow_us_div_link a.pinterest {
+	background:#CD1D1F;
+	-webkit-box-shadow: 0px 6px 0px #8C151B;
+	-moz-box-shadow: 0px 6px 0px #8C151B;
+	box-shadow: 0px 6px 0px #8C151B;
+}
+
+.wpsite_follow_us_div_link a.pinterest:active{
+	-webkit-box-shadow: 0px 2px 0px #8C151B;
+	-moz-box-shadow: 0px 2px 0px #8C151B;
+	box-shadow: 0px 2px 0px #8C151B;
+}

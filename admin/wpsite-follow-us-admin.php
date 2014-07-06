@@ -78,6 +78,17 @@
 							<table>
 								<tbody>
 
+									<!-- Link Only -->
+
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<label><?php _e('Link Only', self::$text_domain); ?></label>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input id="wpsite_follow_us_settings_twitter_args_link" name="wpsite_follow_us_settings_twitter_args_link" type="checkbox" <?php echo isset($settings['twitter']['args']['link']) && $settings['twitter']['args']['link'] ? 'checked="checked"' : ''; ?>>
+											</td>
+										</th>
+									</tr>
+
 									<!-- Followers Count Display -->
 
 									<tr>
@@ -220,6 +231,17 @@
 
 							<table>
 								<tbody>
+
+									<!-- Link Only -->
+
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<label><?php _e('Link Only', self::$text_domain); ?></label>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input id="wpsite_follow_us_settings_facebook_args_link" name="wpsite_follow_us_settings_facebook_args_link" type="checkbox" <?php echo isset($settings['facebook']['args']['link']) && $settings['facebook']['args']['link'] ? 'checked="checked"' : ''; ?>>
+											</td>
+										</th>
+									</tr>
 
 									<!-- Layout -->
 
@@ -367,6 +389,17 @@
 							<table>
 								<tbody>
 
+									<!-- Link Only -->
+
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<label><?php _e('Link Only', self::$text_domain); ?></label>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input id="wpsite_follow_us_settings_google_args_link" name="wpsite_follow_us_settings_google_args_link" type="checkbox" <?php echo isset($settings['google']['args']['link']) && $settings['google']['args']['link'] ? 'checked="checked"' : ''; ?>>
+											</td>
+										</th>
+									</tr>
+
 									<!-- Size -->
 
 									<tr>
@@ -481,7 +514,7 @@
 											<a href="https://developer.linkedin.com/plugins/follow-company" target="_blank"><label><?php _e('Get your ID', self::$text_domain); ?></label></a>
 											<td class="wpsite_follow_us_admin_table_td">
 												<input size="30" id="wpsite_follow_us_settings_linkedin_user" name="wpsite_follow_us_settings_linkedin_user" type="text" value="<?php echo esc_attr($settings['linkedin']['user']); ?>"><br/>
-												<em><label><?php _e('http://www.linkedin.com/profile/view?id=', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em><br/>
+												<!-- <em><label><?php _e('http://www.linkedin.com/profile/view?id=', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em><br/> -->
 												<em><label><?php _e('http://www.linkedin.com/company/', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em>
 											</td>
 										</th>
@@ -494,6 +527,17 @@
 
 							<table>
 								<tbody>
+
+									<!-- Link Only -->
+
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<label><?php _e('Link Only', self::$text_domain); ?></label>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input id="wpsite_follow_us_settings_linkedin_args_link" name="wpsite_follow_us_settings_linkedin_args_link" type="checkbox" <?php echo isset($settings['linkedin']['args']['link']) && $settings['linkedin']['args']['link'] ? 'checked="checked"' : ''; ?>>
+											</td>
+										</th>
+									</tr>
 
 									<!-- Count Mode -->
 
@@ -575,6 +619,17 @@
 											<label><?php _e('Name', self::$text_domain); ?></label><br/>
 											<td class="wpsite_follow_us_admin_table_td">
 												<input size="30" id="wpsite_follow_us_settings_pinterest_args_name" name="wpsite_follow_us_settings_pinterest_args_name" type="text" value="<?php echo esc_attr($settings['pinterest']['args']['name']); ?>">
+											</td>
+										</th>
+									</tr>
+
+									<!-- Link Only -->
+
+									<tr>
+										<th class="wpsite_follow_us_admin_table_th">
+											<label><?php _e('Link Only', self::$text_domain); ?></label>
+											<td class="wpsite_follow_us_admin_table_td">
+												<input id="wpsite_follow_us_settings_pinterest_args_link" name="wpsite_follow_us_settings_pinterest_args_link" type="checkbox" <?php echo isset($settings['pinterest']['args']['link']) && $settings['pinterest']['args']['link'] ? 'checked="checked"' : ''; ?>>
 											</td>
 										</th>
 									</tr>

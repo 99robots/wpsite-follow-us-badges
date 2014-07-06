@@ -258,17 +258,3 @@
 	background: transparent;
 	color: #000;
 }
-
-/* FRONT-END CSS (Widget Output) */
-
-.widget_wpsite_follow_us_badges {}
-
-.wpsite_follow_us_div {display: block;padding: 10px 0;clear: both;}
-	.widget .twitterbox {display:block;padding:5px;}
-	.widget .facebookbox {display:block;padding:5px;}
-	.widget .linkedinbox {display:block;padding:5px;}
-	.widget .googlebox {display:block;padding:5px;}
-	.widget .pinterestbox {display:block;padding:5px;}
-
-.wpsite_follow_us_div .fb-like { overflow: hidden; } /* prevent text from going off page */
-.wpsite_follow_us_div iframe {margin-bottom: 0;}  /* prevent Twitter row from inconsistent spacing */
