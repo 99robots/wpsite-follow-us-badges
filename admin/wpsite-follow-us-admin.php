@@ -514,7 +514,7 @@
 											<a href="https://developer.linkedin.com/plugins/follow-company" target="_blank"><label><?php _e('Get your ID', self::$text_domain); ?></label></a>
 											<td class="wpsite_follow_us_admin_table_td">
 												<input size="30" id="wpsite_follow_us_settings_linkedin_user" name="wpsite_follow_us_settings_linkedin_user" type="text" value="<?php echo esc_attr($settings['linkedin']['user']); ?>"><br/>
-												<!-- <em><label><?php _e('http://www.linkedin.com/profile/view?id=', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em><br/> -->
+												<em><label><?php _e('http://www.linkedin.com/profile/view?id=', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong> <?php _e('applies to link only', self::$text_domain); ?></em><br/>
 												<em><label><?php _e('http://www.linkedin.com/company/', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em>
 											</td>
 										</th>
@@ -534,7 +534,10 @@
 										<th class="wpsite_follow_us_admin_table_th">
 											<label><?php _e('Link Only', self::$text_domain); ?></label>
 											<td class="wpsite_follow_us_admin_table_td">
-												<input id="wpsite_follow_us_settings_linkedin_args_link" name="wpsite_follow_us_settings_linkedin_args_link" type="checkbox" <?php echo isset($settings['linkedin']['args']['link']) && $settings['linkedin']['args']['link'] ? 'checked="checked"' : ''; ?>>
+												<input id="wpsite_follow_us_settings_linkedin_args_link" name="wpsite_follow_us_settings_linkedin_args_link" type="checkbox" <?php echo isset($settings['linkedin']['args']['link']) && $settings['linkedin']['args']['link'] ? 'checked="checked"' : ''; ?>> <?php _e('for a', self::$text_domain); ?> <select id="wpsite_follow_us_settings_linkedin_args_type" name="wpsite_follow_us_settings_linkedin_args_type">
+													<option value="company" <?php echo isset($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'company' ? 'selected' : ''; ?>><?php _e('company', self::$text_domain); ?></option>
+													<option value="person" <?php echo isset($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'person' ? 'selected' : ''; ?>><?php _e('person', self::$text_domain); ?></option>
+												</select> <?php _e('account', self::$text_domain); ?>
 											</td>
 										</th>
 									</tr>

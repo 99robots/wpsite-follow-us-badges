@@ -3,7 +3,7 @@
 Plugin Name: WPsite Follow Us Badges
 plugin URI:	http://www.wpsite.net/social-media-follow-us-badges
 Description: The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn, & Pinterest badges for instant likes, follows, and sharing of your website.
-version: 1.1
+version: 1.1.1
 Author: WPSITE.net
 Author URI: http://wpsite.net
 License: GPL2
@@ -31,7 +31,7 @@ if (!defined('WPSITE_FOLLOW_US_PLUGIN_URL'))
 /* Plugin verison */
 
 if (!defined('WPSITE_FOLLOW_US_VERSION_NUM'))
-    define('WPSITE_FOLLOW_US_VERSION_NUM', '1.1');
+    define('WPSITE_FOLLOW_US_VERSION_NUM', '1.1.1');
 
 
 /**
@@ -122,6 +122,7 @@ class WPsiteFollowUs extends WP_Widget {
 			'user'		=> '2839460',
 			'args'		=> array(
 				'link'			=> false,
+				'type'			=> 'company',
 				'count_mode'	=> 'right',
 				'language'		=> 'en_US'
 			)
@@ -474,6 +475,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 					'user'		=> isset($_POST['wpsite_follow_us_settings_linkedin_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_linkedin_user'])) : '',
 					'args'		=> array(
 						'link' 	=> isset($_POST['wpsite_follow_us_settings_linkedin_args_link']) && $_POST['wpsite_follow_us_settings_linkedin_args_link'] ? true : false,
+						'type'			=> $_POST['wpsite_follow_us_settings_linkedin_args_type'],
 						'count_mode'	=> $_POST['wpsite_follow_us_settings_linkedin_args_count_mode'],
 						'language'		=> $_POST['wpsite_follow_us_settings_linkedin_args_language'],
 					)
@@ -751,7 +753,13 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 				if (isset($settings['linkedin']['active']) && $settings['linkedin']['active']) {
 
 					if (isset($settings['linkedin']['args']['link']) && $settings['linkedin']['args']['link']) {
-						$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/company/' . $settings['linkedin']['user'] . '" target="_blank">LinkedIn</a></div>';
+
+						if (isset($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'company') {
+							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/company/' . $settings['linkedin']['user'] . '" target="_blank">LinkedIn</a></div>';
+						}else {
+							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/profile/view?id=' . $settings['linkedin']['user'] . '" target="_blank">LinkedIn</a></div>';
+						}
+
 					} else {
 						$content .= '<div class="wpsite_follow_us_div linkedinbox"><script src="//platform.linkedin.com/in.js" type="text/javascript">';
 
