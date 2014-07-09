@@ -76,6 +76,9 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 
 == Changelog ==
 
+= 1.1.1 =
+* LinkedIn's link only can now link to a profile or company page
+
 = 1.1 =
 * Added Link only option
 
