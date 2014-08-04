@@ -76,6 +76,9 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 
 == Changelog ==
 
+= 1.1.5 =
+* Minor Upgrades
+
 = 1.1.4 =
 * Bug Fixes
 
