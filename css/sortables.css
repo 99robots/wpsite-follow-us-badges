@@ -1,0 +1,17 @@
+/* Sortables */
+
+.wpsite_follow_us_badges_order_draggables {
+	padding: 10px 5px 10px 5px;
+	margin: 0px 10px 0px 10px;
+	border: 1px solid black;
+}
+
+.wpsite_follow_us_sort_item {
+	padding: 5px;
+	border: 1px solid #ccc;
+	background-color: #e4e4e4;
+	width: intrinsic;
+	text-transform: capitalize;
+}
+
+.dragable{background: #E4E4E4 url("../img/icon-drag.png") no-repeat 20px center; padding: 20px; padding-left: 60px; padding-right: 60px; margin-left: 10px; }

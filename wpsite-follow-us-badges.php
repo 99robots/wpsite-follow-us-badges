@@ -3,7 +3,7 @@
 Plugin Name: WPsite Follow Us Badges
 plugin URI:	http://www.wpsite.net/social-media-follow-us-badges
 Description: The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn, & Pinterest badges for instant likes, follows, and sharing of your website.
-version: 1.1.5
+version: 1.1.6
 Author: WPSITE.net
 Author URI: http://wpsite.net
 License: GPL2
@@ -31,7 +31,7 @@ if (!defined('WPSITE_FOLLOW_US_PLUGIN_URL'))
 /* Plugin verison */
 
 if (!defined('WPSITE_FOLLOW_US_VERSION_NUM'))
-    define('WPSITE_FOLLOW_US_VERSION_NUM', '1.1.5');
+    define('WPSITE_FOLLOW_US_VERSION_NUM', '1.1.6');
 
 
 /**
@@ -47,7 +47,6 @@ add_action('widgets_init', array('WPsiteFollowUs', 'wpsite_register_widget'));
 
 add_action('init', array('WPsiteFollowUs', 'load_textdoamin'));
 add_action('admin_menu', array('WPsiteFollowUs', 'add_menu_page'));
-add_action('wp_enqueue_scripts', array('WPsiteFollowUs', 'include_styles_scripts'));
 
 /**
  * AJAX
@@ -76,7 +75,7 @@ class WPsiteFollowUs extends WP_Widget {
 	private static $settings_page = 'wpsite-follow-us-badges-settings';
 
 	private static $default = array(
-		'order'		=> array('twitter', 'facebook', 'google', 'linkedin', 'pinterest'),
+		'order'		=> array('twitter', 'facebook', 'google', 'linkedin', 'pinterest'/* , 'instagram' */),
 		'twitter'	=> array(
 			'active'	=> false,
 			'user'		=> 'WPsite',
@@ -134,7 +133,21 @@ class WPsiteFollowUs extends WP_Widget {
 				'link'	=> false,
 				'name'	=> 'WPsite'
 			)
+		)/*
+,
+		'instagram'	=> array(
+			'active'	=> false,
+			'user'		=> 'http://instagram.com/instagram',
+			'args'		=> array(
+				'link'	=> false,
+				'name'	=> 'Instagram',
+				'id'	=> '25025320',
+				'count'	=> true,
+				'size'	=> 'medium',
+				'user'	=> true,
+			)
 		)
+*/
 	);
 
 	private static $twitter_supported_languages = array(
@@ -390,15 +403,14 @@ class WPsiteFollowUs extends WP_Widget {
 
 		/* CSS */
 
-		wp_register_style('wpsite_follow_us_admin_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/css/wpsite_follow_us_admin.css');
-		wp_enqueue_style('wpsite_follow_us_admin_css');
+		wp_register_style('wpsite_follow_us_settings_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/css/settings.css');
+		wp_enqueue_style('wpsite_follow_us_settings_css');
 
-		/* Javascript */
+		wp_register_style('wpsite_follow_us_tabs_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/css/tabs.css');
+		wp_enqueue_style('wpsite_follow_us_tabs_css');
 
-		/*
-wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/include/js/wpsite_follow_us_admin.js');
-		wp_enqueue_script('wpsite_follow_us_admin_js');
-*/
+		wp_register_style('wpsite_follow_us_sortables_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/css/sortables.css');
+		wp_enqueue_style('wpsite_follow_us_sortables_css');
 	}
 
 	/**
@@ -416,17 +428,15 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 			$settings = self::$default;
 		}
 
+		/*
+if (!in_array('instagram', $settings['order'])) {
+			$settings['order'][] = 'instagram';
+		}
+*/
+
 		/* Save data nd check nonce */
 
 		if (isset($_POST['submit']) && check_admin_referer('wpsite_follow_us_admin_settings')) {
-
-			$settings = get_option('wpsite_follow_us_settings');
-
-			/* Default values */
-
-			if ($settings === false) {
-				$settings = self::$default;
-			}
 
 			$settings = array(
 				'order'		=> $settings['order'],
@@ -487,7 +497,20 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 						'link' 	=> isset($_POST['wpsite_follow_us_settings_pinterest_args_link']) && $_POST['wpsite_follow_us_settings_pinterest_args_link'] ? true : false,
 						'name'	=> isset($_POST['wpsite_follow_us_settings_pinterest_args_name']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_pinterest_args_name'])) : '',
 					)
+				)/*
+,
+				'instagram'	=> array(
+					'active'	=> isset($_POST['wpsite_follow_us_settings_instagram_active']) && $_POST['wpsite_follow_us_settings_instagram_active'] ? true : false,
+					'user_id'		=> isset($_POST['wpsite_follow_us_settings_instagram_user_id']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_instagram_user_id'])) : '',
+					'args'		=> array(
+						'link'	=> isset($_POST['wpsite_follow_us_settings_instagram_args_link']) && $_POST['wpsite_follow_us_settings_instagram_args_link'] ? true : false,
+						'name'	=> isset($_POST['wpsite_follow_us_settings_instagram_args_name']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_instagram_args_name'])) : '',
+						'count'	=> isset($_POST['wpsite_follow_us_settings_instagram_args_count']) && $_POST['wpsite_follow_us_settings_instagram_args_count'] ? true : false,
+						'size'	=> $_POST['wpsite_follow_us_settings_instagram_args_size'],
+						'user'	=> isset($_POST['wpsite_follow_us_settings_instagram_args_user']) && $_POST['wpsite_follow_us_settings_instagram_args_user'] ? true : false
+					)
 				)
+*/
 			);
 
 			update_option('wpsite_follow_us_settings', $settings);
@@ -496,8 +519,8 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('jquery-ui-tabs');
 		wp_enqueue_script('jquery-ui-sortable');
-		?>
 
+		?>
 		<script type="text/javascript">
 		jQuery(document).ready(function($) {
 			$( "#tabs" ).tabs();
@@ -517,14 +540,9 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 			    }
 			});
 		});
-		</script>
+		</script><?php
 
-<?php
-// Load the WPsite Follow Us plugin
- 	require_once( 'admin/wpsite-follow-us-admin.php' );
- ?>
-
-<?php
+		require_once('admin/settings.php');
 	}
 
 	/**
@@ -542,6 +560,12 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 			$settings = self::$default;
 		}
 
+		/*
+if (!in_array('instagram', $settings['order'])) {
+			$settings['order'][] = 'instagram';
+		}
+*/
+
 		$settings['order'] = $_POST['order'];
 
 		update_option('wpsite_follow_us_settings', $settings);
@@ -558,19 +582,6 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 			__('WPsite Follow Us Badges', self::$text_domain), // Name
 			array( 'description' => __( 'Add follow buttons to your sidebar', self::$text_domain), ) // Args
 		);
-	}
-
-	/**
-	 * Hooks to 'wp_enqueue_scripts'
-	 *
-	 * @since 1.0.0
-	 */
-	static function include_styles_scripts() {
-
-		/* CSS */
-
-		wp_register_style('wpsite_follow_us_admin_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/css/wpsite_follow_us_admin.css');
-		wp_enqueue_style('wpsite_follow_us_admin_css');
 	}
 
 	/**
@@ -797,6 +808,35 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 					}
 				}
 			}
+
+			// Instagram
+
+			/*
+else if ($order == 'instagram') {
+				if (isset($settings['instagram']['active']) && $settings['instagram']['active']) {
+
+					if (isset($settings['instagram']['args']['link']) && $settings['instagram']['args']['link']) {
+						$content .= '<div class="wpsite_follow_us_div_link"><a class="instagram" href="http://instagram.com/' . $settings['instagram']['name'] . '" target="_blank">Instagram</a></div>';
+					} else {
+						$content .= '<div class="wpsite_follow_us_div instagrambox"><span class="ig-follow" data-id="' . $settings['instagram']['user_id'] . '" data-size="' . $settings['instagram']['args']['size'] . '"';
+
+						if (isset($settings['instagram']['args']['count']) && $settings['instagram']['args']['count']) {
+							$content .= 'data-count="true"';
+						} else {
+							$content .= 'data-count="false"';
+						}
+
+						if (isset($settings['instagram']['args']['user']) && $settings['instagram']['args']['user']) {
+							$content .= 'data-username="true"';
+						} else {
+							$content .= 'data-username="false"';
+						}
+
+						$content .= '></span><script>(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src="http://instagramfollowbutton.com/components/instagram/v2/js/ig-follow.js";s.parentNode.insertBefore(g,s);}(document,"script"));</script></div>';
+					}
+				}
+			}
+*/
 		}
 
 		echo $content;
@@ -805,8 +845,7 @@ wp_register_script('wpsite_follow_us_admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/
 
 		/* CSS */
 
-		wp_register_style('wpsite_follow_us_badges_widget_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/css/widget_output.css');
-		wp_enqueue_style('wpsite_follow_us_badges_widget_css');
+		wp_enqueue_style('wpsite_follow_us_badges_widget_css', plugins_url('/css/wpsite-follow-us-badges.css', __FILE__));
 	}
 
 	/**
