@@ -274,7 +274,7 @@ class WPsiteFollowUs extends WP_Widget {
 		'hu',
 		'is',
 		'id',
-		'id',
+		'it',
 		'ja',
 		'kn',
 		'ko',
