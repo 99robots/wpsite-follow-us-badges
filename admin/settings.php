@@ -15,7 +15,7 @@
 						<li><a href="#wpsite_div_google"><span class="wpsite_admin_panel_content_tabs"><?php _e('Google+',self::$text_domain); ?></span></a></li>
 						<li><a href="#wpsite_div_linkedin"><span class="wpsite_admin_panel_content_tabs"><?php _e('LinkedIn',self::$text_domain); ?></span></a></li>
 						<li><a href="#wpsite_div_pinterest"><span class="wpsite_admin_panel_content_tabs"><?php _e('Pinterest',self::$text_domain); ?></span></a></li>
-						<!-- <li><a href="#wpsite_div_instagram"><span class="wpsite_admin_panel_content_tabs"><?php _e('Instagram',self::$text_domain); ?></span></a></li> -->
+						<li><a href="#wpsite_div_youtube"><span class="wpsite_admin_panel_content_tabs"><?php _e('YouTube',self::$text_domain); ?></span></a></li>
 						<li><a href="#wpsite_div_order"><span class="wpsite_admin_panel_content_tabs"><?php _e('Order',self::$text_domain); ?></span></a></li>
 					</ul>
 
@@ -622,39 +622,32 @@
 						<p><?php _e('Reference:', self::$text_domain); ?> <a href="http://business.pinterest.com/en/widget-builder#do_follow_me_button" target="_blank"><?php _e('Pinterest Button API Details', self::$text_domain); ?></a></p>
 					</div>
 
-					<!--
-<div id="wpsite_div_instagram">
+					<div id="wpsite_div_youtube">
 
 						<h3><?php _e('General', self::$text_domain); ?></h3>
 
-						<table>
+						<table class="form-table">
 							<tbody>
 
+								<!-- Active -->
+
 								<tr>
-									<th class="wpsite_follow_us_admin_table_th">
+									<th>
 										<label><?php _e('Active', self::$text_domain); ?></label>
-										<td class="wpsite_follow_us_admin_table_td">
-											<input id="wpsite_follow_us_settings_instagram_active" name="wpsite_follow_us_settings_instagram_active" type="checkbox" <?php echo isset($settings['instagram']['active']) && $settings['instagram']['active'] ? 'checked="checked"' : ''; ?>>
+										<td>
+											<input id="wpsite_follow_us_settings_youtube_active" name="wpsite_follow_us_settings_youtube_active" type="checkbox" <?php echo isset($settings['youtube']['active']) && $settings['youtube']['active'] ? 'checked="checked"' : ''; ?>>
 										</td>
 									</th>
 								</tr>
 
-								<tr>
-									<th class="wpsite_follow_us_admin_table_th">
-										<label><?php _e('User ID', self::$text_domain); ?></label><br/>
-										<td class="wpsite_follow_us_admin_table_td">
-											<input size="30" id="wpsite_follow_us_settings_instagram_user_id" name="wpsite_follow_us_settings_instagram_user_id" type="text" value="<?php echo esc_attr($settings['instagram']['user_id']); ?>"><br/>
-											<em><?php _e('Get your id', self::$text_domain); ?></em> <a href="http://jelled.com/instagram/lookup-user-id#" target="_blank"><?php _e('here', self::$text_domain); ?></a>
-										</td>
-									</th>
-								</tr>
+								<!-- Channel ID -->
 
 								<tr>
-									<th class="wpsite_follow_us_admin_table_th">
-										<label><?php _e('Name', self::$text_domain); ?></label><br/>
-										<td class="wpsite_follow_us_admin_table_td">
-											<input size="30" id="wpsite_follow_us_settings_instagram_args_name" name="wpsite_follow_us_settings_instagram_args_name" type="url" value="<?php echo esc_attr($settings['instagram']['args']['name']); ?>"><br/>
-											<em><?php _e('http://instagram.com/', self::$text_domain); ?></em><strong><?php _e('"instagram"', self::$text_domain); ?></strong>
+									<th>
+										<label><?php _e('Channel ID', self::$text_domain); ?></label><br/>
+										<td>
+											<input size="30" id="wpsite_follow_us_settings_youtube_user" name="wpsite_follow_us_settings_youtube_user" type="text" value="<?php echo esc_attr($settings['youtube']['user']); ?>"><br/>
+											<em><?php _e('Find your ID', self::$text_domain); ?></em> <a target="_blank" href="https://www.youtube.com/account_advanced"><?php _e('here', self::$text_domain); ?></a>
 										</td>
 									</th>
 								</tr>
@@ -664,45 +657,56 @@
 
 						<h3><?php _e('Display', self::$text_domain); ?></h3>
 
-						<table>
+						<table class="form-table">
 							<tbody>
 
+								<!-- Link Only -->
+
 								<tr>
-									<th class="wpsite_follow_us_admin_table_th">
+									<th>
 										<label><?php _e('Link Only', self::$text_domain); ?></label>
-										<td class="wpsite_follow_us_admin_table_td">
-											<input id="wpsite_follow_us_settings_instagram_args_link" name="wpsite_follow_us_settings_instagram_args_link" type="checkbox" <?php echo isset($settings['instagram']['args']['link']) && $settings['instagram']['args']['link'] ? 'checked="checked"' : ''; ?>>
+										<td>
+											<input id="wpsite_follow_us_settings_youtube_args_link" name="wpsite_follow_us_settings_youtube_args_link" type="checkbox" <?php echo isset($settings['youtube']['args']['link']) && $settings['youtube']['args']['link'] ? 'checked="checked"' : ''; ?>>
 										</td>
 									</th>
 								</tr>
 
+								<!-- Layout -->
+
 								<tr>
-									<th class="wpsite_follow_us_admin_table_th">
-										<label><?php _e('Size', self::$text_domain); ?></label>
-										<td class="wpsite_follow_us_admin_table_td">
-											<select id="wpsite_follow_us_settings_instagram_args_size" name="wpsite_follow_us_settings_instagram_args_size">
-												<option value="small" <?php echo isset($settings['instagram']['args']['size']) && $settings['instagram']['args']['size'] == 'small' ? 'selected' : '' ;?>><?php _e('small', self::$text_domain); ?></option>
-												<option value="medium" <?php echo isset($settings['instagram']['args']['size']) && $settings['instagram']['args']['size'] == 'medium' ? 'selected' : '' ;?>><?php _e('medium', self::$text_domain); ?></option>
-												<option value="large" <?php echo isset($settings['instagram']['args']['size']) && $settings['instagram']['args']['size'] == 'large' ? 'selected' : '' ;?>><?php _e('large', self::$text_domain); ?></option>
+									<th>
+										<label><?php _e('Layout', self::$text_domain); ?></label>
+										<td>
+											<select id="wpsite_follow_us_settings_youtube_args_layout" name="wpsite_follow_us_settings_youtube_args_layout">
+												<option value="default" <?php echo isset($settings['youtube']['args']['layout']) && $settings['youtube']['args']['layout'] == 'default' ? 'selected' : '' ;?>><?php _e('default', self::$text_domain); ?></option>
+												<option value="full" <?php echo isset($settings['youtube']['args']['layout']) && $settings['youtube']['args']['layout'] == 'full' ? 'selected' : '' ;?>><?php _e('full', self::$text_domain); ?></option>
 											</select>
 										</td>
 									</th>
 								</tr>
 
+								<!-- Theme -->
+
 								<tr>
-									<th class="wpsite_follow_us_admin_table_th">
-										<label><?php _e('Show Count', self::$text_domain); ?></label>
-										<td class="wpsite_follow_us_admin_table_td">
-											<input id="wpsite_follow_us_settings_instagram_args_count" name="wpsite_follow_us_settings_instagram_args_count" type="checkbox" <?php echo isset($settings['instagram']['args']['count']) && $settings['instagram']['args']['count'] ? 'checked="checked"' : ''; ?>>
+									<th>
+										<label><?php _e('Theme', self::$text_domain); ?></label>
+										<td>
+											<select id="wpsite_follow_us_settings_youtube_args_theme" name="wpsite_follow_us_settings_youtube_args_theme">
+												<option value="default" <?php echo isset($settings['youtube']['args']['theme']) && $settings['youtube']['args']['theme'] == 'default' ? 'selected' : '' ;?>><?php _e('default', self::$text_domain); ?></option>
+												<option value="dark" <?php echo isset($settings['youtube']['args']['theme']) && $settings['youtube']['args']['theme'] == 'dark' ? 'selected' : '' ;?>><?php _e('dark', self::$text_domain); ?></option>
+											</select>
 										</td>
 									</th>
 								</tr>
 
+								<!-- Subscribers Count -->
+
 								<tr>
-									<th class="wpsite_follow_us_admin_table_th">
-										<label><?php _e('Show User', self::$text_domain); ?></label>
-										<td class="wpsite_follow_us_admin_table_td">
-											<input id="wpsite_follow_us_settings_instagram_args_user" name="wpsite_follow_us_settings_instagram_args_user" type="checkbox" <?php echo isset($settings['instagram']['args']['user']) && $settings['instagram']['args']['user'] ? 'checked="checked"' : ''; ?>>
+									<th>
+										<label><?php _e('Subscribers Count', self::$text_domain); ?></label>
+										<td>
+											<input id="wpsite_follow_us_settings_youtube_args_count" name="wpsite_follow_us_settings_youtube_args_count" type="checkbox" <?php echo isset($settings['youtube']['args']['count']) && $settings['youtube']['args']['count'] ? 'checked="checked"' : ''; ?>><br/>
+											<em><?php _e('Display the subcribers count.', self::$text_domain); ?></em>
 										</td>
 									</th>
 								</tr>
@@ -710,9 +714,8 @@
 							</tbody>
 						</table>
 
-						<p><?php _e('Reference:', self::$text_domain); ?> <a href="http://instafollowbutton.com" target="_blank"><?php _e('Instagram Button API Details', self::$text_domain); ?></a></p>
+						<p><?php _e('Reference:', self::$text_domain); ?> <a href="https://developers.google.com/youtube/youtube_subscribe_button" target="_blank"><?php _e('YouTube Button API Details', self::$text_domain); ?></a></p>
 					</div>
--->
 
 					<div id="wpsite_div_order">
 						<h3><?php _e('Drag & Drop to Order', self::$text_domain); ?></h3>

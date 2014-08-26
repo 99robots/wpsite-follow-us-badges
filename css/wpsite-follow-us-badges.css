@@ -8,6 +8,7 @@
 	.widget .linkedinbox {display:block;padding:5px;}
 	.widget .googlebox {display:block;padding:5px;}
 	.widget .pinterestbox {display:block;padding:5px;}
+	.widget .youtubebox {display:block;padding:5px;}
 
 .wpsite_follow_us_div .fb-like { overflow: hidden; } /* prevent text from going off page */
 .wpsite_follow_us_div iframe {margin-bottom: 0;}  /* prevent Twitter row from inconsistent spacing */
@@ -53,7 +54,7 @@
 	height: 30px;
 	position: absolute;
 	left: 10px;
-	top: 18%;
+	top: 10%;
 }
 
 .wpsite_follow_us_div_link a.twitter {
@@ -78,7 +79,7 @@
 	height: 30px;
 	position: absolute;
 	left: 10px;
-	top: 18%;
+	top: 10%;
 }
 
 .wpsite_follow_us_div_link a.facebook {
@@ -103,7 +104,7 @@
 	height: 30px;
 	position: absolute;
 	left: 10px;
-	top: 18%;
+	top: 10%;
 }
 
 .wpsite_follow_us_div_link a.google {
@@ -128,7 +129,7 @@
 	height: 30px;
 	position: absolute;
 	left: 10px;
-	top: 18%;
+	top: 10%;
 }
 
 .wpsite_follow_us_div_link a.linkedin {
@@ -153,7 +154,7 @@
 	height: 30px;
 	position: absolute;
 	left: 10px;
-	top: 18%;
+	top: 10%;
 }
 
 .wpsite_follow_us_div_link a.pinterest {
@@ -167,4 +168,30 @@
 	-webkit-box-shadow: 0px 2px 0px #8C151B;
 	-moz-box-shadow: 0px 2px 0px #8C151B;
 	box-shadow: 0px 2px 0px #8C151B;
+}
+
+/* YouTube */
+
+.wpsite_follow_us_div_link a.youtube::before{
+	background: url("../img/youtube.png") no-repeat center center;
+	background-size: cover;
+	content: "";
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 10px;
+	top: 10%;
+}
+
+.wpsite_follow_us_div_link a.youtube {
+	background:#e52d27;
+	-webkit-box-shadow: 0px 6px 0px #b31217;
+	-moz-box-shadow: 0px 6px 0px #b31217;
+	box-shadow: 0px 6px 0px #b31217;
+}
+
+.wpsite_follow_us_div_link a.youtube:active{
+	-webkit-box-shadow: 0px 2px 0px #b31217;
+	-moz-box-shadow: 0px 2px 0px #b31217;
+	box-shadow: 0px 2px 0px #b31217;
 }

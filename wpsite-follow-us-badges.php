@@ -3,7 +3,7 @@
 Plugin Name: WPsite Follow Us Badges
 plugin URI:	http://www.wpsite.net/social-media-follow-us-badges
 Description: The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn, & Pinterest badges for instant likes, follows, and sharing of your website.
-version: 1.2
+version: 1.3
 Author: WPSITE.net
 Author URI: http://wpsite.net
 License: GPL2
@@ -31,7 +31,7 @@ if (!defined('WPSITE_FOLLOW_US_PLUGIN_URL'))
 /* Plugin verison */
 
 if (!defined('WPSITE_FOLLOW_US_VERSION_NUM'))
-    define('WPSITE_FOLLOW_US_VERSION_NUM', '1.2');
+    define('WPSITE_FOLLOW_US_VERSION_NUM', '1.3');
 
 
 /**
@@ -75,7 +75,7 @@ class WPsiteFollowUs extends WP_Widget {
 	private static $settings_page = 'wpsite-follow-us-badges-settings';
 
 	private static $default = array(
-		'order'		=> array('twitter', 'facebook', 'google', 'linkedin', 'pinterest'/* , 'instagram' */),
+		'order'		=> array('twitter', 'facebook', 'google', 'linkedin', 'pinterest', 'youtube'),
 		'twitter'	=> array(
 			'active'	=> false,
 			'user'		=> 'WPsite',
@@ -133,21 +133,18 @@ class WPsiteFollowUs extends WP_Widget {
 				'link'	=> false,
 				'name'	=> 'WPsite'
 			)
-		)/*
-,
-		'instagram'	=> array(
+		),
+		'youtube'	=> array(
 			'active'	=> false,
-			'user'		=> 'http://instagram.com/instagram',
+			'user'		=> 'https://www.youtube.com/user/YouTube',
 			'args'		=> array(
-				'link'	=> false,
-				'name'	=> 'Instagram',
-				'id'	=> '25025320',
-				'count'	=> true,
-				'size'	=> 'medium',
-				'user'	=> true,
+				'link'		=> false,
+				'name'		=> 'YouTube',
+				'layout'	=> 'default',
+				'theme'		=> 'default',
+				'count'		=> true,
 			)
 		)
-*/
 	);
 
 	private static $twitter_supported_languages = array(
@@ -343,6 +340,20 @@ class WPsiteFollowUs extends WP_Widget {
 		} else {
 			add_option('wpsite_follow_us_badges_version', WPSITE_FOLLOW_US_VERSION_NUM);
 		}
+
+		$settings = get_option('wpsite_follow_us_settings');
+
+		/* Default values */
+
+		if ($settings === false) {
+			$settings = self::$default;
+		}
+
+		if (!in_array('youtube', $settings['order'])) {
+			$settings['order'][] = 'youtube';
+		}
+
+		update_option('wpsite_follow_us_settings', $settings);
 	}
 
 	/**
@@ -428,12 +439,6 @@ class WPsiteFollowUs extends WP_Widget {
 			$settings = self::$default;
 		}
 
-		/*
-if (!in_array('instagram', $settings['order'])) {
-			$settings['order'][] = 'instagram';
-		}
-*/
-
 		/* Save data nd check nonce */
 
 		if (isset($_POST['submit']) && check_admin_referer('wpsite_follow_us_admin_settings')) {
@@ -497,20 +502,17 @@ if (!in_array('instagram', $settings['order'])) {
 						'link' 	=> isset($_POST['wpsite_follow_us_settings_pinterest_args_link']) && $_POST['wpsite_follow_us_settings_pinterest_args_link'] ? true : false,
 						'name'	=> isset($_POST['wpsite_follow_us_settings_pinterest_args_name']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_pinterest_args_name'])) : '',
 					)
-				)/*
-,
-				'instagram'	=> array(
-					'active'	=> isset($_POST['wpsite_follow_us_settings_instagram_active']) && $_POST['wpsite_follow_us_settings_instagram_active'] ? true : false,
-					'user_id'		=> isset($_POST['wpsite_follow_us_settings_instagram_user_id']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_instagram_user_id'])) : '',
+				),
+				'youtube'	=> array(
+					'active'	=> isset($_POST['wpsite_follow_us_settings_youtube_active']) && $_POST['wpsite_follow_us_settings_youtube_active'] ? true : false,
+					'user'		=> isset($_POST['wpsite_follow_us_settings_youtube_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_youtube_user'])) : '',
 					'args'		=> array(
-						'link'	=> isset($_POST['wpsite_follow_us_settings_instagram_args_link']) && $_POST['wpsite_follow_us_settings_instagram_args_link'] ? true : false,
-						'name'	=> isset($_POST['wpsite_follow_us_settings_instagram_args_name']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_instagram_args_name'])) : '',
-						'count'	=> isset($_POST['wpsite_follow_us_settings_instagram_args_count']) && $_POST['wpsite_follow_us_settings_instagram_args_count'] ? true : false,
-						'size'	=> $_POST['wpsite_follow_us_settings_instagram_args_size'],
-						'user'	=> isset($_POST['wpsite_follow_us_settings_instagram_args_user']) && $_POST['wpsite_follow_us_settings_instagram_args_user'] ? true : false
+						'link' 		=> isset($_POST['wpsite_follow_us_settings_youtube_args_link']) && $_POST['wpsite_follow_us_settings_youtube_args_link'] ? true : false,
+						'layout'	=> $_POST['wpsite_follow_us_settings_youtube_args_layout'],
+						'theme'		=> $_POST['wpsite_follow_us_settings_youtube_args_theme'],
+						'count'		=> isset($_POST['wpsite_follow_us_settings_youtube_args_count']) && $_POST['wpsite_follow_us_settings_youtube_args_count'] ? true : false,
 					)
 				)
-*/
 			);
 
 			update_option('wpsite_follow_us_settings', $settings);
@@ -559,12 +561,6 @@ if (!in_array('instagram', $settings['order'])) {
 		if ($settings === false) {
 			$settings = self::$default;
 		}
-
-		/*
-if (!in_array('instagram', $settings['order'])) {
-			$settings['order'][] = 'instagram';
-		}
-*/
 
 		$settings['order'] = $_POST['order'];
 
@@ -809,34 +805,32 @@ if (!in_array('instagram', $settings['order'])) {
 				}
 			}
 
-			// Instagram
+			// YouTube
 
-			/*
-else if ($order == 'instagram') {
-				if (isset($settings['instagram']['active']) && $settings['instagram']['active']) {
+			else if ($order == 'youtube') {
+				if (isset($settings['youtube']['active']) && $settings['youtube']['active']) {
 
-					if (isset($settings['instagram']['args']['link']) && $settings['instagram']['args']['link']) {
-						$content .= '<div class="wpsite_follow_us_div_link"><a class="instagram" href="http://instagram.com/' . $settings['instagram']['name'] . '" target="_blank">Instagram</a></div>';
+					if (isset($settings['youtube']['args']['link']) && $settings['youtube']['args']['link']) {
+						$content .= '<div class="wpsite_follow_us_div_link"><a class="youtube" href="https://www.youtube.com/channel/' . $settings['youtube']['user'] . '" target="_blank">YouTube</a></div>';
 					} else {
-						$content .= '<div class="wpsite_follow_us_div instagrambox"><span class="ig-follow" data-id="' . $settings['instagram']['user_id'] . '" data-size="' . $settings['instagram']['args']['size'] . '"';
+						$content .= '<div class="wpsite_follow_us_div youtubebox"><div class="g-ytsubscribe" data-channelid="'. $settings['youtube']['user'] . '"';
 
-						if (isset($settings['instagram']['args']['count']) && $settings['instagram']['args']['count']) {
-							$content .= 'data-count="true"';
-						} else {
-							$content .= 'data-count="false"';
+						if (isset($settings['youtube']['args']['layout'])) {
+							$content .= ' data-layout="' . $settings['youtube']['args']['layout'] .'"';
 						}
 
-						if (isset($settings['instagram']['args']['user']) && $settings['instagram']['args']['user']) {
-							$content .= 'data-username="true"';
-						} else {
-							$content .= 'data-username="false"';
+						if (isset($settings['youtube']['args']['theme'])) {
+							$content .= ' data-theme="' . $settings['youtube']['args']['theme'] .'"';
 						}
 
-						$content .= '></span><script>(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.src="http://instagramfollowbutton.com/components/instagram/v2/js/ig-follow.js";s.parentNode.insertBefore(g,s);}(document,"script"));</script></div>';
+						if (isset($settings['youtube']['args']['count'])) {
+							$content .= ' data-count="' . $settings['youtube']['args']['count'] .'"';
+						}
+
+						$content .= '></div><script src="https://apis.google.com/js/platform.js"></script></div>';
 					}
 				}
 			}
-*/
 		}
 
 		echo $content;
