@@ -1,10 +1,10 @@
 === WPsite Follow Us Badges ===
 Contributors: wpsitenet, kjbenk, charliepatel
 Donate link:
-Tags: share badge, badges, follow us, follow me, Facebook, Facebook Box, facebook like, Facebook Widget, Facebook badge, google plus, google+, google box, google widget, social box, social media badge, follow badge, twitter, twitter widget, twitter badge, twitter follow, chiclets, social media buttons, twitter button, twitter badge, facebook button, google plus button, linkedin, linkedin box, linkedin share, box count, badge count, social icons, share icons, youtube, youtube box, youtube widget, youtube share
+Tags: share badge, badges, follow us, follow me, Facebook, Facebook Box, facebook like, Facebook Widget, Facebook badge, google plus, google+, google box, google widget, social box, social media badge, follow badge, twitter, twitter widget, twitter badge, twitter follow, chiclets, social media buttons, twitter button, twitter badge, facebook button, google plus button, linkedin, linkedin box, linkedin share, box count, badge count, social icons, share icons, youtube, youtube box, youtube widget, youtube share, tumblr, tumblr button, tumblr share, tumblr widget, tumblr box
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,6 +39,9 @@ Showcase your website to Pinterest.
 
 = YouTube =
 Showcase your website to YouTube - the world's largest media network.
+
+= Tumblr =
+Showcase your website to Tumblr.
 
 = Custom Styles or Templates =
 We'll be adding the ability to customize the look of your Follow Us Badges so stay tuned for such enhancements.
@@ -78,6 +81,9 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 
 
 == Changelog ==
+
+= 1.4 =
+* Added support for Youtube
 
 = 1.3 =
 * Added support for Youtube

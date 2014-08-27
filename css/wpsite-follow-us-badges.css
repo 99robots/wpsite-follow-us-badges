@@ -9,6 +9,7 @@
 	.widget .googlebox {display:block;padding:5px;}
 	.widget .pinterestbox {display:block;padding:5px;}
 	.widget .youtubebox {display:block;padding:5px;}
+	.widget .tumblrbox {display:block;padding:5px;border: none !important;}
 
 .wpsite_follow_us_div .fb-like { overflow: hidden; } /* prevent text from going off page */
 .wpsite_follow_us_div iframe {margin-bottom: 0;}  /* prevent Twitter row from inconsistent spacing */
@@ -194,4 +195,30 @@
 	-webkit-box-shadow: 0px 2px 0px #b31217;
 	-moz-box-shadow: 0px 2px 0px #b31217;
 	box-shadow: 0px 2px 0px #b31217;
+}
+
+/* Tumblr */
+
+.wpsite_follow_us_div_link a.tumblr::before{
+	background: url("../img/tumblr.png") no-repeat center center;
+	background-size: cover;
+	content: "";
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 10px;
+	top: 10%;
+}
+
+.wpsite_follow_us_div_link a.tumblr {
+	background:#2c4762;
+	-webkit-box-shadow: 0px 6px 0px #18324c;
+	-moz-box-shadow: 0px 6px 0px #18324c;
+	box-shadow: 0px 6px 0px #18324c;
+}
+
+.wpsite_follow_us_div_link a.tumblr:active{
+	-webkit-box-shadow: 0px 2px 0px #18324c;
+	-moz-box-shadow: 0px 2px 0px #18324c;
+	box-shadow: 0px 2px 0px #18324c;
 }

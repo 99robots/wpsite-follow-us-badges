@@ -16,6 +16,7 @@
 						<li><a href="#wpsite_div_linkedin"><span class="wpsite_admin_panel_content_tabs"><?php _e('LinkedIn',self::$text_domain); ?></span></a></li>
 						<li><a href="#wpsite_div_pinterest"><span class="wpsite_admin_panel_content_tabs"><?php _e('Pinterest',self::$text_domain); ?></span></a></li>
 						<li><a href="#wpsite_div_youtube"><span class="wpsite_admin_panel_content_tabs"><?php _e('YouTube',self::$text_domain); ?></span></a></li>
+						<li><a href="#wpsite_div_tumblr"><span class="wpsite_admin_panel_content_tabs"><?php _e('Tumblr',self::$text_domain); ?></span></a></li>
 						<li><a href="#wpsite_div_order"><span class="wpsite_admin_panel_content_tabs"><?php _e('Order',self::$text_domain); ?></span></a></li>
 					</ul>
 
@@ -715,6 +716,91 @@
 						</table>
 
 						<p><?php _e('Reference:', self::$text_domain); ?> <a href="https://developers.google.com/youtube/youtube_subscribe_button" target="_blank"><?php _e('YouTube Button API Details', self::$text_domain); ?></a></p>
+					</div>
+
+					<div id="wpsite_div_tumblr">
+
+						<h3><?php _e('General', self::$text_domain); ?></h3>
+
+						<table class="form-table">
+							<tbody>
+
+								<!-- Active -->
+
+								<tr>
+									<th>
+										<label><?php _e('Active', self::$text_domain); ?></label>
+										<td>
+											<input id="wpsite_follow_us_settings_tumblr_active" name="wpsite_follow_us_settings_tumblr_active" type="checkbox" <?php echo isset($settings['tumblr']['active']) && $settings['tumblr']['active'] ? 'checked="checked"' : ''; ?>>
+										</td>
+									</th>
+								</tr>
+
+								<!-- Channel ID -->
+
+								<tr>
+									<th>
+										<label><?php _e('User Name', self::$text_domain); ?></label><br/>
+										<td>
+											<input size="30" id="wpsite_follow_us_settings_tumblr_user" name="wpsite_follow_us_settings_tumblr_user" type="text" value="<?php echo esc_attr($settings['tumblr']['user']); ?>"><br/>
+											<em><?php _e('http://', self::$text_domain); ?></em><strong><?php _e('staff', self::$text_domain); ?></strong><em><?php _e('.tumblr.com', self::$text_domain); ?></em>
+										</td>
+									</th>
+								</tr>
+
+							</tbody>
+						</table>
+
+						<h3><?php _e('Display', self::$text_domain); ?></h3>
+
+						<table class="form-table">
+							<tbody>
+
+								<!-- Link Only -->
+
+								<tr>
+									<th>
+										<label><?php _e('Link Only', self::$text_domain); ?></label>
+										<td>
+											<input id="wpsite_follow_us_settings_tumblr_args_link" name="wpsite_follow_us_settings_tumblr_args_link" type="checkbox" <?php echo isset($settings['tumblr']['args']['link']) && $settings['tumblr']['args']['link'] ? 'checked="checked"' : ''; ?>>
+										</td>
+									</th>
+								</tr>
+
+								<!-- Color -->
+
+								<tr>
+									<th>
+										<label><?php _e('Color', self::$text_domain); ?></label>
+										<td>
+											<select id="wpsite_follow_us_settings_tumblr_args_color" name="wpsite_follow_us_settings_tumblr_args_color">
+												<option value="dark" <?php echo isset($settings['tumblr']['args']['color']) && $settings['tumblr']['args']['color'] == 'dark' ? 'selected' : '' ;?>><?php _e('dark', self::$text_domain); ?></option>
+												<option value="light" <?php echo isset($settings['tumblr']['args']['color']) && $settings['tumblr']['args']['color'] == 'light' ? 'selected' : '' ;?>><?php _e('light', self::$text_domain); ?></option>
+											</select>
+										</td>
+									</th>
+								</tr>
+
+								<!-- Button -->
+
+								<tr>
+									<th>
+										<label><?php _e('Button', self::$text_domain); ?></label>
+										<td>
+											<select id="wpsite_follow_us_settings_tumblr_args_button" name="wpsite_follow_us_settings_tumblr_args_button">
+												<option value="1" <?php echo isset($settings['tumblr']['args']['button']) && $settings['tumblr']['args']['button'] == '1' ? 'selected' : '' ;?>><?php _e('1', self::$text_domain); ?></option>
+												<option value="2" <?php echo isset($settings['tumblr']['args']['button']) && $settings['tumblr']['args']['button'] == '2' ? 'selected' : '' ;?>><?php _e('2', self::$text_domain); ?></option>
+												<option value="3" <?php echo isset($settings['tumblr']['args']['button']) && $settings['tumblr']['args']['button'] == '3' ? 'selected' : '' ;?>><?php _e('3', self::$text_domain); ?></option>
+											</select>
+										</td>
+									</th>
+								</tr>
+
+							</tbody>
+						</table>
+
+						<p><?php _e('Reference:', self::$text_domain); ?> <a href="https://www.tumblr.com/buttons" target="_blank"><?php _e('Tumblr Button API Details', self::$text_domain); ?></a></p>
+
 					</div>
 
 					<div id="wpsite_div_order">

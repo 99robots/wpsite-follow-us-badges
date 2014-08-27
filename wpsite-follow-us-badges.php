@@ -2,8 +2,8 @@
 /*
 Plugin Name: WPsite Follow Us Badges
 plugin URI:	http://www.wpsite.net/social-media-follow-us-badges
-Description: The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn, & Pinterest badges for instant likes, follows, and sharing of your website.
-version: 1.3
+Description: The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn, Pinterest, YouTube & Tumblr badges for instant likes, follows, and sharing of your website.
+version: 1.4
 Author: WPSITE.net
 Author URI: http://wpsite.net
 License: GPL2
@@ -31,7 +31,7 @@ if (!defined('WPSITE_FOLLOW_US_PLUGIN_URL'))
 /* Plugin verison */
 
 if (!defined('WPSITE_FOLLOW_US_VERSION_NUM'))
-    define('WPSITE_FOLLOW_US_VERSION_NUM', '1.3');
+    define('WPSITE_FOLLOW_US_VERSION_NUM', '1.4');
 
 
 /**
@@ -75,7 +75,7 @@ class WPsiteFollowUs extends WP_Widget {
 	private static $settings_page = 'wpsite-follow-us-badges-settings';
 
 	private static $default = array(
-		'order'		=> array('twitter', 'facebook', 'google', 'linkedin', 'pinterest', 'youtube'),
+		'order'		=> array('twitter', 'facebook', 'google', 'linkedin', 'pinterest', 'youtube', 'tumblr'),
 		'twitter'	=> array(
 			'active'	=> false,
 			'user'		=> 'WPsite',
@@ -139,10 +139,18 @@ class WPsiteFollowUs extends WP_Widget {
 			'user'		=> 'UCF0pVplsI8R5kcAqgtoRqoA',
 			'args'		=> array(
 				'link'		=> false,
-				'name'		=> 'YouTube',
 				'layout'	=> 'default',
 				'theme'		=> 'default',
 				'count'		=> true,
+			)
+		),
+		'tumblr'	=> array(
+			'active'	=> false,
+			'user'		=> 'staff',
+			'args'		=> array(
+				'link'		=> false,
+				'color'		=> 'dark',
+				'button'	=> '2',
 			)
 		)
 	);
@@ -349,8 +357,16 @@ class WPsiteFollowUs extends WP_Widget {
 			$settings = self::$default;
 		}
 
+		// Add youtube after 1.2.1
+
 		if (!in_array('youtube', $settings['order'])) {
 			$settings['order'][] = 'youtube';
+		}
+
+		// Add tumblr after 1.3
+
+		if (!in_array('tumblr', $settings['order'])) {
+			$settings['order'][] = 'tumblr';
 		}
 
 		update_option('wpsite_follow_us_settings', $settings);
@@ -511,6 +527,15 @@ class WPsiteFollowUs extends WP_Widget {
 						'layout'	=> $_POST['wpsite_follow_us_settings_youtube_args_layout'],
 						'theme'		=> $_POST['wpsite_follow_us_settings_youtube_args_theme'],
 						'count'		=> isset($_POST['wpsite_follow_us_settings_youtube_args_count']) && $_POST['wpsite_follow_us_settings_youtube_args_count'] ? true : false,
+					)
+				),
+				'tumblr'	=> array(
+					'active'	=> isset($_POST['wpsite_follow_us_settings_tumblr_active']) && $_POST['wpsite_follow_us_settings_tumblr_active'] ? true : false,
+					'user'		=> isset($_POST['wpsite_follow_us_settings_tumblr_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_tumblr_user'])) : '',
+					'args'		=> array(
+						'link' 		=> isset($_POST['wpsite_follow_us_settings_tumblr_args_link']) && $_POST['wpsite_follow_us_settings_tumblr_args_link'] ? true : false,
+						'color'		=> $_POST['wpsite_follow_us_settings_tumblr_args_color'],
+						'button'	=> $_POST['wpsite_follow_us_settings_tumblr_args_button'],
 					)
 				)
 			);
@@ -828,6 +853,33 @@ class WPsiteFollowUs extends WP_Widget {
 						}
 
 						$content .= '></div><script src="https://apis.google.com/js/platform.js"></script></div>';
+					}
+				}
+			}
+
+			// Tumblr
+
+			else if ($order == 'tumblr') {
+				if (isset($settings['tumblr']['active']) && $settings['tumblr']['active']) {
+
+					if (isset($settings['tumblr']['args']['link']) && $settings['tumblr']['args']['link']) {
+						$content .= '<div class="wpsite_follow_us_div_link"><a class="tumblr" href="http://' . $settings['tumblr']['user'] . '.tumblr.com" target="_blank">tumblr</a></div>';
+					} else {
+						$content .= '<iframe class="btn wpsite_follow_us_div tumblrbox" height="25" width="117" frameborder="0" border="0" scrolling="no" allowtransparency="true" src="http://platform.tumblr.com/v1/follow_button.html?';
+
+						if (isset($settings['tumblr']['args']['button'])) {
+							$content .= 'button_type=' . $settings['tumblr']['args']['button'];
+						}
+
+						if (isset($settings['tumblr']['user'])) {
+							$content .= '&tumblelog=' . $settings['tumblr']['user'];
+						}
+
+						if (isset($settings['tumblr']['args']['color'])) {
+							$content .= '&color_scheme=' . $settings['tumblr']['args']['color'];
+						}
+
+						$content .= '"></iframe>';
 					}
 				}
 			}
