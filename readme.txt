@@ -1,14 +1,14 @@
 === WPsite Follow Us Badges ===
 Contributors: wpsitenet, kjbenk, charliepatel
 Donate link:
-Tags: share badge, badges, follow us, follow me, Facebook, Facebook Box, facebook like, Facebook Widget, Facebook badge, google plus, google+, google box, google widget, social box, social media badge, follow badge, twitter, twitter widget, twitter badge, twitter follow, chiclets, social media buttons, twitter button, twitter badge, facebook button, google plus button, linkedin, linkedin box, linkedin share, box count, badge count, social icons, share icons
+Tags: share badge, badges, follow us, follow me, Facebook, Facebook Box, facebook like, Facebook Widget, Facebook badge, google plus, google+, google box, google widget, social box, social media badge, follow badge, twitter, twitter widget, twitter badge, twitter follow, chiclets, social media buttons, twitter button, twitter badge, facebook button, google plus button, linkedin, linkedin box, linkedin share, box count, badge count, social icons, share icons, youtube, youtube box, youtube widget, youtube share
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.2.1
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn, & Pinterest badges for instant likes, follows, and sharing of your website.
+The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn, Pinterest & YouTube badges for instant likes, follows, and sharing of your website.
 
 == Description ==
 
@@ -32,10 +32,13 @@ Increase the number of followers you have on Twitter, and start sharing content.
 Sharing content on Google+ is important. Increase your domain authority by allowing visitors to +1 your site.
 
 = LinkedIn =
-Showcase your website to LinkedIn - the the world's largest professional network.
+Showcase your website to LinkedIn - the world's largest professional network.
 
 = Pinterest =
-Showcase your website to LinkedIn - the the world's largest professional network.
+Showcase your website to Pinterest.
+
+= YouTube =
+Showcase your website to YouTube - the world's largest media network.
 
 = Custom Styles or Templates =
 We'll be adding the ability to customize the look of your Follow Us Badges so stay tuned for such enhancements.
@@ -75,6 +78,9 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 
 
 == Changelog ==
+
+= 1.3 =
+* Added support for Youtube
 
 = 1.2.1 =
 * Minor Bug Fixes

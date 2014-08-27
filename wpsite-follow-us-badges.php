@@ -136,7 +136,7 @@ class WPsiteFollowUs extends WP_Widget {
 		),
 		'youtube'	=> array(
 			'active'	=> false,
-			'user'		=> 'https://www.youtube.com/user/YouTube',
+			'user'		=> 'UCF0pVplsI8R5kcAqgtoRqoA',
 			'args'		=> array(
 				'link'		=> false,
 				'name'		=> 'YouTube',
