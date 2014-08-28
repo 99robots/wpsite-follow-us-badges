@@ -8,7 +8,7 @@ Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn, Pinterest & YouTube badges for instant likes, follows, and sharing of your website.
+The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn and other social media badges.
 
 == Description ==
 
@@ -83,7 +83,7 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 == Changelog ==
 
 = 1.4 =
-* Added support for Youtube
+* Added support for tumblr
 
 = 1.3 =
 * Added support for Youtube

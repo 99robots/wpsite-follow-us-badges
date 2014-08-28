@@ -2,7 +2,7 @@
 /*
 Plugin Name: WPsite Follow Us Badges
 plugin URI:	http://www.wpsite.net/social-media-follow-us-badges
-Description: The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn, Pinterest, YouTube & Tumblr badges for instant likes, follows, and sharing of your website.
+Description: The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn and other social media badges.
 version: 1.4
 Author: WPSITE.net
 Author URI: http://wpsite.net
