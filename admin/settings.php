@@ -1,4 +1,4 @@
-<?php require_once('plugin-header.php'); ?>
+<?php require_once('header.php'); ?>
 
 	<div id="wpsite_plugin_content">
 
@@ -838,7 +838,7 @@
 
 		</div>  <!-- /wpsite_plugin_settings -->
 
-	<?php require_once('plugin-sidebar.php'); ?>
+	<?php require_once('sidebar.php'); ?>
 
 	</div> <!-- /wpsite_plugin_content -->
-<?php require_once('plugin-footer.php'); ?>
+<?php require_once('footer.php'); ?>

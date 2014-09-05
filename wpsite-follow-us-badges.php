@@ -552,6 +552,7 @@ class WPsiteFollowUs extends WP_Widget {
 		jQuery(document).ready(function($) {
 			$( "#tabs" ).tabs();
 
+			// Order
 
 			$("#sortable").sortable({
 				revert: true,
@@ -566,6 +567,106 @@ class WPsiteFollowUs extends WP_Widget {
 			        $.post(ajaxurl, data, function(response) {});
 			    }
 			});
+
+			$("#wpsite_follow_us_settings_twitter_active").change(function(){
+
+				$("#twitter").hide();
+
+				if ($(this).is(":checked")) {
+					$("#twitter").show();
+				}
+			});
+
+			$("#wpsite_follow_us_settings_facebook_active").change(function(){
+
+				$("#facebook").hide();
+
+				if ($(this).is(":checked")) {
+					$("#facebook").show();
+				}
+			});
+
+			$("#wpsite_follow_us_settings_google_active").change(function(){
+
+				$("#google").hide();
+
+				if ($(this).is(":checked")) {
+					$("#google").show();
+				}
+			});
+
+			$("#wpsite_follow_us_settings_linkedin_active").change(function(){
+
+				$("#linkedin").hide();
+
+				if ($(this).is(":checked")) {
+					$("#linkedin").show();
+				}
+			});
+
+			$("#wpsite_follow_us_settings_pinterest_active").change(function(){
+
+				$("#pinterest").hide();
+
+				if ($(this).is(":checked")) {
+					$("#pinterest").show();
+				}
+			});
+
+			$("#wpsite_follow_us_settings_youtube_active").change(function(){
+
+				$("#youtube").hide();
+
+				if ($(this).is(":checked")) {
+					$("#youtube").show();
+				}
+			});
+
+			$("#wpsite_follow_us_settings_tumblr_active").change(function(){
+
+				$("#tumblr").hide();
+
+				if ($(this).is(":checked")) {
+					$("#tumblr").show();
+				}
+			});
+
+			$("#twitter").hide();
+			$("#facebook").hide();
+			$("#google").hide();
+			$("#linkedin").hide();
+			$("#pinterest").hide();
+			$("#youtube").hide();
+			$("#tumblr").hide();
+
+			if ($("#wpsite_follow_us_settings_twitter_active").is(":checked")) {
+				$("#twitter").show();
+			}
+
+			if ($("#wpsite_follow_us_settings_facebook_active").is(":checked")) {
+				$("#facebook").show();
+			}
+
+			if ($("#wpsite_follow_us_settings_google_active").is(":checked")) {
+				$("#google").show();
+			}
+
+			if ($("#wpsite_follow_us_settings_linkedin_active").is(":checked")) {
+				$("#linkedin").show();
+			}
+
+			if ($("#wpsite_follow_us_settings_pinterest_active").is(":checked")) {
+				$("#pinterest").show();
+			}
+
+			if ($("#wpsite_follow_us_settings_youtube_active").is(":checked")) {
+				$("#youtube").show();
+			}
+
+			if ($("#wpsite_follow_us_settings_tumblr_active").is(":checked")) {
+				$("#tumblr").show();
+			}
+
 		});
 		</script><?php
 
