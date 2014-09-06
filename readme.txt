@@ -8,7 +8,7 @@ Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn and other social media badges.
+The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn. YouTube, Tumblr and other social media badges.
 
 == Description ==
 
@@ -57,20 +57,20 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 
 = From WordPress Dashboard =
 
-# Navigate to 'Plugins -> Add New' from your WordPress dashboard.
-# Search for `WPsite Follow Us Badges` and install it.
-# Activate the plugin from Plugins menu.
-# Configure the plugin's settings  (see instructions for shortcode and php template tags)
-# Add any widget to your widget zone from Appearance -> Widgets and configure the widget options.
+1. Navigate to 'Plugins -> Add New' from your WordPress dashboard.
+2. Search for `WPsite Follow Us Badges` and install it.
+3. Activate the plugin from Plugins menu.
+4. Configure the plugin's settings  (see instructions for shortcode and php template tags)
+5. Add any widget to your widget zone from Appearance -> Widgets and configure the widget options.
 
 = Manual Installation =
 
-# Download the plugin file: `wpsite-follow-us-badges.zip`
-# Unzip the file
-# Upload the`wpsite-follow-us-badges` folder to your `/wp-content/plugins` directory (do not rename the folder)
-# Activate the plugin from Plugins menu.
-# Configure the plugin's settings  (see instructions for shortcode and php template tags)
-# Add any widget to your widget zone from 'Appearance -> Widgets' and configure the widget options.
+1. Download the plugin file: `wpsite-follow-us-badges.zip`
+2. Unzip the file
+3. Upload the`wpsite-follow-us-badges` folder to your `/wp-content/plugins` directory (do not rename the folder)
+4. Activate the plugin from Plugins menu.
+5. Configure the plugin's settings  (see instructions for shortcode and php template tags)
+6. Add any widget to your widget zone from 'Appearance -> Widgets' and configure the widget options.
 
 
 == Screenshots ==
