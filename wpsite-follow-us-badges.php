@@ -3,7 +3,7 @@
 Plugin Name: WPsite Follow Us Badges
 plugin URI:	http://www.wpsite.net/social-media-follow-us-badges
 Description: The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn and other social media badges.
-version: 1.4.3
+version: 1.4.4
 Author: WPSITE.net
 Author URI: http://wpsite.net
 License: GPL2
@@ -31,7 +31,7 @@ if (!defined('WPSITE_FOLLOW_US_PLUGIN_URL'))
 /* Plugin verison */
 
 if (!defined('WPSITE_FOLLOW_US_VERSION_NUM'))
-    define('WPSITE_FOLLOW_US_VERSION_NUM', '1.4.3');
+    define('WPSITE_FOLLOW_US_VERSION_NUM', '1.4.4');
 
 
 /**
@@ -66,14 +66,46 @@ add_filter("plugin_action_links_$plugin", array('WPsiteFollowUs', 'wpsite_follow
 
 class WPsiteFollowUs extends WP_Widget {
 
-	/* Properties */
-
+	/**
+	 * text_domain
+	 *
+	 * (default value: 'wpsite-follow-us-badges')
+	 *
+	 * @var string
+	 * @access private
+	 * @static
+	 */
 	private static $text_domain = 'wpsite-follow-us-badges';
 
+	/**
+	 * prefix
+	 *
+	 * (default value: 'wpsite_follow_us_')
+	 *
+	 * @var string
+	 * @access private
+	 * @static
+	 */
 	private static $prefix = 'wpsite_follow_us_';
 
+	/**
+	 * settings_page
+	 *
+	 * (default value: 'wpsite-follow-us-badges-settings')
+	 *
+	 * @var string
+	 * @access private
+	 * @static
+	 */
 	private static $settings_page = 'wpsite-follow-us-badges-settings';
 
+	/**
+	 * default
+	 *
+	 * @var mixed
+	 * @access private
+	 * @static
+	 */
 	private static $default = array(
 		'order'		=> array('twitter', 'facebook', 'google', 'linkedin', 'pinterest', 'youtube', 'tumblr'),
 		'twitter'	=> array(
@@ -155,6 +187,13 @@ class WPsiteFollowUs extends WP_Widget {
 		)
 	);
 
+	/**
+	 * twitter_supported_languages
+	 *
+	 * @var mixed
+	 * @access private
+	 * @static
+	 */
 	private static $twitter_supported_languages = array(
 		'en',
 		'fr',
@@ -165,6 +204,13 @@ class WPsiteFollowUs extends WP_Widget {
 		'ja'
 	);
 
+	/**
+	 * facebook_supported_languages
+	 *
+	 * @var mixed
+	 * @access private
+	 * @static
+	 */
 	private static $facebook_supported_languages = array(
 		'af_ZA',
 		'ar_AR',
@@ -248,6 +294,13 @@ class WPsiteFollowUs extends WP_Widget {
 		'zh_TW'
 	);
 
+	/**
+	 * google_supported_languages
+	 *
+	 * @var mixed
+	 * @access private
+	 * @static
+	 */
 	private static $google_supported_languages = array(
 		'af',
 		'am',
@@ -312,6 +365,13 @@ class WPsiteFollowUs extends WP_Widget {
 		'zu'
 	);
 
+	/**
+	 * linkedin_supported_languages
+	 *
+	 * @var mixed
+	 * @access private
+	 * @static
+	 */
 	private static $linkedin_supported_languages = array(
 		'en_US',
 		'fr_FR',
