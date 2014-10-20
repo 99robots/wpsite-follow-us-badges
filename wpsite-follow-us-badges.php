@@ -3,7 +3,7 @@
 Plugin Name: WPsite Follow Us Badges
 plugin URI:	http://www.wpsite.net/social-media-follow-us-badges
 Description: The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn and other social media badges.
-version: 1.4.5
+version: 1.5
 Author: WPSITE.net
 Author URI: http://wpsite.net
 License: GPL2
@@ -31,7 +31,7 @@ if (!defined('WPSITE_FOLLOW_US_PLUGIN_URL'))
 /* Plugin verison */
 
 if (!defined('WPSITE_FOLLOW_US_VERSION_NUM'))
-    define('WPSITE_FOLLOW_US_VERSION_NUM', '1.4.5');
+    define('WPSITE_FOLLOW_US_VERSION_NUM', '1.5');
 
 
 /**
@@ -126,6 +126,7 @@ class WPsiteFollowUs extends WP_Widget {
 			'active'	=> false,
 			'user'		=> 'WPsite',
 			'args'		=> array(
+				'type'					=> 'like',
 				'link'					=> false,
 				'width'					=> '',
 				'language'				=> 'en_US',
@@ -539,6 +540,7 @@ class WPsiteFollowUs extends WP_Widget {
 					'active'	=> isset($_POST['wpsite_follow_us_settings_facebook_active']) && $_POST['wpsite_follow_us_settings_facebook_active'] ? true : false,
 					'user'		=> isset($_POST['wpsite_follow_us_settings_facebook_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_facebook_user'])) : '',
 					'args'		=> array(
+						'type'					=> $_POST['wpsite_follow_us_settings_facebook_args_type'],
 						'link' 	=> isset($_POST['wpsite_follow_us_settings_facebook_args_link']) && $_POST['wpsite_follow_us_settings_facebook_args_link'] ? true : false,
 						'width'					=> isset($_POST['wpsite_follow_us_settings_facebook_args_width']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_facebook_args_width'])) : '',
 						'layout'				=> $_POST['wpsite_follow_us_settings_facebook_args_layout'],
@@ -727,6 +729,36 @@ class WPsiteFollowUs extends WP_Widget {
 				$("#tumblr").show();
 			}
 
+			// LinkedIn User Type
+
+			$(".wpsite_follow_us_settings_linkedin_args_user_type").hide();
+
+			if ($('#wpsite_follow_us_settings_linkedin_args_link').is(':checked')) {
+				$(".wpsite_follow_us_settings_linkedin_args_user_type_" + $('#wpsite_follow_us_settings_linkedin_args_type').val()).show();
+			} else {
+				$(".wpsite_follow_us_settings_linkedin_args_user_type_company").show();
+			}
+
+			$('#wpsite_follow_us_settings_linkedin_args_type').change(function() {
+				$(".wpsite_follow_us_settings_linkedin_args_user_type").hide();
+
+				if ($('#wpsite_follow_us_settings_linkedin_args_link').is(':checked')) {
+					$(".wpsite_follow_us_settings_linkedin_args_user_type_" + $(this).val()).show();
+				} else {
+					$(".wpsite_follow_us_settings_linkedin_args_user_type_company").show();
+				}
+			});
+
+			$('#wpsite_follow_us_settings_linkedin_args_link').change(function(){
+				$(".wpsite_follow_us_settings_linkedin_args_user_type").hide();
+
+				if ($(this).is(':checked')) {
+					$(".wpsite_follow_us_settings_linkedin_args_user_type_" + $('#wpsite_follow_us_settings_linkedin_args_type').val()).show();
+				} else {
+					$(".wpsite_follow_us_settings_linkedin_args_user_type_company").show();
+				}
+			});
+
 		});
 		</script><?php
 
@@ -855,12 +887,18 @@ class WPsiteFollowUs extends WP_Widget {
 					if (isset($settings['facebook']['args']['link']) && $settings['facebook']['args']['link']) {
 						$content .= '<div class="wpsite_follow_us_div_link"><a class="facebook" href="https://facebook.com/' . $settings['facebook']['user'] . '" target="_blank">Facebook</a></div>';
 					} else {
-						$content .= '<div class="wpsite_follow_us_div facebookbox"><div class="fb-like" data-href="https://facebook.com/' . $settings['facebook']['user'] . '"';
+						$content .= '<div class="wpsite_follow_us_div facebookbox"><div class="fb-' . $settings['facebook']['args']['type'] . '" data-href="https://facebook.com/' . $settings['facebook']['user'] . '"';
 
-						if (isset($settings['facebook']['args']['include_share_button']) && $settings['facebook']['args']['include_share_button']) {
-							$content .= ' data-share="true"';
-						} else {
-							$content .= ' data-share="false"';
+						if ($settings['facebook']['args']['type'] == 'like') {
+							if (isset($settings['facebook']['args']['include_share_button']) && $settings['facebook']['args']['include_share_button']) {
+								$content .= ' data-share="true"';
+							} else {
+								$content .= ' data-share="false"';
+							}
+
+							if (isset($settings['facebook']['args']['action_type'])) {
+								$content .= ' data-action="' . $settings['facebook']['args']['action_type'] .'"';
+							}
 						}
 
 						if (isset($settings['facebook']['args']['show_friends_faces']) && $settings['facebook']['args']['show_friends_faces']) {
@@ -871,10 +909,6 @@ class WPsiteFollowUs extends WP_Widget {
 
 						if (isset($settings['facebook']['args']['layout'])) {
 							$content .= ' data-layout="' . $settings['facebook']['args']['layout'] .'"';
-						}
-
-						if (isset($settings['facebook']['args']['action_type'])) {
-							$content .= ' data-action="' . $settings['facebook']['args']['action_type'] .'"';
 						}
 
 						if (isset($settings['facebook']['args']['colorscheme'])) {
@@ -947,10 +981,14 @@ class WPsiteFollowUs extends WP_Widget {
 
 					if (isset($settings['linkedin']['args']['link']) && $settings['linkedin']['args']['link']) {
 
-						if (isset($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'company') {
-							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/company/' . $settings['linkedin']['user'] . '" target="_blank">LinkedIn</a></div>';
-						}else {
+						if (isset($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'person') {
 							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/profile/view?id=' . $settings['linkedin']['user'] . '" target="_blank">LinkedIn</a></div>';
+						} else if (isset($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'company') {
+							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/company/' . $settings['linkedin']['user'] . '" target="_blank">LinkedIn</a></div>';
+						} else if (isset($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'group') {
+							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/groups?gid=' . $settings['linkedin']['user'] . '" target="_blank">LinkedIn</a></div>';
+						} else if (isset($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'university') {
+							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/edu/school?id=' . $settings['linkedin']['user'] . '" target="_blank">LinkedIn</a></div>';
 						}
 
 					} else {
