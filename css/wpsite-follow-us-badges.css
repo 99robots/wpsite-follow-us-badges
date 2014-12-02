@@ -20,11 +20,12 @@
 }
 
 .wpsite_follow_us_div_inline {
-	display: inline-block;
+	display: inline-block !important;
 	width: auto;
 	padding: 10px;
 	margin: 0 auto;
 	max-width: 200px;
+	max-height: 47px;
 }
 
 .wpsite_follow_us_div_link a {
