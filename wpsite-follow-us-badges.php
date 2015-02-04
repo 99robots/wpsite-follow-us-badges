@@ -3,7 +3,7 @@
 Plugin Name: WPsite Follow Us Badges
 plugin URI:	http://www.wpsite.net/social-media-follow-us-badges
 Description: The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn and other social media badges.
-version: 2.0.2
+version: 2.0.3
 Author: WPSITE.net
 Author URI: http://wpsite.net
 License: GPL2
@@ -31,7 +31,7 @@ if (!defined('WPSITE_FOLLOW_US_PLUGIN_URL'))
 /* Plugin verison */
 
 if (!defined('WPSITE_FOLLOW_US_VERSION_NUM'))
-    define('WPSITE_FOLLOW_US_VERSION_NUM', '2.0.2');
+    define('WPSITE_FOLLOW_US_VERSION_NUM', '2.0.3');
 
 
 /**
