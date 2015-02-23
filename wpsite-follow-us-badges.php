@@ -1294,9 +1294,9 @@ function wpsite_follow_us_badges_shortcode($atts) {
 	if (isset($settings['title']) && $settings['title'] != '') {
 
 		if ($settings['inline']) {
-			$content = '<span>' . $settings['title'] . '</span>';
+			$content .= '<span>' . $settings['title'] . '</span>';
 		} else {
-			$content = '<h3>' . $settings['title'] . '</h3>';
+			$content .= '<h3>' . $settings['title'] . '</h3>';
 		}
 
 	}
