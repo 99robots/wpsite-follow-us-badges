@@ -3,7 +3,7 @@
 Plugin Name: WPsite Follow Us Badges
 plugin URI:	http://www.wpsite.net/social-media-follow-us-badges
 Description: The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn and other social media badges.
-version: 2.0.3
+version: 2.0.4
 Author: WPSITE.net
 Author URI: http://wpsite.net
 License: GPL2
@@ -31,7 +31,7 @@ if (!defined('WPSITE_FOLLOW_US_PLUGIN_URL'))
 /* Plugin verison */
 
 if (!defined('WPSITE_FOLLOW_US_VERSION_NUM'))
-    define('WPSITE_FOLLOW_US_VERSION_NUM', '2.0.3');
+    define('WPSITE_FOLLOW_US_VERSION_NUM', '2.0.4');
 
 
 /**
@@ -1289,10 +1289,16 @@ function wpsite_follow_us_badges_shortcode($atts) {
 		$inline_class = 'wpsite_follow_us_div_inline';
 	}
 
-	$content = '';
+	$content = '<div class="wpsite_follow_us_badges_shortcode">';
 
 	if (isset($settings['title']) && $settings['title'] != '') {
-		$content = '<h3>' . $settings['title'] . '</h3>';
+
+		if ($settings['inline']) {
+			$content = '<span>' . $settings['title'] . '</span>';
+		} else {
+			$content = '<h3>' . $settings['title'] . '</h3>';
+		}
+
 	}
 
 	foreach ($settings['order'] as $order) {
@@ -1311,7 +1317,6 @@ function wpsite_follow_us_badges_shortcode($atts) {
 
 					if (isset($settings['twitter']['args']['followers_count_display']) && $settings['twitter']['args']['followers_count_display']) {
 						$content .=  ' data-show-count="true"';
-						error_log('true');
 					} else {
 						$content .=  ' data-show-count="false"';
 					}
@@ -1556,7 +1561,7 @@ function wpsite_follow_us_badges_shortcode($atts) {
 		}
 	}
 
-	echo $content;
+	return $content . '</div>';
 
 	// CSS
 
