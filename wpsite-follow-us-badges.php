@@ -3,7 +3,7 @@
 Plugin Name: WPsite Follow Us Badges
 plugin URI:	http://www.wpsite.net/social-media-follow-us-badges
 Description: The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn and other social media badges.
-version: 2.0.5
+version: 2.0.6
 Author: WPSITE.net
 Author URI: http://wpsite.net
 License: GPL2
@@ -31,7 +31,7 @@ if (!defined('WPSITE_FOLLOW_US_PLUGIN_URL'))
 /* Plugin verison */
 
 if (!defined('WPSITE_FOLLOW_US_VERSION_NUM'))
-    define('WPSITE_FOLLOW_US_VERSION_NUM', '2.0.5');
+    define('WPSITE_FOLLOW_US_VERSION_NUM', '2.0.6');
 
 
 /**
@@ -807,6 +807,9 @@ class WPsiteFollowUs extends WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
+
+		wp_enqueue_style('wpsite_follow_us_badges_widget_css', plugins_url('/css/wpsite-follow-us-badges.css', __FILE__));
+
 		$title = apply_filters( 'widget_title', $instance['title'] );
 
 		$settings = get_option('wpsite_follow_us_settings');
@@ -1087,10 +1090,6 @@ class WPsiteFollowUs extends WP_Widget {
 		echo $content;
 
 		echo $args['after_widget'];
-
-		/* CSS */
-
-		wp_enqueue_style('wpsite_follow_us_badges_widget_css', plugins_url('/css/wpsite-follow-us-badges.css', __FILE__));
 	}
 
 	/**
@@ -1147,6 +1146,8 @@ add_shortcode( 'wpsite_follow_us_badges', 'wpsite_follow_us_badges_shortcode' );
  * @return void
  */
 function wpsite_follow_us_badges_shortcode($atts) {
+
+	wp_enqueue_style('wpsite_follow_us_badges_widget_css', plugins_url('/css/wpsite-follow-us-badges.css', __FILE__));
 
 	$args = shortcode_atts( array(
 		'title'								=> '',
@@ -1561,10 +1562,6 @@ function wpsite_follow_us_badges_shortcode($atts) {
 		}
 	}
 
-	return $content . '</div>';
-
-	// CSS
-
-	wp_enqueue_style('wpsite_follow_us_badges_widget_css', plugins_url('/css/wpsite-follow-us-badges.css', __FILE__));
+	return $content . "</div>";
 }
 ?>
