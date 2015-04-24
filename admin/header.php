@@ -8,7 +8,7 @@
 					<div class="masthead-msg">
 						<h2><span class="dashicons dashicons-admin-plugins">&nbsp;</span>
 						<?php _e('Visit', self::$text_domain); ?> <strong><?php _e('WPsite.net', self::$text_domain); ?></strong> <?php _e('for more WordPress plugins, resources, and news.', self::$text_domain); ?></h2>
-						<a  class="show-me" href="http://www.wpsite.net/?utm_source=plugin-config&utm_medium=announce&amp;utm_campaign=top"><?php _e('Visit WPsite', self::$text_domain); ?></a>
+						<a  class="show-me" href="http://www.99robots.com/?utm_source=plugin-config&utm_medium=announce&amp;utm_campaign=top"><?php _e('Visit WPsite', self::$text_domain); ?></a>
 					</div>
 					-->
 
@@ -16,7 +16,7 @@
 
 						<div class="head-left">
 							<div class="logowrap">
-								<a href="http://www.wpsite.net" target="_blank"><h1 class="logo">&nbsp;</h1></a>
+								<a href="http://www.99robots.com" target="_blank"><h1 class="logo">&nbsp;</h1></a>
 							</div>
 						</div>
 
@@ -28,8 +28,8 @@
 						</div>
 
 						<div class="head-right">
-							<a class="sqbutton" href="http://www.wpsite.net/plugins?utm_source=plugin-config&amp;utm_medium=headerlink&amp;utm_campaign=top" target="_blank">More Plugins</a>
-							<a class="sqbutton" href="http://www.wpsite.net/themes?utm_source=plugin-config&amp;utm_medium=headerlink&amp;utm_campaign=top" target="_blank">View Themes</a>
+							<a class="sqbutton" href="http://www.99robots.com/plugins?utm_source=plugin-config&amp;utm_medium=headerlink&amp;utm_campaign=top" target="_blank">More Plugins</a>
+							<a class="sqbutton" href="http://www.99robots.com/themes?utm_source=plugin-config&amp;utm_medium=headerlink&amp;utm_campaign=top" target="_blank">View Themes</a>
 						</div>
 
 					</header>

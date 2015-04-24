@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: WPsite Follow Us Badges
-plugin URI:	http://www.wpsite.net/social-media-follow-us-badges
-Description: The WPsite Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn and other social media badges.
-version: 2.0.6
-Author: WPSITE.net
-Author URI: http://wpsite.net
+Plugin Name: 99 Robots Follow Us Badges
+plugin URI:	http://www.99robots.com/social-media-follow-us-badges
+Description: The 99 Robots Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn and other social media badges.
+version: 2.0.7
+Author: 99 Robots
+Author URI: http://www.99robots.com
 License: GPL2
 */
 
@@ -31,7 +31,7 @@ if (!defined('WPSITE_FOLLOW_US_PLUGIN_URL'))
 /* Plugin verison */
 
 if (!defined('WPSITE_FOLLOW_US_VERSION_NUM'))
-    define('WPSITE_FOLLOW_US_VERSION_NUM', '2.0.6');
+    define('WPSITE_FOLLOW_US_VERSION_NUM', '2.0.7');
 
 
 /**
@@ -462,8 +462,8 @@ class WPsiteFollowUs extends WP_Widget {
 
 	    $settings_page_load = add_submenu_page(
 	    	'options-general.php', 										// parent slug
-	    	__('WPsite Follow Us', self::$text_domain), 				// Page title
-	    	__('WPsite Follow Us', self::$text_domain), 				// Menu name
+	    	__('99 Robots Follow Us', self::$text_domain), 				// Page title
+	    	__('99 Robots Follow Us', self::$text_domain), 				// Menu name
 	    	'manage_options', 											// Capabilities
 	    	self::$settings_page, 										// slug
 	    	array('WPsiteFollowUs', 'wpsite_follow_us_admin_settings')	// Callback function
