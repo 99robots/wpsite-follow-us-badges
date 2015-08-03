@@ -28,8 +28,7 @@
 						</div>
 
 						<div class="head-right">
-							<a class="sqbutton" href="http://www.99robots.com/plugins?utm_source=plugin-config&amp;utm_medium=headerlink&amp;utm_campaign=top" target="_blank">More Plugins</a>
-							<a class="sqbutton" href="http://www.99robots.com/themes?utm_source=plugin-config&amp;utm_medium=headerlink&amp;utm_campaign=top" target="_blank">View Themes</a>
+							<a class="sqbutton" href="http://www.99robots.com/products?utm_source=plugin-config&amp;utm_medium=headerlink&amp;utm_campaign=top" target="_blank">More Plugins</a>
 						</div>
 
 					</header>

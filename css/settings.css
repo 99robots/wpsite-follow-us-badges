@@ -19,9 +19,9 @@
 	/* Header Styles */
 	.wpsite_plugin_wrapper .headercontent { border-bottom: 1px solid #e5e5e5; background:#222;/* padding: 20px 10px;  */overflow:hidden;position:relative;min-height: 100px;}
 
-		.wpsite_plugin_wrapper .headercontent .head-left {float:left;display:inline-block;background:#FFF;background:#FFF;overflow:hidden;min-width:200px;width:10%;height:100px;}
+		.wpsite_plugin_wrapper .headercontent .head-left {float:left;display:inline-block;background:#FFF;background:#FFF;overflow:hidden;min-width:145px;width:10%;height:100px;}
 			.wpsite_plugin_wrapper .headercontent .head-left .logowrap {padding: 10px 10px;overflow: hidden;}
-			.wpsite_plugin_wrapper .headercontent .logo { margin: 0; padding: 0; float: left; font-family: "Open Sans", sans-serif; font-weight: bold; color:#3c3c3c; background:url("../img/logo-only-80h.png") no-repeat left center; margin: 0 20px; width:150px;height:80px; }
+			.wpsite_plugin_wrapper .headercontent .logo { margin: 0; padding: 0; float: left; font-family: "Open Sans", sans-serif; font-weight: bold; color:#3c3c3c; background:url("../img/logo.png") no-repeat left center; margin: 0 20px; width:150px;height:80px; }
 
 		.wpsite_plugin_wrapper .headercontent .head-middle {float:left;display:inline-block;width: 40%;height:100px;}
 			.head-middle .plugin-info {padding:20px;font-size:2em;color:#FFF;font-weight:bold;line-height:60px;}

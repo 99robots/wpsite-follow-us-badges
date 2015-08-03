@@ -9,26 +9,29 @@ Author URI: http://www.99robots.com
 License: GPL2
 */
 
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) exit;
+
 /**
  * Global Definitions
  */
 
-/* Plugin Name */
+// Plugin Name
 
 if (!defined('WPSITE_FOLLOW_US_PLUGIN_NAME'))
     define('WPSITE_FOLLOW_US_PLUGIN_NAME', trim(dirname(plugin_basename(__FILE__)), '/'));
 
-/* Plugin directory */
+// Plugin Directory
 
 if (!defined('WPSITE_FOLLOW_US_PLUGIN_DIR'))
     define('WPSITE_FOLLOW_US_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . WPSITE_FOLLOW_US_PLUGIN_NAME);
 
-/* Plugin url */
+// Plugin URL
 
 if (!defined('WPSITE_FOLLOW_US_PLUGIN_URL'))
     define('WPSITE_FOLLOW_US_PLUGIN_URL', WP_PLUGIN_URL . '/' . WPSITE_FOLLOW_US_PLUGIN_NAME);
 
-/* Plugin verison */
+// Plugin Version
 
 if (!defined('WPSITE_FOLLOW_US_VERSION_NUM'))
     define('WPSITE_FOLLOW_US_VERSION_NUM', '2.0.7');
@@ -110,7 +113,7 @@ class WPsiteFollowUs extends WP_Widget {
 		'order'		=> array('twitter', 'facebook', 'google', 'linkedin', 'pinterest', 'youtube', 'tumblr'),
 		'twitter'	=> array(
 			'active'	=> false,
-			'user'		=> 'WPsite',
+			'user'		=> '99Robots',
 			'args'		=> array(
 				'link'						=> false,
 				'followers_count_display' 	=> true,
@@ -124,7 +127,7 @@ class WPsiteFollowUs extends WP_Widget {
 		),
 		'facebook'	=> array(
 			'active'	=> false,
-			'user'		=> 'WPsite',
+			'user'		=> '99Robots',
 			'args'		=> array(
 				'type'					=> 'like',
 				'link'					=> false,
@@ -139,7 +142,7 @@ class WPsiteFollowUs extends WP_Widget {
 		),
 		'google'	=> array(
 			'active'	=> false,
-			'user'		=> '106771475441130344412',
+			'user'		=> '+99Robots',
 			'args'		=> array(
 				'link'			=> false,
 				'size'			=> '20',
@@ -151,7 +154,7 @@ class WPsiteFollowUs extends WP_Widget {
 		),
 		'linkedin'	=> array(
 			'active'	=> false,
-			'user'		=> '2839460',
+			'user'		=> '99-robots',
 			'args'		=> array(
 				'link'			=> false,
 				'type'			=> 'company',
@@ -161,7 +164,7 @@ class WPsiteFollowUs extends WP_Widget {
 		),
 		'pinterest'	=> array(
 			'active'	=> false,
-			'user'		=> 'http://www.pinterest.com/wpsite/',
+			'user'		=> 'http://www.pinterest.com/99robots/',
 			'args'		=> array(
 				'link'	=> false,
 				'name'	=> 'WPsite'
@@ -169,7 +172,7 @@ class WPsiteFollowUs extends WP_Widget {
 		),
 		'youtube'	=> array(
 			'active'	=> false,
-			'user'		=> 'UCF0pVplsI8R5kcAqgtoRqoA',
+			'user'		=> 'UCS_IvbhoIdDXn87y_HwQf_g',
 			'args'		=> array(
 				'link'		=> false,
 				'layout'	=> 'default',
@@ -463,7 +466,7 @@ class WPsiteFollowUs extends WP_Widget {
 	    $settings_page_load = add_submenu_page(
 	    	'options-general.php', 										// parent slug
 	    	__('99 Robots Follow Us', self::$text_domain), 				// Page title
-	    	__('99 Robots Follow Us', self::$text_domain), 				// Menu name
+	    	__('Follow Us Badges', self::$text_domain), 				// Menu name
 	    	'manage_options', 											// Capabilities
 	    	self::$settings_page, 										// slug
 	    	array('WPsiteFollowUs', 'wpsite_follow_us_admin_settings')	// Callback function
