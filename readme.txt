@@ -1,4 +1,4 @@
-=== 99 Robots Follow Us Badges ===
+=== Follow Us Badges ===
 Contributors: 99robots, wpsitenet
 Donate link:
 Tags: share badge, badges, follow us, follow me, Facebook, Facebook Box, facebook like, Facebook Widget, Facebook badge, google plus, google+, google box, google widget, social box, social media badge, follow badge, twitter, twitter widget, twitter badge, twitter follow, chiclets, social media buttons, twitter button, twitter badge, facebook button, google plus button, linkedin, linkedin box, linkedin share, box count, badge count, social icons, share icons, youtube, youtube box, youtube widget, youtube share, tumblr, tumblr button, tumblr share, tumblr widget, tumblr box
