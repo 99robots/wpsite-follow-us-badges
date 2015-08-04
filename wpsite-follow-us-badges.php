@@ -16,6 +16,16 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * Global Definitions
  */
 
+// Item Name
+
+if (!defined('WPSITE_FOLLOW_US_ITEM_NAME'))
+    define('WPSITE_FOLLOW_US_ITEM_NAME', 'Follow Us Badges');
+
+// Store URL
+
+if (!defined('WPSITE_FOLLOW_US_STORE_URL'))
+    define('WPSITE_FOLLOW_US_STORE_URL', 'https://99robots.com');
+
 // Plugin Name
 
 if (!defined('WPSITE_FOLLOW_US_PLUGIN_NAME'))
@@ -492,16 +502,23 @@ class WPsiteFollowUs extends WP_Widget {
 	 */
 	static function wpsite_follow_us_include_admin_scripts() {
 
-		/* CSS */
+		// CSS
 
-		wp_register_style('wpsite_follow_us_settings_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/css/settings.css');
+		wp_register_style('wpsite_follow_us_settings_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/css/settings.css');
 		wp_enqueue_style('wpsite_follow_us_settings_css');
 
-		wp_register_style('wpsite_follow_us_tabs_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/css/tabs.css');
-		wp_enqueue_style('wpsite_follow_us_tabs_css');
+		wp_register_style('nnr_bootstrap_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/css/nnr-bootstrap.min.css');
+		wp_enqueue_style('nnr_bootstrap_css');
 
-		wp_register_style('wpsite_follow_us_sortables_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/css/sortables.css');
+		wp_register_style('wpsite_follow_us_sortables_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/css/sortables.css');
 		wp_enqueue_style('wpsite_follow_us_sortables_css');
+
+		wp_register_style('wpsite_follow_us_fontawesome', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/fonts/font-awesome.min.css');
+		wp_enqueue_style('wpsite_follow_us_fontawesome');
+
+		// Scripts
+
+		wp_enqueue_script(self::$prefix . 'bootstrap_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/bootstrap.js', array('jquery'));
 	}
 
 	/**
@@ -613,6 +630,7 @@ class WPsiteFollowUs extends WP_Widget {
 		wp_enqueue_script('jquery-ui-sortable');
 
 		?>
+
 		<script type="text/javascript">
 		jQuery(document).ready(function($) {
 			$( "#tabs" ).tabs();
@@ -696,42 +714,6 @@ class WPsiteFollowUs extends WP_Widget {
 				}
 			});
 
-			$("#twitter").hide();
-			$("#facebook").hide();
-			$("#google").hide();
-			$("#linkedin").hide();
-			$("#pinterest").hide();
-			$("#youtube").hide();
-			$("#tumblr").hide();
-
-			if ($("#wpsite_follow_us_settings_twitter_active").is(":checked")) {
-				$("#twitter").show();
-			}
-
-			if ($("#wpsite_follow_us_settings_facebook_active").is(":checked")) {
-				$("#facebook").show();
-			}
-
-			if ($("#wpsite_follow_us_settings_google_active").is(":checked")) {
-				$("#google").show();
-			}
-
-			if ($("#wpsite_follow_us_settings_linkedin_active").is(":checked")) {
-				$("#linkedin").show();
-			}
-
-			if ($("#wpsite_follow_us_settings_pinterest_active").is(":checked")) {
-				$("#pinterest").show();
-			}
-
-			if ($("#wpsite_follow_us_settings_youtube_active").is(":checked")) {
-				$("#youtube").show();
-			}
-
-			if ($("#wpsite_follow_us_settings_tumblr_active").is(":checked")) {
-				$("#tumblr").show();
-			}
-
 			// LinkedIn User Type
 
 			$(".wpsite_follow_us_settings_linkedin_args_user_type").hide();
@@ -763,7 +745,8 @@ class WPsiteFollowUs extends WP_Widget {
 			});
 
 		});
-		</script><?php
+		</script>
+<?php
 
 		require_once('admin/settings.php');
 	}

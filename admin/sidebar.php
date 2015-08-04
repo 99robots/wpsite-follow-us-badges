@@ -1,4 +1,4 @@
-<div id="wpsite_plugin_sidebar" class="metabox-holder">
+<div id="wpsite_plugin_sidebar" class="metabox-holder col-md-3">
 
 	<div class="postbox">
 		<h3><?php _e('Subscribe to Our Newsletter', self::$text_domain); ?></h3>
@@ -49,7 +49,7 @@
 		<h3><?php _e('Need Plugin or Theme Development?', self::$text_domain); ?></h3>
 			<div class="inside">
 				<div class="mktg-banner">
-					<a target="_blank" href="https://99robots.com/services/development/#utm_source=plugin-config&utm_medium=banner&utm_campaign=custom-development-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/img/ad-custom-development.png' ?>"></a>
+					<a target="_blank" href="https://99robots.com/services/development/#utm_source=plugin-config&utm_medium=banner&utm_campaign=custom-development-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/img/ad-custom-development.png' ?>"></a>
 				</div>
 			</div>
 	</div>
@@ -58,7 +58,7 @@
 		<h3><?php _e('Request a Plugin', self::$text_domain); ?></h3>
 			<div class="inside">
 				<div class="mktg-banner">
-					<a target="_blank" href="https://99robots.com/contact/#utm_source=plugin-config&utm_medium=banner&utm_campaign=plugin-request-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/img/ad-plugin-request.png' ?>"></a>
+					<a target="_blank" href="https://99robots.com/contact/#utm_source=plugin-config&utm_medium=banner&utm_campaign=plugin-request-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/img/ad-plugin-request.png' ?>"></a>
 				</div>
 			</div>
 	</div>
@@ -67,7 +67,7 @@
 		<h3><?php _e('Visit Support Forums', self::$text_domain); ?></h3>
 			<div class="inside">
 				<div class="mktg-banner">
-					<a target="_blank" href="https://99robots.com/support/#utm_source=plugin-config&utm_medium=banner&utm_campaign=need-support-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/img/ad-need-support.png' ?>"></a>
+					<a target="_blank" href="https://99robots.com/support/#utm_source=plugin-config&utm_medium=banner&utm_campaign=need-support-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/img/ad-need-support.png' ?>"></a>
 				</div>
 			</div>
 	</div>
