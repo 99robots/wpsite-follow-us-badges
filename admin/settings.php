@@ -12,20 +12,20 @@
 
 				<div id="tabs">
 					<ul class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="active"><a href="#wpsite_div_twitter" aria-controls="wpsite_div_twitter" role="tab" data-toggle="tab"><i class="fa fa-twitter fa-2x"></i></a></li>
+						<li role="presentation" class="active"><a href="#wpsite_div_order" aria-controls="wpsite_div_order" role="tab" data-toggle="tab"><i class="fa fa-list-ol fa-2x"></i></a></li>
+						<li role="presentation"><a href="#wpsite_div_twitter" aria-controls="wpsite_div_twitter" role="tab" data-toggle="tab"><i class="fa fa-twitter fa-2x"></i></a></li>
 						<li role="presentation"><a href="#wpsite_div_facebook" aria-controls="wpsite_div_facebook" role="tab" data-toggle="tab"><i class="fa fa-facebook fa-2x"></i></a></li>
 						<li role="presentation"><a href="#wpsite_div_google" aria-controls="wpsite_div_google" role="tab" data-toggle="tab"><i class="fa fa-google-plus fa-2x"></i></a></li>
 						<li role="presentation"><a href="#wpsite_div_linkedin" aria-controls="wpsite_div_linkedin" role="tab" data-toggle="tab"><i class="fa fa-linkedin fa-2x"></i></a></li>
 						<li role="presentation"><a href="#wpsite_div_pinterest" aria-controls="wpsite_div_pinterest" role="tab" data-toggle="tab"><i class="fa fa-pinterest fa-2x"></i></a></li>
 						<li role="presentation"><a href="#wpsite_div_youtube" aria-controls="wpsite_div_youtube" role="tab" data-toggle="tab"><i class="fa fa-youtube fa-2x"></i></a></li>
 						<li role="presentation"><a href="#wpsite_div_tumblr" aria-controls="wpsite_div_tumblr" role="tab" data-toggle="tab"><i class="fa fa-tumblr fa-2x"></i></a></li>
-						<li role="presentation"><a href="#wpsite_div_order" aria-controls="wpsite_div_order" role="tab" data-toggle="tab"><i class="fa fa-list-ol fa-2x"></i></a></li>
 						<li role="presentation"><a href="#wpsite_div_shortcode" aria-controls="wpsite_div_shortcode" role="tab" data-toggle="tab"><i class="fa fa-code fa-2x"></i></a></li>
 					</ul>
 
 					<div class="tab-content">
 
-    					<div role="tabpanel" class="tab-pane active" id="wpsite_div_twitter">
+    					<div role="tabpanel" class="tab-pane" id="wpsite_div_twitter">
 
 							<h3 class="page-header"><?php _e('General', self::$text_domain); ?></h3>
 
@@ -854,9 +854,9 @@
 									<label for="<?php echo self::$prefix; ?>settings_tumblr_args_button" class="col-sm-3 control-label"><?php _e('Button', self::$text_domain); ?></label>
 									<div class="col-sm-9">
     									<select id="wpsite_follow_us_settings_tumblr_args_button" name="wpsite_follow_us_settings_tumblr_args_button">
-											<option value="1" <?php echo isset($settings['tumblr']['args']['button']) && $settings['tumblr']['args']['button'] == '1' ? 'selected' : '' ;?>><?php _e('1', self::$text_domain); ?></option>
-											<option value="2" <?php echo isset($settings['tumblr']['args']['button']) && $settings['tumblr']['args']['button'] == '2' ? 'selected' : '' ;?>><?php _e('2', self::$text_domain); ?></option>
-											<option value="3" <?php echo isset($settings['tumblr']['args']['button']) && $settings['tumblr']['args']['button'] == '3' ? 'selected' : '' ;?>><?php _e('3', self::$text_domain); ?></option>
+											<option value="1" <?php echo isset($settings['tumblr']['args']['button']) && $settings['tumblr']['args']['button'] == '1' ? 'selected' : '' ;?>><?php _e('Classic Tumblr Button', self::$text_domain); ?></option>
+											<option value="2" <?php echo isset($settings['tumblr']['args']['button']) && $settings['tumblr']['args']['button'] == '2' ? 'selected' : '' ;?>><?php _e('"Follow on Tumblr"', self::$text_domain); ?></option>
+											<option value="3" <?php echo isset($settings['tumblr']['args']['button']) && $settings['tumblr']['args']['button'] == '3' ? 'selected' : '' ;?>><?php _e('Icon', self::$text_domain); ?></option>
 										</select>
     									<em class="help-block"><?php _e('Select the button type.', self::$text_domain); ?></em>
 									</div>
@@ -868,7 +868,7 @@
 
     					</div>
 
-    					<div role="tabpanel" class="tab-pane" id="wpsite_div_order">
+    					<div role="tabpanel" class="tab-pane active" id="wpsite_div_order">
 
     						<h3 class="page-header"><?php _e('Drag & Drop to Order', self::$text_domain); ?></h3>
 
