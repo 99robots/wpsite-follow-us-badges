@@ -6,30 +6,28 @@
 
     	<h1 id="nnr-heading"><?php _e('Settings', self::$text_domain); ?></h1>
 
-		<div class="alert alert-warning text-center"><?php _e('The settings below will apply to the ', self::$text_domain); ?><a href="widgets.php"><?php _e('widget', self::$text_domain); ?></a><?php _e('.', self::$text_domain); ?></div>
-
 		<div id="wpsite_plugin_settings" class="col-md-9">
 
 			<form method="post">
 
 				<div id="tabs">
 					<ul class="nav nav-tabs" role="tablist">
-						<li role="presentation" class="active"><a href="#wpsite_div_twitter" aria-controls="wpsite_div_twitter" role="tab" data-toggle="tab"><i class="fa fa-twitter"></i></a></li>
-						<li role="presentation"><a href="#wpsite_div_facebook" aria-controls="wpsite_div_facebook" role="tab" data-toggle="tab"><i class="fa fa-facebook"></i></a></li>
-						<li role="presentation"><a href="#wpsite_div_google" aria-controls="wpsite_div_google" role="tab" data-toggle="tab"><i class="fa fa-google-plus"></i></a></li>
-						<li role="presentation"><a href="#wpsite_div_linkedin" aria-controls="wpsite_div_linkedin" role="tab" data-toggle="tab"><i class="fa fa-linkedin"></i></a></li>
-						<li role="presentation"><a href="#wpsite_div_pinterest" aria-controls="wpsite_div_pinterest" role="tab" data-toggle="tab"><i class="fa fa-pinterest"></i></a></li>
-						<li role="presentation"><a href="#wpsite_div_youtube" aria-controls="wpsite_div_youtube" role="tab" data-toggle="tab"><i class="fa fa-youtube"></i></a></li>
-						<li role="presentation"><a href="#wpsite_div_tumblr" aria-controls="wpsite_div_tumblr" role="tab" data-toggle="tab"><i class="fa fa-tumblr"></i></a></li>
-						<li role="presentation"><a href="#wpsite_div_order" aria-controls="wpsite_div_order" role="tab" data-toggle="tab"><i class="fa fa-list-ol"></i></a></li>
-						<li role="presentation"><a href="#wpsite_div_shortcode" aria-controls="wpsite_div_shortcode" role="tab" data-toggle="tab"><i class="fa fa-code"></i></a></li>
+						<li role="presentation" class="active"><a href="#wpsite_div_twitter" aria-controls="wpsite_div_twitter" role="tab" data-toggle="tab"><i class="fa fa-twitter fa-2x"></i></a></li>
+						<li role="presentation"><a href="#wpsite_div_facebook" aria-controls="wpsite_div_facebook" role="tab" data-toggle="tab"><i class="fa fa-facebook fa-2x"></i></a></li>
+						<li role="presentation"><a href="#wpsite_div_google" aria-controls="wpsite_div_google" role="tab" data-toggle="tab"><i class="fa fa-google-plus fa-2x"></i></a></li>
+						<li role="presentation"><a href="#wpsite_div_linkedin" aria-controls="wpsite_div_linkedin" role="tab" data-toggle="tab"><i class="fa fa-linkedin fa-2x"></i></a></li>
+						<li role="presentation"><a href="#wpsite_div_pinterest" aria-controls="wpsite_div_pinterest" role="tab" data-toggle="tab"><i class="fa fa-pinterest fa-2x"></i></a></li>
+						<li role="presentation"><a href="#wpsite_div_youtube" aria-controls="wpsite_div_youtube" role="tab" data-toggle="tab"><i class="fa fa-youtube fa-2x"></i></a></li>
+						<li role="presentation"><a href="#wpsite_div_tumblr" aria-controls="wpsite_div_tumblr" role="tab" data-toggle="tab"><i class="fa fa-tumblr fa-2x"></i></a></li>
+						<li role="presentation"><a href="#wpsite_div_order" aria-controls="wpsite_div_order" role="tab" data-toggle="tab"><i class="fa fa-list-ol fa-2x"></i></a></li>
+						<li role="presentation"><a href="#wpsite_div_shortcode" aria-controls="wpsite_div_shortcode" role="tab" data-toggle="tab"><i class="fa fa-code fa-2x"></i></a></li>
 					</ul>
 
 					<div class="tab-content">
 
     					<div role="tabpanel" class="tab-pane active" id="wpsite_div_twitter">
 
-							<h3><?php _e('General', self::$text_domain); ?></h3>
+							<h3 class="page-header"><?php _e('General', self::$text_domain); ?></h3>
 
 							<div>
 
@@ -54,7 +52,7 @@
 								<div class="form-group tw-hideable">
 									<label for="<?php echo self::$prefix; ?>settings_twitter_user" class="col-sm-3 control-label"><?php _e('Username', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="form-control" id="wpsite_follow_us_settings_twitter_user" name="wpsite_follow_us_settings_twitter_user" type="text" value="<?php echo esc_attr($settings['twitter']['user']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_twitter_user" name="wpsite_follow_us_settings_twitter_user" type="text" value="<?php echo esc_attr($settings['twitter']['user']); ?>">
     									<em class="help-block"><?php _e('https://twitter.com/', self::$text_domain); ?><strong><label><?php _e('"example"', self::$text_domain); ?></label></strong></em>
 									</div>
 								</div>
@@ -63,7 +61,7 @@
 
 							</div>
 
-							<h3 class="tw-hideable"><?php _e('Display', self::$text_domain); ?></h3>
+							<h3 class="page-header tw-hideable"><?php _e('Display', self::$text_domain); ?></h3>
 
 							<div class="tw-hideable">
 
@@ -124,7 +122,7 @@
     									<select id="wpsite_follow_us_settings_twitter_args_alignment" name="wpsite_follow_us_settings_twitter_args_alignment">
 											<option value="left" <?php echo isset($settings['twitter']['args']['alignment']) && $settings['twitter']['args']['alignment'] == 'left' ? 'selected' : '' ;?>><?php _e('left', self::$text_domain); ?></option>
 											<option value="right" <?php echo isset($settings['twitter']['args']['alignment']) && $settings['twitter']['args']['alignment'] == 'right' ? 'selected' : '' ;?>><?php _e('right', self::$text_domain); ?></option>
-										</select><br/>
+										</select>
     									<em class="help-block"><?php _e('Select the alignment.', self::$text_domain); ?></em>
 									</div>
 								</div>
@@ -134,7 +132,7 @@
 								<div class="form-group tw-hideable-link-only">
                             		<label for="<?php echo self::$prefix; ?>settings_twitter_args_width" class="col-sm-3 control-label"><?php _e('Width', self::$text_domain); ?></label>
                             		<div class="col-sm-9">
-                            			<input class="form-control" id="wpsite_follow_us_settings_twitter_args_width" name="wpsite_follow_us_settings_twitter_args_width" type="text" value="<?php echo esc_attr($settings['twitter']['args']['width']); ?>"><br/>
+                            			<input class="form-control" id="wpsite_follow_us_settings_twitter_args_width" name="wpsite_follow_us_settings_twitter_args_width" type="text" value="<?php echo esc_attr($settings['twitter']['args']['width']); ?>">
 										<em class="help-block"><?php _e('Accepts px and % (e.g 100px or 100%)', self::$text_domain); ?></em>
                             		</div>
                             	</div>
@@ -147,7 +145,7 @@
     									<select id="wpsite_follow_us_settings_twitter_args_size" name="wpsite_follow_us_settings_twitter_args_size">
 											<option value="medium" <?php echo isset($settings['twitter']['args']['size']) && $settings['twitter']['args']['size'] == 'medium' ? 'selected' : '' ;?>><?php _e('medium', self::$text_domain); ?></option>
 											<option value="large" <?php echo isset($settings['twitter']['args']['size']) && $settings['twitter']['args']['size'] == 'large' ? 'selected' : '' ;?>><?php _e('large', self::$text_domain); ?></option>
-										</select><br/>
+										</select>
     									<em class="help-block"><?php _e('Select the size.', self::$text_domain); ?></em>
 									</div>
 								</div>
@@ -155,7 +153,7 @@
 
 							</div>
 
-							<h3 class="tw-hideable"><?php _e('Advanced', self::$text_domain); ?></h3>
+							<h3 class="page-header tw-hideable"><?php _e('Advanced', self::$text_domain); ?></h3>
 
 							<div class="tw-hideable">
 
@@ -193,7 +191,7 @@
 
     					<div role="tabpanel" class="tab-pane" id="wpsite_div_facebook">
 
-							<h3><?php _e('General', self::$text_domain); ?></h3>
+							<h3 class="page-header"><?php _e('General', self::$text_domain); ?></h3>
 
 							<div>
 
@@ -218,7 +216,7 @@
 								<div class="form-group fb-hideable">
 									<label for="<?php echo self::$prefix; ?>settings_facebook_user" class="col-sm-3 control-label"><?php _e('User ID', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="form-control" id="wpsite_follow_us_settings_facebook_user" name="wpsite_follow_us_settings_facebook_user" type="text" value="<?php echo esc_attr($settings['facebook']['user']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_facebook_user" name="wpsite_follow_us_settings_facebook_user" type="text" value="<?php echo esc_attr($settings['facebook']['user']); ?>">
     									<em class="help-block"><?php _e('https://facebook.com/', self::$text_domain); ?><strong><label><?php _e('"example"', self::$text_domain); ?></label></strong></em>
                                         <em class="help-block"><?php _e('https://facebook.com/', self::$text_domain); ?><strong><label><?php _e('"pages/example/112233"', self::$text_domain); ?></label></strong></em>
 
@@ -240,7 +238,7 @@
 
 							</div>
 
-							<h3 class="fb-hideable"><?php _e('Display', self::$text_domain); ?></h3>
+							<h3 class="page-header fb-hideable"><?php _e('Display', self::$text_domain); ?></h3>
 
 							<div class="fb-hideable">
 
@@ -338,7 +336,7 @@
                             	<div class="form-group fb-hideable-link-only">
 									<label for="<?php echo self::$prefix; ?>settings_facebook_args_width" class="col-sm-3 control-label"><?php _e('Width', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="form-control" id="wpsite_follow_us_settings_facebook_args_width" name="wpsite_follow_us_settings_facebook_args_width" type="text" value="<?php echo esc_attr($settings['facebook']['args']['width']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_facebook_args_width" name="wpsite_follow_us_settings_facebook_args_width" type="text" value="<?php echo esc_attr($settings['facebook']['args']['width']); ?>">
     									<em class="help-block"><?php _e('Accepts px only', self::$text_domain); ?></em>
 
 									</div>
@@ -346,7 +344,7 @@
 
 							</div>
 
-							<h3 class="fb-hideable"><?php _e('Advanced', self::$text_domain); ?></h3>
+							<h3 class="page-header fb-hideable"><?php _e('Advanced', self::$text_domain); ?></h3>
 
 							<div class="fb-hideable">
     							<div class="form-group">
@@ -367,7 +365,7 @@
 
     					<div role="tabpanel" class="tab-pane" id="wpsite_div_google">
 
-    						<h3><?php _e('General', self::$text_domain); ?></h3>
+    						<h3 class="page-header"><?php _e('General', self::$text_domain); ?></h3>
 
     						<div>
 
@@ -392,7 +390,7 @@
 								<div class="form-group g-hideable">
 									<label for="<?php echo self::$prefix; ?>settings_google_user" class="col-sm-3 control-label"><?php _e('User ID', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="form-control" id="wpsite_follow_us_settings_google_user" name="wpsite_follow_us_settings_google_user" type="text" value="<?php echo esc_attr($settings['google']['user']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_google_user" name="wpsite_follow_us_settings_google_user" type="text" value="<?php echo esc_attr($settings['google']['user']); ?>">
     									<em class="help-block"><?php _e('https://plus.google.com/u/0/', self::$text_domain); ?><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong><?php _e('/posts', self::$text_domain); ?></em>
                                         <em class="help-block"><?php _e('https://plus.google.com/', self::$text_domain); ?><strong><label><?php _e('"+112233"', self::$text_domain); ?></label></strong></em>
 
@@ -401,7 +399,7 @@
 
     						</div>
 
-    						<h3 class="g-hideable"><?php _e('Display', self::$text_domain); ?></h3>
+    						<h3 class="page-header g-hideable"><?php _e('Display', self::$text_domain); ?></h3>
 
     						<div class="g-hideable">
 
@@ -451,7 +449,7 @@
 
     						</div>
 
-                            <h3 class="g-hideable"><?php _e('Advanced', self::$text_domain); ?></h3>
+                            <h3 class="page-header g-hideable"><?php _e('Advanced', self::$text_domain); ?></h3>
 
                             <div class="g-hideable">
 
@@ -464,7 +462,7 @@
 											<?php foreach (self::$google_supported_languages as $lang) { ?>
 											<option value="<?php echo $lang; ?>" <?php echo isset($settings['google']['args']['language']) && $settings['google']['args']['language'] == $lang ? 'selected' : '' ;?>><?php _e($lang, self::$text_domain); ?></option>
 											<?php } ?>
-										</select><br/>
+										</select>
     									<em class="help-block"><?php _e('Select the language.', self::$text_domain); ?></em>
 									</div>
 								</div>
@@ -505,7 +503,7 @@
 
     					<div role="tabpanel" class="tab-pane" id="wpsite_div_linkedin">
 
-    						<h3><?php _e('General', self::$text_domain); ?></h3>
+    						<h3 class="page-header"><?php _e('General', self::$text_domain); ?></h3>
 
     						<div>
 
@@ -531,7 +529,7 @@
 									<label for="<?php echo self::$prefix; ?>settings_linkedin_user" class="col-sm-3 control-label"><?php _e('User ID', self::$text_domain); ?> <small><a href="https://developer.linkedin.com/plugins/follow-company" target="_blank"><label><?php _e('(Get your ID)', self::$text_domain); ?></label></a></small>
 </label>
 									<div class="col-sm-9">
-    									<input class="form-control" id="wpsite_follow_us_settings_linkedin_user" name="wpsite_follow_us_settings_linkedin_user" type="text" value="<?php echo esc_attr($settings['linkedin']['user']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_linkedin_user" name="wpsite_follow_us_settings_linkedin_user" type="text" value="<?php echo esc_attr($settings['linkedin']['user']); ?>">
     									<em class="wpsite_follow_us_settings_linkedin_args_user_type wpsite_follow_us_settings_linkedin_args_user_type_company"><label><?php _e('http://www.linkedin.com/company/', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em>
 										<em class="wpsite_follow_us_settings_linkedin_args_user_type wpsite_follow_us_settings_linkedin_args_user_type_person"><label><?php _e('http://www.linkedin.com/profile/view?id=', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em>
 										<em class="wpsite_follow_us_settings_linkedin_args_user_type wpsite_follow_us_settings_linkedin_args_user_type_group"><label><?php _e('https://www.linkedin.com/groups?gid=', self::$text_domain); ?></label><strong><label><?php _e('"154024"', self::$text_domain); ?></label></strong></em>
@@ -550,14 +548,14 @@
 											<option value="person" <?php echo isset($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'person' ? 'selected' : ''; ?>><?php _e('person', self::$text_domain); ?></option>
 											<option value="group" <?php echo isset($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'group' ? 'selected' : ''; ?>><?php _e('group', self::$text_domain); ?></option>
 											<option value="university" <?php echo isset($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'university' ? 'selected' : ''; ?>><?php _e('university', self::$text_domain); ?></option>
-										</select><br/>
+										</select>
     									<em class="help-block"><?php _e('Select the account type.', self::$text_domain); ?></em>
 									</div>
 								</div>
 
     						</div>
 
-    						<h3 class="li-hideable"><?php _e('Display', self::$text_domain); ?></h3>
+    						<h3 class="page-header li-hideable"><?php _e('Display', self::$text_domain); ?></h3>
 
     						<div class="li-hideable">
 
@@ -586,14 +584,14 @@
 											<option value="right" <?php echo isset($settings['linkedin']['args']['count_mode']) && $settings['linkedin']['args']['count_mode'] == 'right' ? 'selected' : '' ;?>><?php _e('right', self::$text_domain); ?></option>
 											<option value="top" <?php echo isset($settings['linkedin']['args']['count_mode']) && $settings['linkedin']['args']['count_mode'] == 'top' ? 'selected' : '' ;?>><?php _e('top', self::$text_domain); ?></option>
 											<option value="none" <?php echo isset($settings['linkedin']['args']['count_mode']) && $settings['linkedin']['args']['count_mode'] == 'none' ? 'selected' : '' ;?>><?php _e('none', self::$text_domain); ?></option>
-										</select><br/>
+										</select>
     									<em class="help-block"><?php _e('Select the count mode.', self::$text_domain); ?></em>
 									</div>
 								</div>
 
     						</div>
 
-    						<h3 class="li-hideable"><?php _e('Advanced', self::$text_domain); ?></h3>
+    						<h3 class="page-header li-hideable"><?php _e('Advanced', self::$text_domain); ?></h3>
 
     						<div class="li-hideable">
 
@@ -606,7 +604,7 @@
 											<?php foreach (self::$linkedin_supported_languages as $lang) { ?>
 											<option value="<?php echo $lang; ?>" <?php echo isset($settings['linkedin']['args']['language']) && $settings['linkedin']['args']['language'] == $lang ? 'selected' : '' ;?>><?php _e($lang, self::$text_domain); ?></option>
 											<?php } ?>
-										</select><br/>
+										</select>
     									<em class="help-block"><?php _e('Select the count mode.', self::$text_domain); ?></em>
 									</div>
 								</div>
@@ -619,7 +617,7 @@
 
     					<div role="tabpanel" class="tab-pane" id="wpsite_div_pinterest">
 
-    						<h3><?php _e('General', self::$text_domain); ?></h3>
+    						<h3 class="page-header"><?php _e('General', self::$text_domain); ?></h3>
 
     						<div>
 
@@ -644,7 +642,7 @@
 								<div class="form-group pt-hideable">
 									<label for="<?php echo self::$prefix; ?>settings_pinterest_user" class="col-sm-3 control-label"><?php _e('User URL', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="form-control" id="wpsite_follow_us_settings_pinterest_user" name="wpsite_follow_us_settings_pinterest_user" type="text" value="<?php echo esc_attr($settings['pinterest']['user']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_pinterest_user" name="wpsite_follow_us_settings_pinterest_user" type="text" value="<?php echo esc_attr($settings['pinterest']['user']); ?>">
                                         <em class="help-block"><?php _e('Set the user URL.', self::$text_domain); ?></em>
 									</div>
 								</div>
@@ -654,7 +652,7 @@
                                 <div class="form-group pt-hideable">
 									<label for="<?php echo self::$prefix; ?>settings_pinterest_args_name" class="col-sm-3 control-label"><?php _e('Name', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="form-control" id="wpsite_follow_us_settings_pinterest_args_name" name="wpsite_follow_us_settings_pinterest_args_name" type="text" value="<?php echo esc_attr($settings['pinterest']['args']['name']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_pinterest_args_name" name="wpsite_follow_us_settings_pinterest_args_name" type="text" value="<?php echo esc_attr($settings['pinterest']['args']['name']); ?>">
                                         <em class="help-block"><?php _e('Set the User Name.', self::$text_domain); ?></em>
 									</div>
 								</div>
@@ -683,7 +681,7 @@
 
     					<div role="tabpanel" class="tab-pane" id="wpsite_div_youtube">
 
-    						<h3><?php _e('General', self::$text_domain); ?></h3>
+    						<h3 class="page-header"><?php _e('General', self::$text_domain); ?></h3>
 
     						<div>
 
@@ -708,14 +706,14 @@
 								<div class="form-group yt-hideable">
 									<label for="<?php echo self::$prefix; ?>settings_youtube_user" class="col-sm-3 control-label"><?php _e('Channel ID', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="form-control" id="wpsite_follow_us_settings_youtube_user" name="wpsite_follow_us_settings_youtube_user" type="text" value="<?php echo esc_attr($settings['youtube']['user']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_youtube_user" name="wpsite_follow_us_settings_youtube_user" type="text" value="<?php echo esc_attr($settings['youtube']['user']); ?>">
                                         <em class="help-block"><?php _e('Set the Channel ID', self::$text_domain); ?></em>
 									</div>
 								</div>
 
     						</div>
 
-    						<h3 class="yt-hideable"><?php _e('Display', self::$text_domain); ?></h3>
+    						<h3 class="page-header yt-hideable"><?php _e('Display', self::$text_domain); ?></h3>
 
     						<div class="yt-hideable">
 
@@ -743,7 +741,7 @@
     									<select id="wpsite_follow_us_settings_youtube_args_layout" name="wpsite_follow_us_settings_youtube_args_layout">
 											<option value="default" <?php echo isset($settings['youtube']['args']['layout']) && $settings['youtube']['args']['layout'] == 'default' ? 'selected' : '' ;?>><?php _e('default', self::$text_domain); ?></option>
 											<option value="full" <?php echo isset($settings['youtube']['args']['layout']) && $settings['youtube']['args']['layout'] == 'full' ? 'selected' : '' ;?>><?php _e('full', self::$text_domain); ?></option>
-										</select><br/>
+										</select>
     									<em class="help-block"><?php _e('Select the layout.', self::$text_domain); ?></em>
 									</div>
 								</div>
@@ -756,7 +754,7 @@
     									<select id="wpsite_follow_us_settings_youtube_args_theme" name="wpsite_follow_us_settings_youtube_args_theme">
 											<option value="default" <?php echo isset($settings['youtube']['args']['theme']) && $settings['youtube']['args']['theme'] == 'default' ? 'selected' : '' ;?>><?php _e('default', self::$text_domain); ?></option>
 											<option value="dark" <?php echo isset($settings['youtube']['args']['theme']) && $settings['youtube']['args']['theme'] == 'dark' ? 'selected' : '' ;?>><?php _e('dark', self::$text_domain); ?></option>
-										</select><br/>
+										</select>
     									<em class="help-block"><?php _e('Select the theme.', self::$text_domain); ?></em>
 									</div>
 								</div>
@@ -785,7 +783,7 @@
 
     					<div role="tabpanel" class="tab-pane" id="wpsite_div_tumblr">
 
-    						<h3><?php _e('General', self::$text_domain); ?></h3>
+    						<h3 class="page-header"><?php _e('General', self::$text_domain); ?></h3>
 
     						<div>
 
@@ -810,14 +808,14 @@
 								<div class="form-group tb-hideable">
 									<label for="<?php echo self::$prefix; ?>settings_tumblr_user" class="col-sm-3 control-label"><?php _e('User Name', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="form-control" id="wpsite_follow_us_settings_tumblr_user" name="wpsite_follow_us_settings_tumblr_user" type="text" value="<?php echo esc_attr($settings['tumblr']['user']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_tumblr_user" name="wpsite_follow_us_settings_tumblr_user" type="text" value="<?php echo esc_attr($settings['tumblr']['user']); ?>">
                                         <em><?php _e('http://', self::$text_domain); ?></em><strong><?php _e('staff', self::$text_domain); ?></strong><em><?php _e('.tumblr.com', self::$text_domain); ?></em>
 									</div>
 								</div>
 
     						</div>
 
-    						<h3 class="tb-hideable"><?php _e('Display', self::$text_domain); ?></h3>
+    						<h3 class="page-header tb-hideable"><?php _e('Display', self::$text_domain); ?></h3>
 
     						<div class="tb-hideable">
 
@@ -845,7 +843,7 @@
     									<select id="wpsite_follow_us_settings_tumblr_args_color" name="wpsite_follow_us_settings_tumblr_args_color">
 											<option value="dark" <?php echo isset($settings['tumblr']['args']['color']) && $settings['tumblr']['args']['color'] == 'dark' ? 'selected' : '' ;?>><?php _e('dark', self::$text_domain); ?></option>
 											<option value="light" <?php echo isset($settings['tumblr']['args']['color']) && $settings['tumblr']['args']['color'] == 'light' ? 'selected' : '' ;?>><?php _e('light', self::$text_domain); ?></option>
-										</select><br/>
+										</select>
     									<em class="help-block"><?php _e('Select the color.', self::$text_domain); ?></em>
 									</div>
 								</div>
@@ -859,7 +857,7 @@
 											<option value="1" <?php echo isset($settings['tumblr']['args']['button']) && $settings['tumblr']['args']['button'] == '1' ? 'selected' : '' ;?>><?php _e('1', self::$text_domain); ?></option>
 											<option value="2" <?php echo isset($settings['tumblr']['args']['button']) && $settings['tumblr']['args']['button'] == '2' ? 'selected' : '' ;?>><?php _e('2', self::$text_domain); ?></option>
 											<option value="3" <?php echo isset($settings['tumblr']['args']['button']) && $settings['tumblr']['args']['button'] == '3' ? 'selected' : '' ;?>><?php _e('3', self::$text_domain); ?></option>
-										</select><br/>
+										</select>
     									<em class="help-block"><?php _e('Select the button type.', self::$text_domain); ?></em>
 									</div>
 								</div>
@@ -871,7 +869,9 @@
     					</div>
 
     					<div role="tabpanel" class="tab-pane" id="wpsite_div_order">
-    						<h3><?php _e('Drag & Drop to Order', self::$text_domain); ?></h3>
+
+    						<h3 class="page-header"><?php _e('Drag & Drop to Order', self::$text_domain); ?></h3>
+
     						<table>
     							<tbody>
 
@@ -896,7 +896,9 @@
     					</div>
 
     					<div role="tabpanel" class="tab-pane" id="wpsite_div_shortcode" class="metabox-holder">
-							<h3><?php _e('Examples', self::$text_domain); ?></h3>
+
+							<h3 class="page-header"><?php _e('Examples', self::$text_domain); ?></h3>
+
 							<div class="inside">
 
 								<ol>
@@ -915,7 +917,9 @@
 
 				<?php wp_nonce_field('wpsite_follow_us_admin_settings'); ?>
 
-				<p class="submit"><input type="submit" name="submit" id="submit" class="btn btn-primary" value="Save Settings"></p>
+				<p class="submit"><button type="submit" name="submit" id="submit" class="btn btn-info btn-lg" value="Save Settings"><i class="fa fa-download"></i> Save</button></p>
+
+                <small style="color:#aaa;"><?php _e('* These settings will apply to the ', self::$text_domain); ?><a href="widgets.php"><?php _e('widget', self::$text_domain); ?></a><?php _e('.', self::$text_domain); ?></small>
 
 			</form>
 
