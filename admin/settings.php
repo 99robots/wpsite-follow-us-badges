@@ -4,6 +4,8 @@
 
 	<div class="nnr-container">
 
+    	<h1 id="nnr-heading"><?php _e('Settings', self::$text_domain); ?></h1>
+
 		<div class="alert alert-warning text-center"><?php _e('The settings below will apply to the ', self::$text_domain); ?><a href="widgets.php"><?php _e('widget', self::$text_domain); ?></a><?php _e('.', self::$text_domain); ?></div>
 
 		<div id="wpsite_plugin_settings" class="col-md-9">
@@ -52,7 +54,7 @@
 								<div class="form-group tw-hideable">
 									<label for="<?php echo self::$prefix; ?>settings_twitter_user" class="col-sm-3 control-label"><?php _e('Username', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="widefat" id="wpsite_follow_us_settings_twitter_user" name="wpsite_follow_us_settings_twitter_user" type="text" value="<?php echo esc_attr($settings['twitter']['user']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_twitter_user" name="wpsite_follow_us_settings_twitter_user" type="text" value="<?php echo esc_attr($settings['twitter']['user']); ?>"><br/>
     									<em class="help-block"><?php _e('https://twitter.com/', self::$text_domain); ?><strong><label><?php _e('"example"', self::$text_domain); ?></label></strong></em>
 									</div>
 								</div>
@@ -132,7 +134,7 @@
 								<div class="form-group tw-hideable-link-only">
                             		<label for="<?php echo self::$prefix; ?>settings_twitter_args_width" class="col-sm-3 control-label"><?php _e('Width', self::$text_domain); ?></label>
                             		<div class="col-sm-9">
-                            			<input class="widefat" id="wpsite_follow_us_settings_twitter_args_width" name="wpsite_follow_us_settings_twitter_args_width" type="text" value="<?php echo esc_attr($settings['twitter']['args']['width']); ?>"><br/>
+                            			<input class="form-control" id="wpsite_follow_us_settings_twitter_args_width" name="wpsite_follow_us_settings_twitter_args_width" type="text" value="<?php echo esc_attr($settings['twitter']['args']['width']); ?>"><br/>
 										<em class="help-block"><?php _e('Accepts px and % (e.g 100px or 100%)', self::$text_domain); ?></em>
                             		</div>
                             	</div>
@@ -216,7 +218,7 @@
 								<div class="form-group fb-hideable">
 									<label for="<?php echo self::$prefix; ?>settings_facebook_user" class="col-sm-3 control-label"><?php _e('User ID', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="widefat" id="wpsite_follow_us_settings_facebook_user" name="wpsite_follow_us_settings_facebook_user" type="text" value="<?php echo esc_attr($settings['facebook']['user']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_facebook_user" name="wpsite_follow_us_settings_facebook_user" type="text" value="<?php echo esc_attr($settings['facebook']['user']); ?>"><br/>
     									<em class="help-block"><?php _e('https://facebook.com/', self::$text_domain); ?><strong><label><?php _e('"example"', self::$text_domain); ?></label></strong></em>
                                         <em class="help-block"><?php _e('https://facebook.com/', self::$text_domain); ?><strong><label><?php _e('"pages/example/112233"', self::$text_domain); ?></label></strong></em>
 
@@ -336,7 +338,7 @@
                             	<div class="form-group fb-hideable-link-only">
 									<label for="<?php echo self::$prefix; ?>settings_facebook_args_width" class="col-sm-3 control-label"><?php _e('Width', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="widefat" id="wpsite_follow_us_settings_facebook_args_width" name="wpsite_follow_us_settings_facebook_args_width" type="text" value="<?php echo esc_attr($settings['facebook']['args']['width']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_facebook_args_width" name="wpsite_follow_us_settings_facebook_args_width" type="text" value="<?php echo esc_attr($settings['facebook']['args']['width']); ?>"><br/>
     									<em class="help-block"><?php _e('Accepts px only', self::$text_domain); ?></em>
 
 									</div>
@@ -390,7 +392,7 @@
 								<div class="form-group g-hideable">
 									<label for="<?php echo self::$prefix; ?>settings_google_user" class="col-sm-3 control-label"><?php _e('User ID', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="widefat" id="wpsite_follow_us_settings_google_user" name="wpsite_follow_us_settings_google_user" type="text" value="<?php echo esc_attr($settings['google']['user']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_google_user" name="wpsite_follow_us_settings_google_user" type="text" value="<?php echo esc_attr($settings['google']['user']); ?>"><br/>
     									<em class="help-block"><?php _e('https://plus.google.com/u/0/', self::$text_domain); ?><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong><?php _e('/posts', self::$text_domain); ?></em>
                                         <em class="help-block"><?php _e('https://plus.google.com/', self::$text_domain); ?><strong><label><?php _e('"+112233"', self::$text_domain); ?></label></strong></em>
 
@@ -529,7 +531,7 @@
 									<label for="<?php echo self::$prefix; ?>settings_linkedin_user" class="col-sm-3 control-label"><?php _e('User ID', self::$text_domain); ?> <small><a href="https://developer.linkedin.com/plugins/follow-company" target="_blank"><label><?php _e('(Get your ID)', self::$text_domain); ?></label></a></small>
 </label>
 									<div class="col-sm-9">
-    									<input class="widefat" id="wpsite_follow_us_settings_linkedin_user" name="wpsite_follow_us_settings_linkedin_user" type="text" value="<?php echo esc_attr($settings['linkedin']['user']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_linkedin_user" name="wpsite_follow_us_settings_linkedin_user" type="text" value="<?php echo esc_attr($settings['linkedin']['user']); ?>"><br/>
     									<em class="wpsite_follow_us_settings_linkedin_args_user_type wpsite_follow_us_settings_linkedin_args_user_type_company"><label><?php _e('http://www.linkedin.com/company/', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em>
 										<em class="wpsite_follow_us_settings_linkedin_args_user_type wpsite_follow_us_settings_linkedin_args_user_type_person"><label><?php _e('http://www.linkedin.com/profile/view?id=', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em>
 										<em class="wpsite_follow_us_settings_linkedin_args_user_type wpsite_follow_us_settings_linkedin_args_user_type_group"><label><?php _e('https://www.linkedin.com/groups?gid=', self::$text_domain); ?></label><strong><label><?php _e('"154024"', self::$text_domain); ?></label></strong></em>
@@ -642,7 +644,7 @@
 								<div class="form-group pt-hideable">
 									<label for="<?php echo self::$prefix; ?>settings_pinterest_user" class="col-sm-3 control-label"><?php _e('User URL', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="widefat" id="wpsite_follow_us_settings_pinterest_user" name="wpsite_follow_us_settings_pinterest_user" type="text" value="<?php echo esc_attr($settings['pinterest']['user']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_pinterest_user" name="wpsite_follow_us_settings_pinterest_user" type="text" value="<?php echo esc_attr($settings['pinterest']['user']); ?>"><br/>
                                         <em class="help-block"><?php _e('Set the user URL.', self::$text_domain); ?></em>
 									</div>
 								</div>
@@ -652,7 +654,7 @@
                                 <div class="form-group pt-hideable">
 									<label for="<?php echo self::$prefix; ?>settings_pinterest_args_name" class="col-sm-3 control-label"><?php _e('Name', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="widefat" id="wpsite_follow_us_settings_pinterest_args_name" name="wpsite_follow_us_settings_pinterest_args_name" type="text" value="<?php echo esc_attr($settings['pinterest']['args']['name']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_pinterest_args_name" name="wpsite_follow_us_settings_pinterest_args_name" type="text" value="<?php echo esc_attr($settings['pinterest']['args']['name']); ?>"><br/>
                                         <em class="help-block"><?php _e('Set the User Name.', self::$text_domain); ?></em>
 									</div>
 								</div>
@@ -706,7 +708,7 @@
 								<div class="form-group yt-hideable">
 									<label for="<?php echo self::$prefix; ?>settings_youtube_user" class="col-sm-3 control-label"><?php _e('Channel ID', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="widefat" id="wpsite_follow_us_settings_youtube_user" name="wpsite_follow_us_settings_youtube_user" type="text" value="<?php echo esc_attr($settings['youtube']['user']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_youtube_user" name="wpsite_follow_us_settings_youtube_user" type="text" value="<?php echo esc_attr($settings['youtube']['user']); ?>"><br/>
                                         <em class="help-block"><?php _e('Set the Channel ID', self::$text_domain); ?></em>
 									</div>
 								</div>
@@ -808,7 +810,7 @@
 								<div class="form-group tb-hideable">
 									<label for="<?php echo self::$prefix; ?>settings_tumblr_user" class="col-sm-3 control-label"><?php _e('User Name', self::$text_domain); ?></label>
 									<div class="col-sm-9">
-    									<input class="widefat" id="wpsite_follow_us_settings_tumblr_user" name="wpsite_follow_us_settings_tumblr_user" type="text" value="<?php echo esc_attr($settings['tumblr']['user']); ?>"><br/>
+    									<input class="form-control" id="wpsite_follow_us_settings_tumblr_user" name="wpsite_follow_us_settings_tumblr_user" type="text" value="<?php echo esc_attr($settings['tumblr']['user']); ?>"><br/>
                                         <em><?php _e('http://', self::$text_domain); ?></em><strong><?php _e('staff', self::$text_domain); ?></strong><em><?php _e('.tumblr.com', self::$text_domain); ?></em>
 									</div>
 								</div>
@@ -896,10 +898,11 @@
     					<div role="tabpanel" class="tab-pane" id="wpsite_div_shortcode" class="metabox-holder">
 							<h3><?php _e('Examples', self::$text_domain); ?></h3>
 							<div class="inside">
+
 								<ol>
-									<li><?php _e('[wpsite_follow_us_badges twitter="WPsite"]', self::$text_domain); ?></li>
-									<li><?php _e('&lt;?php do_shortcode(\'[wpsite_follow_us_badges twitter="WPsite"]\'); ?&gt;', self::$text_domain); ?></li>
-									<li><?php _e('[wpsite_follow_us_badges title="Follow Us" twitter="WPsite" facebook="WPsite" order="facebook,twitter" twitter_followers_count_display=false twitter_link=true]', self::$text_domain); ?></li>
+									<li><code><?php _e('[wpsite_follow_us_badges twitter="WPsite"]', self::$text_domain); ?></code></li>
+									<li><code><?php _e('&lt;?php do_shortcode(\'[wpsite_follow_us_badges twitter="WPsite"]\'); ?&gt;', self::$text_domain); ?></code></li>
+									<li><code><?php _e('[wpsite_follow_us_badges title="Follow Us" twitter="WPsite" facebook="WPsite" order="facebook,twitter" twitter_followers_count_display=false twitter_link=true]', self::$text_domain); ?></code></li>
 								</ol>
 
 								<p><?php _e('Go to', self::$text_domain); ?> <a href="https://github.com/kjbenk/wpsite-follow-us-badges#shortcode-parameters" target="_blank">Github</a> <?php _e('page for full parameter list.', self::$text_domain); ?></p>
@@ -912,7 +915,7 @@
 
 				<?php wp_nonce_field('wpsite_follow_us_admin_settings'); ?>
 
-				<?php submit_button(); ?>
+				<p class="submit"><input type="submit" name="submit" id="submit" class="btn btn-primary" value="Save Settings"></p>
 
 			</form>
 
