@@ -1,8 +1,8 @@
 <div id="wpsite_plugin_sidebar" class="metabox-holder col-md-3">
 
-    <div class="postbox">
-		<h3><?php _e('Subscribe to Our Newsletter', self::$text_domain); ?></h3>
-		<div class="inside">
+    <div class="panel panel-default">
+		<div class="panel-heading"><h3 class="panel-title"><?php _e('Subscribe to Our Newsletter', self::$text_domain); ?></h3></div>
+		<div class="panel-body">
     		<p><?php _e('Signup now to get notified of plugin updates, awesome themes, and more. Over 17,000 already have:', self::$text_domain); ?></p>
 			<!-- Begin MailChimp Signup Form -->
 			<link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
@@ -26,7 +26,7 @@
 						<div class="response" id="mce-success-response" style="display:none"></div>
 					</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 					<div style="position: absolute; left: -5000px;"><input type="text" name="b_82c2341134bbdc37714642adb_642b18616e" tabindex="-1" value=""></div>
-					<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn-primary btn"></div>
+					<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" style="margin:0;" class="btn-primary btn"></div>
 				</div>
 			</form>
 			</div>
@@ -35,9 +35,9 @@
 		</div>
 	</div>
 
-	<div class="postbox">
-		<h3><?php _e('Must-Read Articles', self::$text_domain); ?></h3>
-		<div class="inside">
+	<div class="panel panel-default">
+		<div class="panel-heading"><h3 class="panel-title"><?php _e('Must-Read Articles', self::$text_domain); ?></h3></div>
+		<div class="panel-body">
 			<div class="wpsite_feed">
 				<script src="http://feeds.feedburner.com/99Robots?format=sigpro" type="text/javascript" ></script><noscript><p><?php _e('Subscribe to 99Robots Feed:', self::$text_domain); ?> <a href="http://feeds.feedburner.com/99Robots"></a><br/><?php _e('Powered by FeedBurner', self::$text_domain); ?></p> </noscript>
 			</div>
