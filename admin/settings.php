@@ -77,7 +77,7 @@
                     		            		<i class="fa fa-check fa-stack-1x"></i>
                         		        	</span>
                         		    	</label>
-                            			<em class="help-block"><?php _e('Check this to show only the link.', self::$text_domain); ?></em>
+                            			<em class="help-block"><?php _e('Check this to show the large button style that only the links to your social page..', self::$text_domain); ?></em>
                             		</div>
                             	</div>
 
@@ -254,7 +254,7 @@
                     		            		<i class="fa fa-check fa-stack-1x"></i>
                         		        	</span>
                         		    	</label>
-                            			<em class="help-block"><?php _e('Check this to only show the link.', self::$text_domain); ?></em>
+                            			<em class="help-block"><?php _e('Check this to show the large button style that only the links to your social page..', self::$text_domain); ?></em>
                             		</div>
                             	</div>
 
@@ -415,7 +415,7 @@
                     		            		<i class="fa fa-check fa-stack-1x"></i>
                         		        	</span>
                         		    	</label>
-                            			<em class="help-block"><?php _e('Check this to show only the link.', self::$text_domain); ?></em>
+                            			<em class="help-block"><?php _e('Check this to show the large button style that only the links to your social page..', self::$text_domain); ?></em>
                             		</div>
                             	</div>
 
@@ -571,7 +571,7 @@
                     		            		<i class="fa fa-check fa-stack-1x"></i>
                         		        	</span>
                         		    	</label>
-                            			<em class="help-block"><?php _e('Check this to only show the link.', self::$text_domain); ?></em>
+                            			<em class="help-block"><?php _e('Check this to show the large button style that only the links to your social page..', self::$text_domain); ?></em>
                             		</div>
                             	</div>
 
@@ -669,7 +669,7 @@
                     		            		<i class="fa fa-check fa-stack-1x"></i>
                         		        	</span>
                         		    	</label>
-                            			<em class="help-block"><?php _e('Check this to only show the link.', self::$text_domain); ?></em>
+                            			<em class="help-block"><?php _e('Check this to show the large button style that only the links to your social page..', self::$text_domain); ?></em>
                             		</div>
                             	</div>
 
@@ -729,7 +729,7 @@
                     		            		<i class="fa fa-check fa-stack-1x"></i>
                         		        	</span>
                         		    	</label>
-                            			<em class="help-block"><?php _e('Check this to only show the link.', self::$text_domain); ?></em>
+                            			<em class="help-block"><?php _e('Check this to show the large button style that only the links to your social page..', self::$text_domain); ?></em>
                             		</div>
                             	</div>
 
@@ -831,7 +831,7 @@
                     		            		<i class="fa fa-check fa-stack-1x"></i>
                         		        	</span>
                         		    	</label>
-                            			<em class="help-block"><?php _e('Check this to only show the link.', self::$text_domain); ?></em>
+                            			<em class="help-block"><?php _e('Check this to show the large button style that only the links to your social page..', self::$text_domain); ?></em>
                             		</div>
                             	</div>
 
