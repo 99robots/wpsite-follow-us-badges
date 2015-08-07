@@ -660,7 +660,7 @@ class WPsiteFollowUs extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'wpsite_follow_us_badges', // Base ID
-			__('WPsite Follow Us Badges', self::$text_domain), // Name
+			__('Follow Us Badges', self::$text_domain), // Name
 			array( 'description' => __( 'Add follow buttons to your sidebar', self::$text_domain), ) // Args
 		);
 	}

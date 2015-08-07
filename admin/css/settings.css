@@ -187,35 +187,35 @@ input[type="checkbox"]:checked + label .fa-check {
 	background-color: transparent !important;
 }
 
-.fa-twitter {
+.nav .fa-twitter {
     color: #2CA9E1;
 }
 
-.fa-facebook {
+.nav .fa-facebook {
     color: #3B5997;
 }
 
-.fa-google-plus {
+.nav .fa-google-plus {
     color: #353631;
 }
 
-.fa-linkedin {
+.nav .fa-linkedin {
     color: #0073B2;
 }
 
-.fa-pinterest {
+.nav .fa-pinterest {
     color: #CD1D1F;
 }
 
-.fa-youtube {
+.nav .fa-youtube {
     color: #e52d27;
 }
 
-.fa-tumblr {
+.nav .fa-tumblr {
     color: #2c4762;
 }
 
-.fa-list-ol, .fa-code {
+.nav .fa-list-ol, .nav .fa-code {
     color: #999;
 }
 
