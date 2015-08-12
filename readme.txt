@@ -83,8 +83,9 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 == Changelog ==
 
 = 3.0.0 =
-* Improved admin interface; hides disabled fields
-* Fixed bug with Tumblr display
+* NEW: Improved admin interface layout & design :)
+* ADDED: Hide/Show fields if social account is enabled/disabled
+* FIXED: Tumblr badge would be cut off in some cases
 
 = 2.0.7 =
 * Re-branded to 99 Robots

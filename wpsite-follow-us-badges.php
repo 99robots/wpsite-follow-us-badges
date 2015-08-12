@@ -44,7 +44,7 @@ if (!defined('WPSITE_FOLLOW_US_PLUGIN_URL'))
 // Plugin Version
 
 if (!defined('WPSITE_FOLLOW_US_VERSION_NUM'))
-    define('WPSITE_FOLLOW_US_VERSION_NUM', '2.0.7');
+    define('WPSITE_FOLLOW_US_VERSION_NUM', '3.0.0');
 
 
 /**
