@@ -2,14 +2,14 @@
 
 .widget_wpsite_follow_us_badges {}
 
-.wpsite_follow_us_div {display: block;padding: 10px 0;clear: both;}
+.wpsite_follow_us_div {display: block;padding: 10px 0;clear: both; overflow: hidden;}
 	.widget .twitterbox {display:block;padding:5px;}
 	.widget .facebookbox {display:block;padding:5px;}
 	.widget .linkedinbox {display:block;padding:5px;}
 	.widget .googlebox {display:block;padding:5px;}
 	.widget .pinterestbox {display:block;padding:5px;}
 	.widget .youtubebox {display:block;padding:5px;}
-	.widget .tumblrbox {display:block;padding:5px;border: none !important;}
+	.widget .tumblrbox {display:block;padding:0;margin:5px;border: none !important;}
 
 .wpsite_follow_us_div .fb-like { overflow: hidden;  width: 100%;} /* prevent text from going off page */
 .wpsite_follow_us_div iframe {margin-bottom: 0;}  /* prevent Twitter row from inconsistent spacing */

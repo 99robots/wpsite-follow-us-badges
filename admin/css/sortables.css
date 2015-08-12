@@ -1,0 +1,59 @@
+/* Sortables */
+
+.wpsite_follow_us_badges_order_draggables {
+	padding: 10px 5px 10px 5px;
+	margin: 0px 10px 0px 10px;
+	border: 1px solid black;
+}
+
+.wpsite_follow_us_sort_item {
+	padding: 5px;
+	border: 1px solid #ccc;
+	background-color: #e4e4e4;
+	width: intrinsic;
+	text-transform: capitalize;
+	width: inherit;
+	cursor: move;
+	text-align: center;
+	color: white;
+	border-radius: 5px;
+}
+
+.dragable {
+	padding: 20px;
+	padding-left: 60px;
+	padding-right: 60px;
+	margin-left: 10px;
+}
+
+#sortable .dragable {
+	max-width: 300px;
+}
+
+#twitter {
+	background: #2CA9E1 /* url("../../img/twitter.png") */ no-repeat 20px center;
+}
+
+#facebook {
+	background: #3B5997 /* url("../../img/facebook.png") */ no-repeat 20px center;
+}
+
+#google {
+	background: #353631 /* url("../../img/gplus.png") */ no-repeat 20px center;
+}
+
+#linkedin {
+	background: #0073B2 /* url("../../img/linkedin.png") */ no-repeat 20px center;
+}
+
+#pinterest {
+	background: #CD1D1F /* url("../../img/pinterest.png") */ no-repeat 20px center;
+}
+
+#youtube {
+	background: #e52d27 /* url("../../img/youtube-old.png") */ no-repeat 35px center;
+}
+
+#tumblr {
+	background: #2c4762 /* url("../../img/tumblr.png") */ no-repeat 20px center;
+}
