@@ -530,10 +530,10 @@
 </label>
 									<div class="col-sm-9">
     									<input class="form-control" id="wpsite_follow_us_settings_linkedin_user" name="wpsite_follow_us_settings_linkedin_user" type="text" value="<?php echo esc_attr($settings['linkedin']['user']); ?>">
-    									<em class="wpsite_follow_us_settings_linkedin_args_user_type wpsite_follow_us_settings_linkedin_args_user_type_company"><label><?php _e('http://www.linkedin.com/company/', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em>
-										<em class="wpsite_follow_us_settings_linkedin_args_user_type wpsite_follow_us_settings_linkedin_args_user_type_person"><label><?php _e('http://www.linkedin.com/profile/view?id=', self::$text_domain); ?></label><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em>
-										<em class="wpsite_follow_us_settings_linkedin_args_user_type wpsite_follow_us_settings_linkedin_args_user_type_group"><label><?php _e('https://www.linkedin.com/groups?gid=', self::$text_domain); ?></label><strong><label><?php _e('"154024"', self::$text_domain); ?></label></strong></em>
-										<em class="wpsite_follow_us_settings_linkedin_args_user_type wpsite_follow_us_settings_linkedin_args_user_type_university"><label><?php _e('https://www.linkedin.com/edu/school?id=', self::$text_domain); ?></label><strong><label><?php _e('"18483"', self::$text_domain); ?></label></strong></em>
+    									<em class="help-block wpsite_follow_us_settings_linkedin_args_user_type wpsite_follow_us_settings_linkedin_args_user_type_company"><span><?php _e('http://www.linkedin.com/company/', self::$text_domain); ?></span><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em>
+										<em class="help-block wpsite_follow_us_settings_linkedin_args_user_type wpsite_follow_us_settings_linkedin_args_user_type_person"><span><?php _e('http://www.linkedin.com/profile/view?id=', self::$text_domain); ?></span><strong><label><?php _e('"112233"', self::$text_domain); ?></label></strong></em>
+										<em class="help-block wpsite_follow_us_settings_linkedin_args_user_type wpsite_follow_us_settings_linkedin_args_user_type_group"><span><?php _e('https://www.linkedin.com/groups?gid=', self::$text_domain); ?></span><strong><label><?php _e('"154024"', self::$text_domain); ?></label></strong></em>
+										<em class="help-block wpsite_follow_us_settings_linkedin_args_user_type wpsite_follow_us_settings_linkedin_args_user_type_university"><span><?php _e('https://www.linkedin.com/edu/school?id=', self::$text_domain); ?></span><strong><label><?php _e('"18483"', self::$text_domain); ?></label></strong></em>
 
 									</div>
 								</div>
@@ -598,14 +598,14 @@
         						<!-- Language -->
 
         						<div class="form-group">
-									<label for="<?php echo self::$prefix; ?>settings_linkedin_args_language" class="col-sm-3 control-label"><?php _e('Count Mode', self::$text_domain); ?></label>
+									<label for="<?php echo self::$prefix; ?>settings_linkedin_args_language" class="col-sm-3 control-label"><?php _e('Select Language', self::$text_domain); ?></label>
 									<div class="col-sm-9">
     									<select id="wpsite_follow_us_settings_linkedin_args_language" name="wpsite_follow_us_settings_linkedin_args_language">
 											<?php foreach (self::$linkedin_supported_languages as $lang) { ?>
 											<option value="<?php echo $lang; ?>" <?php echo isset($settings['linkedin']['args']['language']) && $settings['linkedin']['args']['language'] == $lang ? 'selected' : '' ;?>><?php _e($lang, self::$text_domain); ?></option>
 											<?php } ?>
 										</select>
-    									<em class="help-block"><?php _e('Select the count mode.', self::$text_domain); ?></em>
+    									<em class="help-block"><?php _e('Select the language.', self::$text_domain); ?></em>
 									</div>
 								</div>
 
@@ -809,7 +809,7 @@
 									<label for="<?php echo self::$prefix; ?>settings_tumblr_user" class="col-sm-3 control-label"><?php _e('User Name', self::$text_domain); ?></label>
 									<div class="col-sm-9">
     									<input class="form-control" id="wpsite_follow_us_settings_tumblr_user" name="wpsite_follow_us_settings_tumblr_user" type="text" value="<?php echo esc_attr($settings['tumblr']['user']); ?>">
-                                        <em><?php _e('http://', self::$text_domain); ?></em><strong><?php _e('staff', self::$text_domain); ?></strong><em><?php _e('.tumblr.com', self::$text_domain); ?></em>
+                                        <em class="help-block"><?php _e('http://', self::$text_domain); ?><strong><label><?php _e('staff', self::$text_domain); ?></label></strong><?php _e('.tumblr.com', self::$text_domain); ?></em>
 									</div>
 								</div>
 
