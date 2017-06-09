@@ -6,7 +6,7 @@
 
     	<h1 id="nnr-heading"><?php _e('Settings', self::$text_domain); ?></h1>
 
-		<div id="wpsite_plugin_settings" class="col-md-9">
+		<div class="nnr-content">
 
 			<form method="post">
 
@@ -923,9 +923,9 @@
 
 			</form>
 
-		</div>  <!-- /wpsite_plugin_settings -->
+		</div>
 
-	<?php require_once('sidebar.php'); ?>
+		<?php require_once('sidebar.php'); ?>
 
 	</div>
 

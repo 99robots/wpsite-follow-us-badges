@@ -1,9 +1,10 @@
-<div id="wpsite_plugin_sidebar" class="metabox-holder col-md-3">
+<div class="nnr-sidebar">
 
-    <div class="panel panel-default">
-		<div class="panel-heading"><h3 class="panel-title"><?php _e('Subscribe to Our Newsletter', self::$text_domain); ?></h3></div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><?php _e('Signup now to get notified of plugin updates, awesome themes, and more. Over 10,000+ already have:', self::$text_domain); ?></h3>
+		</div>
 		<div class="panel-body">
-    		<p><?php _e('Signup now to get notified of plugin updates, awesome themes, and more. Over 17,000 already have:', self::$text_domain); ?></p>
 			<!-- Begin MailChimp Signup Form -->
 			<link href="//cdn-images.mailchimp.com/embedcode/classic-081711.css" rel="stylesheet" type="text/css">
 			<style type="text/css">
@@ -16,17 +17,17 @@
 				We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 			</style>
 			<div id="mc_embed_signup">
-			<form action="//wpsite.us5.list-manage.com/subscribe/post?u=82c2341134bbdc37714642adb&amp;id=642b18616e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+			<form action="//wpsite.us5.list-manage.com/subscribe/post?u=82c2341134bbdc37714642adb&amp;id=642b18616e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate style="padding-left: 0;">
 				<div id="mc_embed_signup_scroll">
-					<div class="mc-field-group">
-						<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="<?php _e('Email Address', self::$text_domain); ?>">
+					<div style="margin-bottom: 20px;">
+						<input type="email" value="" name="EMAIL" class="required email form-control" id="mce-EMAIL" placeholder="<?php _e('Email Address', self::$text_domain); ?>">
 					</div>
 					<div id="mce-responses" class="clear">
 						<div class="response" id="mce-error-response" style="display:none"></div>
 						<div class="response" id="mce-success-response" style="display:none"></div>
 					</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
 					<div style="position: absolute; left: -5000px;"><input type="text" name="b_82c2341134bbdc37714642adb_642b18616e" tabindex="-1" value=""></div>
-					<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" style="margin:0;" class="btn-primary btn"></div>
+					<div><input style="width:100%;" type="submit" value="Subscribe" name="subscribe" class="btn btn-default"></div>
 				</div>
 			</form>
 			</div>
@@ -36,39 +37,25 @@
 	</div>
 
 	<div class="panel panel-default">
-		<div class="panel-heading"><h3 class="panel-title"><?php _e('Must-Read Articles', self::$text_domain); ?></h3></div>
+		<div class="panel-heading">
+			<h3 class="panel-title"><?php _e('Must-Read Articles', self::$text_domain); ?></h3>
+		</div>
 		<div class="panel-body">
 			<div class="wpsite_feed">
-				<script src="http://feeds.feedburner.com/99Robots?format=sigpro" type="text/javascript" ></script><noscript><p><?php _e('Subscribe to 99Robots Feed:', self::$text_domain); ?> <a href="http://feeds.feedburner.com/99Robots"></a><br/><?php _e('Powered by FeedBurner', self::$text_domain); ?></p> </noscript>
+				<script src="http://feeds.feedburner.com/99robots?format=sigpro" type="text/javascript" ></script><noscript><p><?php _e('Subscribe to 99 Robots Feed:', self::$text_domain); ?> <a href="http://feeds.feedburner.com/99robots"></a><br/><?php _e('Powered by FeedBurner', self::$text_domain); ?></p> </noscript>
 			</div>
 		</div>
 	</div>
 
-<!--
-	<div class="">
-		<h3><?php _e('Need Plugin or Theme Development?', self::$text_domain); ?></h3>
-			<div class="inside">
-				<div class="mktg-banner">
-					<a target="_blank" href="https://99robots.com/services/development/#utm_source=plugin-config&utm_medium=banner&utm_campaign=custom-development-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/img/ad-custom-development.png' ?>"></a>
-				</div>
-			</div>
-	</div>
-
-	<div class="">
-		<h3><?php _e('Request a Plugin', self::$text_domain); ?></h3>
-			<div class="inside">
-				<div class="mktg-banner">
-					<a target="_blank" href="https://99robots.com/contact/#utm_source=plugin-config&utm_medium=banner&utm_campaign=plugin-request-banner"><img src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/img/ad-plugin-request.png' ?>"></a>
-				</div>
-			</div>
-	</div>
-
-	<div class="">
-		<h3><?php _e('Visit Support Forums', self::$text_domain); ?></h3>
-		<div class="inside">
-			<a class="btn btn-success" href="https://99robots.com/support">Get Support</a>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title"><?php _e('Need a Plugin or Theme Developed?', self::$text_domain); ?></h3>
+		</div>
+		<div class="panel-body">
+			<a class="nnr-sidebar-image-link" href="https://99robots.com/contact?utm_medium=sidebar&utm_campaign=plugin-request-banner" target="_blank">
+				<img class="nnr-sidebar-image" src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/img/ad-plugin-request.png'; ?>">
+			</a>
 		</div>
 	</div>
--->
 
-</div> <!-- wpsite_plugin_sidebar -->
+</div>

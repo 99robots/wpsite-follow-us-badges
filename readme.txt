@@ -1,18 +1,18 @@
 === Follow Us Badges ===
-Contributors: 99robots, wpsitenet
+Contributors: 99robots, kjbenk, charliepatel
 Donate link:
 Tags: share badge, badges, follow us, follow me, Facebook, Facebook Box, facebook like, Facebook Widget, Facebook badge, google plus, google+, google box, google widget, social box, social media badge, follow badge, twitter, twitter widget, twitter badge, twitter follow, chiclets, social media buttons, twitter button, twitter badge, facebook button, google plus button, linkedin, linkedin box, linkedin share, box count, badge count, social icons, share icons, youtube, youtube box, youtube widget, youtube share, tumblr, tumblr button, tumblr share, tumblr widget, tumblr box
-Requires at least: 3.8
-Tested up to: 4.2
-Stable tag: 3.0.0
+Requires at least: 4.0
+Tested up to: 4.6.1
+Stable tag: 3.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The 99 Robots Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn. YouTube, Tumblr and other social media badges.
+Follow Us Badges by 99 Robots showcases your Facebook, Twitter, Google+, LinkedIn. YouTube, Tumblr and other social media badges.
 
 == Description ==
 
-The Social Media Follow Us Box by http://www.99robots.com is a fully customizable plugin that can be configured to display each of the following social media networks:
+The Follow Us Badges plugin by https://www.99robots.com is a fully customizable plugin that can be configured to display each of the following social media networks:
 
 = Customizable Options =
 Using the various APIs, the plugin allows you configure the display and visibility of each social network.
@@ -46,14 +46,11 @@ Showcase your website to Tumblr.
 = Custom Styles or Templates =
 We'll be adding the ability to customize the look of your Follow Us Badges so stay tuned for such enhancements.
 
-= Support =
-Have a question or comment about this plugin. Visit the plugin's page at:
-http://www.99robots.com/social-media-follow-us-badges
-
+Also please check out our other [plugins](https://99robots.com/products/?utm_source=wprepo&utm_medium=follow-us-badges&utm_campaign=desc) :)
 
 == Installation ==
 
-You can install the Follow Us Badges plugin from your WordPress Dashboard or manually via FTP. For more details, visit http://www.99robots.com
+You can install the Follow Us Badges plugin from your WordPress Dashboard or manually via FTP. For more details, visit https://www.99robots.com
 
 = From WordPress Dashboard =
 
@@ -81,6 +78,12 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 
 
 == Changelog ==
+
+= 3.1.1 = 2015-10-16
+* UPDATED: Banner and Icons
+
+= 3.1.0 = 2015-10-16
+* UPDATED: Readme file description and authors
 
 = 3.0.0 =
 * NEW: Improved admin interface layout & design :)

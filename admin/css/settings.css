@@ -96,6 +96,20 @@ h1#nnr-heading {
 	width: 100%;
 }
 
+.nnr-content {
+	padding-right: 10px;
+	display: inline-block;
+	width: 70%;
+	float: left;
+}
+
+.nnr-sidebar {
+	padding-left: 10px;
+	display: inline-block;
+	width: 30%;
+	float: left;
+}
+
 .nnr-tab:hover,
 .nnr-current-tab:hover {
 	text-decoration: none;
@@ -153,6 +167,15 @@ input[type="checkbox"]:checked + label .fa-check {
 	-webkit-box-sizing: initial !important;
 	-moz-box-sizing: initial !important;
 	box-sizing: initial !important;
+}
+
+.nnr-sidebar-image-link {
+	display: block;
+}
+
+.nnr-sidebar-image {
+	margin:0 auto;
+	display: block;
 }
 
 /* Fix WP Engine styles */
