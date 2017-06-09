@@ -1,74 +1,70 @@
 <?php
-/*
-Plugin Name: Follow Us Badges
-plugin URI:	https://99robots.com/products/
-Description: The 99 Robots Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn and other social media badges.
-version: 3.1.1
-Author: 99 Robots
-Author URI: https://www.99robots.com
-License: GPL2
-*/
+/**
+ * Plugin Name: Follow Us Badges
+ * Plugin URI:	https://99robots.com/products/
+ * Description: The 99 Robots Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn and other social media badges.
+ * Version: 3.1.2
+ * Author: 99 Robots
+ * Author URI: https://www.99robots.com
+ * License: GPL2
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Text Domain:       wpsite-follow-us-badges
+ * Domain Path:       /languages
+ */
 
-// Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
 
 /**
  * Global Definitions
  */
 
-// Item Name
-
-if (!defined('WPSITE_FOLLOW_US_ITEM_NAME'))
-    define('WPSITE_FOLLOW_US_ITEM_NAME', 'Follow Us Badges');
-
 // Store URL
-
-if (!defined('WPSITE_FOLLOW_US_STORE_URL'))
-    define('WPSITE_FOLLOW_US_STORE_URL', 'https://99robots.com');
+if ( ! defined( 'WPSITE_FOLLOW_US_STORE_URL' ) ) {
+    define( 'WPSITE_FOLLOW_US_STORE_URL', 'https://99robots.com' );
+}
 
 // Plugin Name
-
-if (!defined('WPSITE_FOLLOW_US_PLUGIN_NAME'))
-    define('WPSITE_FOLLOW_US_PLUGIN_NAME', trim(dirname(plugin_basename(__FILE__)), '/'));
+if ( ! defined( 'WPSITE_FOLLOW_US_PLUGIN_NAME' ) ) {
+    define( 'WPSITE_FOLLOW_US_PLUGIN_NAME', trim( dirname( plugin_basename( __FILE__ ) ), '/') );
+}
 
 // Plugin Directory
-
-if (!defined('WPSITE_FOLLOW_US_PLUGIN_DIR'))
-    define('WPSITE_FOLLOW_US_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . WPSITE_FOLLOW_US_PLUGIN_NAME);
+if ( ! defined( 'WPSITE_FOLLOW_US_PLUGIN_DIR' ) ) {
+    define( 'WPSITE_FOLLOW_US_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . WPSITE_FOLLOW_US_PLUGIN_NAME );
+}
 
 // Plugin URL
-
-if (!defined('WPSITE_FOLLOW_US_PLUGIN_URL'))
-    define('WPSITE_FOLLOW_US_PLUGIN_URL', WP_PLUGIN_URL . '/' . WPSITE_FOLLOW_US_PLUGIN_NAME);
+if ( ! defined( 'WPSITE_FOLLOW_US_PLUGIN_URL' ) ) {
+    define( 'WPSITE_FOLLOW_US_PLUGIN_URL', WP_PLUGIN_URL . '/' . WPSITE_FOLLOW_US_PLUGIN_NAME );
+}
 
 // Plugin Version
-
-if (!defined('WPSITE_FOLLOW_US_VERSION_NUM'))
-    define('WPSITE_FOLLOW_US_VERSION_NUM', '3.1.1');
-
+if ( ! defined( 'WPSITE_FOLLOW_US_VERSION_NUM' ) ) {
+    define( 'WPSITE_FOLLOW_US_VERSION_NUM', '3.1.2' );
+}
 
 /**
  * Activatation / Deactivation
  */
-
-register_activation_hook( __FILE__, array('WPsiteFollowUs', 'register_activation'));
-add_action('widgets_init', array('WPsiteFollowUs', 'wpsite_register_widget'));
+register_activation_hook( __FILE__, array( 'WPsiteFollowUs', 'register_activation' ) );
+add_action( 'widgets_init', array( 'WPsiteFollowUs', 'wpsite_register_widget' ) );
 
 /**
  * Hooks / Filter
  */
-
-add_action('init', array('WPsiteFollowUs', 'load_textdoamin'));
-add_action('admin_menu', array('WPsiteFollowUs', 'add_menu_page'));
+add_action( 'init', array( 'WPsiteFollowUs', 'load_textdoamin' ) );
+add_action( 'admin_menu', array( 'WPsiteFollowUs', 'add_menu_page' ) );
 
 /**
  * AJAX
  */
-
-add_action('wp_ajax_wpsite_save_order', array('WPsiteFollowUs', 'save_order'));
+add_action( 'wp_ajax_wpsite_save_order', array( 'WPsiteFollowUs', 'save_order' ) );
 
 $plugin = plugin_basename(__FILE__);
-add_filter("plugin_action_links_$plugin", array('WPsiteFollowUs', 'wpsite_follow_us_badges_settings_link'));
+add_filter( "plugin_action_links_$plugin", array( 'WPsiteFollowUs', 'wpsite_follow_us_badges_settings_link' ) );
 
 /**
  *  WPsiteFollowUs main class
@@ -76,19 +72,7 @@ add_filter("plugin_action_links_$plugin", array('WPsiteFollowUs', 'wpsite_follow
  * @since 1.0.0
  * @using Wordpress 3.8
  */
-
 class WPsiteFollowUs extends WP_Widget {
-
-	/**
-	 * text_domain
-	 *
-	 * (default value: 'wpsite-follow-us-badges')
-	 *
-	 * @var string
-	 * @access private
-	 * @static
-	 */
-	private static $text_domain = 'wpsite-follow-us-badges';
 
 	/**
 	 * prefix
@@ -415,35 +399,31 @@ class WPsiteFollowUs extends WP_Widget {
 	 */
 	static function register_activation() {
 
-		/* Check if multisite, if so then save as site option */
-
-		if (is_multisite()) {
-			add_site_option('wpsite_follow_us_badges_version', WPSITE_FOLLOW_US_VERSION_NUM);
+		// Check if multisite, if so then save as site option
+		if ( is_multisite() ) {
+			add_site_option( 'wpsite_follow_us_badges_version', WPSITE_FOLLOW_US_VERSION_NUM );
 		} else {
-			add_option('wpsite_follow_us_badges_version', WPSITE_FOLLOW_US_VERSION_NUM);
+			add_option( 'wpsite_follow_us_badges_version', WPSITE_FOLLOW_US_VERSION_NUM );
 		}
 
-		$settings = get_option('wpsite_follow_us_settings');
+		$settings = get_option( 'wpsite_follow_us_settings' );
 
-		/* Default values */
-
-		if ($settings === false) {
+		// Default values
+		if ( false === $settings ) {
 			$settings = self::$default;
 		}
 
 		// Add youtube after 1.2.1
-
-		if (!in_array('youtube', $settings['order'])) {
+		if ( ! in_array( 'youtube', $settings['order'] ) ) {
 			$settings['order'][] = 'youtube';
 		}
 
 		// Add tumblr after 1.3
-
-		if (!in_array('tumblr', $settings['order'])) {
+		if ( ! in_array( 'tumblr', $settings['order'] ) ) {
 			$settings['order'][] = 'tumblr';
 		}
 
-		update_option('wpsite_follow_us_settings', $settings);
+		update_option( 'wpsite_follow_us_settings', $settings );
 	}
 
 	/**
@@ -461,7 +441,7 @@ class WPsiteFollowUs extends WP_Widget {
 	 * @since 1.0.0
 	 */
 	static function load_textdoamin() {
-		load_plugin_textdomain(self::$text_domain, false, WPSITE_FOLLOW_US_PLUGIN_DIR . '/languages');
+		load_plugin_textdomain( 'wpsite-follow-us-badges', false, WPSITE_FOLLOW_US_PLUGIN_DIR . '/languages' );
 	}
 
 	/**
@@ -474,14 +454,14 @@ class WPsiteFollowUs extends WP_Widget {
 		/* Cast the first sub menu to the top menu */
 
 	    $settings_page_load = add_submenu_page(
-	    	'options-general.php', 										// parent slug
-	    	__('99 Robots Follow Us', self::$text_domain), 				// Page title
-	    	__('Follow Us Badges', self::$text_domain), 				// Menu name
-	    	'manage_options', 											// Capabilities
-	    	self::$settings_page, 										// slug
-	    	array('WPsiteFollowUs', 'wpsite_follow_us_admin_settings')	// Callback function
+	    	'options-general.php',
+	    	esc_html__( '99 Robots Follow Us', 'wpsite-follow-us-badges' ),
+	    	esc_html__( 'Follow Us Badges', 'wpsite-follow-us-badges' ),
+	    	'manage_options',
+	    	self::$settings_page,
+	    	array( 'WPsiteFollowUs', 'wpsite_follow_us_admin_settings' )
 	    );
-	    add_action("admin_print_scripts-$settings_page_load", array('WPsiteFollowUs', 'wpsite_follow_us_include_admin_scripts'));
+	    add_action( "load-$settings_page_load", array( 'WPsiteFollowUs', 'wpsite_follow_us_include_admin_scripts' ) );
 	}
 
 	/**
@@ -490,8 +470,10 @@ class WPsiteFollowUs extends WP_Widget {
 	 * @since 1.0.0
 	 */
 	static function wpsite_follow_us_badges_settings_link($links) {
+
 		$settings_link = '<a href="options-general.php?page=' . self::$settings_page . '">Settings</a>';
-		array_unshift($links, $settings_link);
+		array_unshift( $links, $settings_link );
+
 		return $links;
 	}
 
@@ -503,23 +485,21 @@ class WPsiteFollowUs extends WP_Widget {
 	static function wpsite_follow_us_include_admin_scripts() {
 
 		// CSS
+		wp_register_style( 'wpsite_follow_us_settings_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/css/settings.css') ;
+		wp_enqueue_style( 'wpsite_follow_us_settings_css' );
 
-		wp_register_style('wpsite_follow_us_settings_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/css/settings.css');
-		wp_enqueue_style('wpsite_follow_us_settings_css');
+		wp_register_style( 'nnr_bootstrap_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/css/nnr-bootstrap.min.css' );
+		wp_enqueue_style( 'nnr_bootstrap_css' );
 
-		wp_register_style('nnr_bootstrap_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/css/nnr-bootstrap.min.css');
-		wp_enqueue_style('nnr_bootstrap_css');
+		wp_register_style( 'wpsite_follow_us_sortables_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/css/sortables.css' );
+		wp_enqueue_style( 'wpsite_follow_us_sortables_css' );
 
-		wp_register_style('wpsite_follow_us_sortables_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/css/sortables.css');
-		wp_enqueue_style('wpsite_follow_us_sortables_css');
-
-		wp_register_style('wpsite_follow_us_fontawesome', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/fonts/font-awesome.min.css');
-		wp_enqueue_style('wpsite_follow_us_fontawesome');
+		wp_register_style( 'wpsite_follow_us_fontawesome', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/fonts/font-awesome.min.css' );
+		wp_enqueue_style( 'wpsite_follow_us_fontawesome' );
 
 		// Scripts
-
-		wp_enqueue_script(self::$prefix . 'bootstrap_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/bootstrap.js', array('jquery'));
-		wp_enqueue_script(self::$prefix . 'admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/admin.js', array('jquery'));
+		wp_enqueue_script( self::$prefix . 'bootstrap_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/bootstrap.js', array( 'jquery' ) );
+		wp_enqueue_script( self::$prefix . 'admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/admin.js', array( 'jquery' ) );
 	}
 
 	/**
@@ -529,17 +509,15 @@ class WPsiteFollowUs extends WP_Widget {
 	 */
 	static function wpsite_follow_us_admin_settings() {
 
-		$settings = get_option('wpsite_follow_us_settings');
+		$settings = get_option( 'wpsite_follow_us_settings' );
 
-		/* Default values */
-
-		if ($settings === false) {
+		// Default values
+		if ( false === $settings ) {
 			$settings = self::$default;
 		}
 
-		/* Save data nd check nonce */
-
-		if (isset($_POST['submit']) && check_admin_referer('wpsite_follow_us_admin_settings')) {
+		// Save data nd check nonce
+		if ( isset( $_POST['submit'] ) && check_admin_referer( 'wpsite_follow_us_admin_settings' ) ) {
 
 			$settings = array(
 				'order'		=> $settings['order'],
@@ -623,13 +601,13 @@ class WPsiteFollowUs extends WP_Widget {
 				)
 			);
 
-			update_option('wpsite_follow_us_settings', $settings);
+			update_option( 'wpsite_follow_us_settings', $settings );
 		}
 
-		wp_enqueue_script('jquery');
-		wp_enqueue_script('jquery-ui-sortable');
+		wp_enqueue_script( 'jquery' );
+		wp_enqueue_script( 'jquery-ui-sortable' );
 
-		require_once('admin/settings.php');
+		require_once( 'admin/settings.php' );
 	}
 
 	/**
@@ -639,19 +617,19 @@ class WPsiteFollowUs extends WP_Widget {
 	 */
 	static function save_order() {
 
-		$settings = get_option('wpsite_follow_us_settings');
+		$settings = get_option( 'wpsite_follow_us_settings' );
 
-		/* Default values */
+		// Default values
 
-		if ($settings === false) {
+		if ( false === $settings ) {
 			$settings = self::$default;
 		}
 
 		$settings['order'] = $_POST['order'];
 
-		update_option('wpsite_follow_us_settings', $settings);
+		update_option( 'wpsite_follow_us_settings', $settings );
 
-		die(); // this is required to return a proper result
+		die();
 	}
 
 	/**
@@ -659,9 +637,9 @@ class WPsiteFollowUs extends WP_Widget {
 	 */
 	function __construct() {
 		parent::__construct(
-			'wpsite_follow_us_badges', // Base ID
-			__('Follow Us Badges', self::$text_domain), // Name
-			array( 'description' => __( 'Add follow buttons to your sidebar', self::$text_domain), ) // Args
+			'wpsite_follow_us_badges',
+			esc_html__( 'Follow Us Badges', 'wpsite-follow-us-badges' ),
+			array( 'description' => __( 'Add follow buttons to your sidebar', 'wpsite-follow-us-badges' ) )
 		);
 	}
 
@@ -675,32 +653,27 @@ class WPsiteFollowUs extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		wp_enqueue_style('wpsite_follow_us_badges_widget_css', plugins_url('/css/wpsite-follow-us-badges.css', __FILE__));
+		wp_enqueue_style( 'wpsite_follow_us_badges_widget_css', plugins_url( '/css/wpsite-follow-us-badges.css', __FILE__ ) );
 
 		$title = apply_filters( 'widget_title', $instance['title'] );
+		$settings = get_option( 'wpsite_follow_us_settings' );
 
-		$settings = get_option('wpsite_follow_us_settings');
-
-		/* Default values */
-
-		if ($settings === false) {
+		// Default values
+		if ( false === $settings ) {
 			$settings = self::$default;
 		}
 
 		echo $args['before_widget'];
 
-		if (!empty( $title ))
+		if ( ! empty( $title ) ) {
 			echo $args['before_title'] . $title . $args['after_title'];
+		}
 
 		$content = '';
-
-		foreach ($settings['order'] as $order) {
-
-			// Style credit to http://www.flashuser.net/css3-social-media-buttons
+		foreach ( $settings['order'] as $order ) {
 
 			// Twitter
-
-			if ($order == 'twitter') {
+			if ( 'twitter' === $order ) {
 				if (isset($settings['twitter']['active']) && $settings['twitter']['active']) {
 
 					if (isset($settings['twitter']['args']['link']) && $settings['twitter']['args']['link']) {
@@ -750,8 +723,7 @@ class WPsiteFollowUs extends WP_Widget {
 			}
 
 			// Facebook
-
-			else if ($order == 'facebook') {
+			else if ( 'facebook' === $order ) {
 				if (isset($settings['facebook']['active']) && $settings['facebook']['active']) {
 
 					if (isset($settings['facebook']['args']['link']) && $settings['facebook']['args']['link']) {
@@ -811,7 +783,7 @@ class WPsiteFollowUs extends WP_Widget {
 
 			// Google+
 
-			else if ($order == 'google') {
+			else if ( 'google' === $order ) {
 				if (isset($settings['google']['active']) && $settings['google']['active']) {
 
 					if (isset($settings['google']['args']['link']) && $settings['google']['args']['link']) {
@@ -845,8 +817,7 @@ class WPsiteFollowUs extends WP_Widget {
 			}
 
 			// LinkedIn
-
-			else if ($order == 'linkedin') {
+			else if ( 'linkedin' === $order ) {
 				if (isset($settings['linkedin']['active']) && $settings['linkedin']['active']) {
 
 					if (isset($settings['linkedin']['args']['link']) && $settings['linkedin']['args']['link']) {
@@ -881,8 +852,7 @@ class WPsiteFollowUs extends WP_Widget {
 			}
 
 			// Pinterest
-
-			else if ($order == 'pinterest') {
+			else if ( 'pinterest' === $order ) {
 				if (isset($settings['pinterest']['active']) && $settings['pinterest']['active']) {
 
 					if (isset($settings['pinterest']['args']['link']) && $settings['pinterest']['args']['link']) {
@@ -900,8 +870,7 @@ class WPsiteFollowUs extends WP_Widget {
 			}
 
 			// YouTube
-
-			else if ($order == 'youtube') {
+			else if ( 'youtube' === $order ) {
 				if (isset($settings['youtube']['active']) && $settings['youtube']['active']) {
 
 					if (isset($settings['youtube']['args']['link']) && $settings['youtube']['args']['link']) {
@@ -927,8 +896,7 @@ class WPsiteFollowUs extends WP_Widget {
 			}
 
 			// Tumblr
-
-			else if ($order == 'tumblr') {
+			else if ( 'tumblr' === $order ) {
 				if (isset($settings['tumblr']['active']) && $settings['tumblr']['active']) {
 
 					if (isset($settings['tumblr']['args']['link']) && $settings['tumblr']['args']['link']) {
@@ -969,16 +937,15 @@ class WPsiteFollowUs extends WP_Widget {
 	public function form( $instance ) {
 
 		// Title
-
-		if (isset( $instance[ 'title' ]))
+		if ( isset( $instance[ 'title' ] ) ) {
 			$title = $instance[ 'title' ];
-		else
-			$title = __('Follow Us', self::$text_domain);
-
+		} else {
+			$title = esc_html__( 'Follow Us', 'wpsite-follow-us-badges' );
+		}
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+			<label for="<?php echo $this->get_field_id( 'title' ) ?>"><?php esc_html_e( 'Title:' ) ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ) ?>" name="<?php echo $this->get_field_name( 'title' ) ?>" type="text" value="<?php echo esc_attr( $title ) ?>">
 		</p>
 		<?php
 	}
@@ -1002,9 +969,7 @@ class WPsiteFollowUs extends WP_Widget {
 }
 
 // Shortcode
-
 add_shortcode( 'wpsite_follow_us_badges', 'wpsite_follow_us_badges_shortcode' );
-
 /**
  * Create the shortcode for this plugin.  All features are included in the shortcode
  *
@@ -1012,7 +977,7 @@ add_shortcode( 'wpsite_follow_us_badges', 'wpsite_follow_us_badges_shortcode' );
  * @param mixed $atts
  * @return void
  */
-function wpsite_follow_us_badges_shortcode($atts) {
+function wpsite_follow_us_badges_shortcode( $atts ) {
 
 	wp_enqueue_style('wpsite_follow_us_badges_widget_css', plugins_url('/css/wpsite-follow-us-badges.css', __FILE__));
 
@@ -1065,7 +1030,6 @@ function wpsite_follow_us_badges_shortcode($atts) {
 	), $atts );
 
 	// Re-create args array so our code can understand the data
-
 	$settings = array(
 		'title'		=> $args['title'],
 		'inline'	=> $args['inline'] === 'true' ? true : false,
@@ -1150,32 +1114,26 @@ function wpsite_follow_us_badges_shortcode($atts) {
 	);
 
 	// Create class for inline elements
-
 	$inline_class = '';
-
-	if ($settings['inline']) {
+	if ( $settings['inline'] ) {
 		$inline_class = 'wpsite_follow_us_div_inline';
 	}
 
 	$content = '<div class="wpsite_follow_us_badges_shortcode">';
 
-	if (isset($settings['title']) && $settings['title'] != '') {
+	if ( isset( $settings['title'] ) && '' !== $settings['title'] ) {
 
-		if ($settings['inline']) {
+		if ( $settings['inline'] ) {
 			$content .= '<span>' . $settings['title'] . '</span>';
 		} else {
 			$content .= '<h3>' . $settings['title'] . '</h3>';
 		}
-
 	}
 
-	foreach ($settings['order'] as $order) {
-
-		// Style credit to http://www.flashuser.net/css3-social-media-buttons
+	foreach ( $settings['order'] as $order ) {
 
 		// Twitter
-
-		if ($order == 'twitter') {
+		if ( 'twitter' === $order ) {
 			if (isset($settings['twitter']['active']) && $settings['twitter']['active']) {
 
 				if (isset($settings['twitter']['args']['link']) && $settings['twitter']['args']['link']) {
@@ -1225,8 +1183,7 @@ function wpsite_follow_us_badges_shortcode($atts) {
 		}
 
 		// Facebook
-
-		else if ($order == 'facebook') {
+		else if ( 'facebook' === $order ) {
 			if (isset($settings['facebook']['active']) && $settings['facebook']['active']) {
 
 				if (isset($settings['facebook']['args']['link']) && $settings['facebook']['args']['link']) {
@@ -1283,10 +1240,8 @@ function wpsite_follow_us_badges_shortcode($atts) {
 				}
 			}
 		}
-
 		// Google+
-
-		else if ($order == 'google') {
+		else if ( 'google' === $order ) {
 			if (isset($settings['google']['active']) && $settings['google']['active']) {
 
 				if (isset($settings['google']['args']['link']) && $settings['google']['args']['link']) {
@@ -1320,8 +1275,7 @@ function wpsite_follow_us_badges_shortcode($atts) {
 		}
 
 		// LinkedIn
-
-		else if ($order == 'linkedin') {
+		else if ( 'linkedin' === $order ) {
 			if (isset($settings['linkedin']['active']) && $settings['linkedin']['active']) {
 
 				if (isset($settings['linkedin']['args']['link']) && $settings['linkedin']['args']['link']) {
@@ -1354,10 +1308,8 @@ function wpsite_follow_us_badges_shortcode($atts) {
 				}
 			}
 		}
-
 		// Pinterest
-
-		else if ($order == 'pinterest') {
+		else if ( 'pinterest' === $order ) {
 			if (isset($settings['pinterest']['active']) && $settings['pinterest']['active']) {
 
 				if (isset($settings['pinterest']['args']['link']) && $settings['pinterest']['args']['link']) {
@@ -1373,10 +1325,8 @@ function wpsite_follow_us_badges_shortcode($atts) {
 				}
 			}
 		}
-
 		// YouTube
-
-		else if ($order == 'youtube') {
+		else if ( 'youtube' === $order ) {
 			if (isset($settings['youtube']['active']) && $settings['youtube']['active']) {
 
 				if (isset($settings['youtube']['args']['link']) && $settings['youtube']['args']['link']) {
@@ -1400,10 +1350,8 @@ function wpsite_follow_us_badges_shortcode($atts) {
 				}
 			}
 		}
-
 		// Tumblr
-
-		else if ($order == 'tumblr') {
+		else if ( 'tumblr' === $order ) {
 			if (isset($settings['tumblr']['active']) && $settings['tumblr']['active']) {
 
 				if (isset($settings['tumblr']['args']['link']) && $settings['tumblr']['args']['link']) {
@@ -1431,4 +1379,3 @@ function wpsite_follow_us_badges_shortcode($atts) {
 
 	return $content . "</div>";
 }
-?>
