@@ -15,7 +15,6 @@
 						<li role="presentation" class="active"><a href="#wpsite_div_order" aria-controls="wpsite_div_order" role="tab" data-toggle="tab"><i class="fa fa-list-ol fa-2x"></i></a></li>
 						<li role="presentation"><a href="#wpsite_div_twitter" aria-controls="wpsite_div_twitter" role="tab" data-toggle="tab"><i class="fa fa-twitter fa-2x"></i></a></li>
 						<li role="presentation"><a href="#wpsite_div_facebook" aria-controls="wpsite_div_facebook" role="tab" data-toggle="tab"><i class="fa fa-facebook fa-2x"></i></a></li>
-						<li role="presentation"><a href="#wpsite_div_google" aria-controls="wpsite_div_google" role="tab" data-toggle="tab"><i class="fa fa-google-plus fa-2x"></i></a></li>
 						<li role="presentation"><a href="#wpsite_div_linkedin" aria-controls="wpsite_div_linkedin" role="tab" data-toggle="tab"><i class="fa fa-linkedin fa-2x"></i></a></li>
 						<li role="presentation"><a href="#wpsite_div_pinterest" aria-controls="wpsite_div_pinterest" role="tab" data-toggle="tab"><i class="fa fa-pinterest fa-2x"></i></a></li>
 						<li role="presentation"><a href="#wpsite_div_youtube" aria-controls="wpsite_div_youtube" role="tab" data-toggle="tab"><i class="fa fa-youtube fa-2x"></i></a></li>
@@ -173,7 +172,7 @@
 
 							</div>
 
-							<p><?php esc_html_e( 'Reference:', 'wpsite-follow-us-badges' ) ?> <a href="https://dev.twitter.com/docs/follow-button" target="_blank"><?php esc_html_e( 'Twitter Follow Button API Details', 'wpsite-follow-us-badges' ) ?></a></p>
+							<p><?php esc_html_e( 'Reference:', 'wpsite-follow-us-badges' ) ?> <a href="https://developer.twitter.com/en/docs/twitter-for-websites/follow-button/overview.html" target="_blank"><?php esc_html_e( 'Twitter Follow Button API Details', 'wpsite-follow-us-badges' ) ?></a></p>
 						</div>
 
 						<div role="tabpanel" class="tab-pane" id="wpsite_div_facebook">
@@ -350,116 +349,6 @@
 							<p><?php esc_html_e( 'Reference:', 'wpsite-follow-us-badges' ) ?> <a href="https://developers.facebook.com/docs/plugins/like-button/" target="_blank"><?php esc_html_e( 'Facebook Like Button API Details', 'wpsite-follow-us-badges' ) ?></a></p>
 						</div>
 
-						<div role="tabpanel" class="tab-pane" id="wpsite_div_google">
-
-							<h3 class="page-header"><?php esc_html_e( 'General', 'wpsite-follow-us-badges' ) ?></h3>
-
-							<div>
-
-								<!-- Active -->
-
-								<div class="form-group">
-									<label for="<?php echo self::$prefix ?>settings_google_active" class="col-sm-3 control-label"><?php esc_html_e( 'Active', 'wpsite-follow-us-badges' ) ?></label>
-									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_google_active" name="<?php echo self::$prefix ?>settings_google_active" type="checkbox" <?php echo isset( $settings['google']['active'] ) && $settings['google']['active'] ? 'checked="checked"' : ''; ?>/>
-										<label for="<?php echo self::$prefix ?>settings_google_active">
-											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
-											</span>
-										</label>
-										<em class="help-block"><?php esc_html_e( 'Check this to show the social icon on your site.', 'wpsite-follow-us-badges' ) ?></em>
-									</div>
-								</div>
-
-								<!-- User -->
-
-								<div class="form-group g-hideable">
-									<label for="<?php echo self::$prefix ?>settings_google_user" class="col-sm-3 control-label"><?php esc_html_e( 'User ID', 'wpsite-follow-us-badges' ) ?></label>
-									<div class="col-sm-9">
-										<input class="form-control" id="wpsite_follow_us_settings_google_user" name="wpsite_follow_us_settings_google_user" type="text" value="<?php echo esc_attr( $settings['google']['user'] ) ?>">
-										<em class="help-block"><?php esc_html_e( 'https://plus.google.com/u/0/', 'wpsite-follow-us-badges' ) ?><strong><label><?php esc_html_e( '"112233"', 'wpsite-follow-us-badges' ) ?></label></strong><?php esc_html_e( '/posts', 'wpsite-follow-us-badges' ) ?></em>
-										<em class="help-block"><?php esc_html_e( 'https://plus.google.com/', 'wpsite-follow-us-badges' ) ?><strong><label><?php esc_html_e( '"+112233"', 'wpsite-follow-us-badges' ) ?></label></strong></em>
-
-									</div>
-								</div>
-
-							</div>
-
-							<h3 class="page-header g-hideable"><?php esc_html_e( 'Display', 'wpsite-follow-us-badges' ) ?></h3>
-
-							<div class="g-hideable">
-
-								<!-- Link Only -->
-
-								<div class="form-group">
-									<label for="<?php echo self::$prefix ?>settings_google_args_link" class="col-sm-3 control-label"><?php esc_html_e( 'Link Only', 'wpsite-follow-us-badges' ) ?></label>
-									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_google_args_link" name="<?php echo self::$prefix ?>settings_google_args_link" type="checkbox" <?php echo isset( $settings['google']['args']['link'] ) && $settings['google']['args']['link'] ? 'checked="checked"' : ''; ?>/>
-										<label for="<?php echo self::$prefix ?>settings_google_args_link">
-											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
-											</span>
-										</label>
-										<em class="help-block"><?php esc_html_e( 'Check this to show the large button style that only the links to your social page..', 'wpsite-follow-us-badges' ) ?></em>
-									</div>
-								</div>
-
-								<!-- Size -->
-
-								<div class="form-group g-hideable-link-only">
-									<label for="<?php echo self::$prefix ?>settings_google_args_size" class="col-sm-3 control-label"><?php esc_html_e( 'Size', 'wpsite-follow-us-badges' ) ?></label>
-									<div class="col-sm-9">
-										<select id="wpsite_follow_us_settings_google_args_size" name="wpsite_follow_us_settings_google_args_size">
-											<option value="15" <?php echo isset( $settings['google']['args']['size'] ) && '15' === $settings['google']['args']['size'] ? 'selected' : '' ;?>><?php esc_html_e( 'small', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="20" <?php echo isset( $settings['google']['args']['size'] ) && '20' === $settings['google']['args']['size'] ? 'selected' : '' ;?>><?php esc_html_e( 'medium', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="24" <?php echo isset( $settings['google']['args']['size'] ) && '24' === $settings['google']['args']['size'] ? 'selected' : '' ;?>><?php esc_html_e( 'large', 'wpsite-follow-us-badges' ) ?></option>
-										</select>
-										<em class="help-block"><?php esc_html_e( 'Select the size.', 'wpsite-follow-us-badges' ) ?></em>
-									</div>
-								</div>
-
-								<!-- Annotation -->
-
-								<div class="form-group g-hideable-link-only">
-									<label for="<?php echo self::$prefix ?>settings_google_args_annotation" class="col-sm-3 control-label"><?php esc_html_e( 'Annotation', 'wpsite-follow-us-badges' ) ?></label>
-									<div class="col-sm-9">
-										<select id="wpsite_follow_us_settings_google_args_annotation" name="wpsite_follow_us_settings_google_args_annotation">
-											<option value="bubble" <?php echo isset( $settings['google']['args']['annotation'] ) && 'bubble' === $settings['google']['args']['annotation'] ? 'selected' : '' ;?>><?php esc_html_e( 'Bubble Horizontal', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="vertical-bubble" <?php echo isset( $settings['google']['args']['annotation'] ) && 'vertical-bubble' === $settings['google']['args']['annotation'] ? 'selected' : '' ;?>><?php esc_html_e( 'Bubble Vertical', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="none" <?php echo isset( $settings['google']['args']['annotation'] ) && 'none' === $settings['google']['args']['annotation'] ? 'selected' : '' ;?>><?php esc_html_e( 'none', 'wpsite-follow-us-badges' ) ?></option>
-										</select>
-										<em class="help-block"><?php esc_html_e( 'Select the annotation style.', 'wpsite-follow-us-badges' ) ?></em>
-									</div>
-								</div>
-
-							</div>
-
-							<h3 class="page-header g-hideable"><?php esc_html_e( 'Advanced', 'wpsite-follow-us-badges' ) ?></h3>
-
-							<div class="g-hideable">
-
-								<!-- Language -->
-
-								<div class="form-group">
-									<label for="<?php echo self::$prefix ?>settings_google_args_language" class="col-sm-3 control-label"><?php esc_html_e( 'Language', 'wpsite-follow-us-badges' ) ?></label>
-									<div class="col-sm-9">
-										<select id="wpsite_follow_us_settings_google_args_language" name="wpsite_follow_us_settings_google_args_language">
-											<?php foreach ( self::$google_supported_languages as $lang ) { ?>
-											<option value="<?php echo $lang; ?>" <?php echo isset( $settings['google']['args']['language'] ) && $settings['google']['args']['language'] === $lang ? 'selected' : '' ;?>><?php echo $lang ?></option>
-											<?php } ?>
-										</select>
-										<em class="help-block"><?php esc_html_e( 'Select the language.', 'wpsite-follow-us-badges' ) ?></em>
-									</div>
-								</div>
-
-								<p><?php esc_html_e( 'Reference:', 'wpsite-follow-us-badges' ) ?> <a href="https://developers.google.com/+/web/follow/" target="_blank"><?php esc_html_e( 'Google+ Button API Details', 'wpsite-follow-us-badges' ) ?></a></p>
-
-							</div>
-
-						</div>
-
 						<div role="tabpanel" class="tab-pane" id="wpsite_div_linkedin">
 
 							<h3 class="page-header"><?php esc_html_e( 'General', 'wpsite-follow-us-badges' ) ?></h3>
@@ -568,7 +457,7 @@
 									</div>
 								</div>
 
-								<p><?php esc_html_e( 'Reference:', 'wpsite-follow-us-badges' ) ?> <a href="https://developer.linkedin.com/plugins/follow-company" target="_blank"><?php esc_html_e( 'LinkedIn Button API Details', 'wpsite-follow-us-badges' ) ?></a></p>
+								<p><?php esc_html_e( 'Reference:', 'wpsite-follow-us-badges' ) ?> <a href="https://docs.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/plugins/follow-company-plugin" target="_blank"><?php esc_html_e( 'LinkedIn Button API Details', 'wpsite-follow-us-badges' ) ?></a></p>
 
 							</div>
 

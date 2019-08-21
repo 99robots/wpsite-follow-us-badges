@@ -1,14 +1,14 @@
 === Follow Us Badges ===
-Contributors: 99robots, kjbenk, charliepatel
+Contributors: 99robots, charliepatel
 Donate link:
-Tags: share badge, badges, follow us, follow me, Facebook, Facebook Box, facebook like, Facebook Widget, Facebook badge, google plus, google+, google box, google widget, social box, social media badge, follow badge, twitter, twitter widget, twitter badge, twitter follow, chiclets, social media buttons, twitter button, twitter badge, facebook button, google plus button, linkedin, linkedin box, linkedin share, box count, badge count, social icons, share icons, youtube, youtube box, youtube widget, youtube share, tumblr, tumblr button, tumblr share, tumblr widget, tumblr box
+Tags: share badge, badges, follow us, follow me, Facebook, Facebook Box, facebook like, Facebook Widget, Facebook badge, social box, social media badge, follow badge, twitter, twitter widget, twitter badge, twitter follow, chiclets, social media buttons, twitter button, twitter badge, facebook button, linkedin, linkedin box, linkedin share, box count, badge count, social icons, share icons, youtube, youtube box, youtube widget, youtube share, tumblr, tumblr button, tumblr share, tumblr widget, tumblr box
 Requires at least: 4.0
-Tested up to: 4.8.0
-Stable tag: 3.1.2
+Tested up to: 5.2.2
+Stable tag: 3.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Follow Us Badges by 99 Robots showcases your Facebook, Twitter, Google+, LinkedIn. YouTube, Tumblr and other social media badges.
+Follow Us Badges by 99 Robots showcases your Facebook, Twitter, LinkedIn. YouTube, Tumblr and other social media badges.
 
 == Description ==
 
@@ -27,9 +27,6 @@ Allow visitors to Like your site. Increase your Facebook presence and reach the 
 
 = Twitter =
 Increase the number of followers you have on Twitter, and start sharing content.
-
-= Google Plus / Google+ =
-Sharing content on Google+ is important. Increase your domain authority by allowing visitors to +1 your site.
 
 = LinkedIn =
 Showcase your website to LinkedIn - the world's largest professional network.
@@ -78,6 +75,12 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 
 
 == Changelog ==
+
+= 3.1.3 = 2018-08-21
+* Compatible with WordPress 5.2.2
+* Updated outdated links
+* Removed Google Plus Share functionality
+* Updated Reference Doc Links
 
 = 3.1.2 = 2017-06-09
 * Compatible with WordPress 4.8

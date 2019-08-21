@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Follow Us Badges
  * Plugin URI:	https://99robots.com/products/
- * Description: The 99 Robots Follow Us Badges showcases your Facebook, Twitter, Google+, LinkedIn and other social media badges.
- * Version: 3.1.2
+ * Description: The 99 Robots Follow Us Badges showcases your Facebook, Twitter, LinkedIn and other social media badges.
+ * Version: 3.1.3
  * Author: 99 Robots
  * Author URI: https://www.99robots.com
  * License: GPL2
@@ -43,7 +43,7 @@ if ( ! defined( 'WPSITE_FOLLOW_US_PLUGIN_URL' ) ) {
 
 // Plugin Version
 if ( ! defined( 'WPSITE_FOLLOW_US_VERSION_NUM' ) ) {
-    define( 'WPSITE_FOLLOW_US_VERSION_NUM', '3.1.2' );
+    define( 'WPSITE_FOLLOW_US_VERSION_NUM', '3.1.3' );
 }
 
 /**
@@ -104,7 +104,7 @@ class WPsiteFollowUs extends WP_Widget {
 	 * @static
 	 */
 	public static $default = array(
-		'order'		=> array('twitter', 'facebook', 'google', 'linkedin', 'pinterest', 'youtube', 'tumblr'),
+		'order'		=> array('twitter', 'facebook', 'linkedin', 'pinterest', 'youtube', 'tumblr'),
 		'twitter'	=> array(
 			'active'	=> true,
 			'user'		=> '99Robots',
@@ -132,18 +132,6 @@ class WPsiteFollowUs extends WP_Widget {
 				'colorscheme'			=> 'light',
 				'show_friends_faces'	=> false,
 				'include_share_button'	=> false
-			)
-		),
-		'google'	=> array(
-			'active'	=> false,
-			'user'		=> '+99Robots',
-			'args'		=> array(
-				'link'			=> false,
-				'size'			=> '20',
-				'annotation'	=> 'bubble',
-				'language'		=> 'en-US',
-				'asynchronous' 	=> true,
-				'parse_tags'	=> 'default'
 			)
 		),
 		'linkedin'	=> array(
@@ -550,18 +538,6 @@ class WPsiteFollowUs extends WP_Widget {
 						'include_share_button'	=> isset($_POST['wpsite_follow_us_settings_facebook_args_include_share_button']) && $_POST['wpsite_follow_us_settings_facebook_args_include_share_button'] ? true : false
 					)
 				),
-				'google'	=> array(
-					'active'	=> isset($_POST['wpsite_follow_us_settings_google_active']) && $_POST['wpsite_follow_us_settings_google_active'] ? true : false,
-					'user'		=> isset($_POST['wpsite_follow_us_settings_google_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_google_user'])) : '',
-					'args' 		=> array(
-						'link' 	=> isset($_POST['wpsite_follow_us_settings_google_args_link']) && $_POST['wpsite_follow_us_settings_google_args_link'] ? true : false,
-						'size'			=> $_POST['wpsite_follow_us_settings_google_args_size'],
-						'annotation'	=> $_POST['wpsite_follow_us_settings_google_args_annotation'],
-						'language'		=> $_POST['wpsite_follow_us_settings_google_args_language'],
-						//'asynchronous' 	=> isset($_POST['wpsite_follow_us_settings_google_asynchronous']) && $_POST['wpsite_follow_us_settings_google_asynchronous'] ? true : false,
-						//'parse_tags'	=> $_POST['wpsite_follow_us_settings_google_args_parse_tags']
-					)
-				),
 				'linkedin'	=> array(
 					'active'	=> isset($_POST['wpsite_follow_us_settings_linkedin_active']) && $_POST['wpsite_follow_us_settings_linkedin_active'] ? true : false,
 					'user'		=> isset($_POST['wpsite_follow_us_settings_linkedin_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_linkedin_user'])) : '',
@@ -781,41 +757,6 @@ class WPsiteFollowUs extends WP_Widget {
 				}
 			}
 
-			// Google+
-
-			else if ( 'google' === $order ) {
-				if (isset($settings['google']['active']) && $settings['google']['active']) {
-
-					if (isset($settings['google']['args']['link']) && $settings['google']['args']['link']) {
-						$content .= '<div class="wpsite_follow_us_div_link"><a class="google" href="//plus.google.com/' . $settings['google']['user'] . '" target="_blank">Google+</a></div>';
-					} else {
-						$content .= '<div class="wpsite_follow_us_div googlebox"><div class="g-follow" data-href="//plus.google.com/' . $settings['google']['user'] . '" data-rel="publisher"';
-
-						if (isset($settings['google']['args']['annotation'])) {
-							$content .= ' data-annotation="' . $settings['google']['args']['annotation'] .'"';
-						}
-
-						if (isset($settings['google']['args']['size'])) {
-							$content .= ' data-height="' . $settings['google']['args']['size'] .'"';
-						}
-
-						$content .= '></div><!-- Place this tag after the last widget tag. -->
-							<script type="text/javascript">';
-
-						if (isset($settings['google']['args']['language'])) {
-							$content .= 'window.___gcfg = {lang: "' . $settings['google']['args']['language'] . '"};';
-						}
-
-						$content .= '(function() {
-							    var po = document.createElement("script"); po.type = "text/javascript"; po.async = true;
-							    po.src = "https://apis.google.com/js/platform.js";
-							    var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(po, s);
-							  })();
-							</script></div>';
-					}
-				}
-			}
-
 			// LinkedIn
 			else if ( 'linkedin' === $order ) {
 				if (isset($settings['linkedin']['active']) && $settings['linkedin']['active']) {
@@ -984,7 +925,7 @@ function wpsite_follow_us_badges_shortcode( $atts ) {
 	$args = shortcode_atts( array(
 		'title'								=> '',
 		'inline'							=> 'false',
-		'order'								=> "twitter,facebook,google,linkedin,pinterest,youtube,tumblr",
+		'order'								=> "twitter,facebook,linkedin,pinterest,youtube,tumblr",
 		'twitter'							=> null,
 		'twitter_link'						=> 'false',
 		'twitter_followers_count_display' 	=> 'true',
@@ -1060,18 +1001,6 @@ function wpsite_follow_us_badges_shortcode( $atts ) {
 				'colorscheme'			=> $args['facebook_colorscheme'],
 				'show_friends_faces'	=> $args['facebook_show_friends_faces'] === 'true' ? true : false,
 				'include_share_button'	=> $args['facebook_include_share_button'] === 'true' ? true : false,
-			)
-		),
-		'google'	=> array(
-			'active'	=> isset($args['google']) ? true : false,
-			'user'		=> $args['google'],
-			'args'		=> array(
-				'link'			=> $args['google_link'] === 'true' ? true : false,
-				'size'			=> $args['google_size'],
-				'annotation'	=> $args['google_annotation'],
-				'language'		=> $args['google_language'],
-				'asynchronous' 	=> true,
-				'parse_tags'	=> 'default'
 			)
 		),
 		'linkedin'	=> array(
@@ -1237,39 +1166,6 @@ function wpsite_follow_us_badges_shortcode( $atts ) {
 						  fjs.parentNode.insertBefore(js, fjs);
 						}(document, "script", "facebook-jssdk"));</script></div>
 					';
-				}
-			}
-		}
-		// Google+
-		else if ( 'google' === $order ) {
-			if (isset($settings['google']['active']) && $settings['google']['active']) {
-
-				if (isset($settings['google']['args']['link']) && $settings['google']['args']['link']) {
-					$content .= '<div class="wpsite_follow_us_div_link ' . $inline_class . '"><a class="google" href="//plus.google.com/' . $settings['google']['user'] . '" target="_blank">Google+</a></div>';
-				} else {
-					$content .= '<div class="wpsite_follow_us_div googlebox ' . $inline_class . '"><div class="g-follow" data-href="//plus.google.com/' . $settings['google']['user'] . '" data-rel="publisher"';
-
-					if (isset($settings['google']['args']['annotation'])) {
-						$content .= ' data-annotation="' . $settings['google']['args']['annotation'] .'"';
-					}
-
-					if (isset($settings['google']['args']['size'])) {
-						$content .= ' data-height="' . $settings['google']['args']['size'] .'"';
-					}
-
-					$content .= '></div><!-- Place this tag after the last widget tag. -->
-						<script type="text/javascript">';
-
-					if (isset($settings['google']['args']['language'])) {
-						$content .= 'window.___gcfg = {lang: "' . $settings['google']['args']['language'] . '"};';
-					}
-
-					$content .= '(function() {
-						    var po = document.createElement("script"); po.type = "text/javascript"; po.async = true;
-						    po.src = "https://apis.google.com/js/platform.js";
-						    var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(po, s);
-						  })();
-						</script></div>';
 				}
 			}
 		}
