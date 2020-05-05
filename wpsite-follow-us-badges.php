@@ -3,7 +3,7 @@
  * Plugin Name: Follow Us Badges
  * Plugin URI:	https://99robots.com/products/
  * Description: The 99 Robots Follow Us Badges showcases your Facebook, Twitter, LinkedIn and other social media badges.
- * Version: 3.1.3
+ * Version: 3.1.4
  * Author: 99 Robots
  * Author URI: https://www.99robots.com
  * License: GPL2
@@ -43,7 +43,7 @@ if ( ! defined( 'WPSITE_FOLLOW_US_PLUGIN_URL' ) ) {
 
 // Plugin Version
 if ( ! defined( 'WPSITE_FOLLOW_US_VERSION_NUM' ) ) {
-    define( 'WPSITE_FOLLOW_US_VERSION_NUM', '3.1.3' );
+    define( 'WPSITE_FOLLOW_US_VERSION_NUM', '3.1.4' );
 }
 
 /**
