@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Follow Us Badges
- * Plugin URI:	https://99robots.com/products/
+ * Plugin URI:	https://draftpress.com/products/
  * Description: The 99 Robots Follow Us Badges showcases your Facebook, Twitter, LinkedIn and other social media badges.
- * Version: 3.1.4
+ * Version: 3.1.5
  * Author: 99 Robots
- * Author URI: https://www.99robots.com
+ * Author URI: https://www.draftpress.com
  * License: GPL2
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       wpsite-follow-us-badges
@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
 
 // Store URL
 if ( ! defined( 'WPSITE_FOLLOW_US_STORE_URL' ) ) {
-    define( 'WPSITE_FOLLOW_US_STORE_URL', 'https://99robots.com' );
+    define( 'WPSITE_FOLLOW_US_STORE_URL', 'https://draftpress.com' );
 }
 
 // Plugin Name

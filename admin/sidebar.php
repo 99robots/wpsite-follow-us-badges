@@ -62,7 +62,7 @@
 		</div>
 
 		<div class="panel-body">
-			<a class="nnr-sidebar-image-link" href="https://99robots.com/contact?utm_medium=sidebar&utm_campaign=plugin-request-banner" target="_blank">
+			<a class="nnr-sidebar-image-link" href="https://draftpress.com/contact?utm_medium=sidebar&utm_campaign=plugin-request-banner" target="_blank">
 				<img class="nnr-sidebar-image" src="<?php echo WPSITE_FOLLOW_US_PLUGIN_URL . '/img/ad-plugin-request.png'; ?>">
 			</a>
 		</div>
