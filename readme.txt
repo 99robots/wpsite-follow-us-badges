@@ -3,8 +3,8 @@ Contributors: 99robots, charliepatel, draftpress
 Donate link:
 Tags: share badge, badges, follow us, follow me, Facebook, Facebook Box, facebook like, Facebook Widget, Facebook badge, social box, social media badge, follow badge, twitter, twitter widget, twitter badge, twitter follow, chiclets, social media buttons, twitter button, twitter badge, facebook button, linkedin, linkedin box, linkedin share, box count, badge count, social icons, share icons, youtube, youtube box, youtube widget, youtube share, tumblr, tumblr button, tumblr share, tumblr widget, tumblr box
 Requires at least: 4.5
-Tested up to: 5.4.1
-Stable tag: 3.1.5
+Tested up to: 5.6
+Stable tag: 3.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,6 +75,9 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 
 
 == Changelog ==
+
+= 3.1.6 = 2020-29-12
+* Added DraftPress as a contributor
 
 = 3.1.5 = 2020-27-05
 * Added DraftPress as a contributor
