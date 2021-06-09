@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+jQuery(function($) {
 
 	// Order
 
@@ -68,7 +68,7 @@ jQuery(document).ready(function($) {
 		$('.tw-hideable-link-only').show();
 	}
 
-	$("#wpsite_follow_us_settings_twitter_active").change(function(){
+	$("#wpsite_follow_us_settings_twitter_active").on("change", function(){
 
 		$("#wpsite_div_twitter .tw-hideable").hide();
 		$("#twitter").hide();
@@ -79,7 +79,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$("#wpsite_follow_us_settings_facebook_active").change(function(){
+	$("#wpsite_follow_us_settings_facebook_active").on("change", function(){
 
 		$("#wpsite_div_facebook .fb-hideable").hide();
 		$("#facebook").hide();
@@ -90,7 +90,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$("#wpsite_follow_us_settings_google_active").change(function(){
+	$("#wpsite_follow_us_settings_google_active").on("change", function(){
 
 		$("#wpsite_div_google .g-hideable").hide();
 		$("#google").hide();
@@ -101,7 +101,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$("#wpsite_follow_us_settings_linkedin_active").change(function(){
+	$("#wpsite_follow_us_settings_linkedin_active").on("change", function(){
 
 		$("#wpsite_div_linkedin .li-hideable").hide();
 		$("#linkedin").hide();
@@ -112,7 +112,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$("#wpsite_follow_us_settings_pinterest_active").change(function(){
+	$("#wpsite_follow_us_settings_pinterest_active").on("change", function(){
 
 		$("#wpsite_div_pinterest .pt-hideable").hide();
 		$("#pinterest").hide();
@@ -123,7 +123,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$("#wpsite_follow_us_settings_youtube_active").change(function(){
+	$("#wpsite_follow_us_settings_youtube_active").on("change", function(){
 
 		$("#wpsite_div_youtube .yt-hideable").hide();
 		$("#youtube").hide();
@@ -134,7 +134,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$("#wpsite_follow_us_settings_tumblr_active").change(function(){
+	$("#wpsite_follow_us_settings_tumblr_active").on("change", function(){
 
 		$("#wpsite_div_tumblr .tb-hideable").hide();
 		$("#tumblr").hide();
@@ -147,7 +147,7 @@ jQuery(document).ready(function($) {
 
 	// Link Only
 
-	$("#wpsite_follow_us_settings_twitter_args_link").change(function(){
+	$("#wpsite_follow_us_settings_twitter_args_link").on("change", function(){
 
 		$(".tw-hideable-link-only").show();
 
@@ -156,7 +156,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$("#wpsite_follow_us_settings_facebook_args_link").change(function(){
+	$("#wpsite_follow_us_settings_facebook_args_link").on("change", function(){
 
 		$(".fb-hideable-link-only").show();
 
@@ -165,7 +165,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$("#wpsite_follow_us_settings_google_args_link").change(function(){
+	$("#wpsite_follow_us_settings_google_args_link").on("change", function(){
 
 		$(".g-hideable-link-only").show();
 
@@ -174,7 +174,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$("#wpsite_follow_us_settings_linkedin_args_link").change(function(){
+	$("#wpsite_follow_us_settings_linkedin_args_link").on("change", function(){
 
 		$(".li-hideable-link-only").show();
 
@@ -183,7 +183,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$("#wpsite_follow_us_settings_pinterest_args_link").change(function(){
+	$("#wpsite_follow_us_settings_pinterest_args_link").on("change", function(){
 
 		$(".pt-hideable-link-only").show();
 
@@ -192,7 +192,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	$("#wpsite_follow_us_settings_youtube_args_link").change(function(){
+	$("#wpsite_follow_us_settings_youtube_args_link").on("change", function(){
 
 		$(".yt-hideable-link-only").show();
 
@@ -200,7 +200,7 @@ jQuery(document).ready(function($) {
 			$(".yt-hideable-link-only").hide();
 		}
 	});
-	$("#wpsite_follow_us_settings_tumblr_args_link").change(function(){
+	$("#wpsite_follow_us_settings_tumblr_args_link").on("change", function(){
 
 		$(".tb-hideable-link-only").show();
 
@@ -306,7 +306,7 @@ jQuery(document).ready(function($) {
 
 	// LinkedIn User Type
 
-	$('#wpsite_follow_us_settings_linkedin_args_type').change(function() {
+	$('#wpsite_follow_us_settings_linkedin_args_type').on("change", function() {
 		$(".wpsite_follow_us_settings_linkedin_args_user_type").hide();
 		$(".wpsite_follow_us_settings_linkedin_args_user_type_" + $(this).val()).show();
 	});
