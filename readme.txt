@@ -76,9 +76,10 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 
 == Changelog ==
 
-= 3.1.7 = 2021-06-10
-* Compatible with WordPress 5.2.2
+= 3.1.7 = 2021-07-05
+* Compatible with WordPress 5.7.2
 * FIXED: Event shorthand depracation issues
+* FIXED: Sanitization issues
 
 = 3.1.6 = 2020-29-12
 * Added DraftPress as a contributor
