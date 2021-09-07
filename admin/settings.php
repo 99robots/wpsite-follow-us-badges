@@ -216,7 +216,6 @@
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_facebook_args_type" name="wpsite_follow_us_settings_facebook_args_type">
 											<option value="like" <?php echo isset( $settings['facebook']['args']['type'] ) && 'like' === $settings['facebook']['args']['type'] ? 'selected' : '' ;?>><?php esc_html_e( 'Like', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="follow" <?php echo isset( $settings['facebook']['args']['type'] ) && 'follow' === $settings['facebook']['args']['type'] ? 'selected' : '' ;?>><?php esc_html_e( 'Follow', 'wpsite-follow-us-badges' ) ?></option>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the button type.', 'wpsite-follow-us-badges' ) ?></em>
 									</div>
