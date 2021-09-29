@@ -2,10 +2,10 @@
 /**
  * Plugin Name: Follow Us Badges
  * Plugin URI:	https://draftpress.com/products/
- * Description: The 99 Robots Follow Us Badges showcases your Facebook, Twitter, LinkedIn and other social media badges.
- * Version: 3.1.6
- * Author: 99 Robots
- * Author URI: https://www.draftpress.com
+ * Description: The DraftPress Follow Us Badges showcases your Facebook, Twitter, LinkedIn and other social media badges.
+ * Version: 3.1.7
+ * Author: DraftPress
+ * Author URI: https://www.draftpress.com/
  * License: GPL2
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       wpsite-follow-us-badges
@@ -43,7 +43,7 @@ if ( ! defined( 'WPSITE_FOLLOW_US_PLUGIN_URL' ) ) {
 
 // Plugin Version
 if ( ! defined( 'WPSITE_FOLLOW_US_VERSION_NUM' ) ) {
-    define( 'WPSITE_FOLLOW_US_VERSION_NUM', '3.1.6' );
+    define( 'WPSITE_FOLLOW_US_VERSION_NUM', '3.1.7' );
 }
 
 /**
@@ -515,11 +515,11 @@ class WPsiteFollowUs extends WP_Widget {
 					'args'		=> array(
 						'link' 	=> isset($_POST['wpsite_follow_us_settings_twitter_args_link']) && $_POST['wpsite_follow_us_settings_twitter_args_link'] ? true : false,
 						'followers_count_display' 	=> isset($_POST['wpsite_follow_us_settings_twitter_args_followers_count_display']) && $_POST['wpsite_follow_us_settings_twitter_args_followers_count_display'] ? true : false,
-						'language'					=> $_POST['wpsite_follow_us_settings_twitter_args_language'],
+						'language'					=> sanitize_text_field($_POST['wpsite_follow_us_settings_twitter_args_language']),
 						'width'						=> isset($_POST['wpsite_follow_us_settings_twitter_args_width']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_twitter_args_width'])) : '',
-						'alignment'					=> $_POST['wpsite_follow_us_settings_twitter_args_alignment'],
+						'alignment'					=> sanitize_text_field($_POST['wpsite_follow_us_settings_twitter_args_alignment']),
 						'show_screen_name'			=> isset($_POST['wpsite_follow_us_settings_twitter_args_show_screen_name']) && $_POST['wpsite_follow_us_settings_twitter_args_show_screen_name'] ? true : false,
-						'size'						=> $_POST['wpsite_follow_us_settings_twitter_args_size']
+						'size'						=> sanitize_text_field($_POST['wpsite_follow_us_settings_twitter_args_size'])
 						//'opt_out'					=> isset($_POST['wpsite_follow_us_settings_twitter_args_opt_out']) && $_POST['wpsite_follow_us_settings_twitter_args_opt_out'] ? true : false
 					)
 				),
@@ -527,13 +527,13 @@ class WPsiteFollowUs extends WP_Widget {
 					'active'	=> isset($_POST['wpsite_follow_us_settings_facebook_active']) && $_POST['wpsite_follow_us_settings_facebook_active'] ? true : false,
 					'user'		=> isset($_POST['wpsite_follow_us_settings_facebook_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_facebook_user'])) : '',
 					'args'		=> array(
-						'type'					=> $_POST['wpsite_follow_us_settings_facebook_args_type'],
+						'type'					=>sanitize_text_field( $_POST['wpsite_follow_us_settings_facebook_args_type']),
 						'link' 	=> isset($_POST['wpsite_follow_us_settings_facebook_args_link']) && $_POST['wpsite_follow_us_settings_facebook_args_link'] ? true : false,
 						'width'					=> isset($_POST['wpsite_follow_us_settings_facebook_args_width']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_facebook_args_width'])) : '',
-						'layout'				=> $_POST['wpsite_follow_us_settings_facebook_args_layout'],
-						'language'				=> $_POST['wpsite_follow_us_settings_facebook_args_language'],
-						'action_type'			=> $_POST['wpsite_follow_us_settings_facebook_args_action_type'],
-						'colorscheme'			=> $_POST['wpsite_follow_us_settings_facebook_args_colorscheme'],
+						'layout'				=> sanitize_text_field($_POST['wpsite_follow_us_settings_facebook_args_layout']),
+						'language'				=> sanitize_text_field($_POST['wpsite_follow_us_settings_facebook_args_language']),
+						'action_type'			=> sanitize_text_field($_POST['wpsite_follow_us_settings_facebook_args_action_type']),
+						'colorscheme'			=> sanitize_text_field($_POST['wpsite_follow_us_settings_facebook_args_colorscheme']),
 						'show_friends_faces'	=> isset($_POST['wpsite_follow_us_settings_facebook_args_show_friends_faces']) && $_POST['wpsite_follow_us_settings_facebook_args_show_friends_faces'] ? true : false,
 						'include_share_button'	=> isset($_POST['wpsite_follow_us_settings_facebook_args_include_share_button']) && $_POST['wpsite_follow_us_settings_facebook_args_include_share_button'] ? true : false
 					)
@@ -543,9 +543,9 @@ class WPsiteFollowUs extends WP_Widget {
 					'user'		=> isset($_POST['wpsite_follow_us_settings_linkedin_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_linkedin_user'])) : '',
 					'args'		=> array(
 						'link' 	=> isset($_POST['wpsite_follow_us_settings_linkedin_args_link']) && $_POST['wpsite_follow_us_settings_linkedin_args_link'] ? true : false,
-						'type'			=> $_POST['wpsite_follow_us_settings_linkedin_args_type'],
-						'count_mode'	=> $_POST['wpsite_follow_us_settings_linkedin_args_count_mode'],
-						'language'		=> $_POST['wpsite_follow_us_settings_linkedin_args_language'],
+						'type'			=> sanitize_text_field($_POST['wpsite_follow_us_settings_linkedin_args_type']),
+						'count_mode'	=> sanitize_text_field($_POST['wpsite_follow_us_settings_linkedin_args_count_mode']),
+						'language'		=> sanitize_text_field($_POST['wpsite_follow_us_settings_linkedin_args_language']),
 					)
 				),
 				'pinterest'	=> array(
@@ -561,8 +561,8 @@ class WPsiteFollowUs extends WP_Widget {
 					'user'		=> isset($_POST['wpsite_follow_us_settings_youtube_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_youtube_user'])) : '',
 					'args'		=> array(
 						'link' 		=> isset($_POST['wpsite_follow_us_settings_youtube_args_link']) && $_POST['wpsite_follow_us_settings_youtube_args_link'] ? true : false,
-						'layout'	=> $_POST['wpsite_follow_us_settings_youtube_args_layout'],
-						'theme'		=> $_POST['wpsite_follow_us_settings_youtube_args_theme'],
+						'layout'	=> sanitize_text_field($_POST['wpsite_follow_us_settings_youtube_args_layout']),
+						'theme'		=> sanitize_text_field($_POST['wpsite_follow_us_settings_youtube_args_theme']),
 						'count'		=> isset($_POST['wpsite_follow_us_settings_youtube_args_count']) && $_POST['wpsite_follow_us_settings_youtube_args_count'] ? true : false,
 					)
 				),
@@ -571,8 +571,8 @@ class WPsiteFollowUs extends WP_Widget {
 					'user'		=> isset($_POST['wpsite_follow_us_settings_tumblr_user']) ?stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_tumblr_user'])) : '',
 					'args'		=> array(
 						'link' 		=> isset($_POST['wpsite_follow_us_settings_tumblr_args_link']) && $_POST['wpsite_follow_us_settings_tumblr_args_link'] ? true : false,
-						'color'		=> $_POST['wpsite_follow_us_settings_tumblr_args_color'],
-						'button'	=> $_POST['wpsite_follow_us_settings_tumblr_args_button'],
+						'color'		=> sanitize_text_field($_POST['wpsite_follow_us_settings_tumblr_args_color']),
+						'button'	=> sanitize_text_field($_POST['wpsite_follow_us_settings_tumblr_args_button']),
 					)
 				)
 			);

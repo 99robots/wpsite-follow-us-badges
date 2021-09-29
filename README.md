@@ -1,7 +1,5 @@
 #WPsite Follow Us Badges
 
-<img src="http://www.wpsite.net/wp-content/uploads/2014/05/social-media-follow-us-badges-600x194.png" title="WPsiteFollowUsBadgesBanner" align="center"/>
-
 The Social Media Follow Us Box by http://www.wpsite.net is a fully customizable plugin that can be configured to display each of the following social media networks:
 
 Customizable Options
