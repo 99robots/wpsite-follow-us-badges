@@ -714,7 +714,9 @@ class WPsiteFollowUs extends WP_Widget
             $settings = self::$default;
         }
 
-        $settings['order'] = $_POST['order'];
+        $order = sanitize_text_field($_POST['order']);
+
+        $settings['order'] = $order;
 
         update_option( 'wpsite_follow_us_settings', $settings );
 
