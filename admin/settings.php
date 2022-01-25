@@ -119,8 +119,8 @@
 									<label for="<?php echo self::$prefix ?>settings_twitter_args_alignment" class="col-sm-3 control-label"><?php esc_html_e( 'Alignment', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_twitter_args_alignment" name="wpsite_follow_us_settings_twitter_args_alignment">
-											<option value="left" <?php echo !empty( $settings['twitter']['args']['alignment'] ) ? 'selected' : '' ;?>><?php esc_html_e( 'left', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="right" <?php echo !empty( $settings['twitter']['args']['alignment'] ) ? 'selected' : '' ;?>><?php esc_html_e( 'right', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="left" <?php echo !empty( $settings['twitter']['args']['alignment'] ) && 'left' === $settings['twitter']['args']['alignment'] ? 'selected' : '' ;?>><?php esc_html_e( 'left', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="right" <?php echo !empty( $settings['twitter']['args']['alignment'] ) && 'right' === $settings['twitter']['args']['alignment'] ? 'selected' : '' ;?>><?php esc_html_e( 'right', 'wpsite-follow-us-badges' ) ?></option>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the alignment.', 'wpsite-follow-us-badges' ) ?></em>
 									</div>
@@ -373,7 +373,7 @@
 								<!-- User -->
 
 								<div class="form-group li-hideable">
-									<label for="<?php echo self::$prefix ?>settings_linkedin_user" class="col-sm-3 control-label"><?php esc_html_e( 'User ID', 'wpsite-follow-us-badges' ) ?> <small><a href="https://developer.linkedin.com/plugins/follow-company" target="_blank"><label><?php esc_html_e( '(Get your ID)', 'wpsite-follow-us-badges' ) ?></label></a></small>
+									<label for="<?php echo self::$prefix ?>settings_linkedin_user" class="col-sm-3 control-label"><?php esc_html_e( 'User ID', 'wpsite-follow-us-badges' ) ?> <small><a href="https://docs.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/plugins/follow-company-plugin" target="_blank"><label><?php esc_html_e( '(Get your ID)', 'wpsite-follow-us-badges' ) ?></label></a></small>
 </label>
 									<div class="col-sm-9">
 										<input class="form-control" id="wpsite_follow_us_settings_linkedin_user" name="wpsite_follow_us_settings_linkedin_user" type="text" value="<?php echo esc_attr( $settings['linkedin']['user'] ) ?>">
