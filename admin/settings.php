@@ -35,7 +35,7 @@
 								<div class="form-group">
 									<label for="<?php echo self::$prefix ?>settings_twitter_active" class="col-sm-3 control-label"><?php esc_html_e( 'Active', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_twitter_active" name="<?php echo self::$prefix ?>settings_twitter_active" type="checkbox" <?php echo isset( $settings['twitter']['active'] ) && $settings['twitter']['active'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_twitter_active" name="<?php echo self::$prefix ?>settings_twitter_active" type="checkbox" <?php echo !empty( $settings['twitter']['active'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_twitter_active">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -69,7 +69,7 @@
 								<div class="form-group">
 									<label for="<?php echo self::$prefix ?>settings_twitter_args_link" class="col-sm-3 control-label"><?php esc_html_e( 'Link Only', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_twitter_args_link" name="<?php echo self::$prefix ?>settings_twitter_args_link" type="checkbox" <?php echo isset( $settings['twitter']['args']['link'] ) && $settings['twitter']['args']['link'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_twitter_args_link" name="<?php echo self::$prefix ?>settings_twitter_args_link" type="checkbox" <?php echo !empty( $settings['twitter']['args']['link'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_twitter_args_link">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -86,7 +86,7 @@
 								<div class="form-group tw-hideable-link-only">
 									<label for="<?php echo self::$prefix ?>settings_twitter_args_followers_count_display" class="col-sm-3 control-label"><?php esc_html_e( 'Followers Count Display', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_twitter_args_followers_count_display" name="<?php echo self::$prefix ?>settings_twitter_args_followers_count_display" type="checkbox" <?php echo isset( $settings['twitter']['args']['followers_count_display'] ) && $settings['twitter']['args']['followers_count_display'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_twitter_args_followers_count_display" name="<?php echo self::$prefix ?>settings_twitter_args_followers_count_display" type="checkbox" <?php echo !empty( $settings['twitter']['args']['followers_count_display'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_twitter_args_followers_count_display">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -102,7 +102,7 @@
 								<div class="form-group tw-hideable-link-only">
 									<label for="<?php echo self::$prefix ?>settings_twitter_args_show_screen_name" class="col-sm-3 control-label"><?php esc_html_e( 'Show Screen Name', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_twitter_args_show_screen_name" name="<?php echo self::$prefix ?>settings_twitter_args_show_screen_name" type="checkbox" <?php echo isset( $settings['twitter']['args']['show_screen_name'] ) && $settings['twitter']['args']['show_screen_name'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_twitter_args_show_screen_name" name="<?php echo self::$prefix ?>settings_twitter_args_show_screen_name" type="checkbox" <?php echo !empty( $settings['twitter']['args']['show_screen_name'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_twitter_args_show_screen_name">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -119,8 +119,8 @@
 									<label for="<?php echo self::$prefix ?>settings_twitter_args_alignment" class="col-sm-3 control-label"><?php esc_html_e( 'Alignment', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_twitter_args_alignment" name="wpsite_follow_us_settings_twitter_args_alignment">
-											<option value="left" <?php echo isset( $settings['twitter']['args']['alignment'] ) && 'left' === $settings['twitter']['args']['alignment'] ? 'selected' : '' ;?>><?php esc_html_e( 'left', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="right" <?php echo isset( $settings['twitter']['args']['alignment'] ) && 'right' === $settings['twitter']['args']['alignment'] ? 'selected' : '' ;?>><?php esc_html_e( 'right', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="left" <?php echo !empty( $settings['twitter']['args']['alignment'] ) && 'left' === $settings['twitter']['args']['alignment'] ? 'selected' : '' ;?>><?php esc_html_e( 'left', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="right" <?php echo !empty( $settings['twitter']['args']['alignment'] ) && 'right' === $settings['twitter']['args']['alignment'] ? 'selected' : '' ;?>><?php esc_html_e( 'right', 'wpsite-follow-us-badges' ) ?></option>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the alignment.', 'wpsite-follow-us-badges' ) ?></em>
 									</div>
@@ -142,8 +142,8 @@
 									<label for="<?php echo self::$prefix ?>settings_twitter_args_size" class="col-sm-3 control-label"><?php esc_html_e( 'Size', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_twitter_args_size" name="wpsite_follow_us_settings_twitter_args_size">
-											<option value="medium" <?php echo isset( $settings['twitter']['args']['size'] ) && 'medium' === $settings['twitter']['args']['size'] ? 'selected' : '' ;?>><?php esc_html_e( 'medium', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="large" <?php echo isset( $settings['twitter']['args']['size'] ) && 'large' === $settings['twitter']['args']['size'] ? 'selected' : '' ;?>><?php esc_html_e( 'large', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="medium" <?php echo !empty( $settings['twitter']['args']['size'] ) && 'medium' === $settings['twitter']['args']['size'] ? 'selected' : '' ;?>><?php esc_html_e( 'medium', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="large" <?php echo !empty( $settings['twitter']['args']['size'] ) && 'large' === $settings['twitter']['args']['size'] ? 'selected' : '' ;?>><?php esc_html_e( 'large', 'wpsite-follow-us-badges' ) ?></option>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the size.', 'wpsite-follow-us-badges' ) ?></em>
 									</div>
@@ -163,7 +163,7 @@
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_twitter_args_language" name="wpsite_follow_us_settings_twitter_args_language">
 											<?php foreach ( self::$twitter_supported_languages as $lang ) { ?>
-											<option value="<?php echo $lang; ?>" <?php echo isset( $settings['twitter']['args']['language'] ) && $settings['twitter']['args']['language'] === $lang ? 'selected' : '' ;?>><?php echo $lang ?></option>
+											<option value="<?php echo $lang; ?>" <?php echo !empty( $settings['twitter']['args']['language'] ) && $settings['twitter']['args']['language'] === $lang ? 'selected' : '' ;?>><?php echo $lang ?></option>
 											<?php } ?>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the language.', 'wpsite-follow-us-badges' ) ?></em>
@@ -186,7 +186,7 @@
 								<div class="form-group">
 									<label for="<?php echo self::$prefix ?>settings_facebook_active" class="col-sm-3 control-label"><?php esc_html_e( 'Active', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_facebook_active" name="<?php echo self::$prefix ?>settings_facebook_active" type="checkbox" <?php echo isset( $settings['facebook']['active'] ) && $settings['facebook']['active'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_facebook_active" name="<?php echo self::$prefix ?>settings_facebook_active" type="checkbox" <?php echo !empty( $settings['facebook']['active'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_facebook_active">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -215,7 +215,7 @@
 									<label for="<?php echo self::$prefix ?>settings_facebook_args_type" class="col-sm-3 control-label"><?php esc_html_e( 'Type', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_facebook_args_type" name="wpsite_follow_us_settings_facebook_args_type">
-											<option value="like" <?php echo isset( $settings['facebook']['args']['type'] ) && 'like' === $settings['facebook']['args']['type'] ? 'selected' : '' ;?>><?php esc_html_e( 'Like', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="like" <?php echo !empty( $settings['facebook']['args']['type'] ) && 'like' === $settings['facebook']['args']['type'] ? 'selected' : '' ;?>><?php esc_html_e( 'Like', 'wpsite-follow-us-badges' ) ?></option>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the button type.', 'wpsite-follow-us-badges' ) ?></em>
 									</div>
@@ -232,7 +232,7 @@
 								<div class="form-group">
 									<label for="<?php echo self::$prefix ?>settings_facebook_args_link" class="col-sm-3 control-label"><?php esc_html_e( 'Link Only', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_facebook_args_link" name="<?php echo self::$prefix ?>settings_facebook_args_link" type="checkbox" <?php echo isset( $settings['facebook']['args']['link'] ) && $settings['facebook']['args']['link'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_facebook_args_link" name="<?php echo self::$prefix ?>settings_facebook_args_link" type="checkbox" <?php echo !empty( $settings['facebook']['args']['link'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_facebook_args_link">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -249,10 +249,10 @@
 									<label for="<?php echo self::$prefix ?>settings_facebook_args_layout" class="col-sm-3 control-label"><?php esc_html_e( 'Layout', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_facebook_args_layout" name="wpsite_follow_us_settings_facebook_args_layout">
-											<option value="standard" <?php echo isset( $settings['facebook']['args']['layout'] ) && 'standard' === $settings['facebook']['args']['layout'] ? 'selected' : '' ;?>><?php esc_html_e( 'standard', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="box_count" <?php echo isset( $settings['facebook']['args']['layout'] ) && 'box_count' === $settings['facebook']['args']['layout'] ? 'selected' : '' ;?>><?php esc_html_e( 'box_count', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="button_count" <?php echo isset( $settings['facebook']['args']['layout'] ) && 'button_count' === $settings['facebook']['args']['layout'] ? 'selected' : '' ;?>><?php esc_html_e( 'button_count', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="button" <?php echo isset( $settings['facebook']['args']['layout'] ) && 'button' === $settings['facebook']['args']['layout'] ? 'selected' : '' ;?>><?php esc_html_e( 'button', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="standard" <?php echo !empty( $settings['facebook']['args']['layout'] ) && 'standard' === $settings['facebook']['args']['layout'] ? 'selected' : '' ;?>><?php esc_html_e( 'standard', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="box_count" <?php echo !empty( $settings['facebook']['args']['layout'] ) && 'box_count' === $settings['facebook']['args']['layout'] ? 'selected' : '' ;?>><?php esc_html_e( 'box_count', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="button_count" <?php echo !empty( $settings['facebook']['args']['layout'] ) && 'button_count' === $settings['facebook']['args']['layout'] ? 'selected' : '' ;?>><?php esc_html_e( 'button_count', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="button" <?php echo !empty( $settings['facebook']['args']['layout'] ) && 'button' === $settings['facebook']['args']['layout'] ? 'selected' : '' ;?>><?php esc_html_e( 'button', 'wpsite-follow-us-badges' ) ?></option>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the layout type.', 'wpsite-follow-us-badges' ) ?></em>
 									</div>
@@ -264,8 +264,8 @@
 									<label for="<?php echo self::$prefix ?>settings_facebook_args_action_type" class="col-sm-3 control-label"><?php esc_html_e( 'Action Type', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_facebook_args_action_type" name="wpsite_follow_us_settings_facebook_args_action_type">
-											<option value="like" <?php echo isset( $settings['facebook']['args']['action_type'] ) && 'like' === $settings['facebook']['args']['action_type'] ? 'selected' : '' ;?>><?php esc_html_e( 'like', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="recommend" <?php echo isset( $settings['facebook']['args']['action_type'] ) && 'recommend' === $settings['facebook']['args']['action_type'] ? 'selected' : '' ;?>><?php esc_html_e( 'recommend', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="like" <?php echo !empty( $settings['facebook']['args']['action_type'] ) && 'like' === $settings['facebook']['args']['action_type'] ? 'selected' : '' ;?>><?php esc_html_e( 'like', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="recommend" <?php echo !empty( $settings['facebook']['args']['action_type'] ) && 'recommend' === $settings['facebook']['args']['action_type'] ? 'selected' : '' ;?>><?php esc_html_e( 'recommend', 'wpsite-follow-us-badges' ) ?></option>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the action type.', 'wpsite-follow-us-badges' ) ?></em>
 									</div>
@@ -277,8 +277,8 @@
 									<label for="<?php echo self::$prefix ?>settings_facebook_args_colorscheme" class="col-sm-3 control-label"><?php esc_html_e( 'Color Scheme', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_facebook_args_colorscheme" name="wpsite_follow_us_settings_facebook_args_colorscheme">
-											<option value="light" <?php echo isset( $settings['facebook']['args']['colorscheme'] ) && 'light' === $settings['facebook']['args']['colorscheme'] ? 'selected' : '' ;?>><?php esc_html_e( 'light', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="dark" <?php echo isset( $settings['facebook']['args']['colorscheme'] ) && 'dark' === $settings['facebook']['args']['colorscheme'] ? 'selected' : '' ;?>><?php esc_html_e( 'dark', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="light" <?php echo !empty( $settings['facebook']['args']['colorscheme'] ) && 'light' === $settings['facebook']['args']['colorscheme'] ? 'selected' : '' ;?>><?php esc_html_e( 'light', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="dark" <?php echo !empty( $settings['facebook']['args']['colorscheme'] ) && 'dark' === $settings['facebook']['args']['colorscheme'] ? 'selected' : '' ;?>><?php esc_html_e( 'dark', 'wpsite-follow-us-badges' ) ?></option>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the color scheme.', 'wpsite-follow-us-badges' ) ?></em>
 									</div>
@@ -289,7 +289,7 @@
 								<div class="form-group fb-hideable-link-only">
 									<label for="<?php echo self::$prefix ?>settings_facebook_args_show_friends_faces" class="col-sm-3 control-label"><?php esc_html_e( 'Show Friends Faces', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_facebook_args_show_friends_faces" name="<?php echo self::$prefix ?>settings_facebook_args_show_friends_faces" type="checkbox" <?php echo isset( $settings['facebook']['args']['show_friends_faces'] ) && $settings['facebook']['args']['show_friends_faces'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_facebook_args_show_friends_faces" name="<?php echo self::$prefix ?>settings_facebook_args_show_friends_faces" type="checkbox" <?php echo !empty( $settings['facebook']['args']['show_friends_faces'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_facebook_args_show_friends_faces">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -305,7 +305,7 @@
 								 <div class="form-group fb-hideable-link-only">
 									<label for="<?php echo self::$prefix ?>settings_facebook_args_include_share_button" class="col-sm-3 control-label"><?php esc_html_e( 'Include Share Button', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_facebook_args_include_share_button" name="<?php echo self::$prefix ?>settings_facebook_args_include_share_button" type="checkbox" <?php echo isset( $settings['facebook']['args']['include_share_button'] ) && $settings['facebook']['args']['include_share_button'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_facebook_args_include_share_button" name="<?php echo self::$prefix ?>settings_facebook_args_include_share_button" type="checkbox" <?php echo !empty( $settings['facebook']['args']['include_share_button'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_facebook_args_include_share_button">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -337,7 +337,7 @@
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_facebook_args_language" name="wpsite_follow_us_settings_facebook_args_language">
 											<?php foreach ( self::$facebook_supported_languages as $lang ) { ?>
-											<option value="<?php echo $lang; ?>" <?php echo isset( $settings['facebook']['args']['language'] ) && $settings['facebook']['args']['language'] == $lang ? 'selected' : '' ;?>><?php echo $lang ?></option>
+											<option value="<?php echo $lang; ?>" <?php echo !empty( $settings['facebook']['args']['language'] ) && $settings['facebook']['args']['language'] == $lang ? 'selected' : '' ;?>><?php echo $lang ?></option>
 											<?php } ?>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the language.', 'wpsite-follow-us-badges' ) ?></em>
@@ -359,7 +359,7 @@
 								<div class="form-group">
 									<label for="<?php echo self::$prefix ?>settings_linkedin_active" class="col-sm-3 control-label"><?php esc_html_e( 'Active', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_linkedin_active" name="<?php echo self::$prefix ?>settings_linkedin_active" type="checkbox" <?php echo isset( $settings['linkedin']['active'] ) && $settings['linkedin']['active'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_linkedin_active" name="<?php echo self::$prefix ?>settings_linkedin_active" type="checkbox" <?php echo !empty( $settings['linkedin']['active'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_linkedin_active">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -373,7 +373,7 @@
 								<!-- User -->
 
 								<div class="form-group li-hideable">
-									<label for="<?php echo self::$prefix ?>settings_linkedin_user" class="col-sm-3 control-label"><?php esc_html_e( 'User ID', 'wpsite-follow-us-badges' ) ?> <small><a href="https://developer.linkedin.com/plugins/follow-company" target="_blank"><label><?php esc_html_e( '(Get your ID)', 'wpsite-follow-us-badges' ) ?></label></a></small>
+									<label for="<?php echo self::$prefix ?>settings_linkedin_user" class="col-sm-3 control-label"><?php esc_html_e( 'User ID', 'wpsite-follow-us-badges' ) ?> <small><a href="https://docs.microsoft.com/en-us/linkedin/consumer/integrations/self-serve/plugins/follow-company-plugin" target="_blank"><label><?php esc_html_e( '(Get your ID)', 'wpsite-follow-us-badges' ) ?></label></a></small>
 </label>
 									<div class="col-sm-9">
 										<input class="form-control" id="wpsite_follow_us_settings_linkedin_user" name="wpsite_follow_us_settings_linkedin_user" type="text" value="<?php echo esc_attr( $settings['linkedin']['user'] ) ?>">
@@ -391,10 +391,10 @@
 									<label for="<?php echo self::$prefix ?>settings_linkedin_args_type" class="col-sm-3 control-label"><?php esc_html_e( 'User Type', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_linkedin_args_type" name="wpsite_follow_us_settings_linkedin_args_type">
-											<option value="company" <?php echo isset( $settings['linkedin']['args']['type'] ) && 'company' === $settings['linkedin']['args']['type'] ? 'selected' : ''; ?>><?php esc_html_e( 'company', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="person" <?php echo isset( $settings['linkedin']['args']['type'] ) && 'person' === $settings['linkedin']['args']['type'] ? 'selected' : ''; ?>><?php esc_html_e( 'person', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="group" <?php echo isset( $settings['linkedin']['args']['type'] ) && 'group' === $settings['linkedin']['args']['type'] ? 'selected' : ''; ?>><?php esc_html_e( 'group', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="university" <?php echo isset( $settings['linkedin']['args']['type'] ) && 'university' === $settings['linkedin']['args']['type'] ? 'selected' : ''; ?>><?php esc_html_e( 'university', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="company" <?php echo !empty( $settings['linkedin']['args']['type'] ) && 'company' === $settings['linkedin']['args']['type'] ? 'selected' : ''; ?>><?php esc_html_e( 'company', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="person" <?php echo !empty( $settings['linkedin']['args']['type'] ) && 'person' === $settings['linkedin']['args']['type'] ? 'selected' : ''; ?>><?php esc_html_e( 'person', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="group" <?php echo !empty( $settings['linkedin']['args']['type'] ) && 'group' === $settings['linkedin']['args']['type'] ? 'selected' : ''; ?>><?php esc_html_e( 'group', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="university" <?php echo !empty( $settings['linkedin']['args']['type'] ) && 'university' === $settings['linkedin']['args']['type'] ? 'selected' : ''; ?>><?php esc_html_e( 'university', 'wpsite-follow-us-badges' ) ?></option>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the account type.', 'wpsite-follow-us-badges' ) ?></em>
 									</div>
@@ -411,7 +411,7 @@
 								<div class="form-group">
 									<label for="<?php echo self::$prefix ?>settings_linkedin_args_link" class="col-sm-3 control-label"><?php esc_html_e( 'Link Only', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_linkedin_args_link" name="<?php echo self::$prefix ?>settings_linkedin_args_link" type="checkbox" <?php echo isset( $settings['linkedin']['args']['link'] ) && $settings['linkedin']['args']['link'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_linkedin_args_link" name="<?php echo self::$prefix ?>settings_linkedin_args_link" type="checkbox" <?php echo !empty( $settings['linkedin']['args']['link'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_linkedin_args_link">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -428,9 +428,9 @@
 									<label for="<?php echo self::$prefix ?>settings_linkedin_args_count_mode" class="col-sm-3 control-label"><?php esc_html_e( 'Count Mode', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_linkedin_args_count_mode" name="wpsite_follow_us_settings_linkedin_args_count_mode">
-											<option value="right" <?php echo isset( $settings['linkedin']['args']['count_mode'] ) && 'right' === $settings['linkedin']['args']['count_mode'] ? 'selected' : '' ;?>><?php esc_html_e( 'right', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="top" <?php echo isset( $settings['linkedin']['args']['count_mode'] ) && 'top' === $settings['linkedin']['args']['count_mode'] ? 'selected' : '' ;?>><?php esc_html_e( 'top', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="none" <?php echo isset( $settings['linkedin']['args']['count_mode'] ) && 'none' === $settings['linkedin']['args']['count_mode'] ? 'selected' : '' ;?>><?php esc_html_e( 'none', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="right" <?php echo !empty( $settings['linkedin']['args']['count_mode'] ) && 'right' === $settings['linkedin']['args']['count_mode'] ? 'selected' : '' ;?>><?php esc_html_e( 'right', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="top" <?php echo !empty( $settings['linkedin']['args']['count_mode'] ) && 'top' === $settings['linkedin']['args']['count_mode'] ? 'selected' : '' ;?>><?php esc_html_e( 'top', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="none" <?php echo !empty( $settings['linkedin']['args']['count_mode'] ) && 'none' === $settings['linkedin']['args']['count_mode'] ? 'selected' : '' ;?>><?php esc_html_e( 'none', 'wpsite-follow-us-badges' ) ?></option>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the count mode.', 'wpsite-follow-us-badges' ) ?></em>
 									</div>
@@ -449,7 +449,7 @@
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_linkedin_args_language" name="wpsite_follow_us_settings_linkedin_args_language">
 											<?php foreach ( self::$linkedin_supported_languages as $lang ) { ?>
-											<option value="<?php echo $lang ?>" <?php echo isset( $settings['linkedin']['args']['language'] ) && $settings['linkedin']['args']['language'] === $lang ? 'selected' : '' ;?>><?php echo $lang ?></option>
+											<option value="<?php echo $lang ?>" <?php echo !empty( $settings['linkedin']['args']['language'] ) && $settings['linkedin']['args']['language'] === $lang ? 'selected' : '' ;?>><?php echo $lang ?></option>
 											<?php } ?>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the language.', 'wpsite-follow-us-badges' ) ?></em>
@@ -473,7 +473,7 @@
 								<div class="form-group">
 									<label for="<?php echo self::$prefix ?>settings_pinterest_active" class="col-sm-3 control-label"><?php esc_html_e( 'Active', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_pinterest_active" name="<?php echo self::$prefix ?>settings_pinterest_active" type="checkbox" <?php echo isset( $settings['pinterest']['active'] ) && $settings['pinterest']['active'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_pinterest_active" name="<?php echo self::$prefix ?>settings_pinterest_active" type="checkbox" <?php echo !empty( $settings['pinterest']['active'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_pinterest_active">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -509,7 +509,7 @@
 								<div class="form-group pt-hideable">
 									<label for="<?php echo self::$prefix ?>settings_pinterest_args_link" class="col-sm-3 control-label"><?php esc_html_e( 'Link Only', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_pinterest_args_link" name="<?php echo self::$prefix ?>settings_pinterest_args_link" type="checkbox" <?php echo isset( $settings['pinterest']['args']['link'] ) && $settings['pinterest']['args']['link'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_pinterest_args_link" name="<?php echo self::$prefix ?>settings_pinterest_args_link" type="checkbox" <?php echo !empty( $settings['pinterest']['args']['link'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_pinterest_args_link">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -537,7 +537,7 @@
 								<div class="form-group">
 									<label for="<?php echo self::$prefix ?>settings_youtube_active" class="col-sm-3 control-label"><?php esc_html_e( 'Active', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_youtube_active" name="<?php echo self::$prefix ?>settings_youtube_active" type="checkbox" <?php echo isset( $settings['youtube']['active'] ) && $settings['youtube']['active'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_youtube_active" name="<?php echo self::$prefix ?>settings_youtube_active" type="checkbox" <?php echo !empty( $settings['youtube']['active'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_youtube_active">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -569,7 +569,7 @@
 								<div class="form-group">
 									<label for="<?php echo self::$prefix ?>settings_youtube_args_link" class="col-sm-3 control-label"><?php esc_html_e( 'Link Only', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_youtube_args_link" name="<?php echo self::$prefix ?>settings_youtube_args_link" type="checkbox" <?php echo isset( $settings['youtube']['args']['link'] ) && $settings['youtube']['args']['link'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_youtube_args_link" name="<?php echo self::$prefix ?>settings_youtube_args_link" type="checkbox" <?php echo !empty( $settings['youtube']['args']['link'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_youtube_args_link">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -586,8 +586,8 @@
 									<label for="<?php echo self::$prefix ?>settings_youtube_args_layout" class="col-sm-3 control-label"><?php esc_html_e( 'Layout', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_youtube_args_layout" name="wpsite_follow_us_settings_youtube_args_layout">
-											<option value="default" <?php echo isset( $settings['youtube']['args']['layout'] ) && 'default' === $settings['youtube']['args']['layout'] ? 'selected' : '' ;?>><?php esc_html_e( 'default', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="full" <?php echo isset( $settings['youtube']['args']['layout'] ) && 'full' === $settings['youtube']['args']['layout'] ? 'selected' : '' ;?>><?php esc_html_e( 'full', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="default" <?php echo !empty( $settings['youtube']['args']['layout'] ) && 'default' === $settings['youtube']['args']['layout'] ? 'selected' : '' ;?>><?php esc_html_e( 'default', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="full" <?php echo !empty( $settings['youtube']['args']['layout'] ) && 'full' === $settings['youtube']['args']['layout'] ? 'selected' : '' ;?>><?php esc_html_e( 'full', 'wpsite-follow-us-badges' ) ?></option>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the layout.', 'wpsite-follow-us-badges' ) ?></em>
 									</div>
@@ -599,8 +599,8 @@
 									<label for="<?php echo self::$prefix ?>settings_youtube_args_theme" class="col-sm-3 control-label"><?php esc_html_e( 'Theme', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_youtube_args_theme" name="wpsite_follow_us_settings_youtube_args_theme">
-											<option value="default" <?php echo isset( $settings['youtube']['args']['theme'] ) && 'default' === $settings['youtube']['args']['theme'] ? 'selected' : '' ;?>><?php esc_html_e( 'default', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="dark" <?php echo isset( $settings['youtube']['args']['theme'] ) && 'dark' === $settings['youtube']['args']['theme'] ? 'selected' : '' ;?>><?php esc_html_e( 'dark', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="default" <?php echo !empty( $settings['youtube']['args']['theme'] ) && 'default' === $settings['youtube']['args']['theme'] ? 'selected' : '' ;?>><?php esc_html_e( 'default', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="dark" <?php echo !empty( $settings['youtube']['args']['theme'] ) && 'dark' === $settings['youtube']['args']['theme'] ? 'selected' : '' ;?>><?php esc_html_e( 'dark', 'wpsite-follow-us-badges' ) ?></option>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the theme.', 'wpsite-follow-us-badges' ) ?></em>
 									</div>
@@ -611,7 +611,7 @@
 								<div class="form-group yt-hideable-link-only">
 									<label for="<?php echo self::$prefix ?>settings_youtube_args_count" class="col-sm-3 control-label"><?php esc_html_e( 'Subscribers Count', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_youtube_args_count" name="<?php echo self::$prefix ?>settings_youtube_args_count" type="checkbox" <?php echo isset( $settings['youtube']['args']['count'] ) && $settings['youtube']['args']['count'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_youtube_args_count" name="<?php echo self::$prefix ?>settings_youtube_args_count" type="checkbox" <?php echo !empty( $settings['youtube']['args']['count'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_youtube_args_count">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -639,7 +639,7 @@
 								<div class="form-group">
 									<label for="<?php echo self::$prefix ?>settings_tumblr_active" class="col-sm-3 control-label"><?php esc_html_e( 'Active', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_tumblr_active" name="<?php echo self::$prefix ?>settings_tumblr_active" type="checkbox" <?php echo isset( $settings['tumblr']['active'] ) && $settings['tumblr']['active'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_tumblr_active" name="<?php echo self::$prefix ?>settings_tumblr_active" type="checkbox" <?php echo !empty( $settings['tumblr']['active'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_tumblr_active">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -671,7 +671,7 @@
 								<div class="form-group">
 									<label for="<?php echo self::$prefix ?>settings_tumblr_args_link" class="col-sm-3 control-label"><?php esc_html_e( 'Link Only', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
-										<input class="form-control" id="<?php echo self::$prefix ?>settings_tumblr_args_link" name="<?php echo self::$prefix ?>settings_tumblr_args_link" type="checkbox" <?php echo isset( $settings['tumblr']['args']['link'] ) && $settings['tumblr']['args']['link'] ? 'checked="checked"' : ''; ?>/>
+										<input class="form-control" id="<?php echo self::$prefix ?>settings_tumblr_args_link" name="<?php echo self::$prefix ?>settings_tumblr_args_link" type="checkbox" <?php echo !empty( $settings['tumblr']['args']['link'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix ?>settings_tumblr_args_link">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
@@ -688,8 +688,8 @@
 									<label for="<?php echo self::$prefix ?>settings_tumblr_args_color" class="col-sm-3 control-label"><?php esc_html_e( 'Color', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_tumblr_args_color" name="wpsite_follow_us_settings_tumblr_args_color">
-											<option value="dark" <?php echo isset( $settings['tumblr']['args']['color'] ) && 'dark' === $settings['tumblr']['args']['color'] ? 'selected' : '' ;?>><?php esc_html_e( 'dark', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="light" <?php echo isset( $settings['tumblr']['args']['color'] ) && 'light' === $settings['tumblr']['args']['color'] ? 'selected' : '' ;?>><?php esc_html_e( 'light', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="dark" <?php echo !empty( $settings['tumblr']['args']['color'] ) && 'dark' === $settings['tumblr']['args']['color'] ? 'selected' : '' ;?>><?php esc_html_e( 'dark', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="light" <?php echo !empty( $settings['tumblr']['args']['color'] ) && 'light' === $settings['tumblr']['args']['color'] ? 'selected' : '' ;?>><?php esc_html_e( 'light', 'wpsite-follow-us-badges' ) ?></option>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the color.', 'wpsite-follow-us-badges' ) ?></em>
 									</div>
@@ -701,9 +701,9 @@
 									<label for="<?php echo self::$prefix ?>settings_tumblr_args_button" class="col-sm-3 control-label"><?php esc_html_e( 'Button', 'wpsite-follow-us-badges' ) ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_tumblr_args_button" name="wpsite_follow_us_settings_tumblr_args_button">
-											<option value="1" <?php echo isset( $settings['tumblr']['args']['button'] ) && '1' === $settings['tumblr']['args']['button'] ? 'selected' : '' ?>><?php esc_html_e( 'Classic Tumblr Button', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="2" <?php echo isset( $settings['tumblr']['args']['button'] ) && '2' === $settings['tumblr']['args']['button'] ? 'selected' : '' ?>><?php esc_html_e( '"Follow on Tumblr"', 'wpsite-follow-us-badges' ) ?></option>
-											<option value="3" <?php echo isset( $settings['tumblr']['args']['button'] ) && '3' === $settings['tumblr']['args']['button'] ? 'selected' : '' ?>><?php esc_html_e( 'Icon', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="1" <?php echo !empty( $settings['tumblr']['args']['button'] ) && '1' === $settings['tumblr']['args']['button'] ? 'selected' : '' ?>><?php esc_html_e( 'Classic Tumblr Button', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="2" <?php echo !empty( $settings['tumblr']['args']['button'] ) && '2' === $settings['tumblr']['args']['button'] ? 'selected' : '' ?>><?php esc_html_e( '"Follow on Tumblr"', 'wpsite-follow-us-badges' ) ?></option>
+											<option value="3" <?php echo !empty( $settings['tumblr']['args']['button'] ) && '3' === $settings['tumblr']['args']['button'] ? 'selected' : '' ?>><?php esc_html_e( 'Icon', 'wpsite-follow-us-badges' ) ?></option>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the button type.', 'wpsite-follow-us-badges' ) ?></em>
 									</div>
