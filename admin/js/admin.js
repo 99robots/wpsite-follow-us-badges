@@ -1,7 +1,6 @@
 jQuery(function($) {
 
 	// Order
-
 	$("#twitter").hide();
 	$("#facebook").hide();
 	$("#google").hide();
