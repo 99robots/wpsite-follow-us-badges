@@ -257,7 +257,7 @@ if(!empty($_GET['tab'])) {
                                     <div class="col-sm-9">
                                         <select id="wpsite_follow_us_settings_twitter_args_language"
                                                 name="wpsite_follow_us_settings_twitter_args_language">
-                                            <?php foreach ( self::$twitter_supported_languages as $lang ) { ?>
+                                            <?php foreach ( self::$_twitter_supported_languages as $lang ) { ?>
                                                 <option value="<?php echo esc_attr( $lang ); ?>" <?php echo !empty( $settings['twitter']['args']['language'] ) && $settings['twitter']['args']['language'] === $lang ? 'selected' : ''; ?>><?php esc_html_e( $lang, 'wpsite-follow-us-badges' ) ?></option>
                                             <?php } ?>
                                         </select>
@@ -468,7 +468,7 @@ if(!empty($_GET['tab'])) {
                                     <div class="col-sm-9">
                                         <select id="wpsite_follow_us_settings_facebook_args_language"
                                                 name="wpsite_follow_us_settings_facebook_args_language">
-                                            <?php foreach ( self::$facebook_supported_languages as $lang ) { ?>
+                                            <?php foreach ( self::$_facebook_supported_languages as $lang ) { ?>
                                                 <option value="<?php echo esc_attr( $lang ); ?>" <?php echo !empty( $settings['facebook']['args']['language'] ) && $settings['facebook']['args']['language'] === $lang ? 'selected' : ''; ?>><?php esc_html_e( $lang, 'wpsite-follow-us-badges' ) ?></option>
                                             <?php } ?>
                                         </select>
@@ -602,7 +602,7 @@ if(!empty($_GET['tab'])) {
                                     <div class="col-sm-9">
                                         <select id="wpsite_follow_us_settings_linkedin_args_language"
                                                 name="wpsite_follow_us_settings_linkedin_args_language">
-                                            <?php foreach ( self::$linkedin_supported_languages as $lang ) { ?>
+                                            <?php foreach ( self::$_linkedin_supported_languages as $lang ) { ?>
                                                 <option value="<?php echo esc_attr( $lang ); ?>" <?php echo !empty( $settings['linkedin']['args']['language'] ) && $settings['linkedin']['args']['language'] === $lang ? 'selected' : ''; ?>><?php esc_html_e( $lang, 'wpsite-follow-us-badges' ) ?></option>
                                             <?php } ?>
                                         </select>
@@ -990,7 +990,7 @@ if(!empty($_GET['tab'])) {
 
                 </div>
 
-                <?php wp_nonce_field( 'wpsite_follow_us_admin_settings' ) ?>
+                <?php wp_nonce_field( 'wpsiteFollowUsAdminSettings' ) ?>
 
                 <p class="nnr-submit">
                     <button type="submit" name="submit" id="submit" class="button button-primary button-large" value="Save Settings"><i
