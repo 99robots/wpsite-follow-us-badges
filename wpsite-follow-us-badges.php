@@ -574,7 +574,7 @@ class WPsiteFollowUs extends WP_Widget
 
         // Scripts
         wp_enqueue_script(
-            self::$prefix . 'admin_js', 
+            self::$_prefix . 'admin_js', 
             WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/admin.js', 
             array('jquery')
         );
@@ -1034,16 +1034,35 @@ class WPsiteFollowUs extends WP_Widget
 
                         if (!empty($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'person') {
                             $content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/profile/view?id=' . esc_html($settings['linkedin']['user']) . '" target="_blank">LinkedIn</a></div>';
-                        } else if (!empty($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'company') {
-                            $content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/company/' . esc_html($settings['linkedin']['user']) . '" target="_blank">LinkedIn</a></div>';
-                        } else if (!empty($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'group') {
-                            $content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/groups?gid=' . esc_html($settings['linkedin']['user']) . '" target="_blank">LinkedIn</a></div>';
-                        } else if (!empty($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'university') {
-                            $content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/edu/school?id=' . esc_html($settings['linkedin']['user']) . '" target="_blank">LinkedIn</a></div>';
+                        } else if (!empty($settings['linkedin']['args']['type']) 
+                            && $settings['linkedin']['args']['type'] == 'company'
+                        ) {
+                            $content .= '<div class="wpsite_follow_us_div_link">'
+                            .'<a class="linkedin" '
+                            .'href="https://www.linkedin.com/company/' 
+                            . esc_html($settings['linkedin']['user']) 
+                            . '" target="_blank">LinkedIn</a></div>';
+                        } else if (!empty($settings['linkedin']['args']['type']) 
+                            && $settings['linkedin']['args']['type'] == 'group'
+                        ) {
+                            $content .= '<div class="wpsite_follow_us_div_link">'
+                            .'<a class="linkedin" '
+                            .'href="https://www.linkedin.com/groups?gid=' 
+                            . esc_html($settings['linkedin']['user']) 
+                            . '" target="_blank">LinkedIn</a></div>';
+                        } else if (!empty($settings['linkedin']['args']['type']) 
+                            && $settings['linkedin']['args']['type'] == 'university'
+                        ) {
+                            $content .= '<div class="wpsite_follow_us_div_link">'
+                            .'<a class="linkedin" '
+                            .'href="https://www.linkedin.com/edu/school?id=' 
+                            . esc_html($settings['linkedin']['user']) 
+                            . '" target="_blank">LinkedIn</a></div>';
                         }
                     } else { 
                         $content .= '<div class="wpsite_follow_us_div linkedinbox">
-                                        <script src="//platform.linkedin.com/in.js" type="text/javascript">';
+                                        <script src="//platform.linkedin.com/in.js"'
+                                        .' type="text/javascript">';
 
                         if (isset($settings['linkedin']['args']['language'])) {
                             $content .= 'lang: ' 
@@ -1067,8 +1086,7 @@ class WPsiteFollowUs extends WP_Widget
                         $content .= '></script></div>';
                     }
                 }
-            } // Pinterest
-            else if ('pinterest' === $order) {
+            } else if ('pinterest' === $order) {
                 if (!empty($settings['pinterest']['active'])) {
 
                     if (!empty($settings['pinterest']['args']['link'])) {
@@ -1085,38 +1103,51 @@ class WPsiteFollowUs extends WP_Widget
                         . '" >';
 
                         if (isset($settings['pinterest']['args']['name'])) {
-                            $content .= esc_html($settings['pinterest']['args']['name']);
+                            $content 
+                            .= esc_html($settings['pinterest']['args']['name']);
                         }
 
-                        $content .= '</a><!-- Please call pinit.js only once per page --><script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script></div>';
+                        $content .= '</a><!-- Please call pinit.js only once'
+                                    .' per page -->'
+                                    .'<script type="text/javascript" async src='
+                                    .'"//assets.pinterest.com/js/pinit.js">'
+                                    .'</script></div>';
                     }
                 }
-            } // YouTube
-            else if ('youtube' === $order) {
+            } else if ('youtube' === $order) {
                 if (!empty($settings['youtube']['active'])) {
 
                     if (!empty($settings['youtube']['args']['link'])) {
-                        $content .= '<div class="wpsite_follow_us_div_link"><a class="youtube" href="https://www.youtube.com/channel/' . esc_html($settings['youtube']['user']) . '" target="_blank">YouTube</a></div>';
+                        $content .= '<div class="wpsite_follow_us_div_link">'
+                                    .'<a class="youtube" '
+                                    .'href="https://www.youtube.com/channel/' 
+                                    . esc_html($settings['youtube']['user']) 
+                                    . '" target="_blank">YouTube</a></div>';
                     } else {
-                        $content .= '<div class="wpsite_follow_us_div youtubebox"><div class="g-ytsubscribe" data-channelid="' . esc_html($settings['youtube']['user']) . '"';
+                        $content .= '<div class="wpsite_follow_us_div youtubebox">'
+                                    .'<div class="g-ytsubscribe" data-channelid="' 
+                                    . esc_html($settings['youtube']['user']) . '"';
 
                         if (isset($settings['youtube']['args']['layout'])) {
-                            $content .= ' data-layout="' . esc_html($settings['youtube']['args']['layout']) . '"';
+                            $content .= ' data-layout="' 
+                            . esc_html($settings['youtube']['args']['layout']) . '"';
                         }
 
                         if (isset($settings['youtube']['args']['theme'])) {
-                            $content .= ' data-theme="' . esc_html($settings['youtube']['args']['theme']) . '"';
+                            $content .= ' data-theme="' 
+                            . esc_html($settings['youtube']['args']['theme']) . '"';
                         }
 
                         if (isset($settings['youtube']['args']['count'])) {
-                            $content .= ' data-count="' . esc_html($settings['youtube']['args']['count']) . '"';
+                            $content .= ' data-count="' 
+                            . esc_html($settings['youtube']['args']['count']) . '"';
                         }
-
-                        $content .= '></div><script src="https://apis.google.com/js/platform.js"></script></div>';
+                        $content .= '></div><script src="https://apis.google.com/js/'
+                                    .'platform.js">'
+                                    . '</script></div>';
                     }
                 }
-            } // Tumblr
-            else if ('tumblr' === $order) {
+            } else if ('tumblr' === $order) {
                 if (!empty($settings['tumblr']['active'])) {
 
                     if (!empty($settings['tumblr']['args']['link'])) {
@@ -1130,24 +1161,30 @@ class WPsiteFollowUs extends WP_Widget
                                         </a>
                                       </div>';
                     } else {
-                        $content .= '<iframe class="btn wpsite_follow_us_div tumblrbox" 
+                        $content .= '<iframe 
+                                            class=
+                                            "btn wpsite_follow_us_div tumblrbox" 
                                             height="25" 
                                             frameborder="0" 
                                             border="0" 
                                             scrolling="no" 
                                             allowtransparency="true" 
-                                            src="http://platform.tumblr.com/v1/follow_button.html?';
+                                            src="http://platform.tumblr.com/v1
+                                            /follow_button.html?';
 
                         if (isset($settings['tumblr']['args']['button'])) {
-                            $content .= 'button_type=' . esc_html($settings['tumblr']['args']['button']);
+                            $content .= 'button_type=' 
+                            . esc_html($settings['tumblr']['args']['button']);
                         }
 
                         if (isset($settings['tumblr']['user'])) {
-                            $content .= '&tumblelog=' . esc_html($settings['tumblr']['user']);
+                            $content .= '&tumblelog=' 
+                            . esc_html($settings['tumblr']['user']);
                         }
 
                         if (isset($settings['tumblr']['args']['color'])) {
-                            $content .= '&color_scheme=' . esc_html($settings['tumblr']['args']['color']);
+                            $content .= '&color_scheme=' 
+                            . esc_html($settings['tumblr']['args']['color']);
                         }
 
                         $content .= '"></iframe>';
@@ -1165,8 +1202,10 @@ class WPsiteFollowUs extends WP_Widget
      * Back-end widget form.
      *
      * @param array $instance Previously saved values from database.
+     * 
      * @see WP_Widget::form()
      *
+     * @return void
      */
     public function form($instance)
     {
@@ -1177,7 +1216,7 @@ class WPsiteFollowUs extends WP_Widget
         } else {
             $title = esc_html__('Follow Us', 'wpsite-follow-us-badges');
         }
-?>
+        ?>
        <p>
             <label for="<?php echo $this->get_field_id('title') ?>">
                 <?php esc_html_e('Title:') ?>
@@ -1188,7 +1227,7 @@ class WPsiteFollowUs extends WP_Widget
                 type="text"
                 value="<?php echo esc_attr($title) ?>">
         </p>
-<?php
+        <?php
     }
 
     /**
@@ -1198,13 +1237,14 @@ class WPsiteFollowUs extends WP_Widget
      * @param array $old_instance Previously saved values from database.
      *
      * @return array Updated safe values to be saved.
-     * @see WP_Widget::update()
-     *
+     * @see    WP_Widget::update()
      */
     public function update($new_instance, $old_instance)
     {
         $instance          = array();
-        $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
+        $instance['title'] = (!empty($new_instance['title']))
+            ? strip_tags($new_instance['title'])
+            : '';
 
         return $instance;
     }
@@ -1213,64 +1253,72 @@ class WPsiteFollowUs extends WP_Widget
 // Shortcode
 add_shortcode('wpsite_follow_us_badges', 'wpsite_follow_us_badges_shortcode');
 /**
- * Create the shortcode for this plugin.  All features are included in the shortcode
+ * Create the shortcode for this plugin. All features are included in the shortcode.
  *
+ * @param mixed $atts Shortcode attributes.
+ * 
  * @access public
- * @param mixed $atts
+ * 
  * @return void
  */
-function wpsite_follow_us_badges_shortcode($atts)
+function Wpsite_Follow_Us_Badges_shortcode($atts)
 {
 
-    wp_enqueue_style('wpsite_follow_us_badges_widget_css', plugins_url('/css/wpsite-follow-us-badges.css', __FILE__));
+    wp_enqueue_style(
+        'wpsite_follow_us_badges_widget_css',
+        plugins_url('/css/wpsite-follow-us-badges.css', __FILE__)
+    );
 
-    $args = shortcode_atts(array(
-        'title'                           => '',
-        'inline'                          => 'false',
-        'order'                           => "twitter,facebook,linkedin,pinterest,youtube,tumblr",
-        'twitter'                         => null,
-        'twitter_link'                    => 'false',
-        'twitter_followers_count_display' => 'true',
-        'twitter_language'                => 'en',
-        'twitter_width'                   => '100%',
-        'twitter_alignment'               => 'left',
-        'twitter_show_screen_name'        => 'false',
-        'twitter_size'                    => 'medium',
-        'facebook'                        => null,
-        'facebook_type'                   => 'like',
-        'facebook_link'                   => 'false',
-        'facebook_width'                  => '',
-        'facebook_language'               => 'en_US',
-        'facebook_layout'                 => 'standard',
-        'facebook_action_type'            => 'like',
-        'facebook_colorscheme'            => 'light',
-        'facebook_show_friends_faces'     => 'false',
-        'facebook_include_share_button'   => 'false',
-        'google_link'                     => 'false',
-        'google'                          => null,
-        'google_size'                     => '20',
-        'google_annotation'               => 'bubble',
-        'google_language'                 => 'en-US',
-        'google_asynchronous'             => 'true',
-        'google_parse_tags'               => 'default',
-        'linkedin'                        => null,
-        'linkedin_link'                   => 'false',
-        'linkedin_type'                   => 'company',
-        'linkedin_count_mode'             => 'right',
-        'linkedin_language'               => 'en_US',
-        'pinterest'                       => null,
-        'pinterest_link'                  => 'false',
-        'pinterest_name'                  => 'WPsite',
-        'youtube'                         => null,
-        'youtube_link'                    => 'false',
-        'youtube_layout'                  => 'default',
-        'youtube_theme'                   => 'default',
-        'youtube_count'                   => 'true',
-        'tumblr'                          => null,
-        'tumblr_link'                     => 'false',
-        'tumblr_color'                    => 'dark',
-        'tumblr_button'                   => '2',
-    ), $atts);
+    $args = shortcode_atts(
+        array(
+            'title' => '',
+            'inline' => 'false',
+            'order' => "twitter,facebook,linkedin,pinterest,youtube,tumblr",
+            'twitter' => null,
+            'twitter_link' => 'false',
+            'twitter_followers_count_display' => 'true',
+            'twitter_language' => 'en',
+            'twitter_width' => '100%',
+            'twitter_alignment' => 'left',
+            'twitter_show_screen_name' => 'false',
+            'twitter_size' => 'medium',
+            'facebook' => null,
+            'facebook_type' => 'like',
+            'facebook_link' => 'false',
+            'facebook_width' => '',
+            'facebook_language' => 'en_US',
+            'facebook_layout' => 'standard',
+            'facebook_action_type' => 'like',
+            'facebook_colorscheme' => 'light',
+            'facebook_show_friends_faces' => 'false',
+            'facebook_include_share_button' => 'false',
+            'google_link' => 'false',
+            'google' => null,
+            'google_size' => '20',
+            'google_annotation' => 'bubble',
+            'google_language' => 'en-US',
+            'google_asynchronous' => 'true',
+            'google_parse_tags' => 'default',
+            'linkedin' => null,
+            'linkedin_link' => 'false',
+            'linkedin_type' => 'company',
+            'linkedin_count_mode' => 'right',
+            'linkedin_language' => 'en_US',
+            'pinterest' => null,
+            'pinterest_link' => 'false',
+            'pinterest_name' => 'WPsite',
+            'youtube' => null,
+            'youtube_link' => 'false',
+            'youtube_layout' => 'default',
+            'youtube_theme' => 'default',
+            'youtube_count' => 'true',
+            'tumblr' => null,
+            'tumblr_link' => 'false',
+            'tumblr_color' => 'dark',
+            'tumblr_button' => '2',
+        ),
+        $atts
+    );
 
     // Re-create args array so our code can understand the data
     $settings = array(
@@ -1280,14 +1328,21 @@ function wpsite_follow_us_badges_shortcode($atts)
         'twitter'   => array(
             'active' => isset($args['twitter']) ? true : false,
             'user'   => $args['twitter'],
-            'args'   => array(
-                'link'                    => $args['twitter_link'] === 'true' ? true : false,
-                'followers_count_display' => $args['twitter_followers_count_display'] === 'true' ? true : false,
-                'language'                => $args['twitter_language'],
-                'width'                   => $args['twitter_width'],
-                'alignment'               => $args['twitter_alignment'],
-                'show_screen_name'        => $args['twitter_show_screen_name'] === 'true' ? true : false,
-                'size'                    => $args['twitter_size']
+            'args' => array(
+                'link' => $args['twitter_link'] === 'true'
+                    ? true
+                    : false,
+                'followers_count_display' => 
+                    $args['twitter_followers_count_display'] === 'true'
+                    ? true
+                    : false,
+                'language' => $args['twitter_language'],
+                'width' => $args['twitter_width'],
+                'alignment' => $args['twitter_alignment'],
+                'show_screen_name' => $args['twitter_show_screen_name'] === 'true'
+                    ? true
+                    : false,
+                'size' => $args['twitter_size']
             )
         ),
         'facebook'  => array(
@@ -1295,14 +1350,22 @@ function wpsite_follow_us_badges_shortcode($atts)
             'user'   => $args['facebook'],
             'args'   => array(
                 'type'                 => $args['facebook_type'],
-                'link'                 => $args['facebook_link'] === 'true' ? true : false,
+                'link' => $args['facebook_link'] === 'true'
+                    ? true
+                    : false,
                 'width'                => $args['facebook_width'],
                 'language'             => $args['facebook_language'],
                 'layout'               => $args['facebook_layout'],
                 'action_type'          => $args['facebook_action_type'],
                 'colorscheme'          => $args['facebook_colorscheme'],
-                'show_friends_faces'   => $args['facebook_show_friends_faces'] === 'true' ? true : false,
-                'include_share_button' => $args['facebook_include_share_button'] === 'true' ? true : false,
+                'show_friends_faces' => 
+                    $args['facebook_show_friends_faces'] === 'true'
+                    ? true
+                    : false,
+                'include_share_button' => 
+                    $args['facebook_include_share_button'] === 'true'
+                    ? true
+                    : false,
             )
         ),
         'linkedin'  => array(
@@ -1427,13 +1490,21 @@ function wpsite_follow_us_badges_shortcode($atts)
                     }
 
                     $content .= '></a>
-		        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+                    <script>
+                    !function(d,s,id){
+                        var js,fjs=d.getElementsByTagName(s)[0];
+                        if(!d.getElementById(id)){
+                            js=d.createElement(s);
+                            js.id=id;
+                            js.src="//platform.twitter.com/widgets.js";
+                            fjs.parentNode.insertBefore(js,fjs);
+                        }
+                    }(document,"script","twitter-wjs");
+                </script></div>
 					';
                 }
             }
-        } 
-        // Facebook
-        else if ('facebook' === $order) {
+        } else if ('facebook' === $order) {
             if (!empty($settings['facebook']['active'])) {
 
                 if (!empty($settings['facebook']['args']['link'])) {
@@ -1452,7 +1523,8 @@ function wpsite_follow_us_badges_shortcode($atts)
                     . '"';
 
                     if ($settings['facebook']['args']['type'] == 'like') {
-                        if (!empty($settings['facebook']['args']['include_share_button'])) {
+                        if (!empty($settings['facebook']['args']['include_share_button'])
+                        ) {
                             $content .= ' data-share="true"';
                         } else {
                             $content .= ' data-share="false"';
@@ -1464,9 +1536,8 @@ function wpsite_follow_us_badges_shortcode($atts)
                             '"';
                         }
                     }
-                    
-
-                    if(!empty($settings['facebook']['args']['show_friends_faces'])) {
+                    if (!empty($settings['facebook']['args']['show_friends_faces'])
+                    ) {
                         $content .= ' data-show-faces="true"';
                     } else {
                         $content .= ' data-show-faces="false"';
@@ -1508,34 +1579,41 @@ function wpsite_follow_us_badges_shortcode($atts)
 					';
                 }
             }
-        } 
-        // LinkedIn
-        else if ('linkedin' === $order) {
+        } else if ('linkedin' === $order) {
             if (!empty($settings['linkedin']['active'])) {
 
                 if (!empty($settings['linkedin']['args']['link'])) {
 
-                    if (!empty($settings['linkedin']['args']['type']) && $settings ['linkedin']['args']['type'] == 'person') {
+                    if (!empty($settings['linkedin']['args']['type']) 
+                        && $settings ['linkedin']['args']['type'] == 'person'
+                    ) {
                         $content .= '<div class="wpsite_follow_us_div_link ' 
                         . $inline_class 
                         . '"><a class="linkedin" 
                         href="https://www.linkedin.com/profile/view?id=' 
                         . $settings['linkedin']['user'] 
                         . '" target="_blank">LinkedIn</a></div>';
-                    } else if (!empty($settings['linkedin']['args']['type']) && $settings ['linkedin']['args']['type'] == 'company') {
+                    } else if (!empty($settings['linkedin']['args']['type']) 
+                        && $settings ['linkedin']['args']['type'] == 'company'
+                    ) {
                         $content .= '<div class="wpsite_follow_us_div_link ' 
                         . $inline_class . 
                         '"><a class="linkedin" 
                         href="https://www.linkedin.com/company/' 
                         . $settings['linkedin']['user'] . 
                         '" target="_blank">LinkedIn</a></div>';
-                    } else if (!empty($settings['linkedin']['args']['type']) && $settings ['linkedin']['args']['type'] == 'group') {
+                    } else if (!empty($settings['linkedin']['args']['type']) 
+                        && $settings ['linkedin']['args']['type'] == 'group'
+                    ) {
                         $content .= '<div class="wpsite_follow_us_div_link ' 
                         . $inline_class . '"><a class="linkedin" 
                         href="https://www.linkedin.com/groups?gid=' 
                         . $settings['linkedin']['user'] 
                         . '" target="_blank">LinkedIn</a></div>';
-                    } else if (!empty($settings['linkedin']['args']['type']) && $settings['linkedin']['args']['type'] == 'university') {
+                    
+                    } else if (!empty($settings['linkedin']['args']['type']) 
+                        && $settings['linkedin']['args']['type'] == 'university'
+                    ) {
                         $content .= '<div class="wpsite_follow_us_div_link ' 
                         . $inline_class 
                         . '"><a class="linkedin" 
@@ -1566,8 +1644,7 @@ function wpsite_follow_us_badges_shortcode($atts)
                     $content .= '></script></div>';
                 }
             }
-        } // Pinterest
-        else if ('pinterest' === $order) {
+        } else if ('pinterest' === $order) {
             if (!empty($settings['pinterest']['active'])) {
 
                 if (!empty($settings['pinterest']['args']['link'])) {
@@ -1589,8 +1666,7 @@ function wpsite_follow_us_badges_shortcode($atts)
                     src="//assets.pinterest.com/js/pinit.js"></script></div>';
                 }
             }
-        } // YouTube 
-        else if ('youtube' === $order) {
+        } else if ('youtube' === $order) {
 
             if (!empty($settings['youtube']['active'])) {
                 
@@ -1625,8 +1701,7 @@ function wpsite_follow_us_badges_shortcode($atts)
                     src="https://apis.google.com/js/platform.js"></script></div>';
                 }
             }
-        } 
-        else if ('tumblr' === $order) {
+        } else if ('tumblr' === $order) {
             // Tumblr
             if (!empty($settings['tumblr']['active'])) {
 
