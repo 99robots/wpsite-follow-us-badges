@@ -363,7 +363,7 @@ if(!empty($_GET['tab'])) {
                                            class="col-sm-3 control-label"><?php esc_html_e( 'Layout', 'wpsite-follow-us-badges' ) ?></label>
                                     <div class="col-sm-9">
                                         <select id="wpsite_follow_us_settings_facebook_args_layout"
-                                                name="wpsite_follow_us_settings_facebook_args_layout">
+                                                name="wpsiteFollowUsSettingsFacebookArgsLayout">
                                             <option value="standard" <?php echo !empty( $settings['facebook']['args']['layout'] ) && 'standard' === $settings['facebook']['args']['layout'] ? 'selected' : ''; ?>><?php esc_html_e( 'standard', 'wpsite-follow-us-badges' ) ?></option>
                                             <option value="box_count" <?php echo !empty( $settings['facebook']['args']['layout'] ) && 'box_count' === $settings['facebook']['args']['layout'] ? 'selected' : ''; ?>><?php esc_html_e( 'box_count', 'wpsite-follow-us-badges' ) ?></option>
                                             <option value="button_count" <?php echo !empty( $settings['facebook']['args']['layout'] ) && 'button_count' === $settings['facebook']['args']['layout'] ? 'selected' : ''; ?>><?php esc_html_e( 'button_count', 'wpsite-follow-us-badges' ) ?></option>
@@ -380,7 +380,7 @@ if(!empty($_GET['tab'])) {
                                            class="col-sm-3 control-label"><?php esc_html_e( 'Action Type', 'wpsite-follow-us-badges' ) ?></label>
                                     <div class="col-sm-9">
                                         <select id="wpsite_follow_us_settings_facebook_args_action_type"
-                                                name="wpsite_follow_us_settings_facebook_args_action_type">
+                                                name="wpsiteFollowUsSettingsFacebookArgsActionType">
                                             <option value="like" <?php echo !empty( $settings['facebook']['args']['action_type'] ) && 'like' === $settings['facebook']['args']['action_type'] ? 'selected' : ''; ?>><?php esc_html_e( 'like', 'wpsite-follow-us-badges' ) ?></option>
                                             <option value="recommend" <?php echo !empty( $settings['facebook']['args']['action_type'] ) && 'recommend' === $settings['facebook']['args']['action_type'] ? 'selected' : ''; ?>><?php esc_html_e( 'recommend', 'wpsite-follow-us-badges' ) ?></option>
                                         </select>
@@ -395,7 +395,7 @@ if(!empty($_GET['tab'])) {
                                            class="col-sm-3 control-label"><?php esc_html_e( 'Color Scheme', 'wpsite-follow-us-badges' ) ?></label>
                                     <div class="col-sm-9">
                                         <select id="wpsite_follow_us_settings_facebook_args_colorscheme"
-                                                name="wpsite_follow_us_settings_facebook_args_colorscheme">
+                                                name="wpsiteFollowUsSettingsFacebookArgsColorscheme">
                                             <option value="light" <?php echo !empty( $settings['facebook']['args']['colorscheme'] ) && 'light' === $settings['facebook']['args']['colorscheme'] ? 'selected' : ''; ?>><?php esc_html_e( 'light', 'wpsite-follow-us-badges' ) ?></option>
                                             <option value="dark" <?php echo !empty( $settings['facebook']['args']['colorscheme'] ) && 'dark' === $settings['facebook']['args']['colorscheme'] ? 'selected' : ''; ?>><?php esc_html_e( 'dark', 'wpsite-follow-us-badges' ) ?></option>
                                         </select>
@@ -467,7 +467,7 @@ if(!empty($_GET['tab'])) {
                                            class="col-sm-3 control-label"><?php esc_html_e( 'Language', 'wpsite-follow-us-badges' ) ?></label>
                                     <div class="col-sm-9">
                                         <select id="wpsite_follow_us_settings_facebook_args_language"
-                                                name="wpsite_follow_us_settings_facebook_args_language">
+                                                name="wpsiteFollowUsSettingsFacebookArgsLanguage">
                                             <?php foreach ( self::$_facebook_supported_languages as $lang ) { ?>
                                                 <option value="<?php echo esc_attr( $lang ); ?>" <?php echo !empty( $settings['facebook']['args']['language'] ) && $settings['facebook']['args']['language'] === $lang ? 'selected' : ''; ?>><?php esc_html_e( $lang, 'wpsite-follow-us-badges' ) ?></option>
                                             <?php } ?>
