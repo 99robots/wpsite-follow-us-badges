@@ -16,7 +16,8 @@
  * @category WordPress_Plugin
  * @package  Follow_Us_Badges
  * @author   Draft <contact@draftpress.com>
- * @license  GPL2
+ * @license  GNU General Public License 2
+ * (https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
  * @link     https://draftpress.com/products/
  * @requires PHP 7.2.10
  */
@@ -516,16 +517,15 @@ class WPsiteFollowUs extends WP_Widget
         );
     }
 
+   
     /**
      * Hooks to 'plugin_action_links_' filter.
      *
-     * @param array $links
-     *     The array of plugin action links.
+     * @param array $links The array of plugin action links.
      *
      * @since 1.0.0
      *
-     * @return array
-     *     The modified array of plugin action links.
+     * @return array The modified array of plugin action links.
      */
     static function wpsiteFollowUsBadgesSettingsLink($links)
     { 
@@ -643,134 +643,186 @@ class WPsiteFollowUs extends WP_Widget
             $wpsite_follow_us_settings_pinterest_active = "";
             if (!empty($_POST['wpsite_follow_us_settings_pinterest_active'])) {
                 $wpsite_follow_us_settings_pinterest_active 
-                        = sanitize_text_field(
-                            $_POST['wpsite_follow_us_settings_pinterest_active']
-                        );
+                    = sanitize_text_field(
+                        $_POST['wpsite_follow_us_settings_pinterest_active']
+                    );
             }
             $wpsite_follow_us_settings_youtube_active = "";
             if (!empty($_POST['wpsite_follow_us_settings_youtube_active'])) {
                 $wpsite_follow_us_settings_youtube_active 
-                        = sanitize_text_field(
-                            $_POST['wpsite_follow_us_settings_youtube_active']
-                        );
+                    = sanitize_text_field(
+                        $_POST['wpsite_follow_us_settings_youtube_active']
+                    );
             }
             $wpsite_follow_us_settings_tumblr_active = "";
             if (!empty($_POST['wpsite_follow_us_settings_tumblr_active'])) {
                 $wpsite_follow_us_settings_tumblr_active 
-                        = sanitize_text_field(
-                            $_POST['wpsite_follow_us_settings_tumblr_active']
-                        );
+                    = sanitize_text_field(
+                        $_POST['wpsite_follow_us_settings_tumblr_active']
+                    );
             }
             $wpsite_follow_us_settings_twitter_args_link = "";
             if (!empty($_POST['wpsite_follow_us_settings_twitter_args_link'])) {
                 $wpsite_follow_us_settings_twitter_args_link 
                     = sanitize_text_field(
-                    $_POST['wpsite_follow_us_settings_twitter_args_link']
-                );
+                        $_POST['wpsite_follow_us_settings_twitter_args_link']
+                    );
             }
             $wpsite_follow_us_settings_facebook_args_link = "";
             if (!empty($_POST['wpsite_follow_us_settings_facebook_args_link'])) {
                 $wpsite_follow_us_settings_facebook_args_link 
                     = sanitize_text_field(
-                    $_POST['wpsite_follow_us_settings_facebook_args_link']
-                );
+                        $_POST['wpsite_follow_us_settings_facebook_args_link']
+                    );
             }
             $wpsite_follow_us_settings_linkedin_args_link = "";
             if (!empty($_POST['wpsite_follow_us_settings_linkedin_args_link'])) {
                 $wpsite_follow_us_settings_linkedin_args_link 
                     = sanitize_text_field(
-                    $_POST['wpsite_follow_us_settings_linkedin_args_link']
-                );
+                        $_POST['wpsite_follow_us_settings_linkedin_args_link']
+                    );
             }
             $wpsite_follow_us_settings_pinterest_args_link = "";
             if (!empty($_POST['wpsite_follow_us_settings_pinterest_args_link'])) {
                 $wpsite_follow_us_settings_pinterest_args_link 
                     = sanitize_text_field(
-                    $_POST['wpsite_follow_us_settings_pinterest_args_link']
-                );
+                        $_POST['wpsite_follow_us_settings_pinterest_args_link']
+                    );
             }
             $wpsite_follow_us_settings_tumblr_args_link = "";
             if (!empty($_POST['wpsite_follow_us_settings_tumblr_args_link'])) {
                 $wpsite_follow_us_settings_tumblr_args_link 
                     = sanitize_text_field(
-                    $_POST['wpsite_follow_us_settings_tumblr_args_link']
-                );
+                        $_POST['wpsite_follow_us_settings_tumblr_args_link']
+                    );
             }
             $wpsite_follow_us_settings_youtube_args_link = "";
             if (!empty($_POST['wpsite_follow_us_settings_youtube_args_link'])) {
                 $wpsite_follow_us_settings_youtube_args_link 
                     = sanitize_text_field(
-                    $_POST['wpsite_follow_us_settings_youtube_args_link']
-                );
+                        $_POST['wpsite_follow_us_settings_youtube_args_link']
+                    );
             }
             $wpsite_follow_us_settings_youtube_args_count = "";
             if (!empty($_POST['wpsite_follow_us_settings_youtube_args_count'])) {
                 $wpsite_follow_us_settings_youtube_args_count 
                     = sanitize_text_field(
-                    $_POST['wpsite_follow_us_settings_youtube_args_count']
-                );
+                        $_POST['wpsite_follow_us_settings_youtube_args_count']
+                    );
             }
-            $wpsite_follow_us_settings_twitter_args_followers_count_display = "";
-            if (!empty(
-                $_POST['wpsite_follow_us_settings_twitter_args_followers_count_display'])
+            $wpsite_twitter_followers_count_display = "";
+            if (!empty($_POST['wpsite_twitter_followers_count_display'])
             ) {
-                $wpsite_follow_us_settings_twitter_args_followers_count_display 
+                $wpsite_twitter_followers_count_display 
                     = sanitize_text_field(
-                    $_POST['wpsite_follow_us_settings_twitter_args_followers_count_display']
-                );
+                        $_POST['wpsite_twitter_followers_count_display']
+                    );
             }
             $wpsite_follow_us_settings_twitter_args_width = "";
             if (!empty($_POST['wpsite_follow_us_settings_twitter_args_width'])) {
                 $wpsite_follow_us_settings_twitter_args_width 
                     = stripcslashes(
-                    sanitize_text_field(
-                        $_POST['wpsite_follow_us_settings_twitter_args_width']
-                    )
-                );
+                        sanitize_text_field(
+                            $_POST['wpsite_follow_us_settings_twitter_args_width']
+                        )
+                    );
             }
             $wpsite_follow_us_settings_facebook_args_width = "";
             if (!empty($_POST['wpsite_follow_us_settings_facebook_args_width'])) {
-                $wpsite_follow_us_settings_facebook_args_width = stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_facebook_args_width']));
+                $wpsite_follow_us_settings_facebook_args_width 
+                    = stripcslashes(
+                        sanitize_text_field(
+                            $_POST['wpsite_follow_us_settings_facebook_args_width']
+                        )
+                    );
             }
             $wpsite_follow_us_settings_twitter_user = "";
             if (!empty($_POST['wpsite_follow_us_settings_twitter_user'])) {
-                $wpsite_follow_us_settings_twitter_user = stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_twitter_user']));
+                $wpsite_follow_us_settings_twitter_user 
+                    = stripcslashes(
+                        sanitize_text_field(
+                            $_POST['wpsite_follow_us_settings_twitter_user']
+                        )
+                    );
             }
             $wpsite_follow_us_settings_facebook_user = "";
             if (!empty($_POST['wpsite_follow_us_settings_facebook_user'])) {
-                $wpsite_follow_us_settings_facebook_user = stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_facebook_user']));
+                $wpsite_follow_us_settings_facebook_user 
+                    = stripcslashes(
+                        sanitize_text_field(
+                            $_POST['wpsite_follow_us_settings_facebook_user']
+                        )
+                    );
             }
             $wpsite_follow_us_settings_linkedin_user = "";
             if (!empty($_POST['wpsite_follow_us_settings_linkedin_user'])) {
-                $wpsite_follow_us_settings_linkedin_user = stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_linkedin_user']));
+                $wpsite_follow_us_settings_linkedin_user 
+                    = stripcslashes(
+                        sanitize_text_field(
+                            $_POST['wpsite_follow_us_settings_linkedin_user']
+                        )
+                    );
             }
             $wpsite_follow_us_settings_pinterest_user = "";
-            if (!empty($_POST['wpsite_follow_us_settings_pinterest_user'])) {
-                $wpsite_follow_us_settings_pinterest_user = stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_pinterest_user']));
+            if (!empty($_POST['wpsite_follow_us_settings_pinterest_user'])
+            ) {
+                $wpsite_follow_us_settings_pinterest_user 
+                    = stripcslashes(
+                        sanitize_text_field(
+                            $_POST['wpsite_follow_us_settings_pinterest_user']
+                        )
+                    );
             }
             $wpsite_follow_us_settings_youtube_user = "";
-            if (!empty($_POST['wpsite_follow_us_settings_youtube_user'])) {
-                $wpsite_follow_us_settings_youtube_user = stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_youtube_user']));
+            if (!empty($_POST['wpsite_follow_us_settings_youtube_user'])
+            ) {
+                $wpsite_follow_us_settings_youtube_user 
+                    = stripcslashes(
+                        sanitize_text_field(
+                            $_POST['wpsite_follow_us_settings_youtube_user']
+                        )
+                    );
             }
             $wpsite_follow_us_settings_tumblr_user = "";
-            if (!empty($_POST['wpsite_follow_us_settings_tumblr_user'])) {
-                $wpsite_follow_us_settings_tumblr_user = stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_tumblr_user']));
+            if (!empty($_POST['wpsite_follow_us_settings_tumblr_user'])
+            ) {
+                $wpsite_follow_us_settings_tumblr_user 
+                    = stripcslashes(
+                        sanitize_text_field(
+                            $_POST['wpsite_follow_us_settings_tumblr_user']
+                        )
+                    );
             }
             $wpsite_follow_us_settings_pinterest_args_name = "";
-            if (!empty($_POST['wpsite_follow_us_settings_pinterest_args_name'])) {
-                $wpsite_follow_us_settings_pinterest_args_name = stripcslashes(sanitize_text_field($_POST['wpsite_follow_us_settings_pinterest_args_name']));
+            if (!empty($_POST['wpsite_follow_us_settings_pinterest_args_name'])
+            ) {
+                $wpsite_follow_us_settings_pinterest_args_name 
+                    = stripcslashes(
+                        sanitize_text_field(
+                            $_POST['wpsite_follow_us_settings_pinterest_args_name']
+                        )
+                    );
             }
-            $wpsite_follow_us_settings_twitter_args_show_screen_name = "";
-            if (!empty($_POST['wpsite_follow_us_settings_twitter_args_show_screen_name'])) {
-                $wpsite_follow_us_settings_twitter_args_show_screen_name = sanitize_text_field($_POST['wpsite_follow_us_settings_twitter_args_show_screen_name']);
+            $wpsiteFollowUsSettingsTwitterArgsShowScreenName = "";
+            if (!empty($_POST['wpsiteFollowUsSettingsTwitterArgsShowScreenName'])) {
+                $wpsiteFollowUsSettingsTwitterArgsShowScreenName 
+                    = sanitize_text_field(
+                        $_POST['wpsiteFollowUsSettingsTwitterArgsShowScreenName']
+                    );
             }
-            $wpsiteFollowUsSettingsFacebookArgsShowFriendsFaces = "";
-            if (!empty($_POST['wpsiteFollowUsSettingsFacebookArgsShowFriendsFaces'])) {
-                $wpsiteFollowUsSettingsFacebookArgsShowFriendsFaces = sanitize_text_field($_POST['wpsiteFollowUsSettingsFacebookArgsShowFriendsFaces']);
+            $wpsiteFollowUsSettingsFbArgsShowFriendsFaces = "";
+            if (!empty($_POST['wpsiteFollowUsSettingsFbArgsShowFriendsFaces'])
+            ) {
+                $wpsiteFollowUsSettingsFbArgsShowFriendsFaces = sanitize_text_field(
+                    $_POST['wpsiteFollowUsSettingsFbArgsShowFriendsFaces']
+                );
             }
-            $wpsiteFollowUsSettingsFacebookArgsIncludeShareButton = "";
-            if (!empty($_POST['wpsiteFollowUsSettingsFacebookArgsIncludeShareButton'])) {
-                $wpsiteFollowUsSettingsFacebookArgsIncludeShareButton = sanitize_text_field($_POST['wpsiteFollowUsSettingsFacebookArgsIncludeShareButton']);
+            $wpsiteFollowUsSettingsFbArgsIncludeShareBtn = "";
+            if (!empty($_POST['wpsiteFollowUsSettingsFbArgsIncludeShareBtn'])) {
+                $wpsiteFollowUsSettingsFbArgsIncludeShareBtn 
+                    = sanitize_text_field(
+                        $_POST['wpsiteFollowUsSettingsFbArgsIncludeShareBtn']
+                    );
             }
 
             $wFollowUsSettings_linkedin_args_language 
@@ -779,19 +831,38 @@ class WPsiteFollowUs extends WP_Widget
                 = 'wpsite_follow_us_settings_linkedin_args_count_mode'; 
             $wFollowUsSettingsTwitterArgsCount    
                 = 'wpsite_follow_us_settings_twitter_args_opt_out';
+            $wFollowUsSettingsTwitterArgsAlign
+                = 'wpsite_follow_us_settings_twitter_args_alignment';
+            $wFollowUsSettingsTwitterArgsLng
+                = 'wpsite_follow_us_settings_twitter_args_language';
             $settings = array(
                 'order'     => $settings['order'],
                 'twitter'   => array(
-                    'active' => !empty($wpsite_follow_us_settings_twitter_active) ? true : false,
-                    'user'   => !empty($_POST['wpsite_follow_us_settings_twitter_user']) ? $wpsite_follow_us_settings_twitter_user : '',
+                    'active' => !empty($wpsite_follow_us_settings_twitter_active) 
+                    ? true : false,
+                    'user'   => !empty(
+                        $_POST['wpsite_follow_us_settings_twitter_user']
+                    ) 
+                    ? $wpsite_follow_us_settings_twitter_user : '',
                     'args'   => array(
-                        'link'                    => !empty($wpsite_follow_us_settings_twitter_args_link) ? true : false,
-                        'followers_count_display' => !empty($wpsite_follow_us_settings_twitter_args_followers_count_display) ? true : false,
-                        'language'                => sanitize_text_field($_POST['wpsite_follow_us_settings_twitter_args_language']),
-                        'width'                   => !empty($wpsite_follow_us_settings_twitter_args_width) ? $wpsite_follow_us_settings_twitter_args_width : '',
-                        'alignment'               => sanitize_text_field($_POST['wpsite_follow_us_settings_twitter_args_alignment']),
+                        'link'                    => !empty(
+                            $wpsite_follow_us_settings_twitter_args_link
+                        ) ? true : false,
+                        'followers_count_display' => !empty(
+                            $wpsite_twitter_followers_count_display
+                        ) ? true : false,
+                        'language'                => sanitize_text_field(
+                            $_POST[$wFollowUsSettingsTwitterArgsLng]
+                        ),
+                        'width'                   => !empty(
+                            $wpsite_follow_us_settings_twitter_args_width
+                        ) 
+                        ? $wpsite_follow_us_settings_twitter_args_width : '',
+                        'alignment'               => sanitize_text_field(
+                            $_POST[$wFollowUsSettingsTwitterArgsAlign]
+                        ),
                         'show_screen_name'        => !empty(
-                            $wpsite_follow_us_settings_twitter_args_show_screen_name
+                            $wpsiteFollowUsSettingsTwitterArgsShowScreenName
                         ) 
                         ? true : false,
                         'size'                    => sanitize_text_field(
@@ -831,10 +902,10 @@ class WPsiteFollowUs extends WP_Widget
                             $_POST['wpsiteFollowUsSettingsFacebookArgsColorscheme']
                         ),
                         'show_friends_faces'   => !empty(
-                            $wpsiteFollowUsSettingsFacebookArgsShowFriendsFaces
+                            $wpsiteFollowUsSettingsFbArgsShowFriendsFaces
                         ) ? true : false,
                         'include_share_button' => !empty(
-                            $wpsiteFollowUsSettingsFacebookArgsIncludeShareButton
+                            $wpsiteFollowUsSettingsFbArgsIncludeShareBtn
                         ) ? true : false
                     )
                 ),
