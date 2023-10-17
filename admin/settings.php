@@ -10,7 +10,7 @@ $nnr_follow_us_badges_tab_active_class = array(
         'tumblr' => '',
         'code' => ''
 );
-$nnr_follow_us_badges_tab_content_active_class = array(
+$tab_classes = array(
     'list' => 'nnr-hide',
     'twitter' => 'nnr-hide',
     'facebook' => 'nnr-hide',
@@ -30,10 +30,10 @@ if (!empty($_GET['tab'])) {
     } else {
         $nnr_follow_us_badges_tab_active_class['list'] = 'active';
     }
-    if (isset($nnr_follow_us_badges_tab_content_active_class[$nnr_follow_us_badges_tab])) {
-        $nnr_follow_us_badges_tab_content_active_class[$nnr_follow_us_badges_tab] = '';
+    if (isset($tab_classes[$nnr_follow_us_badges_tab])) {
+        $tab_classes[$nnr_follow_us_badges_tab] = '';
     } else {
-        $nnr_follow_us_badges_tab_content_active_class['list'] = '';
+        $tab_classes['list'] = '';
     }
 }
 ?>
@@ -95,7 +95,7 @@ if (!empty($_GET['tab'])) {
 
                 <div id="tabs">
                     <div class="tab-content">
-                        <div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $nnr_follow_us_badges_tab_content_active_class['twitter'] ?>" id="wpsite_div_twitter">
+                        <div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $tab_classes['twitter'] ?>" id="wpsite_div_twitter">
                             <h3 class="nnr-page-header"><?php esc_html_e('General', 'wpsite-follow-us-badges') ?></h3>
                             <div>
                                 <!-- Active -->
@@ -273,7 +273,7 @@ if (!empty($_GET['tab'])) {
                             </p>
                         </div>
 
-                        <div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $nnr_follow_us_badges_tab_content_active_class['facebook'] ?>" id="wpsite_div_facebook">
+                        <div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $tab_classes['facebook'] ?>" id="wpsite_div_facebook">
 
                             <h3 class="nnr-page-header"><?php esc_html_e('General', 'wpsite-follow-us-badges') ?></h3>
 
@@ -483,7 +483,7 @@ if (!empty($_GET['tab'])) {
                             </p>
                         </div>
 
-                        <div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $nnr_follow_us_badges_tab_content_active_class['linkedin'] ?>" id="wpsite_div_linkedin">
+                        <div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $tab_classes['linkedin'] ?>" id="wpsite_div_linkedin">
 
                             <h3 class="nnr-page-header"><?php esc_html_e('General', 'wpsite-follow-us-badges') ?></h3>
 
@@ -619,7 +619,7 @@ if (!empty($_GET['tab'])) {
 
                         </div>
 
-                        <div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $nnr_follow_us_badges_tab_content_active_class['pinterest'] ?>" id="wpsite_div_pinterest">
+                        <div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $tab_classes['pinterest'] ?>" id="wpsite_div_pinterest">
 
                             <h3 class="nnr-page-header"><?php esc_html_e('General', 'wpsite-follow-us-badges') ?></h3>
 
@@ -700,7 +700,7 @@ if (!empty($_GET['tab'])) {
 
                         </div>
 
-                        <div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $nnr_follow_us_badges_tab_content_active_class['youtube'] ?>" id="wpsite_div_youtube">
+                        <div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $tab_classes['youtube'] ?>" id="wpsite_div_youtube">
 
                             <h3 class="nnr-page-header"><?php esc_html_e('General', 'wpsite-follow-us-badges') ?></h3>
 
@@ -824,7 +824,7 @@ if (!empty($_GET['tab'])) {
 
                         </div>
 
-                        <div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $nnr_follow_us_badges_tab_content_active_class['tumblr'] ?>" id="wpsite_div_tumblr">
+                        <div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $tab_classes['tumblr'] ?>" id="wpsite_div_tumblr">
 
                             <h3 class="nnr-page-header"><?php esc_html_e('General', 'wpsite-follow-us-badges') ?></h3>
 
@@ -918,22 +918,48 @@ if (!empty($_GET['tab'])) {
                                             <option value="2" <?php echo !empty($settings['tumblr']['args']['button']) && '2' === $settings['tumblr']['args']['button'] ? 'selected' : '' ?>><?php esc_html_e('"Follow on Tumblr"', 'wpsite-follow-us-badges') ?></option>
                                             <option value="3" <?php echo !empty($settings['tumblr']['args']['button']) && '3' === $settings['tumblr']['args']['button'] ? 'selected' : '' ?>><?php esc_html_e('Icon', 'wpsite-follow-us-badges') ?></option>
                                         </select>
-                                        <em class="help-block"><?php esc_html_e('Select the button type.', 'wpsite-follow-us-badges') ?></em>
+                                        <em class="help-block">
+                                            <?php esc_html_e(
+                                                'Select the button type.', 
+                                                'wpsite-follow-us-badges'
+                                            ); ?>
+                                        </em>
                                     </div>
                                 </div>
 
                             </div>
 
-                            <p><?php esc_html_e('Reference:', 'wpsite-follow-us-badges') ?> <a
-                                        href="https://www.tumblr.com/buttons"
-                                        target="_blank"><?php esc_html_e('Tumblr Button API Details', 'wpsite-follow-us-badges') ?></a>
+                            <p>
+                                <?php esc_html_e(
+                                    'Reference:', 
+                                    'wpsite-follow-us-badges'
+                                ); ?> 
+                                <a
+                                    href="https://www.tumblr.com/buttons"
+                                    target="_blank">
+                                    <?php esc_html_e(
+                                        'Tumblr Button API Details', 
+                                        'wpsite-follow-us-badges'
+                                    ); ?>
+                                </a>
                             </p>
 
                         </div>
+                        <?php
+                            $cTIFirst = 'nnr-tab-pane tab-pane '; 
+                            $cTI 
+                                = $tab_classes['list'];
+                            $CTIMixed = $cTIFirst.' '.$cTI;
+                        ?>
+                        <div role="tabpanel" class="<?php echo $CTIMixed; ?>" 
+                        id="wpsite_div_order">
 
-                        <div role="tabpanel" class="nnr-tab-pane tab-pane  <?php echo $nnr_follow_us_badges_tab_content_active_class['list'] ?>" id="wpsite_div_order">
-
-                            <h3 class="nnr-page-header"><?php esc_html_e('Drag & Drop to Order', 'wpsite-follow-us-badges') ?></h3>
+                            <h3 class="nnr-page-header">
+                                <?php esc_html_e(
+                                    'Drag & Drop to Order', 
+                                    'wpsite-follow-us-badges'
+                                ); ?>
+                            </h3>
 
                             <table>
                                 <tbody>
@@ -948,11 +974,16 @@ if (!empty($_GET['tab'])) {
                                         $settings['order'] = self::$default['order'];
                                     }
 
+                                    $wpSiteSort 
+                                        = 'wpsite_follow_us_sort_item dragable';
                                     foreach ($settings['order'] as $order) { ?>
                                         <li id="<?php echo esc_attr($order); ?>"
                                             name="<?php echo esc_attr($order); ?>"
-                                            class="wpsite_follow_us_sort_item dragable"><i
-                                                    class="fa fa-2x fa-<?php echo esc_attr($order) ?>"></i></li>
+                                            class="<?php echo $wpSiteSort; ?>">
+                                            <i class="fa fa-2x fa-<?php 
+                                            echo esc_attr($order) ?>">
+                                            </i>
+                                        </li>
                                     <?php } ?>
 
                                 </ul>
@@ -960,29 +991,75 @@ if (!empty($_GET['tab'])) {
                                 </tbody>
                             </table>
                         </div>
-
-                        <div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $nnr_follow_us_badges_tab_content_active_class['code'] ?>" id="wpsite_div_shortcode" class="metabox-holder">
-
-                            <h3 class="nnr-page-header"><?php esc_html_e('Examples', 'wpsite-follow-us-badges') ?></h3>
+                        <?php
+                            $cTCFirst = 'metabox-holder nnr-tab-pane tab-pane'; 
+                            $cTC 
+                                = $tab_classes['code'];
+                        ?>
+                        <div role="tabpanel"
+                        class="<?php echo $cTCFirst.' '.$cTC; ?>"
+                        id="wpsite_div_shortcode">
+                            <h3 class="nnr-page-header">
+                                <?php esc_html_e(
+                                    'Examples', 
+                                    'wpsite-follow-us-badges'
+                                ); ?>
+                            </h3>
 
                             <div class="inside">
 
                                 <ol>
                                     <li>
-                                        <code><?php esc_html_e('[wpsite_follow_us_badges twitter="99Robots"]', 'wpsite-follow-us-badges') ?></code>
+                                        <code>
+                                        <?php esc_html_e(
+                                            '[wpsite_follow_us_badges '.
+                                            'twitter="99Robots"]',
+                                            'wpsite-follow-us-badges'
+                                        ) ?>
+                                        </code>
+
                                     </li>
                                     <li>
-                                        <code><?php esc_html_e('&lt;?php do_shortcode(\'[wpsite_follow_us_badges twitter="99Robots"]\'); ?&gt;', 'wpsite-follow-us-badges') ?></code>
+                                        <code>
+                                            <?php esc_html_e(
+                                                '&lt;?php do_shortcode(\'[wpsite_follow_us_badges'.
+                                                'twitter="99Robots"]\'); ?&gt;',
+                                                'wpsite-follow-us-badges'
+                                            ); ?>
+                                        </code>
                                     </li>
                                     <li>
-                                        <code><?php esc_html_e('[wpsite_follow_us_badges title="Follow Us" twitter="99Robots" facebook="99robots" order="facebook,twitter" twitter_followers_count_display=false twitter_link=true]', 'wpsite-follow-us-badges') ?></code>
+                                        <code>
+                                            <?php esc_html_e(
+                                                '[wpsite_follow_us_badges
+                                                title="Follow Us"
+                                                twitter="99Robots"
+                                                facebook="99robots"
+                                                order="facebook,twitter"
+                                                twitter_followers_count_display=false
+                                                twitter_link=true]',
+                                                'wpsite-follow-us-badges'
+                                            ) ?>
+                                        </code>
                                     </li>
                                 </ol>
 
-                                <p><?php esc_html_e('Go to', 'wpsite-follow-us-badges') ?> <a
-                                            href="https://github.com/99robots/wpsite-follow-us-badges#shortcode-parameters"
-                                            target="_blank">Github</a> <?php esc_html_e('page for full parameter list.', 'wpsite-follow-us-badges') ?>
+                                <p>
+                                    <?php esc_html_e(
+                                        'Go to', 
+                                        'wpsite-follow-us-badges'
+                                    ); ?>
+                                    <a href="https://github.com/99robots/
+wpsite-follow-us-badges#shortcode-parameters" 
+target="_blank">                                  
+                                        Github
+                                    </a>
+                                    <?php esc_html_e(
+                                        'page for the full list of parameters.',
+                                        'wpsite-follow-us-badges'
+                                    ); ?>
                                 </p>
+
                             </div>
                         </div>
 
@@ -993,13 +1070,21 @@ if (!empty($_GET['tab'])) {
                 <?php wp_nonce_field('wpsiteFollowUsAdminSettings') ?>
 
                 <p class="nnr-submit">
-                    <button type="submit" name="submit" id="submit" class="button button-primary button-large" value="Save Settings"><i
-                                class="fa fa-download"></i> Save
+                    <button type="submit" name="submit" id="submit" 
+                    class="button button-primary button-large" value="Save Settings">
+                        <i class="fa fa-download"></i> Save
                     </button>
                 </p>
 
-                <small style="color:#aaa;"><?php esc_html_e('* These settings will apply to the ', 'wpsite-follow-us-badges') ?>
-                    <a href="widgets.php"><?php esc_html_e('widget', 'wpsite-follow-us-badges') ?></a><?php esc_html_e('.', 'wpsite-follow-us-badges') ?>
+                <small style="color:#aaa;">
+                    <?php esc_html_e(
+                        '* These settings will apply to the ',
+                        'wpsite-follow-us-badges'
+                    ); ?>
+                    <a href="widgets.php">
+                        <?php esc_html_e('widget', 'wpsite-follow-us-badges') ?>
+                    </a>
+                    <?php esc_html_e('.', 'wpsite-follow-us-badges') ?>
                 </small>
 
             </form>
