@@ -1,6 +1,20 @@
 <?php
-$nnr_follow_us_badges_tab = "list";
-$nnr_follow_us_badges_tab_active_class = [
+/**
+ * Setting Page
+ *
+ * This file contains the settings section for the WPSite Follow Us Badges 
+ *
+ * PHP version 7.2.10
+ * 
+ * @category Plugin
+ * @package  WPSite_Follow_Us_Badges
+ * @author   DraftPress <support@draftpress.com>
+ * @license  GPL-2.0+ <https://www.gnu.org/licenses/gpl-2.0.html>
+ * @link     https://draftpress.com/products/
+ */
+
+$nnrFollowUsBadgesTab = "list";
+$nnrFollowUsBadgesTAC = [
     "list" => "",
     "twitter" => "",
     "facebook" => "",
@@ -21,20 +35,17 @@ $tab_classes = [
     "code" => "nnr-hide",
 ];
 if (!empty($_GET["tab"])) {
-    $nnr_follow_us_badges_tab = sanitize_text_field($_GET["tab"]);
-    if (empty($nnr_follow_us_badges_tab)) {
-        $nnr_follow_us_badges_tab = "list";
+    $nnrFollowUsBadgesTab = sanitize_text_field($_GET["tab"]);
+    if (empty($nnrFollowUsBadgesTab)) {
+        $nnrFollowUsBadgesTab = "list";
     }
-    if (
-        isset($nnr_follow_us_badges_tab_active_class[$nnr_follow_us_badges_tab])
-    ) {
-        $nnr_follow_us_badges_tab_active_class[$nnr_follow_us_badges_tab] =
-            "active";
+    if (isset($nnrFollowUsBadgesTAC[$nnrFollowUsBadgesTab])) {
+        $nnrFollowUsBadgesTAC[$nnrFollowUsBadgesTab] = "active";
     } else {
-        $nnr_follow_us_badges_tab_active_class["list"] = "active";
+        $nnrFollowUsBadgesTAC["list"] = "active";
     }
-    if (isset($tab_classes[$nnr_follow_us_badges_tab])) {
-        $tab_classes[$nnr_follow_us_badges_tab] = "";
+    if (isset($tab_classes[$nnrFollowUsBadgesTab])) {
+        $tab_classes[$nnrFollowUsBadgesTab] = "";
     } else {
         $tab_classes["list"] = "";
     }
@@ -54,15 +65,17 @@ if (!empty($_GET["tab"])) {
         <div class="nnr-content">
 
             <div class="nnr-follow-us-badges-tabs-header">
-                <nav class="nnr-follow-us-badges-tabs" aria-label="Follow us menu">
+                <nav class="nnr-follow-us-badges-tabs" 
+                aria-label="Follow us menu">
                     <a href="<?php echo admin_url(
                         "options-general.php?page=" .
                             WPsiteFollowUs::$settings_page .
                             "&tab=list"
                     ); ?>"
-                       class="privacy-settings-tab <?php echo $nnr_follow_us_badges_tab_active_class[
-                           "list"
-                       ]; ?>">
+                       class="privacy-settings-tab 
+                        <?php echo $nnrFollowUsBadgesTAC[
+                            "list"
+                        ]; ?>">
                         <i class="fa fa-list-ol fa-2x"></i>
                     </a>
 
@@ -71,9 +84,10 @@ if (!empty($_GET["tab"])) {
                             WPsiteFollowUs::$settings_page .
                             "&tab=twitter"
                     ); ?>"
-                       class="privacy-settings-tab <?php echo $nnr_follow_us_badges_tab_active_class[
-                           "twitter"
-                       ]; ?>">
+                       class="privacy-settings-tab 
+                        <?php echo $nnrFollowUsBadgesTAC[
+                            "twitter"
+                        ]; ?>">
                         <i class="fa fa-twitter fa-2x"></i>
                     </a>
 
@@ -82,9 +96,10 @@ if (!empty($_GET["tab"])) {
                             WPsiteFollowUs::$settings_page .
                             "&tab=facebook"
                     ); ?>"
-                       class="privacy-settings-tab  <?php echo $nnr_follow_us_badges_tab_active_class[
-                           "facebook"
-                       ]; ?>">
+                       class="privacy-settings-tab  
+                        <?php echo $nnrFollowUsBadgesTAC[
+                            "facebook"
+                        ]; ?>">
                         <i class="fa fa-facebook fa-2x"></i>
                     </a>
 
@@ -93,9 +108,10 @@ if (!empty($_GET["tab"])) {
                             WPsiteFollowUs::$settings_page .
                             "&tab=linkedin"
                     ); ?>"
-                       class="privacy-settings-tab <?php echo $nnr_follow_us_badges_tab_active_class[
-                           "linkedin"
-                       ]; ?>">
+                       class="privacy-settings-tab 
+                        <?php echo $nnrFollowUsBadgesTAC[
+                            "linkedin"
+                        ]; ?>">
                         <i class="fa fa-linkedin fa-2x"></i>
                     </a>
 
@@ -104,9 +120,10 @@ if (!empty($_GET["tab"])) {
                             WPsiteFollowUs::$settings_page .
                             "&tab=pinterest"
                     ); ?>"
-                       class="privacy-settings-tab  <?php echo $nnr_follow_us_badges_tab_active_class[
-                           "pinterest"
-                       ]; ?>">
+                       class="privacy-settings-tab  
+                        <?php echo $nnrFollowUsBadgesTAC[
+                            "pinterest"
+                        ]; ?>">
                         <i class="fa fa-pinterest fa-2x"></i>
                     </a>
 
@@ -115,9 +132,10 @@ if (!empty($_GET["tab"])) {
                             WPsiteFollowUs::$settings_page .
                             "&tab=youtube"
                     ); ?>"
-                       class="privacy-settings-tab  <?php echo $nnr_follow_us_badges_tab_active_class[
-                           "youtube"
-                       ]; ?>">
+                       class="privacy-settings-tab  
+                        <?php echo $nnrFollowUsBadgesTAC[
+                            "youtube"
+                        ]; ?>">
                         <i class="fa fa-youtube fa-2x"></i>
                     </a>
 
@@ -126,9 +144,10 @@ if (!empty($_GET["tab"])) {
                             WPsiteFollowUs::$settings_page .
                             "&tab=tumblr"
                     ); ?>"
-                       class="privacy-settings-tab  <?php echo $nnr_follow_us_badges_tab_active_class[
-                           "tumblr"
-                       ]; ?>">
+                       class="privacy-settings-tab  
+                        <?php echo $nnrFollowUsBadgesTAC[
+                            "tumblr"
+                        ]; ?>">
                         <i class="fa fa-tumblr fa-2x"></i>
                     </a>
 
@@ -137,9 +156,10 @@ if (!empty($_GET["tab"])) {
                             WPsiteFollowUs::$settings_page .
                             "&tab=code"
                     ); ?>"
-                       class="privacy-settings-tab  <?php echo $nnr_follow_us_badges_tab_active_class[
+                       class="privacy-settings-tab  
+                        <?php echo $nnrFollowUsBadgesTAC[
                            "code"
-                       ]; ?>">
+                        ]; ?>">
                         <i class="fa fa-code fa-2x"></i>
                     </a>
                 </nav>
@@ -149,7 +169,8 @@ if (!empty($_GET["tab"])) {
 
                 <div id="tabs">
                     <div class="tab-content">
-                        <div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $tab_classes[
+                        <div role="tabpanel" class="nnr-tab-pane tab-pane 
+                        <?php echo $tab_classes[
                             "twitter"
                         ]; ?>" id="wpsite_div_twitter">
                             <h3 class="nnr-page-header"><?php esc_html_e(
@@ -159,30 +180,41 @@ if (!empty($_GET["tab"])) {
                             <div>
                                 <!-- Active -->
                                 <div class="nnr-form-group nnr-row">
-                                    <label for="<?php echo self::$_prefix; ?>settings_twitter_active"
-                                           class="col-sm-3 control-label"><?php esc_html_e(
-                                               "Active",
-                                               "wpsite-follow-us-badges"
-                                           ); ?></label>
+                                    <label for="<?php echo self::$_prefix; ?>
+                                    settings_twitter_active"
+                                           class="col-sm-3 control-label">
+                                            <?php esc_html_e(
+                                                "Active",
+                                                "wpsite-follow-us-badges"
+                                            ); ?>
+                                    </label>
+                                    <?php 
+                                    $settingsTA
+                                        = $settings["twitter"]["active"];
+                                    ?>
                                     <div class="col-sm-9">
                                         <input class="form-control"
-                                               id="<?php echo self::$_prefix; ?>settings_twitter_active"
-                                               name="<?php echo self::$_prefix; ?>settings_twitter_active"
-                                               type="checkbox" <?php echo !empty(
-                                                   $settings["twitter"][
-                                                       "active"
-                                                   ]
-                                               )
-                                                   ? 'checked="checked"'
-                                                   : ""; ?>/>
-                                        <label for="<?php echo self::$_prefix; ?>settings_twitter_active">
+                                            id="<?php echo self::$_prefix; ?>
+                                            settings_twitter_active"
+                                            name="<?php echo self::$_prefix; ?>
+                                            settings_twitter_active"
+                                            type="checkbox"
+                                            <?php echo !empty($settingsTA) 
+                                            ? 'checked="checked"' : ""; ?>
+                                        />
+
+                                        <label for="<?php echo self::$_prefix; ?>
+                                        settings_twitter_active">
                                             <span class="fa-stack fa-lg">
-                                                <i class="fa fa-square-o fa-stack-1x"></i>
-                                                <i class="fa fa-check fa-stack-1x"></i>
+                                                <i class="fa fa-square-o 
+                                                fa-stack-1x"></i>
+                                                <i class="fa fa-check 
+                                                fa-stack-1x"></i>
                                             </span>
                                         </label>
                                         <em class="help-block"><?php esc_html_e(
-                                            "Check this to show the social icon on your site.",
+                                            "Check this to show the social 
+                                            icon on your site.",
                                             "wpsite-follow-us-badges"
                                         ); ?></em>
                                     </div>
@@ -191,25 +223,39 @@ if (!empty($_GET["tab"])) {
                                 <!-- User -->
 
                                 <div class="nnr-form-group nnr-row tw-hideable">
-                                    <label for="<?php echo self::$_prefix; ?>settings_twitter_user"
-                                           class="col-sm-3 control-label"><?php esc_html_e(
-                                               "Username",
-                                               "wpsite-follow-us-badges"
-                                           ); ?></label>
-                                    <div class="col-sm-9">
-                                        <input class="form-control" id="wpsite_follow_us_settings_twitter_user"
-                                               name="wpsite_follow_us_settings_twitter_user" type="text"
-                                               value="<?php echo esc_attr(
-                                                   $settings["twitter"]["user"]
-                                               ); ?>">
-                                        <em class="help-block"><?php esc_html_e(
-                                            "https://twitter.com/",
-                                            "wpsite-follow-us-badges"
-                                        ); ?>
-                                            <strong><label><?php esc_html_e(
-                                                '"example"',
+                                    <label for="<?php echo self::$_prefix; ?>
+                                    settings_twitter_user"
+                                           class="col-sm-3 control-label">
+                                            <?php esc_html_e(
+                                                "Username",
                                                 "wpsite-follow-us-badges"
-                                            ); ?></label></strong></em>
+                                            ); ?>
+                                    </label>
+                                    <?php 
+                                    $settingsTU
+                                        = $settings["twitter"]["user"];
+                                    ?>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" 
+                                        id="wpsite_follow_us_settings_
+                                        twitter_user"
+                                            name="wpsite_follow_us_
+                                            settings_twitter_user" type="text"
+                                            value="<?php 
+                                            echo esc_attr($settingsTU); ?>">
+                                        <em class="help-block">
+                                            <?php esc_html_e(
+                                                "https://twitter.com/", 
+                                                "wpsite-follow-us-badges"
+                                            ); ?>
+                                            <strong><label>
+                                                <?php esc_html_e(
+                                                    '"example"', 
+                                                    "wpsite-follow-us-badges"
+                                                ); ?>
+                                                </label>
+                                            </strong>
+                                        </em>
                                     </div>
                                 </div>
 
@@ -226,59 +272,87 @@ if (!empty($_GET["tab"])) {
                                 <!-- Link Only -->
 
                                 <div class="nnr-form-group nnr-row">
-                                    <label for="<?php echo self::$_prefix; ?>settings_twitter_args_link"
-                                           class="col-sm-3 control-label"><?php esc_html_e(
-                                               "Link Only",
-                                               "wpsite-follow-us-badges"
-                                           ); ?></label>
+                                    <label for="<?php echo self::$_prefix; ?>
+                                    settings_twitter_args_link"
+                                           class="col-sm-3 control-label">
+                                            <?php esc_html_e(
+                                                "Link Only",
+                                                "wpsite-follow-us-badges"
+                                            ); ?>
+                                    </label>
+                                    <?php 
+                                    $settingsTAL
+                                        = $settings["twitter"]["args"]["link"];
+                                    ?>
                                     <div class="col-sm-9">
                                         <input class="form-control"
-                                               id="<?php echo self::$_prefix; ?>settings_twitter_args_link"
-                                               name="<?php echo self::$_prefix; ?>settings_twitter_args_link"
-                                               type="checkbox" <?php echo !empty(
-                                                   $settings["twitter"]["args"][
-                                                       "link"
-                                                   ]
-                                               )
-                                                   ? 'checked="checked"'
-                                                   : ""; ?>/>
-                                        <label for="<?php echo self::$_prefix; ?>settings_twitter_args_link">
+                                            id="<?php echo self::$_prefix; ?>
+                                            settings_twitter_args_link"
+                                            name="<?php echo self::$_prefix; ?>
+                                            settings_twitter_args_link"
+                                            type="checkbox"
+                                            <?php echo !empty($settingsTAL) 
+                                            ? 'checked="checked"' : ""; ?>
+                                        />
+                                        <label for="<?php echo self::$_prefix; ?>
+                                        settings_twitter_args_link">
                                             <span class="fa-stack fa-lg">
-                                                <i class="fa fa-square-o fa-stack-1x"></i>
-                                                <i class="fa fa-check fa-stack-1x"></i>
+                                                <i class="fa fa-square-o 
+                                                fa-stack-1x"></i>
+                                                <i class="fa fa-check 
+                                                fa-stack-1x"></i>
                                             </span>
                                         </label>
-                                        <em class="help-block"><?php esc_html_e(
-                                            "Check this to show the large button style that only the links to your social page..",
-                                            "wpsite-follow-us-badges"
-                                        ); ?></em>
+                                        <em class="help-block">
+                                            <?php esc_html_e(
+                                                "Check this to show the large
+                                                button style that only the links
+                                                to your social page..",
+                                                "wpsite-follow-us-badges"
+                                            ); ?>
+                                        </em>
                                     </div>
                                 </div>
 
 
                                 <!-- Followers Count Display -->
 
-                                <div class="nnr-form-group nnr-row tw-hideable-link-only">
-                                    <label for="<?php echo self::$_prefix; ?>settings_twitter_args_followers_count_display"
-                                           class="col-sm-3 control-label"><?php esc_html_e(
-                                               "Followers Count Display",
-                                               "wpsite-follow-us-badges"
-                                           ); ?></label>
+                                <div class="nnr-form-group nnr-row 
+                                tw-hideable-link-only">
+                                    <label for="<?php echo self::$_prefix; ?>
+                                    settings_twitter_args_followers_count_display"
+                                           class="col-sm-3 control-label">
+                                            <?php esc_html_e(
+                                                "Followers Count Display",
+                                                "wpsite-follow-us-badges"
+                                            ); ?>
+                                    </label>
+                                    <?php 
+                                    $settingsTAFCDD
+                                        = $settings["twitter"]["args"];
+                                    $settingsTAFCD
+                                        = $settingsTAFCDD["followers_count_display"];
+                                    ?>
                                     <div class="col-sm-9">
                                         <input class="form-control"
-                                               id="<?php echo self::$_prefix; ?>settings_twitter_args_followers_count_display"
-                                               name="<?php echo self::$_prefix; ?>settings_twitter_args_followers_count_display"
-                                               type="checkbox" <?php echo !empty(
-                                                   $settings["twitter"]["args"][
-                                                       "followers_count_display"
-                                                   ]
-                                               )
-                                                   ? 'checked="checked"'
-                                                   : ""; ?>/>
-                                        <label for="<?php echo self::$_prefix; ?>settings_twitter_args_followers_count_display">
+                                            id="<?php echo self::$_prefix; ?>
+                                            settings_twitter_args_
+                                            followers_count_display"
+                                            name="<?php echo self::$_prefix; ?>
+                                            settings_twitter_args_
+                                            followers_count_display"
+                                            type="checkbox"
+                                            <?php echo !empty($settingsTAFCD) 
+                                            ? 'checked="checked"' : ""; ?>
+                                        />
+                                        <label for="<?php echo self::$_prefix; ?>
+                                        settings_twitter_args_followers_
+                                        count_display">
                                             <span class="fa-stack fa-lg">
-                                                <i class="fa fa-square-o fa-stack-1x"></i>
-                                                <i class="fa fa-check fa-stack-1x"></i>
+                                                <i class="fa fa-square-o 
+                                                fa-stack-1x"></i>
+                                                <i class="fa fa-check 
+                                                fa-stack-1x"></i>
                                             </span>
                                         </label>
                                         <em class="help-block"><?php esc_html_e(
@@ -290,27 +364,39 @@ if (!empty($_GET["tab"])) {
 
                                 <!-- Show Screen Name -->
 
-                                <div class="nnr-form-group nnr-row tw-hideable-link-only">
-                                    <label for="<?php echo self::$_prefix; ?>settings_twitter_args_show_screen_name"
-                                           class="col-sm-3 control-label"><?php esc_html_e(
-                                               "Show Screen Name",
-                                               "wpsite-follow-us-badges"
-                                           ); ?></label>
+                                <div class="nnr-form-group nnr-row 
+                                tw-hideable-link-only">
+                                    <label for="<?php echo self::$_prefix; ?>
+                                    settings_twitter_args_show_screen_name"
+                                           class="col-sm-3 control-label">
+                                            <?php esc_html_e(
+                                                "Show Screen Name",
+                                                "wpsite-follow-us-badges"
+                                            ); ?>
+                                    </label>
+                                    <?php
+                                    $settingsTASSNN
+                                        = $settings["twitter"]["args"];
+                                    $settingsTASSN 
+                                        = $settingsTASSNN["show_screen_name"];
+                                    ?>
                                     <div class="col-sm-9">
                                         <input class="form-control"
-                                               id="<?php echo self::$_prefix; ?>settings_twitter_args_show_screen_name"
-                                               name="<?php echo self::$_prefix; ?>settings_twitter_args_show_screen_name"
-                                               type="checkbox" <?php echo !empty(
-                                                   $settings["twitter"]["args"][
-                                                       "show_screen_name"
-                                                   ]
-                                               )
-                                                   ? 'checked="checked"'
-                                                   : ""; ?>/>
-                                        <label for="<?php echo self::$_prefix; ?>settings_twitter_args_show_screen_name">
+                                            id="<?php echo self::$_prefix; ?>
+                                            settings_twitter_args_show_screen_name"
+                                            name="<?php echo self::$_prefix; ?>
+                                            settings_twitter_args_show_screen_name"
+                                            type="checkbox"
+                                            <?php echo !empty($settingsTASSN) 
+                                            ? 'checked="checked"' : ""; ?>
+                                        />
+                                        <label for="<?php echo self::$_prefix; ?>
+                                        settings_twitter_args_show_screen_name">
                                             <span class="fa-stack fa-lg">
-                                                <i class="fa fa-square-o fa-stack-1x"></i>
-                                                <i class="fa fa-check fa-stack-1x"></i>
+                                                <i class="fa fa-square-o 
+                                                fa-stack-1x"></i>
+                                                <i class="fa fa-check 
+                                                fa-stack-1x"></i>
                                             </span>
                                         </label>
                                         <em class="help-block"><?php esc_html_e(
@@ -322,44 +408,47 @@ if (!empty($_GET["tab"])) {
 
                                 <!-- Alignment -->
 
-                                <div class="nnr-form-group nnr-row tw-hideable-link-only">
-                                    <label for="<?php echo self::$_prefix; ?>settings_twitter_args_alignment"
-                                           class="col-sm-3 control-label"><?php esc_html_e(
-                                               "Alignment",
-                                               "wpsite-follow-us-badges"
-                                           ); ?></label>
+                                <div class="nnr-form-group nnr-row 
+                                tw-hideable-link-only">
+                                    <label for="<?php echo self::$_prefix; ?>
+                                    settings_twitter_args_alignment"
+                                           class="col-sm-3 control-label">
+                                            <?php esc_html_e(
+                                                "Alignment",
+                                                "wpsite-follow-us-badges"
+                                            ); ?>
+                                    </label>
+                                    <?php 
+                                    $settingsTAA
+                                        = $settings["twitter"]["args"]["alignment"];
+                                    ?>
                                     <div class="col-sm-9">
-                                        <select id="wpsite_follow_us_settings_twitter_args_alignment"
-                                                name="wpsite_follow_us_settings_twitter_args_alignment">
-                                            <option value="left" <?php echo !empty(
-                                                $settings["twitter"]["args"][
-                                                    "alignment"
-                                                ]
-                                            ) &&
-                                            "left" ===
-                                                $settings["twitter"]["args"][
-                                                    "alignment"
-                                                ]
-                                                ? "selected"
-                                                : ""; ?>><?php esc_html_e(
-    "left",
-    "wpsite-follow-us-badges"
-); ?></option>
-                                            <option value="right" <?php echo !empty(
-                                                $settings["twitter"]["args"][
-                                                    "alignment"
-                                                ]
-                                            ) &&
-                                            "right" ===
-                                                $settings["twitter"]["args"][
-                                                    "alignment"
-                                                ]
-                                                ? "selected"
-                                                : ""; ?>><?php esc_html_e(
-    "right",
-    "wpsite-follow-us-badges"
-); ?></option>
+                                        <select id="wpsite_follow_us_settings_
+                                        twitter_args_alignment"
+                                                name="wpsite_follow_us_settings_
+                                                twitter_args_alignment">
+                                            <option value="left"
+                                                <?php echo !empty($settingsTAA) 
+                                                && $settingsTAA === "left"
+                                                    ? "selected"
+                                                    : ""; ?>>
+                                                <?php esc_html_e(
+                                                    "Left", 
+                                                    "wpsite-follow-us-badges"
+                                                ); ?>
+                                            </option>
+                                            <option value="right"
+                                                <?php echo !empty($settingsTAA) 
+                                                && $settingsTAA === "right"
+                                                    ? "selected"
+                                                    : ""; ?>>
+                                                    <?php esc_html_e(
+                                                        "Right", 
+                                                        "wpsite-follow-us-badges"
+                                                    ); ?>
+                                            </option>
                                         </select>
+
                                         <em class="help-block"><?php esc_html_e(
                                             "Select the alignment.",
                                             "wpsite-follow-us-badges"
@@ -369,20 +458,29 @@ if (!empty($_GET["tab"])) {
 
                                 <!-- Width -->
 
-                                <div class="nnr-form-group nnr-row tw-hideable-link-only">
-                                    <label for="<?php echo self::$_prefix; ?>settings_twitter_args_width"
-                                           class="col-sm-3 control-label"><?php esc_html_e(
-                                               "Width",
-                                               "wpsite-follow-us-badges"
-                                           ); ?></label>
+                                <div class="nnr-form-group nnr-row 
+                                tw-hideable-link-only">
+                                    <label for="<?php echo self::$_prefix; ?>
+                                    settings_twitter_args_width"
+                                           class="col-sm-3 control-label">
+                                            <?php esc_html_e(
+                                                "Width",
+                                                "wpsite-follow-us-badges"
+                                            ); ?></label>
+                                    <?php 
+                                    $settingsTAW
+                                        = $settings["twitter"]["args"]["width"];
+                                    ?>
                                     <div class="col-sm-9">
-                                        <input class="form-control" id="wpsite_follow_us_settings_twitter_args_width"
-                                               name="wpsite_follow_us_settings_twitter_args_width" type="text"
-                                               value="<?php echo esc_attr(
-                                                   $settings["twitter"]["args"][
-                                                       "width"
-                                                   ]
-                                               ); ?>">
+                                        <input class="form-control" 
+                                        id="wpsite_follow_us_settings_
+                                        twitter_args_width"
+                                        name="wpsite_follow_us_settings_
+                                        twitter_args_width" 
+                                        type="text"
+                                        value="<?php 
+                                        echo esc_attr($settingsTAW); ?>">
+
                                         <em class="help-block"><?php esc_html_e(
                                             "Accepts px and % (e.g 100px or 100%)",
                                             "wpsite-follow-us-badges"
@@ -392,44 +490,46 @@ if (!empty($_GET["tab"])) {
 
                                 <!-- Size -->
 
-                                <div class="nnr-form-group nnr-row tw-hideable-link-only">
-                                    <label for="<?php echo self::$_prefix; ?>settings_twitter_args_size"
-                                           class="col-sm-3 control-label"><?php esc_html_e(
-                                               "Size",
-                                               "wpsite-follow-us-badges"
-                                           ); ?></label>
+                                <div class="nnr-form-group nnr-row 
+                                tw-hideable-link-only">
+                                    <label for="<?php echo self::$_prefix; ?>
+                                    settings_twitter_args_size"
+                                           class="col-sm-3 control-label">
+                                            <?php esc_html_e(
+                                                "Size",
+                                                "wpsite-follow-us-badges"
+                                            ); ?></label>
+                                    <?php 
+                                    $settingsTAS
+                                        = $settings["twitter"]["args"]["size"];
+                                    ?>
                                     <div class="col-sm-9">
-                                        <select id="wpsite_follow_us_settings_twitter_args_size"
-                                                name="wpsite_follow_us_settings_twitter_args_size">
-                                            <option value="medium" <?php echo !empty(
-                                                $settings["twitter"]["args"][
-                                                    "size"
-                                                ]
-                                            ) &&
-                                            "medium" ===
-                                                $settings["twitter"]["args"][
-                                                    "size"
-                                                ]
-                                                ? "selected"
-                                                : ""; ?>><?php esc_html_e(
-    "medium",
-    "wpsite-follow-us-badges"
-); ?></option>
-                                            <option value="large" <?php echo !empty(
-                                                $settings["twitter"]["args"][
-                                                    "size"
-                                                ]
-                                            ) &&
-                                            "large" ===
-                                                $settings["twitter"]["args"][
-                                                    "size"
-                                                ]
-                                                ? "selected"
-                                                : ""; ?>><?php esc_html_e(
-    "large",
-    "wpsite-follow-us-badges"
-); ?></option>
+                                        <select id="wpsite_follow_us_settings_
+                                        twitter_args_size"
+                                                name="wpsite_follow_us_settings_
+                                                twitter_args_size">
+                                            <option value="medium"
+                                                <?php echo !empty($settingsTAS) 
+                                                && $settingsTAS === "medium"
+                                                    ? "selected"
+                                                    : ""; ?>>
+                                                    <?php esc_html_e(
+                                                        "Medium", 
+                                                        "wpsite-follow-us-badges"
+                                                    ); ?>
+                                            </option>
+                                            <option value="large"
+                                                <?php echo !empty($settingsTAS) 
+                                                && $settingsTAS === "large"
+                                                    ? "selected"
+                                                    : ""; ?>>
+                                                <?php esc_html_e(
+                                                    "Large", 
+                                                    "wpsite-follow-us-badges"
+                                                ); ?>
+                                            </option>
                                         </select>
+
                                         <em class="help-block"><?php esc_html_e(
                                             "Select the size.",
                                             "wpsite-follow-us-badges"
@@ -450,25 +550,37 @@ if (!empty($_GET["tab"])) {
                                 <!-- Language -->
 
                                 <div class="nnr-form-group nnr-row">
-                                    <label for="<?php echo self::$_prefix; ?>settings_twitter_args_size"
-                                           class="col-sm-3 control-label"><?php esc_html_e(
-                                               "Language",
-                                               "wpsite-follow-us-badges"
-                                           ); ?></label>
+                                    <label for="<?php echo self::$_prefix; ?>
+                                    settings_twitter_args_size"
+                                           class="col-sm-3 control-label">
+                                            <?php esc_html_e(
+                                                "Language",
+                                                "wpsite-follow-us-badges"
+                                            ); ?>
+                                    </label>
+                                    <?php
+                                    $settingsTAL
+                                        = $settings["twitter"]["args"]["language"];
+                                    $_varTSL = self::$_twitter_supported_languages;
+                                    ?>
                                     <div class="col-sm-9">
-                                        <select id="wpsite_follow_us_settings_twitter_args_language"
-                                                name="wpsite_follow_us_settings_twitter_args_language">
-                                            <?php foreach (
-                                                self::$_twitter_supported_languages
-                                                as $lang
-                                            ) { ?>
-                                                <option value="<?php echo esc_attr(
-                                                    $lang
-                                                ); ?>" <?php echo !empty(
-    $settings["twitter"]["args"]["language"]
-) && $settings["twitter"]["args"]["language"] === $lang
-    ? "selected"
-    : ""; ?>><?php esc_html_e($lang, "wpsite-follow-us-badges"); ?></option>
+                                        <select id="wpsite_follow_us_settings_
+                                        twitter_args_language"
+                                                name="wpsite_follow_us_settings_
+                                                twitter_args_language">
+                                            <?php foreach ($_varTSL as $lang) { ?>
+                                                <option value="
+                                                <?php echo esc_attr($lang); ?>"
+                                                    <?php echo !empty(settingsTAL) 
+                                                    && settingsTAL === $lang
+                                                        ? "selected"
+                                                        : ""; ?>>
+                                                    <?php 
+                                                        esc_html_e(
+                                                            $lang, 
+                                                            "wpsite-follow-us-badges"
+                                                        ); ?>
+                                                </option>
                                             <?php } ?>
                                         </select>
                                         <em class="help-block"><?php esc_html_e(
@@ -484,7 +596,9 @@ if (!empty($_GET["tab"])) {
                                 "Reference:",
                                 "wpsite-follow-us-badges"
                             ); ?> <a
-                                        href="https://developer.twitter.com/en/docs/twitter-for-websites/follow-button/overview.html"
+                                        href="https://developer.twitter.com/en/docs/
+                                        twitter-for-websites/follow-button
+                                        /overview.html"
                                         target="_blank"><?php esc_html_e(
                                             "Twitter Follow Button API Details",
                                             "wpsite-follow-us-badges"
@@ -492,44 +606,59 @@ if (!empty($_GET["tab"])) {
                             </p>
                         </div>
 
-                        <div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $tab_classes[
+                        <div role="tabpanel" class="nnr-tab-pane tab-pane 
+                        <?php echo $tab_classes[
                             "facebook"
-                        ]; ?>" id="wpsite_div_facebook">
+                        ]; ?>" 
+                        id="wpsite_div_facebook">
 
-                            <h3 class="nnr-page-header"><?php esc_html_e(
-                                "General",
-                                "wpsite-follow-us-badges"
-                            ); ?></h3>
+                            <h3 class="nnr-page-header">
+                                <?php esc_html_e(
+                                    "General",
+                                    "wpsite-follow-us-badges"
+                                ); ?>
+                            </h3>
 
                             <div>
 
                                 <!-- Active -->
 
                                 <div class="nnr-form-group nnr-row">
-                                    <label for="<?php echo self::$_prefix; ?>settings_facebook_active"
-                                           class="col-sm-3 control-label"><?php esc_html_e(
-                                               "Active",
-                                               "wpsite-follow-us-badges"
-                                           ); ?></label>
+                                    <label for="<?php echo self::$_prefix; ?>
+                                    settings_facebook_active"
+                                           class="col-sm-3 control-label">
+                                            <?php esc_html_e(
+                                                "Active",
+                                                "wpsite-follow-us-badges"
+                                            ); ?>
+                                    </label>
+                                    <?php
+                                    $settingsFA
+                                        = $settings["facebook"]["active"];
+                                    ?>
                                     <div class="col-sm-9">
                                         <input class="form-control"
-                                               id="<?php echo self::$_prefix; ?>settings_facebook_active"
-                                               name="<?php echo self::$_prefix; ?>settings_facebook_active"
-                                               type="checkbox" <?php echo !empty(
-                                                   $settings["facebook"][
-                                                       "active"
-                                                   ]
-                                               )
-                                                   ? 'checked="checked"'
-                                                   : ""; ?>/>
-                                        <label for="<?php echo self::$_prefix; ?>settings_facebook_active">
+                                            id="<?php echo self::$_prefix; ?>
+                                            settings_facebook_active"
+                                            name="<?php echo self::$_prefix; ?>
+                                            settings_facebook_active"
+                                            type="checkbox"
+                                            <?php echo !empty($settingsFA) 
+                                            ? 'checked="checked"' : ""; ?>
+                                        />
+                                        <label for=
+                                        "<?php echo self::$_prefix; ?>
+                                        settings_facebook_active">
                                             <span class="fa-stack fa-lg">
-                                                <i class="fa fa-square-o fa-stack-1x"></i>
-                                                <i class="fa fa-check fa-stack-1x"></i>
+                                                <i class="fa fa-square-o 
+                                                fa-stack-1x"></i>
+                                                <i class="fa fa-check 
+                                                fa-stack-1x"></i>
                                             </span>
                                         </label>
                                         <em class="help-block"><?php esc_html_e(
-                                            "Check this to show the social icon on your site.",
+                                            "Check this to show the social 
+                                            icon on your site.",
                                             "wpsite-follow-us-badges"
                                         ); ?></em>
                                     </div>
