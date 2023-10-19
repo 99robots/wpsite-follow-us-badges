@@ -1,6 +1,6 @@
 <?php
 /**
- * Setting Page
+ * Setting Page for the WPSite Follow Us Badges Plugin.
  *
  * This file contains the settings section for the WPSite Follow Us Badges 
  *
