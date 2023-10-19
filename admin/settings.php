@@ -538,17 +538,24 @@ if (!empty($_GET["tab"])) {
                                 <!-- User -->
 
                                 <div class="nnr-form-group nnr-row fb-hideable">
-                                    <label for="<?php echo self::$_prefix; ?>settings_facebook_user"
-                                           class="col-sm-3 control-label"><?php esc_html_e(
-                                               "User ID",
-                                               "wpsite-follow-us-badges"
-                                           ); ?></label>
+                                    <label for="<?php echo self::$_prefix; ?>
+                                    settings_facebook_user"
+                                           class="col-sm-3 control-label">
+                                            <?php esc_html_e(
+                                                "User ID",
+                                                "wpsite-follow-us-badges"
+                                            ); ?>
+                                    </label>
                                     <div class="col-sm-9">
-                                        <input class="form-control" id="wpsite_follow_us_settings_facebook_user"
-                                               name="wpsite_follow_us_settings_facebook_user" type="text"
-                                               value="<?php echo esc_attr(
-                                                   $settings["facebook"]["user"]
-                                               ); ?>">
+                                        <input class="form-control" id="wpsite_follow
+                                        _us_settings_facebook_user"
+                                        name="wpsite_follow_us_
+                                        settings_facebook_user" type="text"
+                                        value="
+                                        <?php echo 
+                                        esc_attr($settings["facebook"]["user"]); 
+                                        ?>">
+
                                         <em class="help-block"><?php esc_html_e(
                                             "https://facebook.com/",
                                             "wpsite-follow-us-badges"
@@ -572,29 +579,35 @@ if (!empty($_GET["tab"])) {
                                 <!-- Type -->
 
                                 <div class="nnr-form-group nnr-row fb-hideable">
-                                    <label for="<?php echo self::$_prefix; ?>settings_facebook_args_type"
-                                           class="col-sm-3 control-label"><?php esc_html_e(
-                                               "Type",
-                                               "wpsite-follow-us-badges"
-                                           ); ?></label>
+                                    <label for="<?php echo self::$_prefix; ?>
+                                    settings_facebook_args_type"
+                                           class="col-sm-3 control-label">
+                                            <?php esc_html_e(
+                                                "Type",
+                                                "wpsite-follow-us-badges"
+                                            ); ?>
+                                    </label>
+                                    <?php
+                                    $settingsFAT
+                                        = $settings["facebook"]["args"]["type"];
+                                    ?>
                                     <div class="col-sm-9">
-                                        <select id="wpsite_follow_us_settings_facebook_args_type"
-                                                name="wpsite_follow_us_settings_facebook_args_type">
-                                            <option value="like" <?php echo !empty(
-                                                $settings["facebook"]["args"][
-                                                    "type"
-                                                ]
-                                            ) &&
-                                            "like" ===
-                                                $settings["facebook"]["args"][
-                                                    "type"
-                                                ]
-                                                ? "selected"
-                                                : ""; ?>><?php esc_html_e(
-    "Like",
-    "wpsite-follow-us-badges"
-); ?></option>
+                                        <select id="wpsite_follow_us_settings_
+                                        facebook_args_type"
+                                                name="wpsite_follow_us_settings_
+                                                facebook_args_type">
+                                            <option value="like"
+                                                <?php echo !empty($settingsFAT) 
+                                                && "like" === $settingsFAT
+                                                    ? "selected"
+                                                    : ""; ?>>
+                                                <?php esc_html_e(
+                                                    "Like", 
+                                                    "wpsite-follow-us-badges"
+                                                ); ?>
+                                            </option>
                                         </select>
+
                                         <em class="help-block"><?php esc_html_e(
                                             "Select the button type.",
                                             "wpsite-follow-us-badges"
@@ -614,54 +627,79 @@ if (!empty($_GET["tab"])) {
                                 <!-- Link Only -->
 
                                 <div class="nnr-form-group nnr-row">
-                                    <label for="<?php echo self::$_prefix; ?>settings_facebook_args_link"
-                                           class="col-sm-3 control-label"><?php esc_html_e(
-                                               "Link Only",
-                                               "wpsite-follow-us-badges"
-                                           ); ?></label>
+                                    <label for="<?php echo self::$_prefix; ?>
+                                    settings_facebook_args_link"
+                                           class="col-sm-3 control-label">
+                                            <?php esc_html_e(
+                                                "Link Only",
+                                                "wpsite-follow-us-badges"
+                                            ); ?>
+                                    </label>
+                                    <?php
+                                    $settingsFAL 
+                                        = $settings["facebook"]["args"]["link"];
+                                    ?>
                                     <div class="col-sm-9">
                                         <input class="form-control"
-                                               id="<?php echo self::$_prefix; ?>settings_facebook_args_link"
-                                               name="<?php echo self::$_prefix; ?>settings_facebook_args_link"
-                                               type="checkbox" <?php echo !empty(
-                                                   $settings["facebook"][
-                                                       "args"
-                                                   ]["link"]
-                                               )
+                                               id="<?php echo self::$_prefix; ?>
+                                               settings_facebook_args_link"
+                                               name="<?php echo self::$_prefix; ?>
+                                               settings_facebook_args_link"
+                                               type="checkbox" 
+                                               <?php echo !empty($settingsFAL)
                                                    ? 'checked="checked"'
                                                    : ""; ?>/>
-                                        <label for="<?php echo self::$_prefix; ?>settings_facebook_args_link">
+                                        <label for="<?php echo self::$_prefix; ?>
+                                        settings_facebook_args_link">
                                             <span class="fa-stack fa-lg">
-                                                <i class="fa fa-square-o fa-stack-1x"></i>
-                                                <i class="fa fa-check fa-stack-1x"></i>
+                                                <i class="fa fa-square-o 
+                                                fa-stack-1x"></i>
+                                                <i class="fa fa-check 
+                                                fa-stack-1x"></i>
                                             </span>
                                         </label>
-                                        <em class="help-block"><?php esc_html_e(
-                                            "Check this to show the large button style that only the links to your social page..",
-                                            "wpsite-follow-us-badges"
-                                        ); ?></em>
+                                        <em class="help-block">
+                                            <?php esc_html_e(
+                                                "Check this to show the large 
+                                                button style that only the links 
+                                                to your social page..",
+                                                "wpsite-follow-us-badges"
+                                            ); ?>
+                                        </em>
                                     </div>
                                 </div>
 
                                 <!-- Layout -->
 
-                                <div class="nnr-form-group nnr-row fb-hideable-link-only">
-                                    <label for="<?php echo self::$_prefix; ?>settings_facebook_args_layout"
-                                           class="col-sm-3 control-label"><?php esc_html_e(
-                                               "Layout",
-                                               "wpsite-follow-us-badges"
-                                           ); ?></label>
+                                <div class="nnr-form-group nnr-row 
+                                fb-hideable-link-only">
+                                    <label for="<?php echo self::$_prefix; ?>
+                                    settings_facebook_args_layout"
+                                           class="col-sm-3 control-label">
+                                            <?php esc_html_e(
+                                                "Layout",
+                                                "wpsite-follow-us-badges"
+                                            ); ?>
+                                    </label>
                                     <?php
                                     $settingsFAL 
                                         = $settings["facebook"]["args"]["layout"];
                                     ?>
                                     <div class="col-sm-9">
-                                        <select id="wpsite_follow_us_settings_facebook_args_layout" 
-                                        name="wpsiteFollowUsSettingsFacebookArgsLayout">
-                                            <option value="standard" <?php echo !empty($settingsFAL) 
+                                        <select id="wpsite_follow_us_settings_
+                                        facebook_args_layout" 
+                                        name="wpsiteFollowUsSettingsFacebook
+                                        ArgsLayout">
+                                            <option value="standard" 
+                                            <?php echo !empty($settingsFAL) 
                                             && $settingsFAL === "standard" 
                                             ? "selected" : ""; ?>>
-                                                <?php esc_html_e("standard", "wpsite-follow-us-badges"); ?>
+                                                <?php 
+                                                esc_html_e(
+                                                    "standard", 
+                                                    "wpsite-follow-us-badges"
+                                                ); 
+                                                ?>
                                             </option>
                                             <option value="box_count" 
                                             <?php echo !empty($settingsFAL) 
@@ -673,7 +711,8 @@ if (!empty($_GET["tab"])) {
                                                         "wpsite-follow-us-badges"
                                                     ); ?>
                                             </option>
-                                            <option value="button_count" <?php echo !empty($settingsFAL) 
+                                            <option value="button_count" 
+                                            <?php echo !empty($settingsFAL) 
                                             && $settingsFAL === "button_count" 
                                             ? "selected" : ""; ?>>
                                                 <?php esc_html_e(
@@ -701,21 +740,47 @@ if (!empty($_GET["tab"])) {
 
                                 <!-- Action Type -->
 
-                                <div class="nnr-form-group nnr-row fb-hideable-link-only">
-                                    <label for="<?php echo self::$_prefix; ?>settings_facebook_args_action_type"
-                                           class="col-sm-3 control-label"><?php esc_html_e(
-                                               "Action Type",
-                                               "wpsite-follow-us-badges"
-                                           ); ?></label>
-                                    
+                                <div class="nnr-form-group nnr-row 
+                                fb-hideable-link-only">
+                                    <label for="<?php echo self::$_prefix; ?>
+                                    settings_facebook_args_action_type"
+                                           class="col-sm-3 control-label">
+                                            <?php esc_html_e(
+                                                "Action Type",
+                                                "wpsite-follow-us-badges"
+                                            ); ?>
+                                    </label>
+                                    <?php
+                                    $settingsFAATTT
+                                        = $settings["facebook"];
+                                    $settingsFAATT 
+                                        = $settingsFAATTT["args"];
+                                    $settingsFAAT 
+                                        = $settingsFAATT["action_type"];
+                                    ?>
                                     <div class="col-sm-9">
-                                        <select id="wpsite_follow_us_settings_facebook_args_action_type" name="wpsiteFollowUsSettingsFacebookArgsActionType">
+                                        <select id="wpsite_follow_us_settings_
+                                        facebook_args_action_type"
+                                         name="wpsiteFollowUsSettingsFacebookArgs
+                                         ActionType">
                                             <option value="like" 
-                                            <?php echo !empty($settings["facebook"]["args"]["action_type"]) && $settings["facebook"]["args"]["action_type"] === "like" ? "selected" : ""; ?>>
-                                                <?php esc_html_e("like", "wpsite-follow-us-badges"); ?>
+                                            <?php 
+                                            echo !empty($settingsFAAT) 
+                                            && $settingsFAAT === "like" 
+                                            ? "selected" : ""; ?>>
+                                                <?php esc_html_e(
+                                                    "like", 
+                                                    "wpsite-follow-us-badges"
+                                                ); ?>
                                             </option>
-                                            <option value="recommend" <?php echo !empty($settings["facebook"]["args"]["action_type"]) && $settings["facebook"]["args"]["action_type"] === "recommend" ? "selected" : ""; ?>>
-                                                <?php esc_html_e("recommend", "wpsite-follow-us-badges"); ?>
+                                            <option value="recommend" 
+                                            <?php echo !empty($settingsFAAT) 
+                                            && $settingsFAAT === "recommend" 
+                                            ? "selected" : ""; ?>>
+                                                <?php esc_html_e(
+                                                    "recommend", 
+                                                    "wpsite-follow-us-badges"
+                                                ); ?>
                                             </option>
                                         </select>
 
