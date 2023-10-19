@@ -975,10 +975,10 @@ class WPsiteFollowUs extends WP_Widget
                             $wpsite_follow_us_settings_tumblr_args_link
                         ) ? true : false,
                         'color'  => sanitize_text_field(
-                            $_POST['wpsite_follow_us_settings_tumblr_args_color']
+                            $_POST['wpsiteFollowUsSettingsTumblrArgsColor']
                         ),
                         'button' => sanitize_text_field(
-                            $_POST['wpsite_follow_us_settings_tumblr_args_button']
+                            $_POST['wpsiteFollowUSettingsTumblrArgsButton']
                         ),
                     )
                 )
