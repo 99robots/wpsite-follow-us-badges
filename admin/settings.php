@@ -953,12 +953,18 @@ if ( ! empty( $_GET['tab'] ) ) {
 									if ( ! isset( $settings['order'] ) ) {
 										$settings['order'] = self::$default['order'];
 									}
+
+							
 									foreach ( $settings['order'] as $setting_order ) {
+										if($setting_order == 'twitter'){
+											$setting_order == 'fa-x-twitter';
+										}	
+
 										?>
 										<li id="<?php echo esc_attr( $setting_order ); ?>"
 											name="<?php echo esc_attr( $setting_order ); ?>"
 											class="wpsite_follow_us_sort_item dragable"><i
-													class="fa-brands fa-x-twitter"></i></li>
+													class="fa-brands fa-<?php echo esc_attr( $setting_order ); ?>"></i></li>
 									<?php } ?>
 
 								</ul>
@@ -999,8 +1005,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 				<?php wp_nonce_field( 'wpsite_follow_us_admin_settings' ); ?>
 
 				<p class="nnr-submit">
-					<button type="submit" name="submit" id="submit" class="button button-primary button-large" value="Save Settings"><i
-								class="fa fa-download"></i> Save
+					<button type="submit" name="submit" id="submit" class="button button-primary button-large" value="Save Settings">
+						<i class="fa-solid fa-download"></i> Save
 					</button>
 				</p>
 
