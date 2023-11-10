@@ -846,11 +846,15 @@ class WPsiteFollowUs extends WP_Widget {
 		wp_register_style( 'wpsite_follow_us_sortables_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/css/sortables.css', array(), '1.0.0' );
 		wp_enqueue_style( 'wpsite_follow_us_sortables_css' );
 
-		wp_register_style( 'wpsite_follow_us_fontawesome', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/fonts/font-awesome.min.css', array(), '4.7.0' );
+		//wp_register_style( 'wpsite_follow_us_fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css', array(), '6.4.2' );
+		wp_register_style( 'wpsite_follow_us_fontawesome', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/fonts/fontawesome6.4.2.min.css', array(), '6.4.2' );
+
 		wp_enqueue_style( 'wpsite_follow_us_fontawesome' );
 
 		// Scripts.
 		wp_enqueue_script( self::$prefix . 'admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/admin.js', array( 'jquery' ), '1.0.0', true );
+		wp_enqueue_script( self::$prefix . 'admin_fontawesome', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/fontawesome.min.js', array( 'jquery' ), '1.0.0', true );
+
 		wp_enqueue_script( 'wpsite_follow_us-mailchimp', '//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js', array(), '1.9.0', true );
 		wp_add_inline_script( 'wpsite_follow_us-mailchimp', '(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]="EMAIL";ftypes[0]="email";fnames[1]="FNAME";ftypes[1]="text";fnames[2]="LNAME";ftypes[2]="text";}(jQuery));var $mcj = jQuery.noConflict(true);', 'after' );
 	}

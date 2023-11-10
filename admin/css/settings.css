@@ -1,4 +1,7 @@
 /* Header */
+a.privacy-settings-tab i {
+    font-size: 21px !important;
+}
 .nnr-wrap {background: #fff;}
 .nnr-header {padding: 10px 20px;background-color: #4aaeee;display: inline-block;width: 95%;}
 #nnr-heading {padding-bottom: 20px;margin-bottom: 30px;text-align: center;color: #555;position: relative;}

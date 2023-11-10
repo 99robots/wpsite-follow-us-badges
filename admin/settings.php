@@ -51,42 +51,50 @@ if ( ! empty( $_GET['tab'] ) ) {
 				<nav class="nnr-follow-us-badges-tabs" aria-label="Follow us menu">
 					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=list' ); ?>"
 						class="privacy-settings-tab <?php echo $nnr_follow_us_badges_tab_active_class['list']; ?>">
-						<i class="fa fa-list-ol fa-2x"></i>
+						<!-- <i class="fa fa-list-ol fa-2x"></i> -->
+						<i class="fa-solid fa-list-ol"></i>
 					</a>
 
 					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=twitter' ); ?>"
 						class="privacy-settings-tab <?php echo $nnr_follow_us_badges_tab_active_class['twitter']; ?>">
-						<i class="fa fa-twitter fa-2x"></i>
+						<!-- <i class="fa fa-twitter fa-2x"></i> -->
+						<i class="fa-brands fa-x-twitter"></i>
 					</a>
 
 					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=facebook' ); ?>"
 						class="privacy-settings-tab  <?php echo $nnr_follow_us_badges_tab_active_class['facebook']; ?>">
-						<i class="fa fa-facebook fa-2x"></i>
+						<!-- <i class="fa fa-facebook fa-2x"></i> -->
+						<i class="fa-brands fa-facebook"></i>
 					</a>
 
 					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=linkedin' ); ?>"
 						class="privacy-settings-tab <?php echo $nnr_follow_us_badges_tab_active_class['linkedin']; ?>">
-						<i class="fa fa-linkedin fa-2x"></i>
+						<!-- <i class="fa fa-linkedin fa-2x"></i> -->
+						<i class="fa-brands fa-linkedin"></i>
 					</a>
 
 					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=pinterest' ); ?>"
 						class="privacy-settings-tab  <?php echo $nnr_follow_us_badges_tab_active_class['pinterest']; ?>">
-						<i class="fa fa-pinterest fa-2x"></i>
+						<!-- <i class="fa fa-pinterest fa-2x"></i> -->
+						<i class="fa-brands fa-pinterest"></i>
 					</a>
 
 					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=youtube' ); ?>"
 						class="privacy-settings-tab  <?php echo $nnr_follow_us_badges_tab_active_class['youtube']; ?>">
-						<i class="fa fa-youtube fa-2x"></i>
+						<!-- <i class="fa fa-youtube fa-2x"></i> -->
+						<i class="fa-brands fa-youtube"></i>
 					</a>
 
 					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=tumblr' ); ?>"
 						class="privacy-settings-tab  <?php echo $nnr_follow_us_badges_tab_active_class['tumblr']; ?>">
-						<i class="fa fa-tumblr fa-2x"></i>
+						<!-- <i class="fa fa-tumblr fa-2x"></i> -->
+						<i class="fa-brands fa-tumblr"></i>
 					</a>
 
 					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=code' ); ?>"
 						class="privacy-settings-tab  <?php echo $nnr_follow_us_badges_tab_active_class['code']; ?>">
-						<i class="fa fa-code fa-2x"></i>
+						<!-- <i class="fa fa-code fa-2x"></i> -->
+						<i class="fa-solid fa-code"></i>
 					</a>
 				</nav>
 			</div>
@@ -950,7 +958,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 										<li id="<?php echo esc_attr( $setting_order ); ?>"
 											name="<?php echo esc_attr( $setting_order ); ?>"
 											class="wpsite_follow_us_sort_item dragable"><i
-													class="fa fa-2x fa-<?php echo esc_attr( $setting_order ); ?>"></i></li>
+													class="fa-brands fa-x-twitter"></i></li>
 									<?php } ?>
 
 								</ul>
