@@ -118,18 +118,10 @@ if ( ! empty( $_GET['tab'] ) ) {
 												type="checkbox" <?php echo ! empty( $settings['twitter']['active'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix; ?>settings_twitter_active" class="toggle-label">
 											<span class="fa-stack fa-lg">
-											<i class="fas fa-square fa-stack-1x"></i>
-											<i class="fas fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
-										<!-- <label for="<?php echo self::$prefix; ?>settings_twitter_active">
-											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
-											</span>
-										</label> -->
-											
-
 										<em class="help-block"><?php esc_html_e( 'Check this to show the social icon on your site.', 'wpsite-follow-us-badges' ); ?></em>
 									</div>
 								</div>
@@ -166,10 +158,6 @@ if ( ! empty( $_GET['tab'] ) ) {
 												name="<?php echo self::$prefix; ?>settings_twitter_args_link"
 												type="checkbox" <?php echo ! empty( $settings['twitter']['args']['link'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix; ?>settings_twitter_args_link">
-											<!-- <span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
-											</span> -->
 											<span class="fa-stack fa-lg">
 												<i class="fas fa-square fa-stack-1x"></i>
 												<i class="fas fa-check fa-stack-1x"></i>
@@ -192,8 +180,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 												type="checkbox" <?php echo ! empty( $settings['twitter']['args']['followers_count_display'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix; ?>settings_twitter_args_followers_count_display">
 											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to show follower count.', 'wpsite-follow-us-badges' ); ?></em>
@@ -212,8 +200,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 												type="checkbox" <?php echo ! empty( $settings['twitter']['args']['show_screen_name'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix; ?>settings_twitter_args_show_screen_name">
 											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to show screen name.', 'wpsite-follow-us-badges' ); ?></em>
@@ -312,8 +300,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 												type="checkbox" <?php echo ! empty( $settings['facebook']['active'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix; ?>settings_facebook_active">
 											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to show the social icon on your site.', 'wpsite-follow-us-badges' ); ?></em>
@@ -369,8 +357,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 												type="checkbox" <?php echo ! empty( $settings['facebook']['args']['link'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix; ?>settings_facebook_args_link">
 											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to show the large button style that only the links to your social page..', 'wpsite-follow-us-badges' ); ?></em>
@@ -436,8 +424,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 												type="checkbox" <?php echo ! empty( $settings['facebook']['args']['show_friends_faces'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix; ?>settings_facebook_args_show_friends_faces">
 											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to show friends faces.', 'wpsite-follow-us-badges' ); ?></em>
@@ -456,8 +444,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 												type="checkbox" <?php echo ! empty( $settings['facebook']['args']['include_share_button'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix; ?>settings_facebook_args_include_share_button">
 											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to show a share button.', 'wpsite-follow-us-badges' ); ?></em>
@@ -522,8 +510,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 												type="checkbox" <?php echo ! empty( $settings['linkedin']['active'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix; ?>settings_linkedin_active">
 											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to show the social icon on your site.', 'wpsite-follow-us-badges' ); ?></em>
@@ -586,8 +574,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_linkedin_args_link">
 
 											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to show the large button style that only the links to your social page..', 'wpsite-follow-us-badges' ); ?></em>
@@ -658,8 +646,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_pinterest_active">
 
 											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to show the social icon on your site.', 'wpsite-follow-us-badges' ); ?></em>
@@ -702,10 +690,10 @@ if ( ! empty( $_GET['tab'] ) ) {
 												id="<?php echo esc_attr( self::$prefix ); ?>settings_pinterest_args_link"
 												name="<?php echo esc_attr( self::$prefix ); ?>settings_pinterest_args_link"
 												type="checkbox" <?php echo ! empty( $settings['pinterest']['args']['link'] ) ? 'checked="checked"' : ''; ?>/>
-										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_pinterest_args_link">	
+										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_pinterest_args_link">
 											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to show the large button style that only the links to your social page..', 'wpsite-follow-us-badges' ); ?></em>
@@ -738,8 +726,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 												type="checkbox" <?php echo ! empty( $settings['youtube']['active'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_youtube_active">
 											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to show the social icon on your site.', 'wpsite-follow-us-badges' ); ?></em>
@@ -777,8 +765,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 												type="checkbox" <?php echo ! empty( $settings['youtube']['args']['link'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_youtube_args_link">
 											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to show the large button style that only the links to your social page..', 'wpsite-follow-us-badges' ); ?></em>
@@ -826,10 +814,9 @@ if ( ! empty( $_GET['tab'] ) ) {
 												name="<?php echo esc_attr( self::$prefix . 'settings_youtube_args_count' ); ?>"
 												type="checkbox" <?php echo ! empty( $settings['youtube']['args']['count'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo esc_attr( self::$prefix . 'settings_youtube_args_count' ); ?>">
-
 											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to display the subcribers count', 'wpsite-follow-us-badges' ); ?></em>
@@ -861,8 +848,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 												type="checkbox" <?php echo ! empty( $settings['tumblr']['active'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo esc_attr( self::$prefix . 'settings_tumblr_active' ); ?>">
 											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to show the social icon on your site.', 'wpsite-follow-us-badges' ); ?></em>
@@ -902,8 +889,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 												type="checkbox" <?php echo ! empty( $settings['tumblr']['args']['link'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_tumblr_args_link">
 											<span class="fa-stack fa-lg">
-												<i class="fa fa-square-o fa-stack-1x"></i>
-												<i class="fa fa-check fa-stack-1x"></i>
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to show the large button style that only the links to your social page..', 'wpsite-follow-us-badges' ); ?></em>
