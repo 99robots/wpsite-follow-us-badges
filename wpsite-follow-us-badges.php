@@ -847,9 +847,12 @@ class WPsiteFollowUs extends WP_Widget {
 		wp_enqueue_style( 'wpsite_follow_us_sortables_css' );
 
 		//wp_register_style( 'wpsite_follow_us_fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css', array(), '6.4.2' );
+		
 		wp_register_style( 'wpsite_follow_us_fontawesome', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/fonts/fontawesome6.4.2.min.css', array(), '6.4.2' );
-
 		wp_enqueue_style( 'wpsite_follow_us_fontawesome' );
+
+		//wp_register_style( 'wpsite_follow_us_fontawesome_other', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/fonts/font-awesome.min.css', array(), '1.4.2' );
+		//wp_enqueue_style( 'wpsite_follow_us_fontawesome_other' );
 
 		// Scripts.
 		wp_enqueue_script( self::$prefix . 'admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/admin.js', array( 'jquery' ), '1.0.0', true );

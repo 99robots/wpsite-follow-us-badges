@@ -37,6 +37,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 	}
 }
 ?>
+
 <div class="nnr-wrap">
 
 	<?php require_once 'header.php'; ?>
@@ -115,12 +116,20 @@ if ( ! empty( $_GET['tab'] ) ) {
 												id="<?php echo self::$prefix; ?>settings_twitter_active"
 												name="<?php echo self::$prefix; ?>settings_twitter_active"
 												type="checkbox" <?php echo ! empty( $settings['twitter']['active'] ) ? 'checked="checked"' : ''; ?>/>
-										<label for="<?php echo self::$prefix; ?>settings_twitter_active">
+										<label for="<?php echo self::$prefix; ?>settings_twitter_active" class="toggle-label">
+											<span class="fa-stack fa-lg">
+											<i class="fas fa-square fa-stack-1x"></i>
+											<i class="fas fa-check fa-stack-1x"></i>
+											</span>
+										</label>
+										<!-- <label for="<?php echo self::$prefix; ?>settings_twitter_active">
 											<span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
 												<i class="fa fa-check fa-stack-1x"></i>
 											</span>
-										</label>
+										</label> -->
+											
+
 										<em class="help-block"><?php esc_html_e( 'Check this to show the social icon on your site.', 'wpsite-follow-us-badges' ); ?></em>
 									</div>
 								</div>
@@ -157,9 +166,13 @@ if ( ! empty( $_GET['tab'] ) ) {
 												name="<?php echo self::$prefix; ?>settings_twitter_args_link"
 												type="checkbox" <?php echo ! empty( $settings['twitter']['args']['link'] ) ? 'checked="checked"' : ''; ?>/>
 										<label for="<?php echo self::$prefix; ?>settings_twitter_args_link">
-											<span class="fa-stack fa-lg">
+											<!-- <span class="fa-stack fa-lg">
 												<i class="fa fa-square-o fa-stack-1x"></i>
 												<i class="fa fa-check fa-stack-1x"></i>
+											</span> -->
+											<span class="fa-stack fa-lg">
+												<i class="fas fa-square fa-stack-1x"></i>
+												<i class="fas fa-check fa-stack-1x"></i>
 											</span>
 										</label>
 										<em class="help-block"><?php esc_html_e( 'Check this to show the large button style that only the links to your social page..', 'wpsite-follow-us-badges' ); ?></em>
