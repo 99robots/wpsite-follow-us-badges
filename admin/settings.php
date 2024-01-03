@@ -20,7 +20,15 @@ $nnr_follow_us_badges_tab_content_active_class = array(
 	'tumblr'    => 'nnr-hide',
 	'code'      => 'nnr-hide',
 );
+
 if ( ! empty( $_GET['tab'] ) ) {
+	if(isset( $_REQUEST['_wpnonce'] )){
+							
+		$wp_nonce = sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) );	
+		if ( ! wp_verify_nonce( $wp_nonce, 'wpsite_follow_us' ) ) {
+			wp_die( 'Security check' );
+		}
+	}
 	$nnr_follow_us_badges_tab = sanitize_text_field( $_GET['tab'] );
 	if ( empty( $nnr_follow_us_badges_tab ) ) {
 		$nnr_follow_us_badges_tab = 'list';
@@ -1002,7 +1010,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 
 				</div>
 
-				<?php wp_nonce_field( 'wpsite_follow_us_admin_settings' ); ?>
+				<?php wp_nonce_field( 'wpsite_follow_us_admin_settings','wp_nonce_setting' ); ?>
 
 				<p class="nnr-submit">
 					<button type="submit" name="submit" id="submit" class="button button-primary button-large" value="Save Settings">

@@ -580,7 +580,7 @@ class WPsiteFollowUs extends WP_Widget {
 						}
 
 						$content .= '></a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
 						';
 					}
 				}
@@ -663,7 +663,7 @@ class WPsiteFollowUs extends WP_Widget {
 							$content .= 'lang: ' . $settings['linkedin']['args']['language'];
 						}
 
-						$content .= '<script type="IN/FollowCompany" data-id="' . esc_html( $settings['linkedin']['user'] ) . '"';
+						$content .= '<script type="IN/FollowCompany" data-id="' . wp_kses_post( $settings['linkedin']['user'] ) . '"';
 
 						if ( isset( $settings['linkedin']['args']['count_mode'] ) ) {
 							$content .= ' data-counter="' . $settings['linkedin']['args']['count_mode'] . '"';
@@ -846,13 +846,8 @@ class WPsiteFollowUs extends WP_Widget {
 		wp_register_style( 'wpsite_follow_us_sortables_css', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/css/sortables.css', array(), '1.0.0' );
 		wp_enqueue_style( 'wpsite_follow_us_sortables_css' );
 
-		//wp_register_style( 'wpsite_follow_us_fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css', array(), '6.4.2' );
-		
 		wp_register_style( 'wpsite_follow_us_fontawesome', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/fonts/fontawesome6.4.2.min.css', array(), '6.4.2' );
 		wp_enqueue_style( 'wpsite_follow_us_fontawesome' );
-
-		//wp_register_style( 'wpsite_follow_us_fontawesome_other', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/fonts/font-awesome.min.css', array(), '1.4.2' );
-		//wp_enqueue_style( 'wpsite_follow_us_fontawesome_other' );
 
 		// Scripts.
 		wp_enqueue_script( self::$prefix . 'admin_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/admin.js', array( 'jquery' ), '1.0.0', true );
@@ -881,7 +876,7 @@ class WPsiteFollowUs extends WP_Widget {
 		}
 
 		// Save data nd check nonce.
-		if ( isset( $_POST['submit'] ) && check_admin_referer( 'wpsite_follow_us_admin_settings' ) ) {
+		if ( isset( $_POST['submit'] ) && check_admin_referer( 'wpsite_follow_us_admin_settings', 'wp_nonce_setting' ) ) {
 
 			$wpsite_follow_us_settings_twitter_active = '';
 			if ( ! empty( $_POST['wpsite_follow_us_settings_twitter_active'] ) ) {
@@ -1087,7 +1082,48 @@ class WPsiteFollowUs extends WP_Widget {
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
 
-		require_once 'admin/settings.php';
+		// Check if the query string contains _wpnonce.
+		if ( ! isset( $_REQUEST['_wpnonce'] ) ) {
+
+			if ( isset( $_GET['tab'] ) && '' !== $_GET['tab'] ) {
+				$new_url = add_query_arg(
+					array(
+						'page'     => 'wpsite-follow-us-badges-settings',
+						'tab'      => sanitize_text_field( wp_unslash( $_GET['tab'] ) ),
+						'_wpnonce' => wp_create_nonce( 'wpsite_follow_us' ),
+					),
+					admin_url( 'options-general.php' )
+				);
+
+			} else {
+				$new_url = add_query_arg(
+					array(
+						'page'     => 'wpsite-follow-us-badges-settings',
+						'_wpnonce' => wp_create_nonce( 'wpsite_follow_us' ),
+					),
+					admin_url( 'options-general.php' )
+				);
+			}
+
+			?>
+			<script type="text/javascript">
+				window.location = "<?php echo $new_url; ?>";
+			</script>
+			
+			<?php
+		} else {
+
+			// Verify nonce before processing form data.
+			$wp_nonce = sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) );
+
+			if ( wp_verify_nonce( $wp_nonce, 'wpsite_follow_us' ) ) {
+
+				require_once 'admin/settings.php';
+			} else {
+				// Nonce verification failed, handle accordingly.
+				wp_die( 'Security check failed. Please try again.' );
+			}
+		}
 	}
 
 	/**
@@ -1143,9 +1179,8 @@ class WPsiteFollowUs extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 
-		wp_enqueue_style( 'wpsite_follow_us_badges_widget_css', plugins_url( '/css/wpsite-follow-us-badges.css', __FILE__ ), array(), '1.0.0' );
-		wp_enqueue_script( 'google-platformm', 'https://apis.google.com/js/platform.js', array(), '1.0.1', true );
-			wp_enqueue_script( 'linkedin-platformm', '//platform.linkedin.com/in.js', array(), '1.0.1', true );
+		wp_enqueue_style( 'wpsite_follow_us_badges_widget_css', plugins_url( '/css/wpsite-follow-us-badges.css', __FILE__ ), array(), WPSITE_FOLLOW_US_VERSION_NUM );
+
 		$title    = apply_filters( 'widget_title', $instance['title'] );
 		$settings = get_option( 'wpsite_follow_us_settings' );
 
@@ -1154,10 +1189,10 @@ class WPsiteFollowUs extends WP_Widget {
 			$settings = self::$default;
 		}
 
-		echo esc_html( $args['before_widget'] );
+		echo wp_kses_post( $args['before_widget'] );
 
 		if ( ! empty( $title ) ) {
-			echo esc_html( $args['before_title'] ) . esc_html( $title ) . esc_html( $args['after_title'] );
+			echo wp_kses_post( $args['before_title'] ) . esc_html( $title ) . wp_kses_post( $args['after_title'] );
 		}
 
 		$content = '';
@@ -1284,13 +1319,14 @@ class WPsiteFollowUs extends WP_Widget {
 							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/edu/school?id=' . esc_html( $settings['linkedin']['user'] ) . '" target="_blank">LinkedIn</a></div>';
 						}
 					} else {
-						$content .= '<div class="wpsite_follow_us_div linkedinbox">';
+						$content .= '<div class="wpsite_follow_us_div linkedinbox"><script src="//platform.linkedin.com/in.js" type="text/javascript">';
 
 						if ( isset( $settings['linkedin']['args']['language'] ) ) {
 							$content .= 'lang: ' . esc_html( $settings['linkedin']['args']['language'] );
 						}
 
-						$content .= '<script type="IN/FollowCompany" data-id="' . esc_html( $settings['linkedin']['user'] ) . '"';
+						$content .= '</script>
+								<script type="IN/FollowCompany" data-id="' . esc_html( $settings['linkedin']['user'] ) . '"';
 
 						if ( isset( $settings['linkedin']['args']['count_mode'] ) ) {
 							$content .= ' data-counter="' . esc_html( $settings['linkedin']['args']['count_mode'] ) . '"';
@@ -1312,7 +1348,9 @@ class WPsiteFollowUs extends WP_Widget {
 							$content .= esc_html( $settings['pinterest']['args']['name'] );
 						}
 
-						$content .= '</a></div>';
+						$content .= '</a><!-- Please call pinit.js only once per page --></script></div>';
+						wp_enqueue_script( 'pinit', '//assets.pinterest.com/js/pinit.js', array(), WPSITE_FOLLOW_US_VERSION_NUM, true );
+
 					}
 				}
 			} elseif ( 'youtube' === $order ) {
@@ -1337,6 +1375,8 @@ class WPsiteFollowUs extends WP_Widget {
 						}
 
 						$content .= '></div></div>';
+						wp_enqueue_script( 'youtube', 'https://apis.google.com/js/platform.js', array(), WPSITE_FOLLOW_US_VERSION_NUM, true );
+
 					}
 				}
 			} elseif ( 'tumblr' === $order ) {
@@ -1366,9 +1406,11 @@ class WPsiteFollowUs extends WP_Widget {
 			}
 		}
 
-		echo esc_html( $content );
-		echo esc_html( $args['after_widget'] );
+		echo $content;
+
+		echo wp_kses_post( $args['after_widget'] );
 	}
+
 
 	/**
 	 * Back-end widget form.
