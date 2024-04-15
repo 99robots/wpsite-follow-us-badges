@@ -1,34 +1,37 @@
 <?php
+/**
+ * Uninstall 99robots-author-box
+ *
+ * @package FollowUsBadges
+ * @since 1.0.0
+ */
 
-	/* if uninstall not called from WordPress exit */
+/* if uninstall not called from WordPress exit */
+if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+	exit();
+}
 
-	if ( !defined( 'WP_UNINSTALL_PLUGIN' ) )
-		exit ();
+/* Delete all existence of this plugin */
+global $wpdb;
 
-	/* Delete all existence of this plugin */
+$blog_option_name    = 'wpsite_follow_us_settings';
+$version_option_name = 'wpsite_follow_us_badges_version';
 
-	global $wpdb;
+if ( ! is_multisite() ) {
+	delete_option( $version_option_name );
+} else {
+	delete_site_option( $version_option_name );
 
-	$blog_option_name = 'wpsite_follow_us_settings';
-	$version_option_name = 'wpsite_follow_us_badges_version';
+	/* Used to delete each option from each blog */
+	$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
 
-	if ( !is_multisite() ) {
-		delete_option($version_option_name);
-	} else {
-		delete_site_option($version_option_name);
+	foreach ( $blog_ids as $blog_id ) {
+		switch_to_blog( $blog_id );
 
-		/* Used to delete each option from each blog */
+		/* Delete blog option */
 
-	    $blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
-
-	    foreach ( $blog_ids as $blog_id ) {
-	        switch_to_blog( $blog_id );
-
-	        /* Delete blog option */
-
-			delete_option($blog_option_name);
-	    }
-
-	    restore_current_blog();
+		delete_option( $blog_option_name );
 	}
-?>
+
+	restore_current_blog();
+}

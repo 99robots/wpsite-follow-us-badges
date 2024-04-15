@@ -390,7 +390,7 @@ class WPsiteFollowUs extends WP_Widget {
 	 * @return array
 	 */
 	public function wpsite_follow_us_badges_shortcode( $atts ) {
-
+		
 		wp_enqueue_style( 'wpsite_follow_us_badges_widget_css', plugins_url( '/css/wpsite-follow-us-badges.css', __FILE__ ), array(), '1.0.0' );
 		wp_enqueue_script( 'google-platform', 'https://apis.google.com/js/platform.js', array(), '1.0.0', true );
 		wp_enqueue_script( 'pinterest-pinit', '//assets.pinterest.com/js/pinit.js', array(), '1.0.0', true );
@@ -738,8 +738,12 @@ class WPsiteFollowUs extends WP_Widget {
 				}
 			}
 		}
+		//$allowed_html['script'] = array();
 
+		//return wp_kses_post( $content ) . '</div>';
+		//return wp_kses( $content, $allowed_html ) . '</div>';
 		return $content . '</div>';
+
 	}
 
 	/**
@@ -1107,9 +1111,8 @@ class WPsiteFollowUs extends WP_Widget {
 
 			?>
 			<script type="text/javascript">
-				window.location = "<?php echo $new_url; ?>";
+				window.location = "<?php echo esc_url_raw( $new_url ); ?>";
 			</script>
-			
 			<?php
 		} else {
 
