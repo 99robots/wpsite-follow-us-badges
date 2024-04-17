@@ -1,4 +1,19 @@
 <?php
+/**
+ * Settings for the plugin.
+ *
+ * Php Version 7.2.10
+ *
+ * @category Plugin
+ * @package  FollowUsBadges
+ * @author   Draft <contact@draftpress.com>
+ * @license  GNU General Public License 2
+ * (https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+ * @link     https://draftpress.com/
+ * @codingStandardsIgnoreStart
+ */
+
+// variables defined.
 $nnr_follow_us_badges_tab                      = 'list';
 $nnr_follow_us_badges_tab_active_class         = array(
 	'list'      => '',
@@ -22,14 +37,14 @@ $nnr_follow_us_badges_tab_content_active_class = array(
 );
 
 if ( ! empty( $_GET['tab'] ) ) {
-	if(isset( $_REQUEST['_wpnonce'] )){
-							
-		$wp_nonce = sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) );	
+	if ( isset( $_GET['_wpnonce'] ) ) {
+
+		$wp_nonce = sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) );
 		if ( ! wp_verify_nonce( $wp_nonce, 'wpsite_follow_us' ) ) {
 			wp_die( 'Security check' );
 		}
 	}
-	$nnr_follow_us_badges_tab = sanitize_text_field( $_GET['tab'] );
+	$nnr_follow_us_badges_tab = sanitize_text_field( wp_unslash( $_GET['tab'] ) );
 	if ( empty( $nnr_follow_us_badges_tab ) ) {
 		$nnr_follow_us_badges_tab = 'list';
 	}
@@ -58,50 +73,50 @@ if ( ! empty( $_GET['tab'] ) ) {
 
 			<div class="nnr-follow-us-badges-tabs-header">
 				<nav class="nnr-follow-us-badges-tabs" aria-label="Follow us menu">
-					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=list' ); ?>"
-						class="privacy-settings-tab <?php echo $nnr_follow_us_badges_tab_active_class['list']; ?>">
+					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=list' ) ); ?>"
+						class="privacy-settings-tab <?php echo esc_attr( $nnr_follow_us_badges_tab_active_class['list'] ); ?>">
 						<!-- <i class="fa fa-list-ol fa-2x"></i> -->
 						<i class="fa-solid fa-list-ol"></i>
 					</a>
 
-					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=twitter' ); ?>"
-						class="privacy-settings-tab <?php echo $nnr_follow_us_badges_tab_active_class['twitter']; ?>">
+					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=twitter' ) ); ?>"
+						class="privacy-settings-tab <?php echo esc_attr( $nnr_follow_us_badges_tab_active_class['twitter'] ); ?>">
 						<!-- <i class="fa fa-twitter fa-2x"></i> -->
 						<i class="fa-brands fa-x-twitter"></i>
 					</a>
 
-					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=facebook' ); ?>"
-						class="privacy-settings-tab  <?php echo $nnr_follow_us_badges_tab_active_class['facebook']; ?>">
+					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=facebook' ) ); ?>"
+						class="privacy-settings-tab  <?php echo esc_attr( $nnr_follow_us_badges_tab_active_class['facebook'] ); ?>">
 						<!-- <i class="fa fa-facebook fa-2x"></i> -->
 						<i class="fa-brands fa-facebook"></i>
 					</a>
 
-					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=linkedin' ); ?>"
-						class="privacy-settings-tab <?php echo $nnr_follow_us_badges_tab_active_class['linkedin']; ?>">
+					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=linkedin' ) ); ?>"
+						class="privacy-settings-tab <?php echo esc_attr( $nnr_follow_us_badges_tab_active_class['linkedin'] ); ?>">
 						<!-- <i class="fa fa-linkedin fa-2x"></i> -->
 						<i class="fa-brands fa-linkedin"></i>
 					</a>
 
-					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=pinterest' ); ?>"
-						class="privacy-settings-tab  <?php echo $nnr_follow_us_badges_tab_active_class['pinterest']; ?>">
+					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=pinterest' ) ); ?>"
+						class="privacy-settings-tab  <?php echo esc_attr( $nnr_follow_us_badges_tab_active_class['pinterest'] ); ?>">
 						<!-- <i class="fa fa-pinterest fa-2x"></i> -->
 						<i class="fa-brands fa-pinterest"></i>
 					</a>
 
-					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=youtube' ); ?>"
-						class="privacy-settings-tab  <?php echo $nnr_follow_us_badges_tab_active_class['youtube']; ?>">
+					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=youtube' ) ); ?>"
+						class="privacy-settings-tab  <?php echo esc_attr( $nnr_follow_us_badges_tab_active_class['youtube'] ); ?>">
 						<!-- <i class="fa fa-youtube fa-2x"></i> -->
 						<i class="fa-brands fa-youtube"></i>
 					</a>
 
-					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=tumblr' ); ?>"
-						class="privacy-settings-tab  <?php echo $nnr_follow_us_badges_tab_active_class['tumblr']; ?>">
+					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=tumblr' ) ); ?>"
+						class="privacy-settings-tab  <?php echo esc_attr( $nnr_follow_us_badges_tab_active_class['tumblr'] ); ?>">
 						<!-- <i class="fa fa-tumblr fa-2x"></i> -->
 						<i class="fa-brands fa-tumblr"></i>
 					</a>
 
-					<a href="<?php echo admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=code' ); ?>"
-						class="privacy-settings-tab  <?php echo $nnr_follow_us_badges_tab_active_class['code']; ?>">
+					<a href="<?php echo esc_url( admin_url( 'options-general.php?page=' . WPsiteFollowUs::$settings_page . '&tab=code' ) ); ?>"
+						class="privacy-settings-tab  <?php echo esc_attr( $nnr_follow_us_badges_tab_active_class['code'] ); ?>">
 						<!-- <i class="fa fa-code fa-2x"></i> -->
 						<i class="fa-solid fa-code"></i>
 					</a>
@@ -112,19 +127,19 @@ if ( ! empty( $_GET['tab'] ) ) {
 
 				<div id="tabs">
 					<div class="tab-content">
-						<div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $nnr_follow_us_badges_tab_content_active_class['twitter']; ?>" id="wpsite_div_twitter">
+						<div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo esc_attr( $nnr_follow_us_badges_tab_content_active_class['twitter'] ); ?>" id="wpsite_div_twitter">
 							<h3 class="nnr-page-header"><?php esc_html_e( 'General', 'wpsite-follow-us-badges' ); ?></h3>
 							<div>
 								<!-- Active -->
 								<div class="nnr-form-group nnr-row">
-									<label for="<?php echo self::$prefix; ?>settings_twitter_active"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_active"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Active', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<input class="form-control"
-												id="<?php echo self::$prefix; ?>settings_twitter_active"
-												name="<?php echo self::$prefix; ?>settings_twitter_active"
+												id="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_active"
+												name="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_active"
 												type="checkbox" <?php echo ! empty( $settings['twitter']['active'] ) ? 'checked="checked"' : ''; ?>/>
-										<label for="<?php echo self::$prefix; ?>settings_twitter_active" class="toggle-label">
+										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_active" class="toggle-label">
 											<span class="fa-stack fa-lg">
 												<i class="fas fa-square fa-stack-1x"></i>
 												<i class="fas fa-check fa-stack-1x"></i>
@@ -137,7 +152,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 								<!-- User -->
 
 								<div class="nnr-form-group nnr-row tw-hideable">
-									<label for="<?php echo self::$prefix; ?>settings_twitter_user"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_user"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Username', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<input class="form-control" id="wpsite_follow_us_settings_twitter_user"
@@ -158,14 +173,14 @@ if ( ! empty( $_GET['tab'] ) ) {
 								<!-- Link Only -->
 
 								<div class="nnr-form-group nnr-row">
-									<label for="<?php echo self::$prefix; ?>settings_twitter_args_link"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_link"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Link Only', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<input class="form-control"
-												id="<?php echo self::$prefix; ?>settings_twitter_args_link"
-												name="<?php echo self::$prefix; ?>settings_twitter_args_link"
+												id="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_link"
+												name="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_link"
 												type="checkbox" <?php echo ! empty( $settings['twitter']['args']['link'] ) ? 'checked="checked"' : ''; ?>/>
-										<label for="<?php echo self::$prefix; ?>settings_twitter_args_link">
+										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_link">
 											<span class="fa-stack fa-lg">
 												<i class="fas fa-square fa-stack-1x"></i>
 												<i class="fas fa-check fa-stack-1x"></i>
@@ -179,14 +194,14 @@ if ( ! empty( $_GET['tab'] ) ) {
 								<!-- Followers Count Display -->
 
 								<div class="nnr-form-group nnr-row tw-hideable-link-only">
-									<label for="<?php echo self::$prefix; ?>settings_twitter_args_followers_count_display"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_followers_count_display"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Followers Count Display', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<input class="form-control"
-												id="<?php echo self::$prefix; ?>settings_twitter_args_followers_count_display"
-												name="<?php echo self::$prefix; ?>settings_twitter_args_followers_count_display"
+												id="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_followers_count_display"
+												name="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_followers_count_display"
 												type="checkbox" <?php echo ! empty( $settings['twitter']['args']['followers_count_display'] ) ? 'checked="checked"' : ''; ?>/>
-										<label for="<?php echo self::$prefix; ?>settings_twitter_args_followers_count_display">
+										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_followers_count_display">
 											<span class="fa-stack fa-lg">
 												<i class="fas fa-square fa-stack-1x"></i>
 												<i class="fas fa-check fa-stack-1x"></i>
@@ -199,14 +214,14 @@ if ( ! empty( $_GET['tab'] ) ) {
 								<!-- Show Screen Name -->
 
 								<div class="nnr-form-group nnr-row tw-hideable-link-only">
-									<label for="<?php echo self::$prefix; ?>settings_twitter_args_show_screen_name"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_show_screen_name"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Show Screen Name', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<input class="form-control"
-												id="<?php echo self::$prefix; ?>settings_twitter_args_show_screen_name"
-												name="<?php echo self::$prefix; ?>settings_twitter_args_show_screen_name"
+												id="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_show_screen_name"
+												name="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_show_screen_name"
 												type="checkbox" <?php echo ! empty( $settings['twitter']['args']['show_screen_name'] ) ? 'checked="checked"' : ''; ?>/>
-										<label for="<?php echo self::$prefix; ?>settings_twitter_args_show_screen_name">
+										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_show_screen_name">
 											<span class="fa-stack fa-lg">
 												<i class="fas fa-square fa-stack-1x"></i>
 												<i class="fas fa-check fa-stack-1x"></i>
@@ -219,7 +234,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 								<!-- Alignment -->
 
 								<div class="nnr-form-group nnr-row tw-hideable-link-only">
-									<label for="<?php echo self::$prefix; ?>settings_twitter_args_alignment"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_alignment"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Alignment', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_twitter_args_alignment"
@@ -234,7 +249,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 								<!-- Width -->
 
 								<div class="nnr-form-group nnr-row tw-hideable-link-only">
-									<label for="<?php echo self::$prefix; ?>settings_twitter_args_width"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_width"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Width', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<input class="form-control" id="wpsite_follow_us_settings_twitter_args_width"
@@ -247,7 +262,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 								<!-- Size -->
 
 								<div class="nnr-form-group nnr-row tw-hideable-link-only">
-									<label for="<?php echo self::$prefix; ?>settings_twitter_args_size"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_size"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Size', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_twitter_args_size"
@@ -269,7 +284,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 								<!-- Language -->
 
 								<div class="nnr-form-group nnr-row">
-									<label for="<?php echo self::$prefix; ?>settings_twitter_args_size"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_twitter_args_size"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Language', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_twitter_args_language"
@@ -290,23 +305,21 @@ if ( ! empty( $_GET['tab'] ) ) {
 							</p>
 						</div>
 
-						<div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $nnr_follow_us_badges_tab_content_active_class['facebook']; ?>" id="wpsite_div_facebook">
-
+						<div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo esc_attr( $nnr_follow_us_badges_tab_content_active_class['facebook'] ); ?>" id="wpsite_div_facebook">
 							<h3 class="nnr-page-header"><?php esc_html_e( 'General', 'wpsite-follow-us-badges' ); ?></h3>
-
 							<div>
 
 								<!-- Active -->
 
 								<div class="nnr-form-group nnr-row">
-									<label for="<?php echo self::$prefix; ?>settings_facebook_active"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_active"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Active', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<input class="form-control"
-												id="<?php echo self::$prefix; ?>settings_facebook_active"
-												name="<?php echo self::$prefix; ?>settings_facebook_active"
+												id="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_active"
+												name="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_active"
 												type="checkbox" <?php echo ! empty( $settings['facebook']['active'] ) ? 'checked="checked"' : ''; ?>/>
-										<label for="<?php echo self::$prefix; ?>settings_facebook_active">
+										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_active">
 											<span class="fa-stack fa-lg">
 												<i class="fas fa-square fa-stack-1x"></i>
 												<i class="fas fa-check fa-stack-1x"></i>
@@ -319,7 +332,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 								<!-- User -->
 
 								<div class="nnr-form-group nnr-row fb-hideable">
-									<label for="<?php echo self::$prefix; ?>settings_facebook_user"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_user"
 											class="col-sm-3 control-label"><?php esc_html_e( 'User ID', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<input class="form-control" id="wpsite_follow_us_settings_facebook_user"
@@ -336,7 +349,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 								<!-- Type -->
 
 								<div class="nnr-form-group nnr-row fb-hideable">
-									<label for="<?php echo self::$prefix; ?>settings_facebook_args_type"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_type"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Type', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_facebook_args_type"
@@ -356,14 +369,14 @@ if ( ! empty( $_GET['tab'] ) ) {
 								<!-- Link Only -->
 
 								<div class="nnr-form-group nnr-row">
-									<label for="<?php echo self::$prefix; ?>settings_facebook_args_link"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_link"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Link Only', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<input class="form-control"
-												id="<?php echo self::$prefix; ?>settings_facebook_args_link"
-												name="<?php echo self::$prefix; ?>settings_facebook_args_link"
+												id="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_link"
+												name="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_link"
 												type="checkbox" <?php echo ! empty( $settings['facebook']['args']['link'] ) ? 'checked="checked"' : ''; ?>/>
-										<label for="<?php echo self::$prefix; ?>settings_facebook_args_link">
+										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_link">
 											<span class="fa-stack fa-lg">
 												<i class="fas fa-square fa-stack-1x"></i>
 												<i class="fas fa-check fa-stack-1x"></i>
@@ -376,7 +389,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 								<!-- Layout -->
 
 								<div class="nnr-form-group nnr-row fb-hideable-link-only">
-									<label for="<?php echo self::$prefix; ?>settings_facebook_args_layout"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_layout"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Layout', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_facebook_args_layout"
@@ -391,9 +404,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 								</div>
 
 								<!-- Action Type -->
-
 								<div class="nnr-form-group nnr-row fb-hideable-link-only">
-									<label for="<?php echo self::$prefix; ?>settings_facebook_args_action_type"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_action_type"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Action Type', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_facebook_args_action_type"
@@ -406,9 +418,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 								</div>
 
 								<!-- Color Scheme -->
-
 								<div class="nnr-form-group nnr-row fb-hideable-link-only">
-									<label for="<?php echo self::$prefix; ?>settings_facebook_args_colorscheme"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_colorscheme"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Color Scheme', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_facebook_args_colorscheme"
@@ -423,14 +434,14 @@ if ( ! empty( $_GET['tab'] ) ) {
 								<!-- Show Friends Faces -->
 
 								<div class="nnr-form-group nnr-row fb-hideable-link-only">
-									<label for="<?php echo self::$prefix; ?>settings_facebook_args_show_friends_faces"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_show_friends_faces"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Show Friends Faces', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<input class="form-control"
-												id="<?php echo self::$prefix; ?>settings_facebook_args_show_friends_faces"
-												name="<?php echo self::$prefix; ?>settings_facebook_args_show_friends_faces"
+												id="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_show_friends_faces"
+												name="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_show_friends_faces"
 												type="checkbox" <?php echo ! empty( $settings['facebook']['args']['show_friends_faces'] ) ? 'checked="checked"' : ''; ?>/>
-										<label for="<?php echo self::$prefix; ?>settings_facebook_args_show_friends_faces">
+										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_show_friends_faces">
 											<span class="fa-stack fa-lg">
 												<i class="fas fa-square fa-stack-1x"></i>
 												<i class="fas fa-check fa-stack-1x"></i>
@@ -441,16 +452,15 @@ if ( ! empty( $_GET['tab'] ) ) {
 								</div>
 
 								<!-- Include Share Button -->
-
 								<div class="nnr-form-group nnr-row fb-hideable-link-only">
-									<label for="<?php echo self::$prefix; ?>settings_facebook_args_include_share_button"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_include_share_button"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Include Share Button', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<input class="form-control"
-												id="<?php echo self::$prefix; ?>settings_facebook_args_include_share_button"
-												name="<?php echo self::$prefix; ?>settings_facebook_args_include_share_button"
+												id="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_include_share_button"
+												name="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_include_share_button"
 												type="checkbox" <?php echo ! empty( $settings['facebook']['args']['include_share_button'] ) ? 'checked="checked"' : ''; ?>/>
-										<label for="<?php echo self::$prefix; ?>settings_facebook_args_include_share_button">
+										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_include_share_button">
 											<span class="fa-stack fa-lg">
 												<i class="fas fa-square fa-stack-1x"></i>
 												<i class="fas fa-check fa-stack-1x"></i>
@@ -461,9 +471,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 								</div>
 
 								<!-- Width -->
-
 								<div class="nnr-form-group nnr-row fb-hideable-link-only">
-									<label for="<?php echo self::$prefix; ?>settings_facebook_args_width"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_width"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Width', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<input class="form-control" id="wpsite_follow_us_settings_facebook_args_width"
@@ -480,7 +489,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 
 							<div class="fb-hideable">
 								<div class="nnr-form-group nnr-row">
-									<label for="<?php echo self::$prefix; ?>settings_facebook_args_language"
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_facebook_args_language"
 											class="col-sm-3 control-label"><?php esc_html_e( 'Language', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<select id="wpsite_follow_us_settings_facebook_args_language"
@@ -500,23 +509,21 @@ if ( ! empty( $_GET['tab'] ) ) {
 							</p>
 						</div>
 
-						<div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo $nnr_follow_us_badges_tab_content_active_class['linkedin']; ?>" id="wpsite_div_linkedin">
-
+						<div role="tabpanel" class="nnr-tab-pane tab-pane <?php echo esc_attr( $nnr_follow_us_badges_tab_content_active_class['linkedin'] ); ?>" id="wpsite_div_linkedin">
 							<h3 class="nnr-page-header"><?php esc_html_e( 'General', 'wpsite-follow-us-badges' ); ?></h3>
 
 							<div>
 
 								<!-- Active -->
-
 								<div class="nnr-form-group nnr-row">
-									<label for="<?php echo self::$prefix; ?>settings_linkedin_active"
-											class="col-sm-3 control-label"><?php esc_html_e( 'Active', 'wpsite-follow-us-badges' ); ?></label>
+									<label for="<?php echo esc_attr( self::$prefix ); ?>settings_linkedin_active"
+										class="col-sm-3 control-label"><?php esc_html_e( 'Active', 'wpsite-follow-us-badges' ); ?></label>
 									<div class="col-sm-9">
 										<input class="form-control"
-												id="<?php echo self::$prefix; ?>settings_linkedin_active"
-												name="<?php echo self::$prefix; ?>settings_linkedin_active"
+												id="<?php echo esc_attr( self::$prefix ); ?>settings_linkedin_active"
+												name="<?php echo esc_attr( self::$prefix ); ?>settings_linkedin_active"
 												type="checkbox" <?php echo ! empty( $settings['linkedin']['active'] ) ? 'checked="checked"' : ''; ?>/>
-										<label for="<?php echo self::$prefix; ?>settings_linkedin_active">
+										<label for="<?php echo esc_attr( self::$prefix ); ?>settings_linkedin_active">
 											<span class="fa-stack fa-lg">
 												<i class="fas fa-square fa-stack-1x"></i>
 												<i class="fas fa-check fa-stack-1x"></i>
@@ -962,11 +969,11 @@ if ( ! empty( $_GET['tab'] ) ) {
 										$settings['order'] = self::$default['order'];
 									}
 
-							
+
 									foreach ( $settings['order'] as $setting_order ) {
-										if($setting_order == 'twitter'){
-											$setting_order == 'fa-x-twitter';
-										}	
+										if ( 'twitter' === $setting_order ) {
+											'fa-x-twitter' === $setting_order;
+										}
 
 										?>
 										<li id="<?php echo esc_attr( $setting_order ); ?>"
@@ -1010,7 +1017,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 
 				</div>
 
-				<?php wp_nonce_field( 'wpsite_follow_us_admin_settings','wp_nonce_setting' ); ?>
+				<?php wp_nonce_field( 'wpsite_follow_us_admin_settings', 'wp_nonce_setting' ); ?>
 
 				<p class="nnr-submit">
 					<button type="submit" name="submit" id="submit" class="button button-primary button-large" value="Save Settings">

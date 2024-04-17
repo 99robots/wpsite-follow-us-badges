@@ -390,7 +390,7 @@ class WPsiteFollowUs extends WP_Widget {
 	 * @return array
 	 */
 	public function wpsite_follow_us_badges_shortcode( $atts ) {
-		
+
 		wp_enqueue_style( 'wpsite_follow_us_badges_widget_css', plugins_url( '/css/wpsite-follow-us-badges.css', __FILE__ ), array(), '1.0.0' );
 		wp_enqueue_script( 'google-platform', 'https://apis.google.com/js/platform.js', array(), '1.0.0', true );
 		wp_enqueue_script( 'pinterest-pinit', '//assets.pinterest.com/js/pinit.js', array(), '1.0.0', true );
@@ -448,72 +448,72 @@ class WPsiteFollowUs extends WP_Widget {
 
 		// Re-create args array so our code can understand the data.
 		$settings = array(
-			'title'     => $args['title'],
-			'inline'    => 'true' === $args['inline'] ? true : false,
-			'order'     => explode( ',', str_replace( ' ', '', $args['order'] ) ),
+			'title'     => esc_attr( $args['title'] ),
+			'inline'    => 'true' === esc_attr( $args['inline'] ) ? true : false,
+			'order'     => explode( ',', str_replace( ' ', '', esc_attr( $args['order'] ) ) ),
 			'twitter'   => array(
 				'active' => isset( $args['twitter'] ) ? true : false,
-				'user'   => $args['twitter'],
+				'user'   => esc_attr( $args['twitter'] ),
 				'args'   => array(
-					'link'                    => 'true' === $args['twitter_link'] ? true : false,
-					'followers_count_display' => 'true' === $args['twitter_followers_count_display'] ? true : false,
-					'language'                => $args['twitter_language'],
-					'width'                   => $args['twitter_width'],
-					'alignment'               => $args['twitter_alignment'],
-					'show_screen_name'        => 'true' === $args['twitter_show_screen_name'] ? true : false,
+					'link'                    => 'true' === esc_attr( $args['twitter_link'] ) ? true : false,
+					'followers_count_display' => 'true' === esc_attr( $args['twitter_followers_count_display'] ) ? true : false,
+					'language'                => esc_attr( $args['twitter_language'] ),
+					'width'                   => esc_attr( $args['twitter_width'] ),
+					'alignment'               => esc_attr( $args['twitter_alignment'] ),
+					'show_screen_name'        => 'true' === esc_attr( $args['twitter_show_screen_name'] ) ? true : false,
 					'size'                    => $args['twitter_size'],
 				),
 			),
 			'facebook'  => array(
 				'active' => isset( $args['facebook'] ) ? true : false,
-				'user'   => $args['facebook'],
+				'user'   => esc_attr( $args['facebook'] ),
 				'args'   => array(
-					'type'                 => $args['facebook_type'],
-					'link'                 => 'true' === $args['facebook_link'] ? true : false,
-					'width'                => $args['facebook_width'],
-					'language'             => $args['facebook_language'],
-					'layout'               => $args['facebook_layout'],
-					'action_type'          => $args['facebook_action_type'],
-					'colorscheme'          => $args['facebook_colorscheme'],
-					'show_friends_faces'   => 'true' === $args['facebook_show_friends_faces'] ? true : false,
-					'include_share_button' => 'true' === $args['facebook_include_share_button'] ? true : false,
+					'type'                 => esc_attr( $args['facebook_type'] ),
+					'link'                 => 'true' === esc_attr( $args['facebook_link'] ) ? true : false,
+					'width'                => esc_attr( $args['facebook_width'] ),
+					'language'             => esc_attr( $args['facebook_language'] ),
+					'layout'               => esc_attr( $args['facebook_layout'] ),
+					'action_type'          => esc_attr( $args['facebook_action_type'] ),
+					'colorscheme'          => esc_attr( $args['facebook_colorscheme'] ),
+					'show_friends_faces'   => 'true' === esc_attr( $args['facebook_show_friends_faces'] ) ? true : false,
+					'include_share_button' => 'true' === esc_attr( $args['facebook_include_share_button'] ) ? true : false,
 				),
 			),
 			'linkedin'  => array(
 				'active' => isset( $args['linkedin'] ) ? true : false,
-				'user'   => $args['linkedin'],
+				'user'   => esc_attr( $args['linkedin'] ),
 				'args'   => array(
-					'link'       => 'true' === $args['linkedin_link'] ? true : false,
-					'type'       => $args['linkedin_type'],
-					'count_mode' => $args['linkedin_count_mode'],
-					'language'   => $args['linkedin_language'],
+					'link'       => 'true' === esc_attr( $args['linkedin_link'] ) ? true : false,
+					'type'       => esc_attr( $args['linkedin_type'] ),
+					'count_mode' => esc_attr( $args['linkedin_count_mode'] ),
+					'language'   => esc_attr( $args['linkedin_language'] ),
 				),
 			),
 			'pinterest' => array(
 				'active' => isset( $args['pinterest'] ) ? true : false,
-				'user'   => $args['pinterest'],
+				'user'   => esc_attr( $args['pinterest'] ),
 				'args'   => array(
-					'link' => 'true' === $args['pinterest_link'] ? true : false,
-					'name' => $args['pinterest_name'],
+					'link' => 'true' === esc_attr( $args['pinterest_link'] ) ? true : false,
+					'name' => esc_attr( $args['pinterest_name'] ),
 				),
 			),
 			'youtube'   => array(
 				'active' => isset( $args['youtube'] ) ? true : false,
-				'user'   => $args['youtube'],
+				'user'   => esc_attr( $args['youtube'] ),
 				'args'   => array(
-					'link'   => 'true' === $args['youtube_link'] ? true : false,
-					'layout' => $args['youtube_layout'],
-					'theme'  => $args['youtube_theme'],
-					'count'  => 'true' === $args['youtube_count'] ? true : false,
+					'link'   => 'true' === esc_attr( $args['youtube_link'] ) ? true : false,
+					'layout' => esc_attr( $args['youtube_layout'] ),
+					'theme'  => esc_attr( $args['youtube_theme'] ),
+					'count'  => 'true' === esc_attr( $args['youtube_count'] ) ? true : false,
 				),
 			),
 			'tumblr'    => array(
 				'active' => isset( $args['tumblr'] ) ? true : false,
-				'user'   => $args['tumblr'],
+				'user'   => esc_attr( $args['tumblr'] ),
 				'args'   => array(
-					'link'   => 'true' === $args['tumblr_link'] ? true : false,
-					'color'  => $args['tumblr_color'],
-					'button' => $args['tumblr_button'],
+					'link'   => 'true' === esc_attr( $args['tumblr_link'] ) ? true : false,
+					'color'  => esc_attr( $args['tumblr_color'] ),
+					'button' => esc_attr( $args['tumblr_button'] ),
 				),
 			),
 		);
@@ -738,12 +738,8 @@ class WPsiteFollowUs extends WP_Widget {
 				}
 			}
 		}
-		//$allowed_html['script'] = array();
 
-		//return wp_kses_post( $content ) . '</div>';
-		//return wp_kses( $content, $allowed_html ) . '</div>';
 		return $content . '</div>';
-
 	}
 
 	/**
@@ -1244,9 +1240,7 @@ class WPsiteFollowUs extends WP_Widget {
 							$content .= ' data-width="' . esc_html( $settings['twitter']['args']['width'] ) . '"';
 						}
 
-						$content .= '></a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></div>
-						';
+						$content .= '></a></div>';
 					}
 				}
 			} elseif ( 'facebook' === $order ) {
@@ -1289,21 +1283,9 @@ class WPsiteFollowUs extends WP_Widget {
 						}
 
 						$content .= '></div>
-							<div id="fb-root"></div>
-							<script>(function(d, s, id) {
-							  var js, fjs = d.getElementsByTagName(s)[0];
-							  if (d.getElementById(id)) return;
-							  js = d.createElement(s); js.id = id;
-							  js.src = "//connect.facebook.net/';
+							<div id="fb-root"></div>';
 
-						if ( isset( $settings['facebook']['args']['language'] ) ) {
-							$content .= esc_html( $settings['facebook']['args']['language'] );
-						}
-
-						$content .= '/all.js#xfbml=1";
-							  fjs.parentNode.insertBefore(js, fjs);
-							}(document, "script", "facebook-jssdk"));</script></div>
-						';
+						$content .= '</div>';
 					}
 				}
 			} elseif ( 'linkedin' === $order ) {
@@ -1322,7 +1304,9 @@ class WPsiteFollowUs extends WP_Widget {
 							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/edu/school?id=' . esc_html( $settings['linkedin']['user'] ) . '" target="_blank">LinkedIn</a></div>';
 						}
 					} else {
-						$content .= '<div class="wpsite_follow_us_div linkedinbox"><script src="//platform.linkedin.com/in.js" type="text/javascript">';
+						wp_enqueue_script( 'platform_linkedin', '//assets.pinterest.com/js/pinit.js', array(), WPSITE_FOLLOW_US_VERSION_NUM, true );
+
+						$content .= '<div class="wpsite_follow_us_div linkedinbox">';
 
 						if ( isset( $settings['linkedin']['args']['language'] ) ) {
 							$content .= 'lang: ' . esc_html( $settings['linkedin']['args']['language'] );
@@ -1336,6 +1320,7 @@ class WPsiteFollowUs extends WP_Widget {
 						}
 
 						$content .= '></script></div>';
+
 					}
 				}
 			} elseif ( 'pinterest' === $order ) {
@@ -1409,9 +1394,55 @@ class WPsiteFollowUs extends WP_Widget {
 			}
 		}
 
-		echo $content;
+		echo wp_kses_post( $content );
 
 		echo wp_kses_post( $args['after_widget'] );
+
+		add_action( 'wp_footer', array( $this, 'wpsite_custom_scripts_in_footer' ) );
+	}
+
+	/**
+	 * Custom scripts in footer.
+	 */
+	public function wpsite_custom_scripts_in_footer() {
+
+		$settings = get_option( 'wpsite_follow_us_settings' );
+		?>
+		<script>
+		!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+	
+	
+		</script>
+		<?php
+		if ( isset( $settings['facebook']['active'] ) && ! empty( $settings['facebook']['active'] ) ) {
+
+			if ( isset( $settings['facebook']['args']['language'] ) ) {
+				?>
+				<script>
+					(function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) return;
+					js = d.createElement(s); js.id = id;
+					js.src = "//connect.facebook.net/<?php echo esc_html( $settings['facebook']['args']['language'] ); ?>/all.js#xfbml=1";
+					fjs.parentNode.insertBefore(js, fjs);
+					}(document, "script", "facebook-jssdk"));
+				</script>
+				<?php
+			} else {
+				?>
+				<script>
+					(function(d, s, id) {
+					var js, fjs = d.getElementsByTagName(s)[0];
+					if (d.getElementById(id)) return;
+					js = d.createElement(s); js.id = id;
+					js.src = "//connect.facebook.net/all.js#xfbml=1";
+					fjs.parentNode.insertBefore(js, fjs);
+					}(document, "script", "facebook-jssdk"));
+				</script>
+			<?php } ?>
+		
+			<?php
+		}
 	}
 
 
