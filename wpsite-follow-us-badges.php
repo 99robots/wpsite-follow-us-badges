@@ -1304,7 +1304,7 @@ class WPsiteFollowUs extends WP_Widget {
 							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/edu/school?id=' . esc_html( $settings['linkedin']['user'] ) . '" target="_blank">LinkedIn</a></div>';
 						}
 					} else {
-						wp_enqueue_script( 'platform_linkedin', '//assets.pinterest.com/js/pinit.js', array(), WPSITE_FOLLOW_US_VERSION_NUM, true );
+						wp_enqueue_script( 'platform_linkedin', '//platform.linkedin.com/in.js', array(), WPSITE_FOLLOW_US_VERSION_NUM, true );
 
 						$content .= '<div class="wpsite_follow_us_div linkedinbox">';
 
