@@ -57,7 +57,8 @@ add_action( 'widgets_init', array( 'WPsiteFollowUs', 'wpsite_register_widget' ) 
 /**
  * Hooks / Filter
  */
-add_action( 'init', array( 'WPsiteFollowUs', 'load_textdoamin' ) );
+add_action( 'init', array( 'WPsiteFollowUs', 'load_textdomain' ) );
+add_action( 'init', array( 'WPsiteFollowUs', 'wpsite_follow_us_badges_register_block' ) );
 add_action( 'admin_menu', array( 'WPsiteFollowUs', 'add_menu_page' ) );
 
 /**
@@ -67,42 +68,7 @@ add_action( 'wp_ajax_wpsite_save_order', array( 'WPsiteFollowUs', 'save_order' )
 
 $plugin_follow_us_badges = plugin_basename( __FILE__ );
 add_filter( "plugin_action_links_$plugin_follow_us_badges", array( 'WPsiteFollowUs', 'wpsite_follow_us_badges_settings_link' ) );
-
-function hide_example_widget( $widget_types ) {
-    $widget_types[] = 'wpsite_follow_us_badges';
-    return $widget_types;
-}
-add_filter( 'widget_types_to_hide_from_legacy_widget_block', 'hide_example_widget' );
-
-
-function my_plugin_enqueue_block_editor_assets() {
-	// $settings = get_option('wpsite_follow_us_settings');
-	$settings = get_option('blogname');
-
-
-	wp_enqueue_script( 
-		'my-block-editor-script', 
-		WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/block.js', 
-		array( 'wp-blocks', 'wp-element' ), // Dependencies
-		'32.32.1'  
-	);
-
-	wp_localize_script(
-        'my-block-editor-script',
-        'wpsiteFollowUsSettings',
-        $settings
-    );
-
-    // wp_enqueue_script(
-    //     'my-block-editor-script', // Handle
-    //     plugins_url( 'block.js', __FILE__ ), // URL to the JavaScript file
-    //     array( 'wp-blocks', 'wp-element' ), // Dependencies
-    //     filemtime( plugin_dir_path( __FILE__ ) . 'block.js' ) // Version (use file modification time)
-    // );
-}
-add_action( 'enqueue_block_editor_assets', 'my_plugin_enqueue_block_editor_assets' );
-
-
+add_filter( 'widget_types_to_hide_from_legacy_widget_block', array( 'WPsiteFollowUs', 'hide_followus_widget' ) );
 
 
 /**
@@ -114,7 +80,12 @@ add_action( 'enqueue_block_editor_assets', 'my_plugin_enqueue_block_editor_asset
 class WPsiteFollowUs extends WP_Widget {
 
 
-
+	/**
+	 * Show_instance_in_rest
+	 *
+	 * @var mixed
+	 * @access public
+	 */
 	public $show_instance_in_rest = true;
 
 	/**
@@ -422,6 +393,19 @@ class WPsiteFollowUs extends WP_Widget {
 		'no_NO',
 		'da_DK',
 	);
+
+	/**
+	 * Hide the widget from the block editor
+	 *
+	 * @param array $widget_types Array of widget types.
+	 * @return array
+	 */
+	public static function hide_followus_widget( $widget_types ) {
+		$widget_types[] = 'wpsite_follow_us_badges';
+		return $widget_types;
+	}
+
+
 	/**
 	 * Create the shortcode for this plugin.  All features are included in the shortcode
 	 *
@@ -830,8 +814,281 @@ class WPsiteFollowUs extends WP_Widget {
 	 *
 	 * @since 1.0.0
 	 */
-	public static function load_textdoamin() {
+	public static function load_textdomain() {
 		load_plugin_textdomain( 'wpsite-follow-us-badges', false, WPSITE_FOLLOW_US_PLUGIN_DIR . '/languages' );
+	}
+
+	/**
+	 * Register the block
+	 *
+	 * @since 1.0.0
+	 */
+	public static function wpsite_follow_us_badges_register_block() {
+
+		$settings = get_option( 'wpsite_follow_us_settings' );
+		$content  = '';
+		foreach ( $settings['order'] as $order ) {
+
+			// Twitter.
+			if ( 'twitter' === $order ) {
+				if ( ! empty( $settings['twitter']['active'] ) ) {
+
+					if ( ! empty( $settings['twitter']['args']['link'] ) ) {
+						$content .= '<div class="wpsite_follow_us_div_link"><a class="twitter" href="https://twitter.com/' . esc_html( $settings['twitter']['user'] ) . '" target="_blank">Twitter</a></div>';
+					} else {
+						$content .= '<div class="wpsite_follow_us_div twitterbox"><a href="https://twitter.com/' . esc_html( $settings['twitter']['user'] ) . '" class="twitter-follow-button"';
+
+						if ( ! empty( $settings['twitter']['args']['followers_count_display'] ) ) {
+							$content .= ' data-show-count="true"';
+						} else {
+							$content .= ' data-show-count="false"';
+						}
+
+						if ( ! empty( $settings['twitter']['args']['opt_out'] ) ) {
+							$content .= ' data-dnt="true"';
+						} else {
+							$content .= ' data-dnt="false"';
+						}
+
+						if ( ! empty( $settings['twitter']['args']['show_screen_name'] ) ) {
+							$content .= ' data-show-screen-name="true"';
+						} else {
+							$content .= ' data-show-screen-name="false"';
+						}
+
+						if ( isset( $settings['twitter']['args']['size'] ) ) {
+							$content .= ' data-size="' . esc_html( $settings['twitter']['args']['size'] ) . '"';
+						}
+
+						if ( isset( $settings['twitter']['args']['language'] ) ) {
+							$content .= ' data-lang="' . esc_html( $settings['twitter']['args']['language'] ) . '"';
+						}
+
+						if ( isset( $settings['twitter']['args']['alignment'] ) ) {
+							$content .= ' data-align="' . esc_html( $settings['twitter']['args']['alignment'] ) . '"';
+						}
+
+						if ( ! empty( $settings['twitter']['args']['width'] ) ) {
+							$content .= ' data-width="' . esc_html( $settings['twitter']['args']['width'] ) . '"';
+						}
+
+						$content .= '></a></div>';
+					}
+				}
+			} elseif ( 'facebook' === $order ) {
+				// Facebook.
+				if ( ! empty( $settings['facebook']['active'] ) ) {
+
+					if ( ! empty( $settings['facebook']['args']['link'] ) ) {
+						$content .= '<div class="wpsite_follow_us_div_link"><a class="facebook" href="https://facebook.com/' . esc_html( $settings['facebook']['user'] ) . '" target="_blank">Facebook</a></div>';
+					} else {
+						$content .= '<div class="wpsite_follow_us_div facebookbox"><div class="fb-' . esc_html( $settings['facebook']['args']['type'] ) . '" data-href="https://facebook.com/' . esc_html( $settings['facebook']['user'] ) . '"';
+
+						if ( 'like' === $settings['facebook']['args']['type'] ) {
+							if ( ! empty( $settings['facebook']['args']['include_share_button'] ) ) {
+								$content .= ' data-share="true"';
+							} else {
+								$content .= ' data-share="false"';
+							}
+
+							if ( isset( $settings['facebook']['args']['action_type'] ) ) {
+								$content .= ' data-action="' . esc_html( $settings['facebook']['args']['action_type'] ) . '"';
+							}
+						}
+
+						if ( ! empty( $settings['facebook']['args']['show_friends_faces'] ) ) {
+							$content .= ' data-show-faces="true"';
+						} else {
+							$content .= ' data-show-faces="false"';
+						}
+
+						if ( isset( $settings['facebook']['args']['layout'] ) ) {
+							$content .= ' data-layout="' . esc_html( $settings['facebook']['args']['layout'] ) . '"';
+						}
+
+						if ( isset( $settings['facebook']['args']['colorscheme'] ) ) {
+							$content .= ' data-colorscheme="' . esc_html( $settings['facebook']['args']['colorscheme'] ) . '"';
+						}
+
+						if ( ! empty( $settings['facebook']['args']['width'] ) ) {
+							$content .= ' data-width="' . esc_html( $settings['facebook']['args']['width'] ) . '"';
+						}
+
+						$content .= '></div>
+                            <div id="fb-root"></div>';
+
+						$content .= '</div>';
+					}
+				}
+			} elseif ( 'linkedin' === $order ) {
+				// LinkedIn.
+				if ( ! empty( $settings['linkedin']['active'] ) ) {
+
+					if ( ! empty( $settings['linkedin']['args']['link'] ) ) {
+
+						if ( ! empty( $settings['linkedin']['args']['type'] ) && 'person' === $settings['linkedin']['args']['type'] ) {
+							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/profile/view?id=' . esc_html( $settings['linkedin']['user'] ) . '" target="_blank">LinkedIn</a></div>';
+						} elseif ( ! empty( $settings['linkedin']['args']['type'] ) && 'company' === $settings['linkedin']['args']['type'] ) {
+							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/company/' . esc_html( $settings['linkedin']['user'] ) . '" target="_blank">LinkedIn</a></div>';
+						} elseif ( ! empty( $settings['linkedin']['args']['type'] ) && 'group' === $settings['linkedin']['args']['type'] ) {
+							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/groups?gid=' . esc_html( $settings['linkedin']['user'] ) . '" target="_blank">LinkedIn</a></div>';
+						} elseif ( ! empty( $settings['linkedin']['args']['type'] ) && 'university' === $settings['linkedin']['args']['type'] ) {
+							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/edu/school?id=' . esc_html( $settings['linkedin']['user'] ) . '" target="_blank">LinkedIn</a></div>';
+						}
+					} else {
+						wp_enqueue_script( 'platform_linkedin', '//platform.linkedin.com/in.js', array(), WPSITE_FOLLOW_US_VERSION_NUM, true );
+
+						$content .= '<div class="wpsite_follow_us_div linkedinbox">';
+
+						if ( isset( $settings['linkedin']['args']['language'] ) ) {
+							$content .= 'lang: ' . esc_html( $settings['linkedin']['args']['language'] );
+						}
+
+						$content .= '</script>
+                                <script type="IN/FollowCompany" data-id="' . esc_html( $settings['linkedin']['user'] ) . '"';
+
+						if ( isset( $settings['linkedin']['args']['count_mode'] ) ) {
+							$content .= ' data-counter="' . esc_html( $settings['linkedin']['args']['count_mode'] ) . '"';
+						}
+
+						$content .= '></script></div>';
+
+					}
+				}
+			} elseif ( 'pinterest' === $order ) {
+				// Pinterest.
+				if ( ! empty( $settings['pinterest']['active'] ) ) {
+
+					if ( ! empty( $settings['pinterest']['args']['link'] ) ) {
+						$content .= '<div class="wpsite_follow_us_div_link"><a class="pinterest" href="' . esc_html( $settings['pinterest']['user'] ) . '" target="_blank">Pinterest</a></div>';
+					} else {
+						$content .= '<div class="wpsite_follow_us_div pinterestbox"><a data-pin-do="buttonFollow" href="' . esc_html( $settings['pinterest']['user'] ) . '" >';
+
+						if ( isset( $settings['pinterest']['args']['name'] ) ) {
+							$content .= esc_html( $settings['pinterest']['args']['name'] );
+						}
+
+						$content .= '</a><!-- Please call pinit.js only once per page --></script></div>';
+						wp_enqueue_script( 'pinit', '//assets.pinterest.com/js/pinit.js', array(), WPSITE_FOLLOW_US_VERSION_NUM, true );
+
+					}
+				}
+			} elseif ( 'youtube' === $order ) {
+				// YouTube.
+				if ( ! empty( $settings['youtube']['active'] ) ) {
+
+					if ( ! empty( $settings['youtube']['args']['link'] ) ) {
+						$content .= '<div class="wpsite_follow_us_div_link"><a class="youtube" href="https://www.youtube.com/channel/' . esc_html( $settings['youtube']['user'] ) . '" target="_blank">YouTube</a></div>';
+					} else {
+						$content .= '<div class="wpsite_follow_us_div youtubebox"><div class="g-ytsubscribe" data-channelid="' . esc_html( $settings['youtube']['user'] ) . '"';
+
+						if ( isset( $settings['youtube']['args']['layout'] ) ) {
+							$content .= ' data-layout="' . esc_html( $settings['youtube']['args']['layout'] ) . '"';
+						}
+
+						if ( isset( $settings['youtube']['args']['theme'] ) ) {
+							$content .= ' data-theme="' . esc_html( $settings['youtube']['args']['theme'] ) . '"';
+						}
+
+						if ( isset( $settings['youtube']['args']['count'] ) ) {
+							$content .= ' data-count="' . esc_html( $settings['youtube']['args']['count'] ) . '"';
+						}
+
+						$content .= '></div></div>';
+						wp_enqueue_script( 'youtube', 'https://apis.google.com/js/platform.js', array(), WPSITE_FOLLOW_US_VERSION_NUM, true );
+
+					}
+				}
+			} elseif ( 'tumblr' === $order ) {
+				// Tumblr.
+				if ( ! empty( $settings['tumblr']['active'] ) ) {
+
+					if ( ! empty( $settings['tumblr']['args']['link'] ) ) {
+						$content .= '<div class="wpsite_follow_us_div_link"><a class="tumblr" href="http://' . esc_html( $settings['tumblr']['user'] ) . '.tumblr.com" target="_blank">tumblr</a></div>';
+					} else {
+						$content .= '<iframe class="btn wpsite_follow_us_div tumblrbox" height="25" frameborder="0" border="0" scrolling="no" allowtransparency="true" src="http://platform.tumblr.com/v1/follow_button.html?';
+
+						if ( isset( $settings['tumblr']['args']['button'] ) ) {
+							$content .= 'button_type=' . esc_html( $settings['tumblr']['args']['button'] );
+						}
+
+						if ( isset( $settings['tumblr']['user'] ) ) {
+							$content .= '&tumblelog=' . esc_html( $settings['tumblr']['user'] );
+						}
+
+						if ( isset( $settings['tumblr']['args']['color'] ) ) {
+							$content .= '&color_scheme=' . esc_html( $settings['tumblr']['args']['color'] );
+						}
+
+						$content .= '"></iframe>';
+					}
+				}
+			}
+		}
+
+		$content .= '<script>
+		!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+		</script>';
+
+		if ( isset( $settings['facebook']['active'] ) && ! empty( $settings['facebook']['active'] ) ) {
+
+			if ( isset( $settings['facebook']['args']['language'] ) ) {
+				$content .= '<script>
+					(function(d, s, id) {
+						var js, fjs = d.getElementsByTagName(s)[0];
+						if (d.getElementById(id)) return;
+						js = d.createElement(s); js.id = id;
+						js.src = "//connect.facebook.net/' . esc_html( $settings['facebook']['args']['language'] ) . '/all.js#xfbml=1";
+						fjs.parentNode.insertBefore(js, fjs);
+					}(document, "script", "facebook-jssdk"));
+				</script>';
+			} else {
+				$content .= '<script>
+				(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/all.js#xfbml=1";
+				fjs.parentNode.insertBefore(js, fjs);
+				}(document, "script", "facebook-jssdk"));
+			</script>';
+			}
+		}
+
+		$settings_arr = array(
+			'settings' => $settings,
+			'content'  => $content,
+		);
+
+		wp_register_script(
+			'wpsite-follow-us-badges-block',
+			WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/block.js',
+			array( 'wp-blocks', 'wp-element', 'wp-editor' ),
+			WPSITE_FOLLOW_US_VERSION_NUM,
+			true
+		);
+
+		wp_localize_script(
+			'wpsite-follow-us-badges-block',
+			'wpsiteFollowUsSettings',
+			$settings_arr
+		);
+
+		wp_register_style(
+			'wpsite_follow_us_badges_widget_css',
+			WPSITE_FOLLOW_US_PLUGIN_URL . '/css/wpsite-follow-us-badges.css',
+			array(),
+			WPSITE_FOLLOW_US_VERSION_NUM
+		);
+
+		register_block_type(
+			'wpsite-follow-us-badges/widget',
+			array(
+				'editor_script' => 'wpsite-follow-us-badges-block',
+				'editor_style'  => 'wpsite_follow_us_badges_widget_css',
+				'style'         => 'wpsite_follow_us_badges_widget_css',
+			)
+		);
 	}
 
 	/**
@@ -1201,9 +1458,9 @@ class WPsiteFollowUs extends WP_Widget {
 	public function __construct() {
 
 		$widget_ops = array(
-            'show_instance_in_rest' => true,
-            'description' => __( 'Add follow buttons to your sidebar', 'wpsite-follow-us-badges' )
-        );
+			'show_instance_in_rest' => true,
+			'description'           => __( 'Add follow buttons to your sidebar', 'wpsite-follow-us-badges' ),
+		);
 		parent::__construct(
 			'wpsite_follow_us_badges',
 			esc_html__( 'Follow Us Badges', 'wpsite-follow-us-badges' ),

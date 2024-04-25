@@ -4,10 +4,6 @@ const { createBlock } = wp.blocks;
 window.wpsiteFollowUsSettings = window.wpsiteFollowUsSettings || {};
 
 const settings = window.wpsiteFollowUsSettings;
-
-console.log("Settings");
-console.log(settings);
-
 registerBlockType('wpsite-follow-us-badges/widget', {
     title: 'Follow Us Widget',
     icon: 'smiley',
@@ -15,7 +11,7 @@ registerBlockType('wpsite-follow-us-badges/widget', {
     attributes: {
         title: {
             type: 'string',
-            default: 'Follow Us', // Default title value
+            default: 'Follow Us Test', // Default title value
         },
     },
     edit: function ({ attributes, setAttributes }) {
@@ -49,14 +45,6 @@ registerBlockType('wpsite-follow-us-badges/widget', {
             )
         );
     },
-    // save: function() {
-    //     console.log("Fahad Ahmed is great");
-    //     return wp.element.createElement(
-    //         'div',
-    //         null,
-    //         'Follow Us Widget! This is the frontend view.'
-    //     );
-    // },
     save: function({ attributes }) {
         return wp.element.createElement(
             'div',
@@ -66,7 +54,11 @@ registerBlockType('wpsite-follow-us-badges/widget', {
                 null,
                 attributes.title
             ),
-            'Follow Us Widget! This is the frontend view.'
+            wp.element.createElement(
+                wp.element.RawHTML,
+                null,
+                settings.content
+            )
         );
     },
     transforms: {
@@ -91,4 +83,3 @@ registerBlockType('wpsite-follow-us-badges/widget', {
     },
 });
 
-console.log('Hello Fahad Ahmed');
