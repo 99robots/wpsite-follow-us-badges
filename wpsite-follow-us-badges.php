@@ -68,6 +68,43 @@ add_action( 'wp_ajax_wpsite_save_order', array( 'WPsiteFollowUs', 'save_order' )
 $plugin_follow_us_badges = plugin_basename( __FILE__ );
 add_filter( "plugin_action_links_$plugin_follow_us_badges", array( 'WPsiteFollowUs', 'wpsite_follow_us_badges_settings_link' ) );
 
+function hide_example_widget( $widget_types ) {
+    $widget_types[] = 'wpsite_follow_us_badges';
+    return $widget_types;
+}
+add_filter( 'widget_types_to_hide_from_legacy_widget_block', 'hide_example_widget' );
+
+
+function my_plugin_enqueue_block_editor_assets() {
+	// $settings = get_option('wpsite_follow_us_settings');
+	$settings = get_option('blogname');
+
+
+	wp_enqueue_script( 
+		'my-block-editor-script', 
+		WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/block.js', 
+		array( 'wp-blocks', 'wp-element' ), // Dependencies
+		'32.32.1'  
+	);
+
+	wp_localize_script(
+        'my-block-editor-script',
+        'wpsiteFollowUsSettings',
+        $settings
+    );
+
+    // wp_enqueue_script(
+    //     'my-block-editor-script', // Handle
+    //     plugins_url( 'block.js', __FILE__ ), // URL to the JavaScript file
+    //     array( 'wp-blocks', 'wp-element' ), // Dependencies
+    //     filemtime( plugin_dir_path( __FILE__ ) . 'block.js' ) // Version (use file modification time)
+    // );
+}
+add_action( 'enqueue_block_editor_assets', 'my_plugin_enqueue_block_editor_assets' );
+
+
+
+
 /**
  *  WPsiteFollowUs main class
  *
@@ -76,6 +113,9 @@ add_filter( "plugin_action_links_$plugin_follow_us_badges", array( 'WPsiteFollow
  */
 class WPsiteFollowUs extends WP_Widget {
 
+
+
+	public $show_instance_in_rest = true;
 
 	/**
 	 * Prefix
@@ -1159,10 +1199,15 @@ class WPsiteFollowUs extends WP_Widget {
 	 * Register widget with WordPress.
 	 */
 	public function __construct() {
+
+		$widget_ops = array(
+            'show_instance_in_rest' => true,
+            'description' => __( 'Add follow buttons to your sidebar', 'wpsite-follow-us-badges' )
+        );
 		parent::__construct(
 			'wpsite_follow_us_badges',
 			esc_html__( 'Follow Us Badges', 'wpsite-follow-us-badges' ),
-			array( 'description' => __( 'Add follow buttons to your sidebar', 'wpsite-follow-us-badges' ) )
+			$widget_ops
 		);
 
 		// Shortcode.
