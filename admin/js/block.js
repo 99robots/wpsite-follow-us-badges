@@ -11,7 +11,7 @@ registerBlockType('wpsite-follow-us-badges/widget', {
     attributes: {
         title: {
             type: 'string',
-            default: 'Follow Us Test', // Default title value
+            default: 'Follow Us', // Default title value
         },
     },
     edit: function ({ attributes, setAttributes }) {

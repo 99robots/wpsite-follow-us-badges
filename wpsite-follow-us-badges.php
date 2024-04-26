@@ -682,12 +682,16 @@ class WPsiteFollowUs extends WP_Widget {
 						}
 					} else {
 						$content .= '<div class="wpsite_follow_us_div linkedinbox ' . $inline_class . '">';
+						// @codingStandardsIgnoreStart	
+						$content .= '<script src="//platform.linkedin.com/in.js" type="text/javascript">';
 
 						if ( isset( $settings['linkedin']['args']['language'] ) ) {
 							$content .= 'lang: ' . $settings['linkedin']['args']['language'];
 						}
 
-						$content .= '<script type="IN/FollowCompany" data-id="' . wp_kses_post( $settings['linkedin']['user'] ) . '"';
+						$content .= '</script>
+						<script type="IN/FollowCompany" data-id="' . esc_html( $settings['linkedin']['user'] ) . '"';
+						// @codingStandardsIgnoreEnd
 
 						if ( isset( $settings['linkedin']['args']['count_mode'] ) ) {
 							$content .= ' data-counter="' . $settings['linkedin']['args']['count_mode'] . '"';
@@ -825,6 +829,61 @@ class WPsiteFollowUs extends WP_Widget {
 	 */
 	public static function wpsite_follow_us_badges_register_block() {
 
+		$settings_arr = array(
+			'content' => self::generate_content(),
+		);
+
+		wp_register_script(
+			'wpsite-follow-us-badges-block',
+			WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/block.js',
+			array( 'wp-blocks', 'wp-element', 'wp-editor' ),
+			WPSITE_FOLLOW_US_VERSION_NUM,
+			true
+		);
+
+		wp_localize_script(
+			'wpsite-follow-us-badges-block',
+			'wpsiteFollowUsSettings',
+			$settings_arr
+		);
+
+		wp_register_style(
+			'wpsite_follow_us_badges_widget_css',
+			WPSITE_FOLLOW_US_PLUGIN_URL . '/css/wpsite-follow-us-badges.css',
+			array(),
+			WPSITE_FOLLOW_US_VERSION_NUM
+		);
+
+		register_block_type(
+			'wpsite-follow-us-badges/widget',
+			array(
+				'editor_script'   => 'wpsite-follow-us-badges-block',
+				'editor_style'    => 'wpsite_follow_us_badges_widget_css',
+				'style'           => 'wpsite_follow_us_badges_widget_css',
+				'render_callback' => array( 'WPsiteFollowUs', 'wpsite_follow_us_badges_render_block' ),
+			)
+		);
+	}
+
+	/**
+	 * Render the block
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array $attributes The block attributes.
+	 */
+	public static function wpsite_follow_us_badges_render_block( $attributes ) {
+
+		return self::generate_content();
+	}
+
+	/**
+	 * Generate the content for the widget & block
+	 *
+	 * @since 1.0.0
+	 */
+	public static function generate_content() {
+
 		$settings = get_option( 'wpsite_follow_us_settings' );
 		$content  = '';
 		foreach ( $settings['order'] as $order ) {
@@ -936,9 +995,10 @@ class WPsiteFollowUs extends WP_Widget {
 							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/edu/school?id=' . esc_html( $settings['linkedin']['user'] ) . '" target="_blank">LinkedIn</a></div>';
 						}
 					} else {
-						wp_enqueue_script( 'platform_linkedin', '//platform.linkedin.com/in.js', array(), WPSITE_FOLLOW_US_VERSION_NUM, true );
 
 						$content .= '<div class="wpsite_follow_us_div linkedinbox">';
+						// @codingStandardsIgnoreStart
+						$content .= '<script src="//platform.linkedin.com/in.js" type="text/javascript">';
 
 						if ( isset( $settings['linkedin']['args']['language'] ) ) {
 							$content .= 'lang: ' . esc_html( $settings['linkedin']['args']['language'] );
@@ -946,6 +1006,7 @@ class WPsiteFollowUs extends WP_Widget {
 
 						$content .= '</script>
                                 <script type="IN/FollowCompany" data-id="' . esc_html( $settings['linkedin']['user'] ) . '"';
+						// @codingStandardsIgnoreEnd
 
 						if ( isset( $settings['linkedin']['args']['count_mode'] ) ) {
 							$content .= ' data-counter="' . esc_html( $settings['linkedin']['args']['count_mode'] ) . '"';
@@ -1055,40 +1116,7 @@ class WPsiteFollowUs extends WP_Widget {
 			}
 		}
 
-		$settings_arr = array(
-			'settings' => $settings,
-			'content'  => $content,
-		);
-
-		wp_register_script(
-			'wpsite-follow-us-badges-block',
-			WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/block.js',
-			array( 'wp-blocks', 'wp-element', 'wp-editor' ),
-			WPSITE_FOLLOW_US_VERSION_NUM,
-			true
-		);
-
-		wp_localize_script(
-			'wpsite-follow-us-badges-block',
-			'wpsiteFollowUsSettings',
-			$settings_arr
-		);
-
-		wp_register_style(
-			'wpsite_follow_us_badges_widget_css',
-			WPSITE_FOLLOW_US_PLUGIN_URL . '/css/wpsite-follow-us-badges.css',
-			array(),
-			WPSITE_FOLLOW_US_VERSION_NUM
-		);
-
-		register_block_type(
-			'wpsite-follow-us-badges/widget',
-			array(
-				'editor_script' => 'wpsite-follow-us-badges-block',
-				'editor_style'  => 'wpsite_follow_us_badges_widget_css',
-				'style'         => 'wpsite_follow_us_badges_widget_css',
-			)
-		);
+		return $content;
 	}
 
 	/**
@@ -1606,9 +1634,10 @@ class WPsiteFollowUs extends WP_Widget {
 							$content .= '<div class="wpsite_follow_us_div_link"><a class="linkedin" href="https://www.linkedin.com/edu/school?id=' . esc_html( $settings['linkedin']['user'] ) . '" target="_blank">LinkedIn</a></div>';
 						}
 					} else {
-						wp_enqueue_script( 'platform_linkedin', '//platform.linkedin.com/in.js', array(), WPSITE_FOLLOW_US_VERSION_NUM, true );
 
 						$content .= '<div class="wpsite_follow_us_div linkedinbox">';
+						// @codingStandardsIgnoreStart
+						$content .= '<script src="//platform.linkedin.com/in.js" type="text/javascript">';
 
 						if ( isset( $settings['linkedin']['args']['language'] ) ) {
 							$content .= 'lang: ' . esc_html( $settings['linkedin']['args']['language'] );
@@ -1616,6 +1645,7 @@ class WPsiteFollowUs extends WP_Widget {
 
 						$content .= '</script>
 								<script type="IN/FollowCompany" data-id="' . esc_html( $settings['linkedin']['user'] ) . '"';
+						// @codingStandardsIgnoreEnd
 
 						if ( isset( $settings['linkedin']['args']['count_mode'] ) ) {
 							$content .= ' data-counter="' . esc_html( $settings['linkedin']['args']['count_mode'] ) . '"';
