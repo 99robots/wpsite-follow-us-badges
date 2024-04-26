@@ -5,7 +5,7 @@ window.wpsiteFollowUsSettings = window.wpsiteFollowUsSettings || {};
 
 const settings = window.wpsiteFollowUsSettings;
 registerBlockType('wpsite-follow-us-badges/widget', {
-    title: 'Follow Us Widget',
+    title: 'Follow Us',
     icon: 'smiley',
     category: 'widgets',
     attributes: {

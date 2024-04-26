@@ -747,7 +747,7 @@ class WPsiteFollowUs extends WP_Widget {
 					if ( ! empty( $settings['tumblr']['args']['link'] ) ) {
 						$content .= '<div class="wpsite_follow_us_div_link ' . $inline_class . '"><a class="tumblr" href="http://' . $settings['tumblr']['user'] . '.tumblr.com" target="_blank">tumblr</a></div>';
 					} else {
-						$content .= '<iframe class="btn wpsite_follow_us_div tumblrbox ' . $inline_class . '" height="25" width="117" frameborder="0" border="0" scrolling="no" allowtransparency="true" src="http://platform.tumblr.com/v1/follow_button.html?';
+						$content .= '<div class="btn wpsite_follow_us_div tumblrbox"><iframe class=" ' . $inline_class . '" height="25" width="117" frameborder="0" border="0" scrolling="no" allowtransparency="true" src="http://platform.tumblr.com/v1/follow_button.html?';
 
 						if ( isset( $settings['tumblr']['args']['button'] ) ) {
 							$content .= 'button_type=' . $settings['tumblr']['args']['button'];
@@ -761,7 +761,7 @@ class WPsiteFollowUs extends WP_Widget {
 							$content .= '&color_scheme=' . $settings['tumblr']['args']['color'];
 						}
 
-						$content .= '"></iframe>';
+						$content .= '"></iframe></div>';
 					}
 				}
 			}
@@ -1074,7 +1074,7 @@ class WPsiteFollowUs extends WP_Widget {
 					if ( ! empty( $settings['tumblr']['args']['link'] ) ) {
 						$content .= '<div class="wpsite_follow_us_div_link"><a class="tumblr" href="http://' . esc_html( $settings['tumblr']['user'] ) . '.tumblr.com" target="_blank">tumblr</a></div>';
 					} else {
-						$content .= '<iframe class="btn wpsite_follow_us_div tumblrbox" height="25" frameborder="0" border="0" scrolling="no" allowtransparency="true" src="http://platform.tumblr.com/v1/follow_button.html?';
+						$content .= '<div class="btn wpsite_follow_us_div tumblrbox"><iframe height="25" frameborder="0" border="0" scrolling="no" allowtransparency="true" src="http://platform.tumblr.com/v1/follow_button.html?';
 
 						if ( isset( $settings['tumblr']['args']['button'] ) ) {
 							$content .= 'button_type=' . esc_html( $settings['tumblr']['args']['button'] );
@@ -1088,7 +1088,7 @@ class WPsiteFollowUs extends WP_Widget {
 							$content .= '&color_scheme=' . esc_html( $settings['tumblr']['args']['color'] );
 						}
 
-						$content .= '"></iframe>';
+						$content .= '"></iframe></div>';
 					}
 				}
 			}
@@ -1713,7 +1713,7 @@ class WPsiteFollowUs extends WP_Widget {
 					if ( ! empty( $settings['tumblr']['args']['link'] ) ) {
 						$content .= '<div class="wpsite_follow_us_div_link"><a class="tumblr" href="http://' . esc_html( $settings['tumblr']['user'] ) . '.tumblr.com" target="_blank">tumblr</a></div>';
 					} else {
-						$content .= '<iframe class="btn wpsite_follow_us_div tumblrbox" height="25" frameborder="0" border="0" scrolling="no" allowtransparency="true" src="http://platform.tumblr.com/v1/follow_button.html?';
+						$content .= '<div class="btn wpsite_follow_us_div tumblrbox"><iframe height="25" frameborder="0" border="0" scrolling="no" allowtransparency="true" src="http://platform.tumblr.com/v1/follow_button.html?';
 
 						if ( isset( $settings['tumblr']['args']['button'] ) ) {
 							$content .= 'button_type=' . esc_html( $settings['tumblr']['args']['button'] );
