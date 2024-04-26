@@ -1,4 +1,7 @@
 /* Header */
+a.privacy-settings-tab i {
+    font-size: 21px !important;
+}
 .nnr-wrap {background: #fff;}
 .nnr-header {padding: 10px 20px;background-color: #4aaeee;display: inline-block;width: 95%;}
 #nnr-heading {padding-bottom: 20px;margin-bottom: 30px;text-align: center;color: #555;position: relative;}
@@ -37,7 +40,8 @@ input[type="checkbox"],
 .nnr-wrap input[type="checkbox"].form-control { display: none;}
 input[type="checkbox"] + label .fa-check  {	display: none; }
 input[type="checkbox"]:checked + label .fa-check { display: block; color: #4aaeee; }
-input[type="checkbox"] + label .fa-square-o {color: #ccc;}
+input[type="checkbox"] + label .fa-square::before {border: 1px solid #00000096;border-radius: 4px;}
+input[type="checkbox"] + label .fa-square {color: #f5f5f5;}
 input[type="checkbox"]:checked + label .fa-check {position: relative;left: .125em;bottom: .125em;}
 .nnr-wrap input[type="checkbox"] + label + em {color: #737373;display: inline-block;position: relative;top: -2px;}
 .wp-picker-container, .wp-picker-container * {
@@ -117,6 +121,8 @@ input[type="checkbox"]:checked + label .fa-check {position: relative;left: .125e
 	.col-xxl-3 {flex: 0 0 auto;width: 25% }
 	.col-xxl-9 {flex: 0 0 auto;width: 75% }
 }
+
+
 
 /* This is for the icon picker */
 
