@@ -50,8 +50,8 @@ registerBlockType('wpsite-follow-us-badges/widget', {
             'div',
             null,
             wp.element.createElement(
-                'h2',
-                null,
+                'h3',
+                { className: 'widget-title' },
                 attributes.title
             ),
             wp.element.createElement(

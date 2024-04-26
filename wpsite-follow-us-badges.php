@@ -877,7 +877,7 @@ class WPsiteFollowUs extends WP_Widget {
 		$content = '';
 
 		if ( isset( $attributes['title'] ) && '' !== $attributes['title'] ) {
-			$content .= '<h2>' . esc_html( $attributes['title'] ) . '</h2>';
+			$content .= '<h3 class="widget-title">' . esc_html( $attributes['title'] ) . '</h3>';
 		}
 
 		$content .= self::generate_content();
