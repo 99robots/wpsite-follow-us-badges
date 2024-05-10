@@ -1733,7 +1733,8 @@ class WPsiteFollowUs extends WP_Widget {
 			}
 		}
 
-		echo wp_kses_post( $content );
+		// Display the content.
+		echo $content;
 
 		echo wp_kses_post( $args['after_widget'] );
 
