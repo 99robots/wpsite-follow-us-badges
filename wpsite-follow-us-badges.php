@@ -45,7 +45,7 @@ if ( ! defined( 'WPSITE_FOLLOW_US_PLUGIN_URL' ) ) {
 
 // Plugin Version.
 if ( ! defined( 'WPSITE_FOLLOW_US_VERSION_NUM' ) ) {
-	define( 'WPSITE_FOLLOW_US_VERSION_NUM', '3.1.10' );
+	define( 'WPSITE_FOLLOW_US_VERSION_NUM', '3.1.11' );
 }
 
 /**
