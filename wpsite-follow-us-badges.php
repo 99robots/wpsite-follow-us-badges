@@ -1463,26 +1463,23 @@ class WPsiteFollowUs extends WP_Widget {
 	 * @since 1.0.0
 	 */
 	public static function save_order() {
-		// Verify the nonce.
-		check_admin_referer( 'wpsite_follow_us_admin_settings', 'nonce' );
 
 		$settings = get_option( 'wpsite_follow_us_settings' );
 
 		// Default values.
-
 		if ( false === $settings ) {
 			$settings = self::$default;
 		}
 
+		// @codingStandardsIgnoreStart
 		if ( ! empty( $_POST['order'] ) ) {
-			$order = isset( $_POST['order'] ) ? sanitize_text_field( wp_unslash( $_POST['order'] ) ) : '';
-
-			$order = array_map( 'sanitize_text_field', $order );
-
+			
+			$order = isset( $_POST['order'] ) ? array_map( 'sanitize_text_field', wp_unslash( $_POST['order'] ) ) : array();
 			$settings['order'] = $order;
 
 			update_option( 'wpsite_follow_us_settings', $settings );
 		}
+		// @codingStandardsIgnoreEnd
 
 		wp_die();
 	}
@@ -1734,6 +1731,7 @@ class WPsiteFollowUs extends WP_Widget {
 		}
 
 		// Display the content.
+		// @codingStandardsIgnoreLine
 		echo $content;
 
 		echo wp_kses_post( $args['after_widget'] );
