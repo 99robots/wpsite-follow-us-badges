@@ -3,7 +3,7 @@
  * Plugin Name: Follow Us Badges
  * Plugin URI:    https://draftpress.com/products/
  * Description: The DraftPress Follow Us Badges showcases your Facebook, Twitter, LinkedIn and other social media badges.
- * Version: 3.1.11
+ * Version: 3.1.12
  * Author: DraftPress
  * Author URI: https://www.draftpress.com/
  * License: GPL2
@@ -45,7 +45,7 @@ if ( ! defined( 'WPSITE_FOLLOW_US_PLUGIN_URL' ) ) {
 
 // Plugin Version.
 if ( ! defined( 'WPSITE_FOLLOW_US_VERSION_NUM' ) ) {
-	define( 'WPSITE_FOLLOW_US_VERSION_NUM', '3.1.11' );
+	define( 'WPSITE_FOLLOW_US_VERSION_NUM', '3.1.12' );
 }
 
 /**
