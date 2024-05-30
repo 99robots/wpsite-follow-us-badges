@@ -34,6 +34,11 @@
 	background: #2CA9E1 /* url("../../img/twitter.png") */ no-repeat 20px center;
 }
 
+#x-twitter {
+	background: #333131 /* url("../../img/twitter.png") */ no-repeat 20px center;
+}
+
+
 #facebook {
 	background: #3B5997 /* url("../../img/facebook.png") */ no-repeat 20px center;
 }
