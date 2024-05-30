@@ -75,7 +75,7 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 
 
 == Changelog ==
-= 3.1.12 = 2024-05-21
+= 3.1.12 = 2024-05-30
 * Updated Twitter/X icon
 * Compatible with WordPress 6.5.3
 
