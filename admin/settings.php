@@ -972,7 +972,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 
 									foreach ( $settings['order'] as $setting_order ) {
 										if ( 'twitter' === $setting_order ) {
-											'fa-x-twitter' === $setting_order;
+											$setting_order = 'x-twitter';
 										}
 
 										?>

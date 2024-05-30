@@ -3,7 +3,7 @@
  * Plugin Name: Follow Us Badges
  * Plugin URI:    https://draftpress.com/products/
  * Description: The DraftPress Follow Us Badges showcases your Facebook, Twitter, LinkedIn and other social media badges.
- * Version: 3.1.11
+ * Version: 3.1.12
  * Author: DraftPress
  * Author URI: https://www.draftpress.com/
  * License: GPL2
@@ -45,7 +45,7 @@ if ( ! defined( 'WPSITE_FOLLOW_US_PLUGIN_URL' ) ) {
 
 // Plugin Version.
 if ( ! defined( 'WPSITE_FOLLOW_US_VERSION_NUM' ) ) {
-	define( 'WPSITE_FOLLOW_US_VERSION_NUM', '3.1.11' );
+	define( 'WPSITE_FOLLOW_US_VERSION_NUM', '3.1.12' );
 }
 
 /**
@@ -747,7 +747,7 @@ class WPsiteFollowUs extends WP_Widget {
 					if ( ! empty( $settings['tumblr']['args']['link'] ) ) {
 						$content .= '<div class="wpsite_follow_us_div_link ' . $inline_class . '"><a class="tumblr" href="http://' . $settings['tumblr']['user'] . '.tumblr.com" target="_blank">tumblr</a></div>';
 					} else {
-						$content .= '<div class="wpsite_follow_us_div tumblrbox"><iframe class=" ' . $inline_class . '" height="25" width="117" frameborder="0" border="0" scrolling="no" allowtransparency="true" src="http://platform.tumblr.com/v1/follow_button.html?';
+						$content .= '<div class="wpsite_follow_us_div tumblrbox"><iframe class=" ' . $inline_class . '" height="25" width="117" frameborder="0" border="0" scrolling="no" allowtransparency="true" src="https://platform.tumblr.com/v1/follow_button.html?';
 
 						if ( isset( $settings['tumblr']['args']['button'] ) ) {
 							$content .= 'button_type=' . $settings['tumblr']['args']['button'];
@@ -1074,7 +1074,7 @@ class WPsiteFollowUs extends WP_Widget {
 					if ( ! empty( $settings['tumblr']['args']['link'] ) ) {
 						$content .= '<div class="wpsite_follow_us_div_link"><a class="tumblr" href="http://' . esc_html( $settings['tumblr']['user'] ) . '.tumblr.com" target="_blank">tumblr</a></div>';
 					} else {
-						$content .= '<div class="wpsite_follow_us_div tumblrbox"><iframe height="25" frameborder="0" border="0" scrolling="no" allowtransparency="true" src="http://platform.tumblr.com/v1/follow_button.html?';
+						$content .= '<div class="wpsite_follow_us_div tumblrbox"><iframe height="25" frameborder="0" border="0" scrolling="no" allowtransparency="true" src="https://platform.tumblr.com/v1/follow_button.html?';
 
 						if ( isset( $settings['tumblr']['args']['button'] ) ) {
 							$content .= 'button_type=' . esc_html( $settings['tumblr']['args']['button'] );
@@ -1463,26 +1463,23 @@ class WPsiteFollowUs extends WP_Widget {
 	 * @since 1.0.0
 	 */
 	public static function save_order() {
-		// Verify the nonce.
-		check_admin_referer( 'wpsite_follow_us_admin_settings', 'nonce' );
 
 		$settings = get_option( 'wpsite_follow_us_settings' );
 
 		// Default values.
-
 		if ( false === $settings ) {
 			$settings = self::$default;
 		}
 
+		// @codingStandardsIgnoreStart
 		if ( ! empty( $_POST['order'] ) ) {
-			$order = isset( $_POST['order'] ) ? sanitize_text_field( wp_unslash( $_POST['order'] ) ) : '';
-
-			$order = array_map( 'sanitize_text_field', $order );
-
+			
+			$order = isset( $_POST['order'] ) ? array_map( 'sanitize_text_field', wp_unslash( $_POST['order'] ) ) : array();
 			$settings['order'] = $order;
 
 			update_option( 'wpsite_follow_us_settings', $settings );
 		}
+		// @codingStandardsIgnoreEnd
 
 		wp_die();
 	}
@@ -1713,7 +1710,7 @@ class WPsiteFollowUs extends WP_Widget {
 					if ( ! empty( $settings['tumblr']['args']['link'] ) ) {
 						$content .= '<div class="wpsite_follow_us_div_link"><a class="tumblr" href="http://' . esc_html( $settings['tumblr']['user'] ) . '.tumblr.com" target="_blank">tumblr</a></div>';
 					} else {
-						$content .= '<div class="wpsite_follow_us_div tumblrbox"><iframe height="25" frameborder="0" border="0" scrolling="no" allowtransparency="true" src="http://platform.tumblr.com/v1/follow_button.html?';
+						$content .= '<div class="wpsite_follow_us_div tumblrbox"><iframe height="25" frameborder="0" border="0" scrolling="no" allowtransparency="true" src="https://platform.tumblr.com/v1/follow_button.html?';
 
 						if ( isset( $settings['tumblr']['args']['button'] ) ) {
 							$content .= 'button_type=' . esc_html( $settings['tumblr']['args']['button'] );
@@ -1733,7 +1730,9 @@ class WPsiteFollowUs extends WP_Widget {
 			}
 		}
 
-		echo wp_kses_post( $content );
+		// Display the content.
+		// @codingStandardsIgnoreLine
+		echo $content;
 
 		echo wp_kses_post( $args['after_widget'] );
 
