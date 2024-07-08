@@ -558,8 +558,7 @@ class WPsiteFollowUs extends WP_Widget {
 			} else {
 				$content .= '<h3>' . $settings['title'] . '</h3>';
 			}
-		}
-		else {
+		} else {
 			$content .= '<h3>Follow Us</h3>';
 		}
 
