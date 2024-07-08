@@ -6,7 +6,7 @@ window.wpsiteFollowUsSettings = window.wpsiteFollowUsSettings || {};
 const settings = window.wpsiteFollowUsSettings;
 registerBlockType('wpsite-follow-us-badges/widget', {
     title: 'Follow Us',
-    icon: 'smiley',
+    icon: 'networking',
     category: 'widgets',
     attributes: {
         title: {
@@ -46,20 +46,7 @@ registerBlockType('wpsite-follow-us-badges/widget', {
         );
     },
     save: function({ attributes }) {
-        return wp.element.createElement(
-            'div',
-            null,
-            wp.element.createElement(
-                'h3',
-                { className: 'widget-title' },
-                attributes.title
-            ),
-            wp.element.createElement(
-                wp.element.RawHTML,
-                null,
-                settings.content
-            )
-        );
+        return null;
     },
     transforms: {
         from: [

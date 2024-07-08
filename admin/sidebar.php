@@ -10,8 +10,8 @@
  * @license  GNU General Public License 2
  * (https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
  * @link     https://draftpress.com/
- * @codingStandardsIgnoreStart
  */
+
 ?>
 <div class="nnr-sidebar">
 
@@ -50,7 +50,6 @@
 
 		<div class="panel-body">
 			<div class="wpsite_feed">
-				<script src="http://feeds.feedburner.com/99robots?format=sigpro" type="text/javascript" ></script>
 				<noscript><p><?php esc_html_e( 'Subscribe to 99 Robots Feed:', 'wpsite-follow-us-badges' ); ?> <a href="http://feeds.feedburner.com/99robots"></a><br/><?php esc_html_e( 'Powered by FeedBurner', 'wpsite-follow-us-badges' ); ?></p> </noscript>
 			</div>
 		</div>
