@@ -563,7 +563,7 @@ class WPsiteFollowUs extends WP_Widget {
 		}
 
 		foreach ( $settings['order'] as $order ) {
-			if ( 'x-twitter' === $order ) {
+			if ( 'twitter' === $order ) {
 				// Twitter.
 				if ( ! empty( $settings['twitter']['active'] ) ) {
 
@@ -1555,7 +1555,7 @@ class WPsiteFollowUs extends WP_Widget {
 		foreach ( $settings['order'] as $order ) {
 
 			// Twitter.
-			if ( 'x-twitter' === $order ) {
+			if ( 'twitter' === $order ) {
 				if ( ! empty( $settings['twitter']['active'] ) ) {
 
 					if ( ! empty( $settings['twitter']['args']['link'] ) ) {
