@@ -418,6 +418,13 @@ class WPsiteFollowUs extends WP_Widget {
 		wp_enqueue_script( 'google-platform', 'https://apis.google.com/js/platform.js', array(), '1.0.0', true );
 		wp_enqueue_script( 'pinterest-pinit', '//assets.pinterest.com/js/pinit.js', array(), '1.0.0', true );
 
+		// Define allowed values for certain attributes.
+		$allowed_sizes   = array( 'medium', 'large' );
+		$allowed_layouts = array( 'standard', 'box_count', 'button_count', 'button' );
+		$allowed_themes  = array( 'default', 'dark' );
+		$allowed_colors  = array( 'light', 'dark' );
+		$allowed_buttons = array( '1', '2', '3' );
+
 		$args = shortcode_atts(
 			array(
 				'title'                           => '',
@@ -469,21 +476,28 @@ class WPsiteFollowUs extends WP_Widget {
 			$atts
 		);
 
+		// Validate and sanitize inputs.
+		$args['twitter_size']    = in_array( $args['twitter_size'], $allowed_sizes, true ) ? $args['twitter_size'] : 'medium';
+		$args['facebook_layout'] = in_array( $args['facebook_layout'], $allowed_layouts, true ) ? $args['facebook_layout'] : 'standard';
+		$args['youtube_theme']   = in_array( $args['youtube_theme'], $allowed_themes, true ) ? $args['youtube_theme'] : 'default';
+		$args['tumblr_color']    = in_array( $args['tumblr_color'], $allowed_colors, true ) ? $args['tumblr_color'] : 'dark';
+		$args['tumblr_button']   = in_array( $args['tumblr_button'], $allowed_buttons, true ) ? $args['tumblr_button'] : '2';
+
 		// Re-create args array so our code can understand the data.
 		$settings = array(
-			'title'     => esc_attr( $args['title'] ),
-			'inline'    => 'true' === esc_attr( $args['inline'] ) ? true : false,
-			'order'     => explode( ',', str_replace( ' ', '', esc_attr( $args['order'] ) ) ),
+			'title'     => sanitize_text_field( $args['title'] ),
+			'inline'    => 'true' === sanitize_text_field( $args['inline'] ) ? true : false,
+			'order'     => array_map( 'sanitize_text_field', explode( ',', str_replace( ' ', '', $args['order'] ) ) ),
 			'twitter'   => array(
 				'active' => isset( $args['twitter'] ) ? true : false,
-				'user'   => esc_attr( $args['twitter'] ),
+				'user'   => sanitize_text_field( $args['twitter'] ),
 				'args'   => array(
-					'link'                    => 'true' === esc_attr( $args['twitter_link'] ) ? true : false,
-					'followers_count_display' => 'true' === esc_attr( $args['twitter_followers_count_display'] ) ? true : false,
-					'language'                => esc_attr( $args['twitter_language'] ),
-					'width'                   => esc_attr( $args['twitter_width'] ),
-					'alignment'               => esc_attr( $args['twitter_alignment'] ),
-					'show_screen_name'        => 'true' === esc_attr( $args['twitter_show_screen_name'] ) ? true : false,
+					'link'                    => 'true' === sanitize_text_field( $args['twitter_link'] ) ? true : false,
+					'followers_count_display' => 'true' === sanitize_text_field( $args['twitter_followers_count_display'] ) ? true : false,
+					'language'                => sanitize_text_field( $args['twitter_language'] ),
+					'width'                   => sanitize_text_field( $args['twitter_width'] ),
+					'alignment'               => sanitize_text_field( $args['twitter_alignment'] ),
+					'show_screen_name'        => 'true' === sanitize_text_field( $args['twitter_show_screen_name'] ) ? true : false,
 					'size'                    => $args['twitter_size'],
 				),
 			),
@@ -551,15 +565,15 @@ class WPsiteFollowUs extends WP_Widget {
 
 		$content = '<div class="wpsite_follow_us_badges_shortcode">';
 
-		if ( isset( $settings['title'] ) && '' !== $settings['title'] ) {
+		if ( ! empty( $settings['title'] ) ) {
 
 			if ( $settings['inline'] ) {
-				$content .= '<span>' . $settings['title'] . '</span>';
+				$content .= '<span>' . esc_html( $settings['title'] ) . '</span>';
 			} else {
-				$content .= '<h3>' . $settings['title'] . '</h3>';
+				$content .= '<h3>' . esc_html( $settings['title'] ) . '</h3>';
 			}
 		} else {
-			$content .= '<h3>Follow Us</h3>';
+			$content .= '<h3>' . esc_html__( 'Follow Us', 'wpsite-follow-us-badges' ) . '</h3>';
 		}
 
 		foreach ( $settings['order'] as $order ) {
@@ -568,9 +582,9 @@ class WPsiteFollowUs extends WP_Widget {
 				if ( ! empty( $settings['twitter']['active'] ) ) {
 
 					if ( ! empty( $settings['twitter']['args']['link'] ) ) {
-						$content .= '<div class="wpsite_follow_us_div_link ' . $inline_class . '"><a class="twitter" href="https://twitter.com/' . $settings['twitter']['user'] . '" target="_blank">Twitter</a></div>';
+						$content .= '<div class="wpsite_follow_us_div_link ' . esc_attr( $inline_class ) . '"><a class="twitter" href="' . esc_url( 'https://twitter.com/' . $settings['twitter']['user'] ) . '" target="_blank">Twitter</a></div>';
 					} else {
-						$content .= '<div class="wpsite_follow_us_div twitterbox ' . $inline_class . '"><a href="https://twitter.com/' . $settings['twitter']['user'] . '" class="twitter-follow-button"';
+						$content .= '<div class="wpsite_follow_us_div twitterbox ' . esc_attr( $inline_class ) . '"><a href="' . esc_url( 'https://twitter.com/' . $settings['twitter']['user'] ) . '" class="twitter-follow-button"';
 
 						if ( ! empty( $settings['twitter']['args']['followers_count_display'] ) ) {
 							$content .= ' data-show-count="true"';
@@ -591,19 +605,19 @@ class WPsiteFollowUs extends WP_Widget {
 						}
 
 						if ( isset( $settings['twitter']['args']['size'] ) ) {
-							$content .= ' data-size="' . $settings['twitter']['args']['size'] . '"';
+							$content .= ' data-size="' . esc_attr( $settings['twitter']['args']['size'] ) . '"';
 						}
 
 						if ( isset( $settings['twitter']['args']['language'] ) ) {
-							$content .= ' data-lang="' . $settings['twitter']['args']['language'] . '"';
+							$content .= ' data-lang="' . esc_attr( $settings['twitter']['args']['language'] ) . '"';
 						}
 
 						if ( isset( $settings['twitter']['args']['alignment'] ) ) {
-							$content .= ' data-align="' . $settings['twitter']['args']['alignment'] . '"';
+							$content .= ' data-align="' . esc_attr( $settings['twitter']['args']['alignment'] ) . '"';
 						}
 
 						if ( ! empty( $settings['twitter']['args']['width'] ) ) {
-							$content .= ' data-width="' . $settings['twitter']['args']['width'] . '"';
+							$content .= ' data-width="' . esc_attr( $settings['twitter']['args']['width'] ) . '"';
 						}
 
 						$content .= '></a>
@@ -1093,7 +1107,7 @@ class WPsiteFollowUs extends WP_Widget {
 							$content .= '&color_scheme=' . esc_html( $settings['tumblr']['args']['color'] );
 						}
 
-						$content .= '"></iframe></div>';
+						$content .= '"></iframe>';
 					}
 				}
 			}
