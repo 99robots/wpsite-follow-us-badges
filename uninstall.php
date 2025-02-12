@@ -22,7 +22,6 @@ if ( ! is_multisite() ) {
 } else {
 	delete_site_option( $version_option_name );
 
-	// phpcs:ignore WordPress.DB.DirectDatabaseQuery
 	$blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
 
 	foreach ( $blog_ids as $blog_id_val ) {

@@ -58,38 +58,38 @@
 /* Twitter */
 
 .wpsite_follow_us_div_link a.twitter::before{
-	background: url("../img/twitter.png") no-repeat center center;
+	background: url("../img/twitter-60x60.png") no-repeat center center;
 	content: "";
 	width: 30px;
 	height: 30px;
 	position: absolute;
 	left: 10px;
-	top: 10%;
+	top: 18%;
 }
 
 .wpsite_follow_us_div_link a.twitter {
-	background:#2CA9E1;
-	-webkit-box-shadow: 0px 6px 0px #2695BC;
-	-moz-box-shadow: 0px 6px 0px #2695BC;
-	box-shadow: 0px 6px 0px #2695BC;
+	background:#333131;
+	-webkit-box-shadow: 0px 6px 0px #000000;
+	-moz-box-shadow: 0px 6px 0px #000000;
+	box-shadow: 0px 6px 0px #000000;
 }
 
 .wpsite_follow_us_div_link a.twitter:active{
-	-webkit-box-shadow: 0px 2px 0px #2695BC;
-    -moz-box-shadow: 0px 2px 0px #2695BC;
-    box-shadow: 0px 2px 0px #2695BC;
+	-webkit-box-shadow: 0px 2px 0px #000000;
+    -moz-box-shadow: 0px 2px 0px #000000;
+    box-shadow: 0px 2px 0px #000000;
 }
 
 /* Facebook */
 
 .wpsite_follow_us_div_link a.facebook::before{
-	background: url("../img/facebook.png") no-repeat center center;
+	background: url("../img/facebook-60x60.png") no-repeat center center;
 	content: "";
 	width: 30px;
 	height: 30px;
 	position: absolute;
 	left: 10px;
-	top: 10%;
+	top: 18%;
 }
 
 .wpsite_follow_us_div_link a.facebook {
@@ -133,13 +133,13 @@
 /* LinkedIn */
 
 .wpsite_follow_us_div_link a.linkedin::before{
-	background: url("../img/linkedin.png") no-repeat center center;
+	background: url("../img/linkedin-60x60.png") no-repeat center center;
 	content: "";
 	width: 30px;
 	height: 30px;
 	position: absolute;
 	left: 10px;
-	top: 10%;
+	top: 18%;
 }
 
 .wpsite_follow_us_div_link a.linkedin {
@@ -164,7 +164,7 @@
 	height: 30px;
 	position: absolute;
 	left: 10px;
-	top: 10%;
+	top: 18%;
 }
 
 .wpsite_follow_us_div_link a.pinterest {
@@ -183,14 +183,14 @@
 /* YouTube */
 
 .wpsite_follow_us_div_link a.youtube::before{
-	background: url("../img/youtube.png") no-repeat center center;
+	background: url("../img/youtube-60x60.png") no-repeat center center;
 	background-size: cover;
 	content: "";
 	width: 30px;
 	height: 30px;
 	position: absolute;
 	left: 10px;
-	top: 10%;
+	top: 18%;
 }
 
 .wpsite_follow_us_div_link a.youtube {
@@ -209,14 +209,14 @@
 /* Tumblr */
 
 .wpsite_follow_us_div_link a.tumblr::before{
-	background: url("../img/tumblr.png") no-repeat center center;
+	background: url("../img/tumblr-60x60.png") no-repeat center center;
 	background-size: cover;
 	content: "";
 	width: 30px;
 	height: 30px;
 	position: absolute;
 	left: 10px;
-	top: 10%;
+	top: 18%;
 }
 
 .wpsite_follow_us_div_link a.tumblr {
