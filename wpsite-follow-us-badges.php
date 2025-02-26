@@ -40,7 +40,7 @@ if ( ! defined( 'WPSITE_FOLLOW_US_PLUGIN_DIR' ) ) {
 
 // Plugin URL.
 if ( ! defined( 'WPSITE_FOLLOW_US_PLUGIN_URL' ) ) {
-	define( 'WPSITE_FOLLOW_US_PLUGIN_URL', WP_PLUGIN_URL . '/' . WPSITE_FOLLOW_US_PLUGIN_NAME );
+	define( 'WPSITE_FOLLOW_US_PLUGIN_URL', plugins_url() . '/' . WPSITE_FOLLOW_US_PLUGIN_NAME );
 }
 
 // Plugin Version.
@@ -68,6 +68,7 @@ add_action( 'wp_ajax_wpsite_save_order', array( 'WPsiteFollowUs', 'save_order' )
 $plugin_follow_us_badges = plugin_basename( __FILE__ );
 add_filter( "plugin_action_links_$plugin_follow_us_badges", array( 'WPsiteFollowUs', 'wpsite_follow_us_badges_settings_link' ) );
 add_filter( 'widget_types_to_hide_from_legacy_widget_block', array( 'WPsiteFollowUs', 'hide_followus_widget' ) );
+
 
 
 /**
@@ -1218,6 +1219,10 @@ class WPsiteFollowUs extends WP_Widget {
 
 		wp_enqueue_script( 'wpsite_follow_us-mailchimp', '//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js', array(), '1.9.0', true );
 		wp_add_inline_script( 'wpsite_follow_us-mailchimp', '(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]="EMAIL";ftypes[0]="email";fnames[1]="FNAME";ftypes[1]="text";fnames[2]="LNAME";ftypes[2]="text";}(jQuery));var $mcj = jQuery.noConflict(true);', 'after' );
+	
+		// Enqueue main script.
+		wp_enqueue_script( 'wpsite_follow_us_badges_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/follow-us-badges.js', array( 'jquery' ), WPSITE_FOLLOW_US_VERSION_NUM, true );
+	
 	}
 
 	/**
