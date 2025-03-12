@@ -75,15 +75,11 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 
 
 == Changelog ==
-= 3.1.12 = 2025-02-27
+= 3.1.12 = 2025-03-12
 * Updated Twitter/X icon
+* Security Fix: XSS vulnerability in shortcode attributes
+* Enhanced input sanitization for shortcode parameters
 * Compatible with WordPress 6.7.2
-
-
-= 3.1.11 = 2024-04-29
-* Security Enhancements: This update includes important security fixes to ensure the safety and integrity of your website. We highly recommend updating to this version to stay protected.
-* Compatibility with WordPress 6.5.2: Our plugin is now fully compatible with the latest version of WordPress, ensuring smooth performance and seamless integration with all its features and functionalities.
-* Legacy Widget Compatibility: We've improved compatibility by making legacy widgets compatible with Gutenberg blocks. Now, you can seamlessly transition from the classic editor to Gutenberg without any compatibility issues. Enjoy the benefits of both worlds with this update.
 
 = 3.1.11 = 2024-04-29
 * Security Enhancements: This update includes important security fixes to ensure the safety and integrity of your website. We highly recommend updating to this version to stay protected.
