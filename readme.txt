@@ -75,7 +75,7 @@ You can install the Follow Us Badges plugin from your WordPress Dashboard or man
 
 
 == Changelog ==
-= 3.1.12 = 2025-03-12
+= 3.1.12 = 2025-03-14
 * Updated Twitter/X icon
 * Security Fix: XSS vulnerability in shortcode attributes
 * Enhanced input sanitization for shortcode parameters

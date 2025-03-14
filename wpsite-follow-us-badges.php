@@ -118,7 +118,7 @@ class WPsiteFollowUs extends WP_Widget {
 	 * @static
 	 */
 	public static $default = array(
-		'order'     => array( 'twitter', 'facebook', 'linkedin', 'pinterest', 'youtube', 'tumblr' ),
+		'order'     => array( 'x-twitter', 'facebook', 'linkedin', 'pinterest', 'youtube', 'tumblr' ),
 		'twitter'   => array(
 			'active' => true,
 			'user'   => '99Robots',
@@ -430,7 +430,7 @@ class WPsiteFollowUs extends WP_Widget {
 			array(
 				'title'                           => '',
 				'inline'                          => 'false',
-				'order'                           => 'twitter,facebook,linkedin,pinterest,youtube,tumblr',
+				'order'                           => 'x-twitter,facebook,linkedin,pinterest,youtube,tumblr',
 				'twitter'                         => null,
 				'twitter_link'                    => 'false',
 				'twitter_followers_count_display' => 'true',
@@ -557,7 +557,7 @@ class WPsiteFollowUs extends WP_Widget {
 		);
 
 		$main_settings = get_option( 'wpsite_follow_us_settings' );
-
+		
 		// Create class for inline elements.
 		$inline_class = '';
 		if ( $settings['inline'] ) {
@@ -576,9 +576,9 @@ class WPsiteFollowUs extends WP_Widget {
 		} else {
 			$content .= '<h3>' . esc_html__( 'Follow Us', 'wpsite-follow-us-badges' ) . '</h3>';
 		}
-
+	
 		foreach ( $settings['order'] as $order ) {
-			if ( 'twitter' === $order ) {
+			if ( 'x-twitter' === $order ) {
 				// Twitter.
 				if ( ! empty( $settings['twitter']['active'] ) ) {
 
@@ -928,15 +928,16 @@ class WPsiteFollowUs extends WP_Widget {
 	public function generate_content() {
 
 		$settings = get_option( 'wpsite_follow_us_settings' );
+	
 		$content  = '';
 		foreach ( $settings['order'] as $order ) {
 
 			// Twitter.
-			if ( 'twitter' === $order ) {
+			if ( 'x-twitter' === $order ) {
 				if ( ! empty( $settings['twitter']['active'] ) ) {
 
 					if ( ! empty( $settings['twitter']['args']['link'] ) ) {
-						$content .= '<div class="wpsite_follow_us_div_link"><a class="twitter" href="https://twitter.com/' . esc_html( $settings['twitter']['user'] ) . '" target="_blank">Twitter</a></div>';
+						$content .= '<div class="wpsite_follow_us_div_link"><a class="twitter" href="https://twitter.com/' . esc_html( $settings['twitter']['user'] ) . '" target="_blank">X</a></div>';
 					} else {
 						$content .= '<div class="wpsite_follow_us_div twitterbox"><a href="https://twitter.com/' . esc_html( $settings['twitter']['user'] ) . '" class="twitter-follow-button"';
 
