@@ -10,7 +10,6 @@
  * @license  GNU General Public License 2
  * (https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
  * @link     https://draftpress.com/
- * @codingStandardsIgnoreStart
  */
 
 // variables defined.
@@ -290,7 +289,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 										<select id="wpsite_follow_us_settings_twitter_args_language"
 												name="wpsite_follow_us_settings_twitter_args_language">
 											<?php foreach ( self::$twitter_supported_languages as $lang ) { ?>
-												<option value="<?php echo esc_attr( $lang ); ?>" <?php echo ! empty( $settings['twitter']['args']['language'] ) && $settings['twitter']['args']['language'] === $lang ? 'selected' : ''; ?>><?php esc_html_e( $lang, 'wpsite-follow-us-badges' ); ?></option>
+												<option value="<?php echo esc_attr( $lang ); ?>" <?php echo ! empty( $settings['twitter']['args']['language'] ) && $settings['twitter']['args']['language'] === $lang ? 'selected' : ''; ?>><?php echo esc_html( $lang ); ?></option>
 											<?php } ?>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the language.', 'wpsite-follow-us-badges' ); ?></em>
@@ -495,7 +494,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 										<select id="wpsite_follow_us_settings_facebook_args_language"
 												name="wpsite_follow_us_settings_facebook_args_language">
 											<?php foreach ( self::$facebook_supported_languages as $lang ) { ?>
-												<option value="<?php echo esc_attr( $lang ); ?>" <?php echo ! empty( $settings['facebook']['args']['language'] ) && $settings['facebook']['args']['language'] === $lang ? 'selected' : ''; ?>><?php esc_html_e( $lang, 'wpsite-follow-us-badges' ); ?></option>
+												<option value="<?php echo esc_attr( $lang ); ?>" <?php echo ! empty( $settings['facebook']['args']['language'] ) && $settings['facebook']['args']['language'] === $lang ? 'selected' : ''; ?>><?php echo esc_html( $lang ); ?></option>
 											<?php } ?>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the language.', 'wpsite-follow-us-badges' ); ?></em>
@@ -628,8 +627,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 										<select id="wpsite_follow_us_settings_linkedin_args_language"
 												name="wpsite_follow_us_settings_linkedin_args_language">
 											<?php foreach ( self::$linkedin_supported_languages as $lang ) { ?>
-												<option value="<?php echo esc_attr( $lang ); ?>" <?php echo ! empty( $settings['linkedin']['args']['language'] ) && $settings['linkedin']['args']['language'] === $lang ? 'selected' : ''; ?>><?php esc_html_e( $lang, 'wpsite-follow-us-badges' ); ?></option>
-											<?php } ?>
+												<option value="<?php echo esc_attr( $lang ); ?>" <?php selected( ! empty( $settings['linkedin']['args']['language'] ) && $settings['linkedin']['args']['language'] === $lang ); ?>><?php echo esc_html( $lang ); ?></option>
+												<?php } ?>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the language.', 'wpsite-follow-us-badges' ); ?></em>
 									</div>
@@ -972,7 +971,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 
 									foreach ( $settings['order'] as $setting_order ) {
 										if ( 'twitter' === $setting_order ) {
-											'fa-x-twitter' === $setting_order;
+											$setting_order = 'x-twitter';
 										}
 
 										?>
