@@ -557,7 +557,7 @@ class WPsiteFollowUs extends WP_Widget {
 		);
 
 		$main_settings = get_option( 'wpsite_follow_us_settings' );
-		
+
 		// Create class for inline elements.
 		$inline_class = '';
 		if ( $settings['inline'] ) {
@@ -576,7 +576,7 @@ class WPsiteFollowUs extends WP_Widget {
 		} else {
 			$content .= '<h3>' . esc_html__( 'Follow Us', 'wpsite-follow-us-badges' ) . '</h3>';
 		}
-	
+
 		foreach ( $settings['order'] as $order ) {
 			if ( 'x-twitter' === $order ) {
 				// Twitter.
@@ -928,8 +928,8 @@ class WPsiteFollowUs extends WP_Widget {
 	public function generate_content() {
 
 		$settings = get_option( 'wpsite_follow_us_settings' );
-	
-		$content  = '';
+
+		$content = '';
 		foreach ( $settings['order'] as $order ) {
 
 			// Twitter.
