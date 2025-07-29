@@ -573,8 +573,6 @@ class WPsiteFollowUs extends WP_Widget {
 			} else {
 				$content .= '<h3>' . esc_html( $settings['title'] ) . '</h3>';
 			}
-		} else {
-			$content .= '<h3>' . esc_html__( 'Follow Us', 'wpsite-follow-us-badges' ) . '</h3>';
 		}
 
 		foreach ( $settings['order'] as $order ) {
@@ -583,7 +581,7 @@ class WPsiteFollowUs extends WP_Widget {
 				if ( ! empty( $settings['twitter']['active'] ) ) {
 
 					if ( ! empty( $settings['twitter']['args']['link'] ) ) {
-						$content .= '<div class="wpsite_follow_us_div_link ' . esc_attr( $inline_class ) . '"><a class="twitter" href="' . esc_url( 'https://twitter.com/' . $settings['twitter']['user'] ) . '" target="_blank">Twitter</a></div>';
+						$content .= '<div class="wpsite_follow_us_div_link ' . esc_attr( $inline_class ) . '"><a class="twitter" href="' . esc_url( 'https://twitter.com/' . $settings['twitter']['user'] ) . '" target="_blank">X</a></div>';
 					} else {
 						$content .= '<div class="wpsite_follow_us_div twitterbox ' . esc_attr( $inline_class ) . '"><a href="' . esc_url( 'https://twitter.com/' . $settings['twitter']['user'] ) . '" class="twitter-follow-button"';
 
@@ -775,7 +773,7 @@ class WPsiteFollowUs extends WP_Widget {
 	}
 
 	/**
-	 * Get the Twitter Follow Button
+	 * Get the LinkedIn Follow Button
 	 *
 	 * @param array  $settings The settings array.
 	 * @param string $inline_class The inline class.
@@ -1110,6 +1108,7 @@ class WPsiteFollowUs extends WP_Widget {
 						}
 
 						$content .= '"></iframe>';
+						$content .= '</div>';
 					}
 				}
 			}
@@ -1209,15 +1208,11 @@ class WPsiteFollowUs extends WP_Widget {
 			self::$prefix . 'admin_js',
 			'wpsite_follow_us',
 			array(
-				'wpsite_follow_us_nonce' => $wpsite_follow_us_nonce,
-				'name'                   => 'fahadahmed',
+				'wpsite_follow_us_nonce' => $wpsite_follow_us_nonce
 			)
 		);
 
 		wp_enqueue_script( self::$prefix . 'admin_fontawesome', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/fontawesome.min.js', array( 'jquery' ), '1.0.0', true );
-
-		wp_enqueue_script( 'custom-feed-script', 'https://feeds.feedburner.com/99robots?format=sigpro', array(), '1.0.0', true );
-
 		wp_enqueue_script( 'wpsite_follow_us-mailchimp', '//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js', array(), '1.9.0', true );
 		wp_add_inline_script( 'wpsite_follow_us-mailchimp', '(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]="EMAIL";ftypes[0]="email";fnames[1]="FNAME";ftypes[1]="text";fnames[2]="LNAME";ftypes[2]="text";}(jQuery));var $mcj = jQuery.noConflict(true);', 'after' );
 
@@ -1578,7 +1573,7 @@ class WPsiteFollowUs extends WP_Widget {
 				if ( ! empty( $settings['twitter']['active'] ) ) {
 
 					if ( ! empty( $settings['twitter']['args']['link'] ) ) {
-						$content .= '<div class="wpsite_follow_us_div_link"><a class="twitter" href="https://twitter.com/' . esc_html( $settings['twitter']['user'] ) . '" target="_blank">Twitter</a></div>';
+						$content .= '<div class="wpsite_follow_us_div_link"><a class="twitter" href="https://twitter.com/' . esc_html( $settings['twitter']['user'] ) . '" target="_blank">X</a></div>';
 					} else {
 						$content .= '<div class="wpsite_follow_us_div twitterbox"><a href="https://twitter.com/' . esc_html( $settings['twitter']['user'] ) . '" class="twitter-follow-button"';
 
@@ -1755,7 +1750,7 @@ class WPsiteFollowUs extends WP_Widget {
 				}
 			}
 		}
-
+		die;
 		// Display the content.
 		echo $content;
 

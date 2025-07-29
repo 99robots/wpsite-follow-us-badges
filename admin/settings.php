@@ -300,7 +300,7 @@ if ( ! empty( $_GET['tab'] ) ) {
 
 							<p><?php esc_html_e( 'Reference:', 'wpsite-follow-us-badges' ); ?> <a
 										href="https://developer.twitter.com/en/docs/twitter-for-websites/follow-button/overview.html"
-										target="_blank"><?php esc_html_e( 'Twitter Follow Button API Details', 'wpsite-follow-us-badges' ); ?></a>
+										target="_blank"><?php esc_html_e( 'X Follow Button API Details', 'wpsite-follow-us-badges' ); ?></a>
 							</p>
 						</div>
 
