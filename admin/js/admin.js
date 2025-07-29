@@ -43,7 +43,8 @@ jQuery(function($) {
 
 	        var data = {
 				action: 'wpsite_save_order',
-				order: $(this).sortable('toArray')
+				order: $(this).sortable('toArray'),
+				wpsite_follow_us_nonce: wpsite_follow_us.wpsite_follow_us_nonce
 			};
 
 	        // POST to server using $.post or $.ajax
