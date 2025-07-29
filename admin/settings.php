@@ -627,8 +627,8 @@ if ( ! empty( $_GET['tab'] ) ) {
 										<select id="wpsite_follow_us_settings_linkedin_args_language"
 												name="wpsite_follow_us_settings_linkedin_args_language">
 											<?php foreach ( self::$linkedin_supported_languages as $lang ) { ?>
-												<option value="<?php echo esc_attr( $lang ); ?>" <?php selected( ! empty( $settings['linkedin']['args']['language'] ) && $settings['linkedin']['args']['language'] === $lang ); ?>><?php echo esc_html( $lang ); ?></option>
-												<?php } ?>
+												<option value="<?php echo esc_attr( $lang ); ?>" <?php selected( $settings['linkedin']['args']['language'], $lang ); ?>><?php echo esc_html( $lang ); ?></option>
+											<?php } ?>
 										</select>
 										<em class="help-block"><?php esc_html_e( 'Select the language.', 'wpsite-follow-us-badges' ); ?></em>
 									</div>
