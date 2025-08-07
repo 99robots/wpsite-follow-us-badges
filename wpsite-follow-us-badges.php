@@ -16,7 +16,7 @@
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
-	die;
+	wp_die();
 }
 
 /**
@@ -417,7 +417,7 @@ class WPsiteFollowUs extends WP_Widget {
 
 		wp_enqueue_style( 'wpsite_follow_us_badges_widget_css', plugins_url( '/css/wpsite-follow-us-badges.css', __FILE__ ), array(), '1.0.0' );
 		wp_enqueue_script( 'google-platform', 'https://apis.google.com/js/platform.js', array(), '1.0.0', true );
-		wp_enqueue_script( 'pinterest-pinit', '//assets.pinterest.com/js/pinit.js', array(), '1.0.0', true );
+		wp_enqueue_script( 'pinterest-pinit', 'https://assets.pinterest.com/js/pinit.js', array(), '1.0.0', true );
 
 		// Define allowed values for certain attributes.
 		$allowed_sizes   = array( 'medium', 'large' );
@@ -1217,7 +1217,7 @@ class WPsiteFollowUs extends WP_Widget {
 		wp_add_inline_script( 'wpsite_follow_us-mailchimp', '(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]="EMAIL";ftypes[0]="email";fnames[1]="FNAME";ftypes[1]="text";fnames[2]="LNAME";ftypes[2]="text";}(jQuery));var $mcj = jQuery.noConflict(true);', 'after' );
 
 		// Enqueue main script.
-		wp_enqueue_script( 'wpsite_follow_us_badges_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/follow-us-badges.js', array( 'jquery' ), WPSITE_FOLLOW_US_VERSION_NUM, true );
+		wp_enqueue_script( 'wpsite_follow_us_badges_moosend_js', WPSITE_FOLLOW_US_PLUGIN_URL . '/admin/js/moosend.min.js', array( 'jquery' ), WPSITE_FOLLOW_US_VERSION_NUM, true );
 	}
 
 	/**
@@ -1750,7 +1750,7 @@ class WPsiteFollowUs extends WP_Widget {
 				}
 			}
 		}
-		die;
+		
 		// Display the content.
 		echo wp_kses_post( $content );
 
